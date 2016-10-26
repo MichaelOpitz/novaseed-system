@@ -1,0 +1,5 @@
+C:\Users\Michael\Dropbox\Personal\10° Semestre\Sistema\Novaseed\Project.DataAccess\bin\Project.DataAccess.dll
+C:\Users\Michael\Dropbox\Personal\10° Semestre\Sistema\Novaseed\Project.DataAccess\bin\Project.DataAccess.pdb
+C:\Users\Michael\Dropbox\Personal\10° Semestre\Sistema\Novaseed\Project.DataAccess\obj\Debug\Project.DataAccess.csprojResolveAssemblyReference.cache
+C:\Users\Michael\Dropbox\Personal\10° Semestre\Sistema\Novaseed\Project.DataAccess\obj\Debug\Project.DataAccess.dll
+C:\Users\Michael\Dropbox\Personal\10° Semestre\Sistema\Novaseed\Project.DataAccess\obj\Debug\Project.DataAccess.pdb

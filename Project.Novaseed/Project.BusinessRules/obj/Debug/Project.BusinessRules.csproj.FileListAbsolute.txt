@@ -1,0 +1,14 @@
+C:\Users\Michael\Dropbox\Personal\10° Semestre\Sistema\Novaseed\Project.BusinessRules\bin\Project.BusinessRules.dll
+C:\Users\Michael\Dropbox\Personal\10° Semestre\Sistema\Novaseed\Project.BusinessRules\bin\Project.BusinessRules.pdb
+C:\Users\Michael\Dropbox\Personal\10° Semestre\Sistema\Novaseed\Project.BusinessRules\obj\Debug\Project.BusinessRules.dll
+C:\Users\Michael\Dropbox\Personal\10° Semestre\Sistema\Novaseed\Project.BusinessRules\obj\Debug\Project.BusinessRules.pdb
+C:\Users\Michael\Dropbox\Personal\10° Semestre\Sistema\Novaseed\Project.BusinessRules\bin\Project.DataAccess.dll
+C:\Users\Michael\Dropbox\Personal\10° Semestre\Sistema\Novaseed\Project.BusinessRules\bin\Project.DataAccess.pdb
+C:\Users\Michael\Dropbox\Personal\10° Semestre\Sistema\Novaseed\Project.BusinessRules\obj\Debug\Project.BusinessRules.csprojResolveAssemblyReference.cache
+C:\Users\Michael\Dropbox\Personal\10° Semestre\Sistema\Project.Novaseed\Project.BusinessRules\bin\Project.BusinessRules.dll
+C:\Users\Michael\Dropbox\Personal\10° Semestre\Sistema\Project.Novaseed\Project.BusinessRules\bin\Project.BusinessRules.pdb
+C:\Users\Michael\Dropbox\Personal\10° Semestre\Sistema\Project.Novaseed\Project.BusinessRules\bin\Project.DataAccess.dll
+C:\Users\Michael\Dropbox\Personal\10° Semestre\Sistema\Project.Novaseed\Project.BusinessRules\bin\Project.DataAccess.pdb
+C:\Users\Michael\Dropbox\Personal\10° Semestre\Sistema\Project.Novaseed\Project.BusinessRules\obj\Debug\Project.BusinessRules.csprojResolveAssemblyReference.cache
+C:\Users\Michael\Dropbox\Personal\10° Semestre\Sistema\Project.Novaseed\Project.BusinessRules\obj\Debug\Project.BusinessRules.dll
+C:\Users\Michael\Dropbox\Personal\10° Semestre\Sistema\Project.Novaseed\Project.BusinessRules\obj\Debug\Project.BusinessRules.pdb
