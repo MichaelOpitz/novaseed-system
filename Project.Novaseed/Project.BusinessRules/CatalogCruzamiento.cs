@@ -11,6 +11,21 @@ namespace Project.BusinessRules
     public class CatalogCruzamiento
     {
         /*
+         * Agregar cruzamiento con la madre y el padre
+         */
+        public void AddCruzamiento(string codigo_variedad, string pad_codigo_variedad)
+        {
+            DataAccess.DataBase bd = new DataBase();
+            bd.Connect(); //método conectar
+            string sql = "cruzamientoAgregar";
+            bd.CreateCommandSP(sql);         
+            bd.CreateParameter("@codigo_variedad", DbType.String, codigo_variedad);
+            bd.CreateParameter("@pad_codigo_variedad", DbType.String, pad_codigo_variedad);            
+            bd.Execute();
+            bd.Close();
+        }
+
+        /*
          * Actualizar cruzamiento, involucra tablas cruzamienta, madre y padre.
          */ 
         public void UpdateCruzamiento(Cruzamiento c)
@@ -27,6 +42,20 @@ namespace Project.BusinessRules
             bd.CreateParameter("@id_fertilidad", DbType.Int32, c.Id_fertilidad);
             bd.CreateParameter("@flor", DbType.Boolean, c.Flor);
             bd.CreateParameter("@bayas", DbType.Int32, c.Bayas);            
+            bd.Execute();
+            bd.Close();
+        }
+
+        /*
+         * Elimina un cruzamiento a través del id_cruzamiento
+         */
+        public void DeleteCruzamiento(int id_cruzamiento)
+        {
+            DataAccess.DataBase bd = new DataBase();
+            bd.Connect(); //método conectar
+            string sql = "cruzamientoEliminar";
+            bd.CreateCommandSP(sql);
+            bd.CreateParameter("@id_cruzamiento", DbType.Int32, id_cruzamiento);            
             bd.Execute();
             bd.Close();
         }

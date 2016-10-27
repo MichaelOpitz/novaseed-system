@@ -14,7 +14,8 @@
             OnRowDataBound="OnRowDataBound"
             OnRowUpdating="CruzamientoGridView_RowUpdating"
             OnRowCancelingEdit="CruzamientoGridView_RowCancelingEdit"
-            OnRowEditing="CruzamientoGridView_RowEditing" >           
+            OnRowEditing="CruzamientoGridView_RowEditing" 
+            OnRowDeleting="CruzamientoGridView_RowDeleting">           
 
             <HeaderStyle BackColor="#337ab7" Font-Bold="True" ForeColor="White" />
             <EditRowStyle BackColor="#ffffcc" />
@@ -25,12 +26,12 @@
                 <asp:TemplateField ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="200px">
                     <ItemTemplate>
                         <%--Botones de eliminar y editar cliente...--%>
-                        <asp:Button ID="btnDelete" runat="server" Text="Quitar" CssClass="btn btn-danger" CommandName="Delete" />
+                        <asp:Button ID="btnDelete" runat="server" Text="Quitar" CssClass="btn btn-danger" CommandName="Delete" OnClientClick="return confirm('¿Eliminar cruzamiento?');"/>
                         <asp:Button ID="btnEdit" runat="server" Text="Editar" CssClass="btn btn-info" CommandName="Edit" />
                     </ItemTemplate>
                     <EditItemTemplate>
                         <%--Botones de grabar y cancelar la edición de registro...--%>
-                        <asp:Button ID="btnUpdate" runat="server" Text="Grabar" CssClass="btn btn-success" CommandName="Update" />
+                        <asp:Button ID="btnUpdate" runat="server" Text="Grabar" CssClass="btn btn-success" CommandName="Update" OnClientClick="return confirm('¿Desea modificar cruzamiento?');"/>
                         <asp:Button ID="btnCancel" runat="server" Text="Cancelar" CssClass="btn btn-default" CommandName="Cancel" />
                     </EditItemTemplate>
 

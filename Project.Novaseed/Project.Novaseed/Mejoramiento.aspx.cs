@@ -130,6 +130,9 @@ namespace Project.Novaseed
             }
         }
 
+        /*
+         * METODO QUE PINTA DE COLOR EL DROPDOWNLIST SELECCIONADO
+         */ 
         private void SeleccionDropDown()
         {
             if (this.ddlMejoramientoColorCarne.SelectedIndex > 0)
@@ -218,6 +221,9 @@ namespace Project.Novaseed
                 this.ddlMejoramientoDestino.BackColor = Color.Transparent;
         }
 
+        /*
+         * METODO QUE REINICIA TODOS LOS DROPDOWNLIST DE LAS CARACTERISTICAS
+         */ 
         private void RefreshDropDown()
         {
             this.ddlMejoramientoColorCarne.SelectedIndex = 0;
@@ -243,11 +249,15 @@ namespace Project.Novaseed
             this.ddlMejoramientoDestino.SelectedIndex = 0;
         }
 
+        /*
+         * BOTON QUE BUSCA CARACTERISTICAS EN LA MADRE
+         */ 
         protected void btnCaracteristicaMadre_Click(object sender, EventArgs e)
         {            
             CatalogMadre madre = new CatalogMadre();            
             List<Madre> lista = new List<Madre>();
 
+            //PRIMERO BUSCA POR NOMBRE DE VARIEDAD, SINO POR CARACTERISTICAS
             if (this.txtMadre.Text.Equals(""))
             {
                 SeleccionDropDown();
@@ -282,18 +292,22 @@ namespace Project.Novaseed
                 RefreshDropDown();
                 SeleccionDropDown();
                 string nombre = this.txtMadre.Text;
-                lista = madre.getMadreNombre(nombre); 
+                lista = madre.GetMadreNombre(nombre); 
             }
             
             this.gdvCaracteristicaMadre.DataSource = lista;
             this.gdvCaracteristicaMadre.DataBind();
         }
 
+        /*
+         * BOTON QUE BUSCA CARACTERISTICAS EN EL PADRE
+         */ 
         protected void btnCaracteristicaPadre_Click(object sender, EventArgs e)
         {            
             CatalogPadre padre = new CatalogPadre();
             List<Padre> lista = new List<Padre>();
 
+            //PRIMERO BUSCA POR NOMBRE DE VARIEDAD, SINO POR CARACTERISTICAS
             if (this.txtPadre.Text.Equals(""))
             {
                 SeleccionDropDown();
@@ -328,13 +342,16 @@ namespace Project.Novaseed
                 RefreshDropDown();
                 SeleccionDropDown();
                 string nombre = this.txtPadre.Text;
-                lista = padre.getPadreNombre(nombre);
+                lista = padre.GetPadreNombre(nombre);
             }
 
             this.gdvCaracteristicaPadre.DataSource = lista;
             this.gdvCaracteristicaPadre.DataBind();
-        }        
+        }
 
+        /*
+         * BOTON QUE CREA UN NUEVO CRUZAMIENTO
+         */ 
         protected void btnMejoramientoCruzamiento_Click(object sender, EventArgs e)
         {
             int selectedMadre = this.gdvCaracteristicaMadre.SelectedIndex;
@@ -343,19 +360,22 @@ namespace Project.Novaseed
             int selectedPadre = this.gdvCaracteristicaPadre.SelectedIndex;
             string codigoPadre = HttpUtility.HtmlDecode((string)this.gdvCaracteristicaPadre.Rows[selectedPadre].Cells[1].Text);
 
-            Session.Add("CodigoMadre", codigoMadre);            
-            Session.Add("CodigoPadre", codigoPadre);
-            //Server.Transfer("Cruzamiento.aspx");
-            // Segunda Parte : las variables provenientes de la primera pagina. en page load de form cruzamiento
-            //string codigoMadre = (string)(Session["CodigoMadre"]);
-            //string codigoPadre = (string)(Session["CodigoPadre"]);
+            CatalogCruzamiento cc = new CatalogCruzamiento();
+            cc.AddCruzamiento(codigoMadre,codigoPadre);
+            Response.Redirect("MenuGeneracion.aspx");
         }
 
+        /*
+         * BOTON CANCELAR CRUZAMIENTO
+         */ 
         protected void btnMejoramientoCancelar_Click(object sender, EventArgs e)
         {
             Response.Redirect("Mejoramiento.aspx");            
         }
 
+        /*
+         * BOTON QUE LIMPIA LAS CARACTERISTICAS
+         */ 
         protected void btnMejoramientoRefresh_Click(object sender, EventArgs e)
         {
             RefreshDropDown();

@@ -61,7 +61,7 @@ namespace Project.BusinessRules
             return padre;
         }
 
-        public List<Padre> getPadreNombre(string nombre)
+        public List<Padre> GetPadreNombre(string nombre)
         {
             DataAccess.DataBase bd = new DataBase();
             bd.Connect(); //método conectar

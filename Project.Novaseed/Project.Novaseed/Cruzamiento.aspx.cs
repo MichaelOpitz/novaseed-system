@@ -21,7 +21,7 @@ namespace Project.Novaseed
 
             if (!Page.IsPostBack)
             {
-                this.gdvCruzamiento.DataSource = cc.GetCruzamiento(2012);
+                this.gdvCruzamiento.DataSource = cc.GetCruzamiento(2016);
                 this.gdvCruzamiento.DataBind();
             }
         }
@@ -29,7 +29,7 @@ namespace Project.Novaseed
         private void PoblarGrilla()
         {
             CatalogCruzamiento cc = new CatalogCruzamiento();
-            gdvCruzamiento.DataSource = cc.GetCruzamiento(2012);
+            gdvCruzamiento.DataSource = cc.GetCruzamiento(2016);
             gdvCruzamiento.DataBind();
         }
 
@@ -51,7 +51,7 @@ namespace Project.Novaseed
                 ddlCruzamientoFertilidad.DataBind();
                 
                 //Selecciona la fertilidad de cada cruzamiento
-                int index = cc.GetFertilidadCruzamiento(2012, contFertilidad) - 1;
+                int index = cc.GetFertilidadCruzamiento(2016, contFertilidad) - 1;
                 ddlCruzamientoFertilidad.SelectedIndex = index;
                 contFertilidad = contFertilidad + 1;
             }
@@ -61,7 +61,7 @@ namespace Project.Novaseed
                 //Ecuentra el DropDownList en la fila
                 CheckBox chkCruzamientoFlor = (e.Row.FindControl("chkCruzamientoFlor") as CheckBox);
 
-                bool indexFlor = cc.GetFlorCruzamiento(2012, contFlor);
+                bool indexFlor = cc.GetFlorCruzamiento(2016, contFlor);
 
                 if (indexFlor == true)
                     chkCruzamientoFlor.Checked = true;
@@ -108,6 +108,15 @@ namespace Project.Novaseed
         protected void CruzamientoGridView_RowEditing(Object sender, GridViewEditEventArgs e)
         {
             gdvCruzamiento.EditIndex = e.NewEditIndex;
+            PoblarGrilla();
+        }
+
+        protected void CruzamientoGridView_RowDeleting(Object sender, GridViewDeleteEventArgs e)
+        {
+            CatalogCruzamiento cc = new CatalogCruzamiento();
+            string id_cruzamiento = HttpUtility.HtmlDecode((string)this.gdvCruzamiento.Rows[e.RowIndex].Cells[1].Text);
+            cc.DeleteCruzamiento(Int32.Parse(id_cruzamiento));
+
             PoblarGrilla();
         }
     }

@@ -109,13 +109,13 @@
                 <asp:DropDownList type="button" ID="ddlMejoramientoDestino" runat="server" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
             </div> 
         </div>
-        <%-- TEXTBOX MADRE Y PADRE --%>
+        <%-- TEXTBOX MADRE Y PADRE, BOTON LIMPIAR CARACTERISTICAS --%>
         <div class="row" style="text-align:center; margin-top:40px">
             <div class="col-sm-3 col-sm-offset-1">
                 <asp:TextBox type="text" runat="server" class="form-control" id="txtMadre" placeholder="Ingrese Nombre de la Madre" style="border-color:#000000"></asp:TextBox>
             </div>
             <div class="col-sm-4">
-                <asp:button type="button" runat="server" Text="Limpiar Características" ID="btnMejoramientoRefresh" class="btn btn-warning btn-md" Width="90%" ForeColor="#000000" Font-Bold="True" BorderColor="#000000" OnClick="btnMejoramientoRefresh_Click" ></asp:button>
+                <asp:button type="button" runat="server" Text="Limpiar Características" ID="btnMejoramientoRefresh" class="btn btn-warning btn-md" Width="90%" ForeColor="#000000" Font-Bold="True" BorderColor="#000000" OnClick="btnMejoramientoRefresh_Click" OnClientClick="return confirm('¿Desea limpiar las características?');"></asp:button>
             </div>
             <div class="col-sm-3">
                 <asp:TextBox type="text" runat="server" class="form-control" id="txtPadre" placeholder="Ingrese Nombre del Padre" style="border-color:#000000"></asp:TextBox>
@@ -166,8 +166,8 @@
         </div>
         <%-- BOTONES CRUZAMIENTO Y CANCELAR --%>
         <div class="row" style="text-align: center; margin-top:30px">
-            <asp:button type="button" runat="server" Text="Generar Cruzamiento" ID="btnMejoramientoCruzamiento" class="btn btn-primary btn-md" Width="20%" BorderColor="#000000" OnClick="btnMejoramientoCruzamiento_Click"></asp:button>
-            <asp:button type="button" runat="server" Text="Cancelar" ID="btnMejoramientoCancelar" class="btn btn-danger btn-md" Width="20%" BorderColor="#000000" OnClick="btnMejoramientoCancelar_Click"></asp:button>
+            <asp:button type="button" runat="server" Text="Generar Cruzamiento" ID="btnMejoramientoCruzamiento" class="btn btn-primary btn-md" Width="20%" BorderColor="#000000" OnClick="btnMejoramientoCruzamiento_Click" OnClientClick="return confirm('¿Desea crear el cruzamiento?');"></asp:button>
+            <asp:button type="button" runat="server" Text="Cancelar" ID="btnMejoramientoCancelar" class="btn btn-danger btn-md" Width="20%" BorderColor="#000000" OnClick="btnMejoramientoCancelar_Click" OnClientClick="return confirm('¿Desea cancelar el cruzamiento?');"></asp:button>
         </div>
     </div>
 </asp:Content>
