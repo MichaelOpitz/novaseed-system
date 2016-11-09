@@ -350,19 +350,32 @@ namespace Project.Novaseed
         }
 
         /*
-         * BOTON QUE CREA UN NUEVO CRUZAMIENTO
-         */ 
+         * BOTON QUE CREA UN NUEVO CRUZAMIENTO, OBLIGATORIAMENTE DEBE EXISTIR UNA MADRE Y UN PADRE
+         */
         protected void btnMejoramientoCruzamiento_Click(object sender, EventArgs e)
         {
             int selectedMadre = this.gdvCaracteristicaMadre.SelectedIndex;
-            string codigoMadre = HttpUtility.HtmlDecode((string)this.gdvCaracteristicaMadre.Rows[selectedMadre].Cells[1].Text);
+            string codigoMadre="";
+            if(selectedMadre > -1)
+                codigoMadre = HttpUtility.HtmlDecode((string)this.gdvCaracteristicaMadre.Rows[selectedMadre].Cells[1].Text);
 
             int selectedPadre = this.gdvCaracteristicaPadre.SelectedIndex;
-            string codigoPadre = HttpUtility.HtmlDecode((string)this.gdvCaracteristicaPadre.Rows[selectedPadre].Cells[1].Text);
+            string codigoPadre="";
+            if(selectedPadre > -1)
+                codigoPadre = HttpUtility.HtmlDecode((string)this.gdvCaracteristicaPadre.Rows[selectedPadre].Cells[1].Text);
 
-            CatalogCruzamiento cc = new CatalogCruzamiento();
-            cc.AddCruzamiento(codigoMadre,codigoPadre);
-            Response.Redirect("MenuGeneracion.aspx");
+            if (!codigoMadre.Equals(""))
+                if (!codigoPadre.Equals(""))
+                {
+                    CatalogCruzamiento cc = new CatalogCruzamiento();
+                    cc.AddCruzamiento(codigoMadre, codigoPadre);
+                    Response.Redirect("MenuGeneracion.aspx");
+                }
+                else
+                    Page.ClientScript.RegisterStartupScript(this.GetType(),"Scripts","<script>alert('Debe selecionar una variedad padre');</script>");
+            else
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Debe selecionar una variedad madre');</script>");
+
         }
 
         /*
@@ -381,8 +394,6 @@ namespace Project.Novaseed
             RefreshDropDown();
             this.txtMadre.Text = "";
             this.txtPadre.Text = "";
-            this.gdvCaracteristicaMadre.DataBind();
-            this.gdvCaracteristicaPadre.DataBind();
             SeleccionDropDown();
         }        
     }

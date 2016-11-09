@@ -28,13 +28,6 @@ namespace Project.BusinessRules
             set { nombre_tipo_hoja = value; }
         }
 
-        public TipoHoja(int id_tipo_hoja, string nombre_tipo_hoja, int valor_tipo_hoja)
-        {
-            this.id_tipo_hoja = id_tipo_hoja;
-            this.nombre_tipo_hoja = nombre_tipo_hoja;
-            this.valor_tipo_hoja = valor_tipo_hoja;
-        }
-
         public TipoHoja(int id_tipo_hoja, string nombre_tipo_hoja)
         {
             this.id_tipo_hoja = id_tipo_hoja;

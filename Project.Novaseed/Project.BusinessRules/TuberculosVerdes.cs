@@ -28,13 +28,6 @@ namespace Project.BusinessRules
             set { nombre_tuberculos_verdes = value; }
         }
 
-        public TuberculosVerdes(int id_tuberculos_verdes, string nombre_tuberculos_verdes, int valor_tuberculos_verdes)
-        {
-            this.id_tuberculos_verdes = id_tuberculos_verdes;
-            this.nombre_tuberculos_verdes = nombre_tuberculos_verdes;
-            this.valor_tuberculos_verdes = valor_tuberculos_verdes;
-        }
-
         public TuberculosVerdes(int id_tuberculos_verdes, string nombre_tuberculos_verdes)
         {
             this.id_tuberculos_verdes = id_tuberculos_verdes;

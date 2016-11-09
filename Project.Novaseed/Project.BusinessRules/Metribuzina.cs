@@ -28,13 +28,6 @@ namespace Project.BusinessRules
             set { nombre_metribuzina = value; }
         }
 
-        public Metribuzina(int id_metribuzina, string nombre_metribuzina, int valor_metribuzina)
-        {
-            this.id_metribuzina = id_metribuzina;
-            this.nombre_metribuzina = nombre_metribuzina;
-            this.valor_metribuzina = valor_metribuzina;
-        }
-
         public Metribuzina(int id_metribuzina, string nombre_metribuzina)
         {
             this.id_metribuzina = id_metribuzina;

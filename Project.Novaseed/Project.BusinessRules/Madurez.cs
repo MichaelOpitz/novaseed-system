@@ -28,13 +28,6 @@ namespace Project.BusinessRules
             set { nombre_madurez = value; }
         }
 
-        public Madurez(int id_madurez, string nombre_madurez, int valor_madurez)
-        {
-            this.id_madurez = id_madurez;
-            this.nombre_madurez = nombre_madurez;
-            this.valor_madurez = valor_madurez;
-        }
-
         public Madurez(int id_madurez, string nombre_madurez)
         {
             this.id_madurez = id_madurez;

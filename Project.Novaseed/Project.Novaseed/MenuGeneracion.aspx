@@ -6,11 +6,8 @@
     <div class="container-fluid">
         <div class="row" style="text-align: center; margin-top: 40px">
             <asp:DropDownList type="button" ID="ddlGeneracionAño" runat="server" class="btn btn-primary dropdown-toggle" Width="30%" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <asp:ListItem Value="AñoSeleccion">Seleccionar año</asp:ListItem>
             </asp:DropDownList>
-            <div class="alert alert-warning" id="alertAñoSeleccion">
-                <strong>Atención!</strong> Seleccione un año valido.
-            </div>
+            <span class="help-block">¡Seleccione un año para ver cada etapa!</span>
         </div>
         <div class="row" style="margin-top: 40px">
             <div class="col-sm-9 col-sm-offset-2">

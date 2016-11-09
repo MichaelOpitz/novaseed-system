@@ -28,13 +28,6 @@ namespace Project.BusinessRules
             set { nombre_emergencia_40_dias = value; }
         }
 
-        public Emergencia40Dias(int id_emergencia_40_dias, string nombre_emergencia_40_dias, int valor_emergencia_40_dias)
-        {
-            this.id_emergencia_40_dias = id_emergencia_40_dias;
-            this.nombre_emergencia_40_dias = nombre_emergencia_40_dias;
-            this.valor_emergencia_40_dias = valor_emergencia_40_dias;
-        }
-
         public Emergencia40Dias(int id_emergencia_40_dias, string nombre_emergencia_40_dias)
         {
             this.id_emergencia_40_dias = id_emergencia_40_dias;

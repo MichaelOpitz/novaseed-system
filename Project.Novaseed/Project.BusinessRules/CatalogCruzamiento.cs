@@ -11,7 +11,7 @@ namespace Project.BusinessRules
     public class CatalogCruzamiento
     {
         /*
-         * Agregar cruzamiento con la madre y el padre
+         * Agregar cruzamiento por defecto y por primera vez para luego ser modificado en la tabla cruzamiento
          */
         public void AddCruzamiento(string codigo_variedad, string pad_codigo_variedad)
         {
@@ -47,17 +47,25 @@ namespace Project.BusinessRules
         }
 
         /*
-         * Elimina un cruzamiento a través del id_cruzamiento
+         * Elimina un cruzamiento a través del id_cruzamiento.
+         * Devuelve 1 si eliminó, 0 en caso contrario
          */
-        public void DeleteCruzamiento(int id_cruzamiento)
+        public int DeleteCruzamiento(int id_cruzamiento)
         {
             DataAccess.DataBase bd = new DataBase();
             bd.Connect(); //método conectar
             string sql = "cruzamientoEliminar";
             bd.CreateCommandSP(sql);
-            bd.CreateParameter("@id_cruzamiento", DbType.Int32, id_cruzamiento);            
-            bd.Execute();
+            bd.CreateParameter("@id_cruzamiento", DbType.Int32, id_cruzamiento);
+
+            int elimino;
+            DbDataReader resultado = bd.Query();//disponible resultado
+            resultado.Read();
+            elimino = resultado.GetInt32(0);
+            resultado.Close();
+
             bd.Close();
+            return elimino;
         }
 
         /*
@@ -100,9 +108,9 @@ namespace Project.BusinessRules
 
             while (resultado.Read())
             {
-                Cruzamiento cruz = new Cruzamiento(resultado.GetInt32(0), resultado.GetString(1), resultado.GetString(2),
-                    resultado.GetString(3), resultado.GetString(4), resultado.GetString(5), resultado.GetBoolean(6), 
-                    resultado.GetInt32(7));
+                Cruzamiento cruz = new Cruzamiento(resultado.GetInt32(0), resultado.GetString(1), resultado.GetString(2), 
+                    resultado.GetString(3), resultado.GetString(4), resultado.GetString(5), resultado.GetString(6), 
+                    resultado.GetString(7), resultado.GetBoolean(8), resultado.GetInt32(9));
                 cruzamientos.Add(cruz);
             }
             resultado.Close();

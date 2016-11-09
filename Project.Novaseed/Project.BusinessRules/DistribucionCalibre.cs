@@ -28,13 +28,6 @@ namespace Project.BusinessRules
             set { nombre_distribucion_calibre = value; }
         }
 
-        public DistribucionCalibre(int id_distribucion_calibre, string nombre_distribucion_calibre, int valor_distribucion_calibre)
-        {
-            this.id_distribucion_calibre = id_distribucion_calibre;
-            this.nombre_distribucion_calibre = nombre_distribucion_calibre;
-            this.valor_distribucion_calibre = valor_distribucion_calibre;
-        }
-
         public DistribucionCalibre(int id_distribucion_calibre, string nombre_distribucion_calibre)
         {
             this.id_distribucion_calibre = id_distribucion_calibre;

@@ -25,54 +25,50 @@ namespace Project.Novaseed
             }
         }
 
-        private void AñoGeneracion()
+        private void AñoGeneracion(string url)
         {
-            int value = this.ddlGeneracionAño.SelectedIndex;
-            if (value > 1)
-                Response.Redirect("");
-            else
-                //ACA VA LA ALERTA
-                value = 0;
+            string año = this.ddlGeneracionAño.SelectedValue;
+            Response.Redirect(url + "?valor=" + año);
         }
 
         protected void btnGeneracionCruzamiento_Click(object sender, EventArgs e)
         {
-            AñoGeneracion();
+            AñoGeneracion("Cruzamiento.aspx");
         }
 
         protected void btnGeneracionVasos_Click(object sender, EventArgs e)
         {
-            AñoGeneracion();
+            AñoGeneracion("Vasos.aspx");
         }
 
         protected void btnGeneracionClones_Click(object sender, EventArgs e)
         {
-            AñoGeneracion();
+            AñoGeneracion("Clones.aspx");
         }
 
         protected void btnGeneracionCodificacion_Click(object sender, EventArgs e)
         {
-            AñoGeneracion();
+            AñoGeneracion("Codificacion.aspx");
         }
 
         protected void btnGeneracion6papas_Click(object sender, EventArgs e)
         {
-            AñoGeneracion();
+            AñoGeneracion("Cosecha6papas.aspx");
         }
 
         protected void btnGeneracion12papas_Click(object sender, EventArgs e)
         {
-            AñoGeneracion();
+            AñoGeneracion("");
         }
 
         protected void btnGeneracion24papas_Click(object sender, EventArgs e)
         {
-            AñoGeneracion();
+            AñoGeneracion("");
         }
 
         protected void btnGeneracion48papas_Click(object sender, EventArgs e)
         {
-            AñoGeneracion();
+            AñoGeneracion("");
         }
 
         protected void btnGeneracionUpov_Click(object sender, EventArgs e)

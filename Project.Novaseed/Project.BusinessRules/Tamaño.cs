@@ -28,13 +28,6 @@ namespace Project.BusinessRules
             set { nombre_tamaño = value; }
         }
 
-        public Tamaño(int id_tamaño, string nombre_tamaño, int valor_tamaño)
-        {
-            this.id_tamaño = id_tamaño;
-            this.nombre_tamaño = nombre_tamaño;
-            this.valor_tamaño = valor_tamaño;
-        }
-
         public Tamaño(int id_tamaño, string nombre_tamaño)
         {
             this.id_tamaño = id_tamaño;

@@ -28,13 +28,6 @@ namespace Project.BusinessRules
             set { profundidad_ojo = value; }
         }
 
-        public ProfundidadOjo(int id_profundidad, string profundidad_ojo, int valor_profundidad_ojo)
-        {
-            this.id_profundidad = id_profundidad;
-            this.profundidad_ojo = profundidad_ojo;
-            this.valor_profundidad_ojo = valor_profundidad_ojo;
-        }
-
         public ProfundidadOjo(int id_profundidad, string profundidad_ojo)
         {
             this.id_profundidad = id_profundidad;

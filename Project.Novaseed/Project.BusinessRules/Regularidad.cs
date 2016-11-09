@@ -28,13 +28,6 @@ namespace Project.BusinessRules
             set { nombre_regularidad = value; }
         }
 
-        public Regularidad(int id_regularidad, string nombre_regularidad, int valor_regularidad)
-        {
-            this.id_regularidad = id_regularidad;
-            this.nombre_regularidad = nombre_regularidad;
-            this.valor_regularidad = valor_regularidad;
-        }
-
         public Regularidad(int id_regularidad, string nombre_regularidad)
         {
             this.id_regularidad = id_regularidad;

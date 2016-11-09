@@ -28,13 +28,6 @@ namespace Project.BusinessRules
             set { nombre_tizon_tardio_follaje = value; }
         }
 
-        public TizonTardioFollaje(int id_tizon_tardio_follaje, string nombre_tizon_tardio_follaje, int valor_tizon_tardio_follaje)
-        {
-            this.id_tizon_tardio_follaje = id_tizon_tardio_follaje;
-            this.nombre_tizon_tardio_follaje = nombre_tizon_tardio_follaje;
-            this.valor_tizon_tardio_follaje = valor_tizon_tardio_follaje;
-        }
-
         public TizonTardioFollaje(int id_tizon_tardio_follaje, string nombre_tizon_tardio_follaje)
         {
             this.id_tizon_tardio_follaje = id_tizon_tardio_follaje;

@@ -10,24 +10,33 @@
 namespace Project.Novaseed {
     
     
-    public partial class CruzamientoAgregar {
+    public partial class Codificacion {
         
         /// <summary>
-        /// Control txtCruzamientoMadre.
+        /// Control lblCodificacionAño.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCruzamientoMadre;
+        protected global::System.Web.UI.WebControls.Label lblCodificacionAño;
         
         /// <summary>
-        /// Control txtCruzamientoPadre.
+        /// Control btnAgregar6papas.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCruzamientoPadre;
+        protected global::System.Web.UI.WebControls.Button btnAgregar6papas;
+        
+        /// <summary>
+        /// Control gdvCodificacion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gdvCodificacion;
     }
 }

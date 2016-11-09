@@ -28,13 +28,6 @@ namespace Project.BusinessRules
             set { nombre_forma = value; }
         }
 
-        public FormaTuberculos(int id_forma, string nombre_forma, int valor_forma)
-        {
-            this.id_forma = id_forma;
-            this.nombre_forma = nombre_forma;
-            this.valor_forma = valor_forma;
-        }
-
         public FormaTuberculos(int id_forma, string nombre_forma)
         {
             this.id_forma = id_forma;

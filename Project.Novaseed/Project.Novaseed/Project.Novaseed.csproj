@@ -151,12 +151,15 @@
     <Content Include="Account\OpenAuthProviders.ascx" />
     <Content Include="Account\Register.aspx" />
     <Content Include="Account\RegisterExternalLogin.aspx" />
+    <Content Include="Clones.aspx" />
+    <Content Include="Codificacion.aspx" />
+    <Content Include="CodigoIndividuos.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="Cosecha6papas.aspx" />
     <Content Include="Cruzamiento.aspx" />
-    <Content Include="CruzamientoAgregar.aspx" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Login.aspx" />
     <Content Include="Mejoramiento.aspx" />
@@ -201,6 +204,7 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Site.Master" />
+    <Content Include="Vasos.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
@@ -260,6 +264,27 @@
     </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Clones.aspx.cs">
+      <DependentUpon>Clones.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Clones.aspx.designer.cs">
+      <DependentUpon>Clones.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Codificacion.aspx.cs">
+      <DependentUpon>Codificacion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Codificacion.aspx.designer.cs">
+      <DependentUpon>Codificacion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CodigoIndividuos.aspx.cs">
+      <DependentUpon>CodigoIndividuos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CodigoIndividuos.aspx.designer.cs">
+      <DependentUpon>CodigoIndividuos.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Contact.aspx.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -267,19 +292,19 @@
     <Compile Include="Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Cosecha6papas.aspx.cs">
+      <DependentUpon>Cosecha6papas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Cosecha6papas.aspx.designer.cs">
+      <DependentUpon>Cosecha6papas.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Cruzamiento.aspx.cs">
       <DependentUpon>Cruzamiento.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Cruzamiento.aspx.designer.cs">
       <DependentUpon>Cruzamiento.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="CruzamientoAgregar.aspx.cs">
-      <DependentUpon>CruzamientoAgregar.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="CruzamientoAgregar.aspx.designer.cs">
-      <DependentUpon>CruzamientoAgregar.aspx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -336,6 +361,13 @@
       <DependentUpon>Site.Mobile.Master</DependentUpon>
     </Compile>
     <Compile Include="Startup.cs" />
+    <Compile Include="Vasos.aspx.cs">
+      <DependentUpon>Vasos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vasos.aspx.designer.cs">
+      <DependentUpon>Vasos.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

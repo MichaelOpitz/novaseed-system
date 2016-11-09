@@ -8,8 +8,21 @@ namespace Project.BusinessRules
     public class Cruzamiento
     {
         private int id_cruzamiento, id_fertilidad, ano_cruzamiento, bayas;
-        private string codigo_variedad, pad_codigo_variedad, ubicacion_madre, ubicacion_padre, nombre_fertilidad;
+        private string codigo_variedad, pad_codigo_variedad, ubicacion_madre, ubicacion_padre, nombre_fertilidad,
+            nombre_madre, nombre_padre;
         private bool flor;
+
+        public string Nombre_padre
+        {
+            get { return nombre_padre; }
+            set { nombre_padre = value; }
+        }
+
+        public string Nombre_madre
+        {
+            get { return nombre_madre; }
+            set { nombre_madre = value; }
+        }        
 
         public string Nombre_fertilidad
         {
@@ -71,12 +84,17 @@ namespace Project.BusinessRules
             set { id_cruzamiento = value; }
         }
 
-        public Cruzamiento(int id_cruzamiento,  string codigo_variedad, string pad_codigo_variedad, string ubicacion_madre,
-            string ubicacion_padre, string nombre_fertilidad, bool flor, int bayas)
+        /*
+         * Constructor para obtener el cruzamiento
+         */ 
+        public Cruzamiento(int id_cruzamiento,  string codigo_variedad, string nombre_madre, string pad_codigo_variedad, 
+            string nombre_padre, string ubicacion_madre, string ubicacion_padre, string nombre_fertilidad, bool flor, int bayas)
         {
             this.id_cruzamiento = id_cruzamiento;            
             this.codigo_variedad = codigo_variedad;
+            this.nombre_madre = nombre_madre;
             this.pad_codigo_variedad = pad_codigo_variedad;
+            this.nombre_padre = nombre_padre;
             this.ubicacion_madre = ubicacion_madre;
             this.ubicacion_padre = ubicacion_padre;
             this.nombre_fertilidad = nombre_fertilidad;
@@ -84,6 +102,9 @@ namespace Project.BusinessRules
             this.bayas = bayas;
         }
 
+        /*
+         * Constructor para la funcion que obtiene el menor año del total de cruzamientos
+         */ 
         public Cruzamiento(int ano_cruzamiento)
         {
             this.ano_cruzamiento = ano_cruzamiento;

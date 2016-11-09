@@ -28,13 +28,6 @@ namespace Project.BusinessRules
             set { nombre_color_piel = value; }
         }
 
-        public ColorPiel(int id_color_piel, string nombre_color_piel, int valor_color_piel)
-        {
-            this.id_color_piel = id_color_piel;
-            this.nombre_color_piel = nombre_color_piel;
-            this.valor_color_piel = valor_color_piel;
-        }
-
         public ColorPiel(int id_color_piel, string nombre_color_piel)
         {
             this.id_color_piel = id_color_piel;

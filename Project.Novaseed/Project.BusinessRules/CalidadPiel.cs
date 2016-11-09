@@ -28,13 +28,6 @@ namespace Project.BusinessRules
             set { nombre_calidad_piel = value; }
         }
 
-        public CalidadPiel(int id_calidad_piel, string nombre_calidad_piel, int valor_calidad_piel)
-        {
-            this.id_calidad_piel = id_calidad_piel;
-            this.nombre_calidad_piel = nombre_calidad_piel;
-            this.valor_calidad_piel = valor_calidad_piel;
-        }
-
         public CalidadPiel(int id_calidad_piel, string nombre_calidad_piel)
         {
             this.id_calidad_piel = id_calidad_piel;

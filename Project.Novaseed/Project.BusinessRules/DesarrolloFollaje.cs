@@ -28,13 +28,6 @@ namespace Project.BusinessRules
             set { nombre_desarrollo_follaje = value; }
         }
 
-        public DesarrolloFollaje(int id_desarrollo_follaje, string nombre_desarrollo_follaje, int valor_desarrollo_follaje)
-        {
-            this.id_desarrollo_follaje = id_desarrollo_follaje;
-            this.nombre_desarrollo_follaje = nombre_desarrollo_follaje;
-            this.valor_desarrollo_follaje = valor_desarrollo_follaje;
-        }
-
         public DesarrolloFollaje(int id_desarrollo_follaje, string nombre_desarrollo_follaje)
         {
             this.id_desarrollo_follaje = id_desarrollo_follaje;

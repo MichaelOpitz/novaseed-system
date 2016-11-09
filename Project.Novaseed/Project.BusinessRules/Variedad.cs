@@ -257,35 +257,6 @@ namespace Project.BusinessRules
             set { codigo_variedad = value; }
         }
 
-        public Variedad(string codigo_variedad, string nombre_variedad, int id_tamaño, int id_madurez, int id_tipo_hoja,
-            int id_calidad_piel, int id_forma, int id_distribucion_calibre, int id_profundidad, int id_regularidad,
-            int id_desarrollo_follaje, int id_brotacion, int id_emergencia, int id_emergencia_40_dias, int id_metribuzina,
-            int id_tuberculos_verdes, int id_tizon_tardio_follaje, int id_tizon_tardio_tuberculo,
-            int id_numero_tuberculos, int id_fertilidad, int id_destino)
-        {
-            this.codigo_variedad = codigo_variedad;
-            this.id_tamaño = id_tamaño;
-            this.id_madurez = id_madurez;
-            this.id_tuberculos_verdes = id_tuberculos_verdes;
-            this.id_tizon_tardio_tuberculo = id_tizon_tardio_tuberculo;
-            this.id_emergencia_40_dias = id_emergencia_40_dias;
-            this.id_desarrollo_follaje = id_desarrollo_follaje;
-            this.id_distribucion_calibre = id_distribucion_calibre;
-            this.id_profundidad = id_profundidad;
-            this.id_tipo_hoja = id_tipo_hoja;
-            this.id_tizon_tardio_follaje = id_tizon_tardio_follaje;
-            this.id_numero_tuberculos = id_numero_tuberculos;
-            this.id_metribuzina = id_metribuzina;
-            this.id_fertilidad = id_fertilidad;
-            this.id_destino = id_destino;
-            this.id_regularidad = id_regularidad;
-            this.id_forma = id_forma;
-            this.id_emergencia = id_emergencia;
-            this.id_calidad_piel = id_calidad_piel;
-            this.id_brotacion = id_brotacion;
-            this.nombre_variedad = nombre_variedad;
-        }
-
         public Variedad(string codigo_variedad, string nombre_variedad, string nombre_tamaño, string nombre_madurez, string nombre_tipo_hoja,
             string nombre_calidad_piel, string nombre_forma, string nombre_distribucion_calibre, string nombre_profundidad, string nombre_regularidad,
             string nombre_desarrollo_follaje, string nombre_brotacion, string nombre_emergencia, string nombre_emergencia_40_dias, string nombre_metribuzina,

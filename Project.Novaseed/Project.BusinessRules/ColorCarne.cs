@@ -28,13 +28,6 @@ namespace Project.BusinessRules
             set { nombre_color_carne = value; }
         }
 
-        public ColorCarne(int id_color_carne, string nombre_color_carne, int valor_color_carne)
-        {
-            this.id_color_carne = id_color_carne;
-            this.nombre_color_carne = nombre_color_carne;
-            this.valor_color_carne = valor_color_carne;
-        }
-
         public ColorCarne(int id_color_carne, string nombre_color_carne)
         {
             this.id_color_carne = id_color_carne;
