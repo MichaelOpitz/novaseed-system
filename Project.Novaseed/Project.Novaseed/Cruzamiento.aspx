@@ -69,8 +69,7 @@
                     <asp:BoundField DataField="nombre_madre" HeaderText="Nombre Madre" ReadOnly="true" />
                     <asp:BoundField DataField="pad_codigo_variedad" HeaderText="Padre" ReadOnly="true" HeaderStyle-Width="100px"/>
                     <asp:BoundField DataField="nombre_padre" HeaderText="Nombre Padre" ReadOnly="true" />
-                    <asp:BoundField DataField="ubicacion_madre" HeaderText="Ubicación Madre" />
-                    <asp:BoundField DataField="ubicacion_padre" HeaderText="Ubicación Padre" />
+                    <asp:BoundField DataField="ubicacion_cruzamiento" HeaderText="Ubicación Madre" />
                     <asp:TemplateField ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="70px" HeaderText="Fertilidad">
                         <ItemTemplate>
                             <asp:DropDownList type="button" ID="ddlCruzamientoFertilidad" runat="server" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>

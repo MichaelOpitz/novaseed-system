@@ -158,6 +158,9 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="Cosecha12papas.aspx" />
+    <Content Include="Cosecha24papas.aspx" />
+    <Content Include="Cosecha48papas.aspx" />
     <Content Include="Cosecha6papas.aspx" />
     <Content Include="Cruzamiento.aspx" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -291,6 +294,27 @@
     </Compile>
     <Compile Include="Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Cosecha12papas.aspx.cs">
+      <DependentUpon>Cosecha12papas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Cosecha12papas.aspx.designer.cs">
+      <DependentUpon>Cosecha12papas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Cosecha24papas.aspx.cs">
+      <DependentUpon>Cosecha24papas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Cosecha24papas.aspx.designer.cs">
+      <DependentUpon>Cosecha24papas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Cosecha48papas.aspx.cs">
+      <DependentUpon>Cosecha48papas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Cosecha48papas.aspx.designer.cs">
+      <DependentUpon>Cosecha48papas.aspx</DependentUpon>
     </Compile>
     <Compile Include="Cosecha6papas.aspx.cs">
       <DependentUpon>Cosecha6papas.aspx</DependentUpon>

@@ -31,11 +31,11 @@
 
                 <SelectedRowStyle Font-Bold="True" />
                 <Columns>
-                    <asp:TemplateField ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="70px" HeaderText="Agregar a 12 Papas">
+                    <asp:TemplateField ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="50px" HeaderText="Agregar a 12 Papas">
                         <ItemTemplate>
                             <asp:CheckBox ID="chkAgregar12Papas" runat="server" AutoPostBack="true" />
                         </ItemTemplate>
-                        <HeaderStyle Width="150px"></HeaderStyle>
+                        <HeaderStyle Width="100px"></HeaderStyle>
                         <ItemStyle HorizontalAlign="Center"></ItemStyle>
                     </asp:TemplateField>
 
@@ -50,21 +50,13 @@
                     </asp:TemplateField>
 
                     <asp:BoundField DataField="id_cosecha" HeaderText="ID" ReadOnly="true" />
-                    <asp:BoundField DataField="codigo_variedad" HeaderText="Madre" ReadOnly="true" HeaderStyle-Width="100px"/>
+                    <asp:BoundField DataField="codigo_variedad" HeaderText="Madre" ReadOnly="true" HeaderStyle-Width="100px" />
                     <asp:BoundField DataField="nombre_madre" HeaderText="Nombre Madre" ReadOnly="true" />
-                    <asp:BoundField DataField="pad_codigo_variedad" HeaderText="Padre" ReadOnly="true" HeaderStyle-Width="100px"/>
+                    <asp:BoundField DataField="pad_codigo_variedad" HeaderText="Padre" ReadOnly="true" HeaderStyle-Width="100px" />
                     <asp:BoundField DataField="nombre_padre" HeaderText="Nombre Padre" ReadOnly="true" />
                     <asp:BoundField DataField="posicion_cosecha" HeaderText="Posición" ReadOnly="true" />
-                    <asp:BoundField DataField="codigo_individuo" HeaderText="Código Individuo" ReadOnly="true" HeaderStyle-Width="100px"/>
+                    <asp:BoundField DataField="codigo_individuo" HeaderText="Código Individuo" ReadOnly="true" HeaderStyle-Width="100px" />
                     <asp:BoundField DataField="nombre_destino" HeaderText="Destino" ReadOnly="true" />
-
-                    <asp:TemplateField ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="70px" HeaderText="¿Tiene 6 Papas?">
-                        <ItemTemplate>
-                            <asp:CheckBox ID="chkTiene6papas" runat="server" AutoPostBack="true" Enabled="false" />
-                        </ItemTemplate>
-                        <HeaderStyle Width="150px"></HeaderStyle>
-                        <ItemStyle HorizontalAlign="Center"></ItemStyle>
-                    </asp:TemplateField>
 
                     <asp:CommandField SelectText="Seleccionar" ShowSelectButton="True" />
 
@@ -125,43 +117,49 @@
             <div class="panel-heading" style="text-align: center">Planta</div>
             <div class="panel-body">
                 <br />
-                <div class="col-sm-4">
-                    <asp:DropDownList type="button" ID="ddl6papasMadurez" runat="server" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
-                    <span class="help-block">Madurez</span>
-                </div>
-                <div class="col-sm-4">
-                    <asp:DropDownList type="button" ID="ddl6papasDesarrollo" runat="server" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
-                    <span class="help-block">Desarrollo Follaje</span>
-                </div>
-                <div class="col-sm-4">
-                    <asp:DropDownList type="button" ID="ddl6papasTipoHoja" runat="server" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
-                    <span class="help-block">Tipo Hoja</span>
-                </div>
-
-                <div class="col-sm-4">
-                    <asp:DropDownList type="button" ID="ddl6papasBrotacion" runat="server" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
-                    <span class="help-block">Brotación</span>
-                </div>
-                <div class="col-sm-4">
-                    <asp:DropDownList type="button" ID="ddl6papasTamaño" runat="server" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
-                    <span class="help-block">Tamaño</span>
-                </div>
-                <div class="col-sm-4">
-                    <asp:DropDownList type="button" ID="ddl6papasDistribucion" runat="server" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
-                    <span class="help-block">Distribución Calibre</span>
+                <div class="row">
+                    <div class="col-sm-3 ">
+                        <asp:DropDownList type="button" ID="ddl6papasMadurez" runat="server" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
+                        <span class="help-block">Madurez</span>
+                    </div>
+                    <div class="col-sm-5">
+                        <asp:DropDownList type="button" ID="ddl6papasDesarrollo" runat="server" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
+                        <span class="help-block">Desarrollo Follaje</span>
+                    </div>
+                    <div class="col-sm-4">
+                        <asp:DropDownList type="button" ID="ddl6papasTipoHoja" runat="server" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
+                        <span class="help-block">Tipo Hoja</span>
+                    </div>
                 </div>
 
-                <div class="col-sm-4">
-                    <asp:DropDownList type="button" ID="ddl6papasForma" runat="server" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
-                    <span class="help-block">Forma</span>
+                <div class="row">
+                    <div class="col-sm-3">
+                        <asp:DropDownList type="button" ID="ddl6papasBrotacion" runat="server" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
+                        <span class="help-block">Brotación</span>
+                    </div>
+                    <div class="col-sm-5">
+                        <asp:DropDownList type="button" ID="ddl6papasTamaño" runat="server" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
+                        <span class="help-block">Tamaño</span>
+                    </div>
+                    <div class="col-sm-4">
+                        <asp:DropDownList type="button" ID="ddl6papasDistribucion" runat="server" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
+                        <span class="help-block">Distribución Calibre</span>
+                    </div>
                 </div>
-                <div class="col-sm-4">
-                    <asp:DropDownList type="button" ID="ddl6papasRegularidad" runat="server" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
-                    <span class="help-block">Regularidad</span>
-                </div>
-                <div class="col-sm-4">
-                    <asp:DropDownList type="button" ID="ddl6papasProfundidad" runat="server" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
-                    <span class="help-block">Profundidad Ojo</span>
+
+                <div class="row">
+                    <div class="col-sm-3">
+                        <asp:DropDownList type="button" ID="ddl6papasForma" runat="server" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
+                        <span class="help-block">Forma</span>
+                    </div>
+                    <div class="col-sm-5">
+                        <asp:DropDownList type="button" ID="ddl6papasRegularidad" runat="server" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
+                        <span class="help-block">Regularidad</span>
+                    </div>
+                    <div class="col-sm-4">
+                        <asp:DropDownList type="button" ID="ddl6papasProfundidad" runat="server" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
+                        <span class="help-block">Profundidad Ojo</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -216,7 +214,7 @@
         </div>
 
         <hr style="color: #000000" />
-        <div class="panel panel-danger" style="text-align: center">
+        <div class="panel panel-danger">
             <div class="panel-heading">Totales</div>
             <div class="panel-body">
                 <br />
@@ -269,44 +267,56 @@
         </div>
 
         <hr style="color: #000000" />
-        <div class="panel panel-primary" style="text-align: center">
-            <div class="panel-heading">Sensibilidad, Tolerancias y Urgencias</div>
+        <div class="panel panel-primary">
+            <div class="panel-heading">Sensibilidad y Tolerancias</div>
             <div class="panel-body">
                 <br />
-                <div class="col-sm-2">
-                    <asp:DropDownList type="button" ID="ddl6papasSensibilidadQuimica" runat="server" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
-                    <span class="help-block">Sensibilidad Química</span>
-                </div>
-                <div class="col-sm-2">
-                    <asp:DropDownList type="button" ID="ddl6papasFacilidadMuerte" runat="server" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
-                    <span class="help-block">Facilidad Muerte</span>
-                </div>
-                <div class="col-sm-2">
-                    <asp:TextBox type="text" runat="server" class="form-control" Placeholder="Dormancia" ID="txt6papasDormancia"></asp:TextBox>
-                    <span class="help-block">Dormancia</span>
-                </div>
-                <div class="col-sm-2">
-                    <asp:TextBox type="text" runat="server" class="form-control" Placeholder="Tolerancia Sequía" ID="txt6papasToleranciaSequia"></asp:TextBox>
-                    <span class="help-block">Tolerancia Sequía</span>
-                </div>
-                <div class="col-sm-2">
-                    <asp:TextBox type="text" runat="server" class="form-control" Placeholder="Tolerancia Calor" ID="txt6papasToleranciaCalor"></asp:TextBox>
-                    <span class="help-block">Tolerancia Calor</span>
-                </div>
-                <div class="col-sm-2">
-                    <asp:TextBox type="text" runat="server" class="form-control" Placeholder="Tolerancia Sal" ID="txt6papasToleranciaSal"></asp:TextBox>
-                    <span class="help-block">Tolerancia Sal</span>
+                <div class="row">
+                    <div class="col-sm-2 ">
+                        <asp:DropDownList type="button" ID="ddl6papasSensibilidadQuimica" runat="server" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
+                        <span class="help-block">Sensibilidad Química</span>
+                    </div>
+                    <div class="col-sm-3">
+                        <asp:TextBox type="text" runat="server" class="form-control" Placeholder="Daño Cosecha" ID="txt6papasDañoCosecha"></asp:TextBox>
+                        <span class="help-block">Daño Cosecha</span>
+                    </div>
+                    <div class="col-sm-3">
+                        <asp:TextBox type="text" runat="server" class="form-control" Placeholder="Dormancia" ID="txt6papasDormancia"></asp:TextBox>
+                        <span class="help-block">Dormancia</span>
+                    </div>
+                    <div class="col-sm-3">
+                        <asp:TextBox type="text" runat="server" class="form-control" Placeholder="Tizon Hoja" ID="txt6papasTizonHoja"></asp:TextBox>
+                        <span class="help-block">Tizón Hoja</span>
+                    </div>
                 </div>
 
-                <div class="col-sm-2">
-                    <asp:TextBox type="text" runat="server" class="form-control" Placeholder="Daño Cosecha" ID="txt6papasDañoCosecha"></asp:TextBox>
-                    <span class="help-block">Daño Cosecha</span>
+                <div class="row">
+                    <div class="col-sm-2 ">
+                        <asp:DropDownList type="button" ID="ddl6papasFacilidadMuerte" runat="server" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
+                        <span class="help-block">Facilidad Muerte</span>
+                    </div>
+                    <div class="col-sm-3">
+                        <asp:TextBox type="text" runat="server" class="form-control" Placeholder="Tolerancia Sequía" ID="txt6papasToleranciaSequia"></asp:TextBox>
+                        <span class="help-block">Tolerancia Sequía</span>
+                    </div>
+                    <div class="col-sm-3">
+                        <asp:TextBox type="text" runat="server" class="form-control" Placeholder="Tolerancia Calor" ID="txt6papasToleranciaCalor"></asp:TextBox>
+                        <span class="help-block">Tolerancia Calor</span>
+                    </div>
+                    <div class="col-sm-3">
+                        <asp:TextBox type="text" runat="server" class="form-control" Placeholder="Tolerancia Sal" ID="txt6papasToleranciaSal"></asp:TextBox>
+                        <span class="help-block">Tolerancia Sal</span>
+                    </div>
                 </div>
-                <div class="col-sm-2">
-                    <asp:TextBox type="text" runat="server" class="form-control" Placeholder="Tizon Hoja" ID="txt6papasTizonHoja"></asp:TextBox>
-                    <span class="help-block">Tizón Hoja</span>
-                </div>
-                <div class="col-sm-2">
+            </div>
+        </div>
+
+        <hr style="color: #000000" />
+        <div class="panel panel-primary">
+            <div class="panel-heading">Urgencias</div>
+            <div class="panel-body">
+                <br />
+                <div class="col-sm-2 col-sm-offset-1">
                     <asp:TextBox type="text" runat="server" class="form-control" Placeholder="Putrefacción Suave" ID="txt6papasPutrefaccionSuave"></asp:TextBox>
                     <span class="help-block">Putrefacción Suave</span>
                 </div>
@@ -314,11 +324,11 @@
                     <asp:TextBox type="text" runat="server" class="form-control" Placeholder="Putrefacción Rosa" ID="txt6papasPutrefaccionRosa"></asp:TextBox>
                     <span class="help-block">Putrefacción Rosa</span>
                 </div>
-                <div class="col-sm-1">
+                <div class="col-sm-2">
                     <asp:TextBox type="text" runat="server" class="form-control" Placeholder="Silver Scurf" ID="txt6papasSilverScurf"></asp:TextBox>
                     <span class="help-block">Silver Scurf</span>
                 </div>
-                <div class="col-sm-1">
+                <div class="col-sm-2">
                     <asp:TextBox type="text" runat="server" class="form-control" Placeholder="Blackleg" ID="txt6papasBlackleg"></asp:TextBox>
                     <span class="help-block">Blackleg</span>
                 </div>

@@ -139,11 +139,11 @@
             <div class="panel-heading" style="text-align: center">Buscar por nombre de madre o padre</div>
             <div class="panel-body">
                 <%-- TEXTBOX MADRE Y PADRE, BOTON LIMPIAR CARACTERISTICAS --%>
-                <div class="row" style="text-align: center">
+                <div class="row" >
                     <div class="col-sm-3 col-sm-offset-1">
                         <asp:TextBox type="text" runat="server" class="form-control" ID="txtMadre" placeholder="Ingrese Nombre de la Madre" Style="border-color: #000000"></asp:TextBox>
                     </div>
-                    <div class="col-sm-4">
+                    <div class="col-sm-3">
                         <asp:Button type="button" runat="server" Text="Limpiar Características" ID="btnMejoramientoRefresh" class="btn btn-warning btn-md" Width="90%" ForeColor="#000000" Font-Bold="True" BorderColor="#000000" OnClick="btnMejoramientoRefresh_Click" OnClientClick="return confirm('¿Desea limpiar las características?');"></asp:Button>
                     </div>
                     <div class="col-sm-3">

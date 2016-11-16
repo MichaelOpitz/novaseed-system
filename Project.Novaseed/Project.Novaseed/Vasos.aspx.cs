@@ -5,18 +5,20 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Project.BusinessRules;
+using System.Drawing;
 
 namespace Project.Novaseed
 {
     public partial class Vasos : System.Web.UI.Page
     {
-        private int contFertilidad, valorAñoInt32;
+        private int contFertilidad, contVasosClones, valorAñoInt32;
         private string valorAñoString;
 
         protected void Page_Load(object sender, EventArgs e)
         {
             CatalogVasos cv = new CatalogVasos();
             contFertilidad = 0;
+            contVasosClones = 0;
 
             //PREGUNTA SI ES DISTINTO DE NULL PORQUE EL USUARIO PUEDE ESCRIBIR DESDE LA URL Y NO TENDRÍA AÑO ASIGNADO
             if (Request.QueryString["valor"] != null)
@@ -65,6 +67,17 @@ namespace Project.Novaseed
                 int index = cv.GetFertilidadVasos(valorAñoInt32, contFertilidad) - 1;
                 ddlVasosFertilidad.SelectedIndex = index;
                 contFertilidad = contFertilidad + 1;
+            }
+
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                int indexVasosClones = cv.GetVasosEstaEnClones(valorAñoInt32, contVasosClones);
+
+                if (indexVasosClones == 1)
+                    e.Row.BackColor = Color.LightGreen;
+                else
+                    e.Row.BackColor = Color.FromArgb(255, 204, 203);
+                contVasosClones = contVasosClones + 1;
             }
         }
 

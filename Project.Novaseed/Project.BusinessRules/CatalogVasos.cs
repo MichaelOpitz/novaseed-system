@@ -155,5 +155,37 @@ namespace Project.BusinessRules
             bd.Close();
             return id_fertilidad;
         }
+
+        /*
+         * Devuelve 1 si el vaso ya está en etapa de clones
+         */
+        public int GetVasosEstaEnClones(int año, int posicion)
+        {
+            DataAccess.DataBase bd = new DataBase();
+            bd.Connect(); //método conectar
+            int estaEnClones;
+
+            string salida = "vasosObtener";//comando sql
+            bd.CreateCommandSP(salida);
+            bd.CreateParameter("@ano_vasos", DbType.Int32, año);
+            DbDataReader resultado = bd.Query();//disponible resultado
+            List<int> id_vasos = new List<int>();
+            while (resultado.Read())
+            {
+                id_vasos.Add(resultado.GetInt32(0));
+            }
+            resultado.Close();
+
+            string salida2 = "vasosEstaEnClones";//comando sql
+            bd.CreateCommandSP(salida2);
+            bd.CreateParameter("@id_vasos", DbType.Int32, id_vasos[posicion]);
+            DbDataReader resultado2 = bd.Query();//disponible resultado
+            resultado2.Read();
+            estaEnClones = resultado2.GetInt32(0);
+            resultado2.Close();
+
+            bd.Close();
+            return estaEnClones;
+        }
     }
 }

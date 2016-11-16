@@ -21,7 +21,7 @@
         </div>        
         <hr />        
         <div class="row">
-            <asp:Button type="button" runat="server" ID="btnAgregar6papas" class="btn btn-default btn-block" Style="border-color: #000000" Text="Agregar a 6 Papas" OnClick="btnAgregar6papas_Click" OnClientClick="return confirm('¿Desea crear la temporada 6 papas para esta codificación?');"></asp:Button>
+            <asp:Button type="button" runat="server" ID="btnAgregar6papas" class="btn btn-primary btn-block" Style="border-color: #000000" Text="Agregar a 6 Papas" OnClick="btnAgregar6papas_Click" OnClientClick="return confirm('¿Desea crear la temporada 6 papas para esta codificación?');"></asp:Button>
         </div>
         <div class="row">
             <asp:GridView ID="gdvCodigoIndividuos" runat="server"
@@ -30,6 +30,7 @@
                 CssClass="table table-bordered bs-table"
                 AllowPaging="True"
                 AllowSorting="True"
+                OnRowDataBound="OnRowDataBound"
                 OnRowUpdating="CodigoIndividuosGridView_RowUpdating"
                 OnRowCancelingEdit="CodigoIndividuosGridView_RowCancelingEdit"
                 OnRowEditing="CodigoIndividuosGridView_RowEditing"

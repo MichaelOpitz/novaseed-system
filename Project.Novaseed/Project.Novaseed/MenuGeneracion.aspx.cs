@@ -58,17 +58,17 @@ namespace Project.Novaseed
 
         protected void btnGeneracion12papas_Click(object sender, EventArgs e)
         {
-            AñoGeneracion("");
+            AñoGeneracion("Cosecha12papas.aspx");
         }
 
         protected void btnGeneracion24papas_Click(object sender, EventArgs e)
         {
-            AñoGeneracion("");
+            AñoGeneracion("Cosecha24papas.aspx");
         }
 
         protected void btnGeneracion48papas_Click(object sender, EventArgs e)
         {
-            AñoGeneracion("");
+            AñoGeneracion("Cosecha48papas.aspx");
         }
 
         protected void btnGeneracionUpov_Click(object sender, EventArgs e)

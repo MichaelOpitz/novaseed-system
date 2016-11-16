@@ -5,16 +5,18 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Project.BusinessRules;
+using System.Drawing;
 
 namespace Project.Novaseed
 {
     public partial class CodigoIndividuos : System.Web.UI.Page
     {
-        private int valorAñoInt32;
+        private int valorAñoInt32, contCodificacionCosecha;
         private string valorAñoString, codigo_variedad, pad_codigo_variedad;
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            contCodificacionCosecha = 0;
             CatalogCodificacion cc = new CatalogCodificacion();
 
             if (Request.QueryString["valorMadre"] != null && Request.QueryString["valorPadre"] != null && Request.QueryString["ano_codificacion"] != null)
@@ -49,6 +51,27 @@ namespace Project.Novaseed
             CatalogCodificacion cc = new CatalogCodificacion();
             this.gdvCodigoIndividuos.DataSource = cc.GetCodificacion(codigo_variedad, pad_codigo_variedad, valorAñoInt32);
             this.gdvCodigoIndividuos.DataBind();
+        }
+
+        /*
+         * LLENA CON LOS CONTROLES ESPECIFICOS EL GRIDVIEW CODIFICACION
+         */
+        protected void OnRowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            CatalogCodificacion cc = new CatalogCodificacion();
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                string codigo_variedad = this.txtCodificacionMadre.Text;
+                string pad_codigo_variedad = this.txtCodificacionPadre.Text;
+                int indexCodificacionCosecha = cc.GetCodificacionEstaEnCosecha(codigo_variedad, pad_codigo_variedad,
+                    valorAñoInt32, contCodificacionCosecha);
+
+                if (indexCodificacionCosecha == 1)
+                    e.Row.BackColor = Color.LightGreen;
+                else
+                    e.Row.BackColor = Color.FromArgb(255, 204, 203);
+                contCodificacionCosecha = contCodificacionCosecha + 1;
+            }
         }
 
         protected void CodigoIndividuosGridView_RowUpdating(Object sender, GridViewUpdateEventArgs e)
@@ -101,6 +124,7 @@ namespace Project.Novaseed
         protected void btnAgregar6papas_Click(object sender, EventArgs e)
         {
             int agrego = 0;
+            string id_codificacion = "";
             foreach (GridViewRow row in gdvCodigoIndividuos.Rows)
                 if (row.RowType == DataControlRowType.DataRow)
                 {
@@ -110,13 +134,11 @@ namespace Project.Novaseed
                     {
                         if (chkAgregar6Papas.Checked)
                         {
-                            string id_codificacion = HttpUtility.HtmlDecode((string)this.gdvCodigoIndividuos.Rows[row.RowIndex].Cells[1].Text);
+                            id_codificacion = HttpUtility.HtmlDecode((string)this.gdvCodigoIndividuos.Rows[row.RowIndex].Cells[1].Text);
 
                             CatalogCosecha cc = new CatalogCosecha();
                             int existe_6papas = cc.AddCosecha6papas(Int32.Parse(id_codificacion));
-                            if (existe_6papas == 1)
-                                Page.ClientScript.RegisterStartupScript(GetType(), "Script", "<script>alert('La codificacion con ID: " + id_codificacion + " seleccionado ya está en temporada de 6 papas')</script>");
-                            else
+                            if (existe_6papas == 0)
                                 agrego = 1;
                         }
                     }
@@ -127,6 +149,8 @@ namespace Project.Novaseed
                 Page.ClientScript.RegisterStartupScript(GetType(), "Script", "<script>alert('¡Agregado Correctamente!')</script>");
                 Response.Redirect("MenuGeneracion.aspx");
             }
+            else
+                Page.ClientScript.RegisterStartupScript(GetType(), "Script", "<script>alert('La codificacion con ID: " + id_codificacion + " seleccionado ya está en temporada de 6 papas')</script>");
         }
     }
 }

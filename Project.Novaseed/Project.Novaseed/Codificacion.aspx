@@ -12,9 +12,6 @@
         </div>
         <br />
         <div class="row">
-            <asp:Button type="button" runat="server" ID="btnAgregar6papas" class="btn btn-default btn-block" Style="border-color: #000000" Text="Agregar a 6 Papas"></asp:Button>
-        </div>
-        <div class="row">
             <asp:gridview ID="gdvCodificacion" runat="server"
                 AutoGenerateColumns="False"
                 CssClass="table table-bordered bs-table"

@@ -5,17 +5,19 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Project.BusinessRules;
+using System.Globalization;
+using System.Drawing;
 
 namespace Project.Novaseed
 {
     public partial class Cosecha6papas : System.Web.UI.Page
     {
-        private int contEsta6papas, valorAñoInt32;
+        private int valorAñoInt32, cont6papas12papas;
         private string valorAñoString;
 
         protected void Page_Load(object sender, EventArgs e)
-        {
-            contEsta6papas = 0;
+        {                        
+            cont6papas12papas = 0;
 
             CatalogFertilidad cf = new CatalogFertilidad();
             List<Project.BusinessRules.Fertilidad> fertilidad = cf.getFertilidad();
@@ -157,7 +159,8 @@ namespace Project.Novaseed
 
                 this.lbl6papasAño.Text += "(" + valorAñoInt32.ToString() + ")";
                 CatalogCosecha cc6p = new CatalogCosecha();
-                this.gdv6papas.DataSource = cc6p.Get6papasTabla(valorAñoInt32);                
+                //Le pasa un 1 porque es la temporada 6Papas
+                this.gdv6papas.DataSource = cc6p.GetTablaCosecha(valorAñoInt32, 1);                
                 this.DataBind();
             }
         }
@@ -168,7 +171,8 @@ namespace Project.Novaseed
         private void PoblarGrilla()
         {
             CatalogCosecha cc6p = new CatalogCosecha();
-            this.gdv6papas.DataSource = cc6p.Get6papasTabla(valorAñoInt32);
+            //Le pasa un 1 porque es la temporada 6Papas
+            this.gdv6papas.DataSource = cc6p.GetTablaCosecha(valorAñoInt32, 1);
             this.gdv6papas.DataBind();
         }
 
@@ -180,16 +184,14 @@ namespace Project.Novaseed
             CatalogCosecha cc = new CatalogCosecha();
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
-                //Ecuentra el DropDownList en la fila
-                CheckBox chkTiene6papas = (e.Row.FindControl("chkTiene6papas") as CheckBox);
+                //el tercer parametro es 2 por el id_temporada que es 12 papas(2 para el color, 1 para el obtener en catalog)
+                int index6papas12papas = cc.GetCosechaTemporadasAvanzadas(valorAñoInt32, cont6papas12papas, 2);
 
-                int index6papas = cc.GetEsta6papas(valorAñoInt32, contEsta6papas);
-
-                if (index6papas > 1)
-                    chkTiene6papas.Checked = true;
+                if (index6papas12papas == 1)
+                    e.Row.BackColor = Color.LightGreen;
                 else
-                    chkTiene6papas.Checked = false;
-                contEsta6papas = contEsta6papas + 1;
+                    e.Row.BackColor = Color.FromArgb(255, 204, 203);
+                cont6papas12papas = cont6papas12papas + 1;
             }
         }
 
@@ -416,8 +418,9 @@ namespace Project.Novaseed
                 int selected = this.gdv6papas.SelectedIndex;
 
                 string id_cosecha = HttpUtility.HtmlDecode((string)this.gdv6papas.Rows[selected].Cells[2].Text);
-                string cantidad_papas = this.txt6papasCantidadPapas.Text;            
-                string posicion_cosecha = this.txt6papasPosicion.Text;
+                string cantidad_papas = this.txt6papasCantidadPapas.Text;
+                //Reemplaza las comas por los puntos para agregar el valor tipo double en la base de datos                
+                string posicion_cosecha = this.txt6papasPosicion.Text.Replace(",", ".");
                 bool flor_cosecha = false;
                 if (this.chk6papasFlor.Checked == true)
                     flor_cosecha = true;
@@ -450,8 +453,8 @@ namespace Project.Novaseed
                 string id_numero = this.ddl6papasNumero.SelectedValue;
                 string id_ciudad = this.ddl6papasCiudadPlantacion.SelectedValue;
 
-                string total_kg = this.txt6papasTotalKg.Text;
-                string tuberculos_planta = this.txt6papasTuberculosPlanta.Text;
+                string total_kg = this.txt6papasTotalKg.Text.Replace(",", ".");
+                string tuberculos_planta = this.txt6papasTuberculosPlanta.Text.Replace(",", ".");
                 string consumo = this.txt6papasConsumo.Text;
                 string semillon = this.txt6papasSemillon.Text;
                 string semilla = this.txt6papasSemilla.Text;
@@ -473,20 +476,23 @@ namespace Project.Novaseed
                 string blackleg = this.txt6papasBlackleg.Text;
 
                 CatalogCosecha cc = new CatalogCosecha();
-                Cosecha cosecha = new Cosecha(Int32.Parse(id_cosecha), Int32.Parse(cantidad_papas), Double.Parse(posicion_cosecha),
+                Cosecha cosecha = new Cosecha(Int32.Parse(id_cosecha), Int32.Parse(cantidad_papas), Double.Parse(posicion_cosecha, CultureInfo.InvariantCulture),
                     flor_cosecha, bayas_cosecha, Int32.Parse(id_fertilidad), Int32.Parse(id_emergencia40), Int32.Parse(id_metribuzina),
                     Int32.Parse(id_emergencia), Int32.Parse(id_madurez), Int32.Parse(id_desarrollo), Int32.Parse(id_tipo_hoja),
                     Int32.Parse(id_brotacion), Int32.Parse(id_tamaño), Int32.Parse(id_distribucion), Int32.Parse(id_forma),
                     Int32.Parse(id_regularidad), Int32.Parse(id_profundidad), Int32.Parse(id_calidad), Int32.Parse(id_verdes),
                     Int32.Parse(id_tizon_follaje), Int32.Parse(id_tizon_tuberculo), Int32.Parse(id_numero), Int32.Parse(id_ciudad),
-                    Double.Parse(total_kg), Double.Parse(tuberculos_planta), Int32.Parse(consumo), Int32.Parse(semillon),
-                    Int32.Parse(semilla), Int32.Parse(semillita), Int32.Parse(bajo_calibre), Int32.Parse(numero_tallos),
-                    Int32.Parse(id_sensibildiad_quimica), Int32.Parse(id_facilidad_muerte), Int32.Parse(dormancia),
-                    Int32.Parse(tolerancia_sequia), Int32.Parse(tolerancia_calor), Int32.Parse(tolerancia_sal), Int32.Parse(daño_cosecha),
+                    Double.Parse(total_kg, CultureInfo.InvariantCulture), Double.Parse(tuberculos_planta, CultureInfo.InvariantCulture), 
+                    Int32.Parse(consumo), Int32.Parse(semillon), Int32.Parse(semilla), Int32.Parse(semillita), 
+                    Int32.Parse(bajo_calibre), Int32.Parse(numero_tallos), Int32.Parse(id_sensibildiad_quimica), 
+                    Int32.Parse(id_facilidad_muerte), Int32.Parse(dormancia), Int32.Parse(tolerancia_sequia), 
+                    Int32.Parse(tolerancia_calor), Int32.Parse(tolerancia_sal), Int32.Parse(daño_cosecha),
                     Int32.Parse(tizon_hoja), Int32.Parse(putrefaccion_suave), Int32.Parse(putrefaccion_rosa),
                     Int32.Parse(silver_scurf), Int32.Parse(blackleg));
 
-                cc.UpdateCosecha6papas(cosecha);
+                int valor = cc.UpdateCosecha6papas(cosecha);
+                if (valor == 0)
+                    Page.ClientScript.RegisterStartupScript(GetType(), "Script", "<script>alert('¡Debe seleccionar una ciudad o ya hay una variedad asignada en esa posición!')</script>");
             }
             catch(Exception ex)
             {
@@ -502,7 +508,29 @@ namespace Project.Novaseed
 
         protected void btnAgregar12papas_Click(object sender, EventArgs e)
         {
+            int agrego = 0;
+            foreach (GridViewRow row in gdv6papas.Rows)
+                if (row.RowType == DataControlRowType.DataRow)
+                {
+                    CheckBox chkAgregar12Papas = (row.Cells[0].FindControl("chkAgregar12Papas") as CheckBox);
+                    if (chkAgregar12Papas != null)
+                        if (chkAgregar12Papas.Checked)
+                        {
+                            string id_cosecha = HttpUtility.HtmlDecode((string)this.gdv6papas.Rows[row.RowIndex].Cells[2].Text);
+                            CatalogCosecha cc = new CatalogCosecha();
+                            int existe_12papas = cc.AddCosecha12papas(Int32.Parse(id_cosecha));
+                            if (existe_12papas == 1)
+                                Page.ClientScript.RegisterStartupScript(GetType(), "Script", "<script>alert('La varieadd con ID: " + id_cosecha + " seleccionada ya está en temporadas avanzadas o no tiene una ciudad asignada')</script>");
+                            else
+                                agrego = 1;
+                        }
+                }
 
+            if (agrego == 1)
+            {
+                Page.ClientScript.RegisterStartupScript(GetType(), "Script", "<script>alert('¡Agregado Correctamente!')</script>");
+                Response.Redirect("MenuGeneracion.aspx");
+            }                                    
         }
     }
 }

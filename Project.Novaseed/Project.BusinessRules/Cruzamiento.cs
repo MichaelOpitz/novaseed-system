@@ -8,10 +8,16 @@ namespace Project.BusinessRules
     public class Cruzamiento
     {
         private int id_cruzamiento, id_fertilidad, ano_cruzamiento, bayas;
-        private string codigo_variedad, pad_codigo_variedad, ubicacion_madre, ubicacion_padre, nombre_fertilidad,
-            nombre_madre, nombre_padre;
+        private string codigo_variedad, pad_codigo_variedad, nombre_fertilidad, nombre_madre, nombre_padre,
+            ubicacion_cruzamiento;
         private bool flor;
 
+        public string Ubicacion_cruzamiento
+        {
+            get { return ubicacion_cruzamiento; }
+            set { ubicacion_cruzamiento = value; }
+        }
+        
         public string Nombre_padre
         {
             get { return nombre_padre; }
@@ -29,18 +35,6 @@ namespace Project.BusinessRules
             get { return nombre_fertilidad; }
             set { nombre_fertilidad = value; }
         }        
-
-        public string Ubicacion_padre
-        {
-            get { return ubicacion_padre; }
-            set { ubicacion_padre = value; }
-        }
-
-        public string Ubicacion_madre
-        {
-            get { return ubicacion_madre; }
-            set { ubicacion_madre = value; }
-        }
         
         public bool Flor
         {
@@ -87,16 +81,16 @@ namespace Project.BusinessRules
         /*
          * Constructor para obtener el cruzamiento
          */ 
-        public Cruzamiento(int id_cruzamiento,  string codigo_variedad, string nombre_madre, string pad_codigo_variedad, 
-            string nombre_padre, string ubicacion_madre, string ubicacion_padre, string nombre_fertilidad, bool flor, int bayas)
+        public Cruzamiento(int id_cruzamiento,  string codigo_variedad, string nombre_madre, string pad_codigo_variedad,
+            string nombre_padre, string ubicacion_cruzamiento, string nombre_fertilidad, 
+            bool flor, int bayas)
         {
             this.id_cruzamiento = id_cruzamiento;            
             this.codigo_variedad = codigo_variedad;
             this.nombre_madre = nombre_madre;
             this.pad_codigo_variedad = pad_codigo_variedad;
             this.nombre_padre = nombre_padre;
-            this.ubicacion_madre = ubicacion_madre;
-            this.ubicacion_padre = ubicacion_padre;
+            this.ubicacion_cruzamiento = ubicacion_cruzamiento;
             this.nombre_fertilidad = nombre_fertilidad;
             this.flor = flor;
             this.bayas = bayas;
@@ -112,15 +106,14 @@ namespace Project.BusinessRules
 
         /*
          * Constructor para actualizar el cruzamiento
-         */ 
-        public Cruzamiento(int id_cruzamiento, string codigo_variedad, string pad_codigo_variedad, string ubicacion_madre,
-            string ubicacion_padre, int id_fertilidad, bool flor, int bayas)
+         */
+        public Cruzamiento(int id_cruzamiento, string codigo_variedad, string pad_codigo_variedad, 
+            string ubicacion_cruzamiento, int id_fertilidad, bool flor, int bayas)
         {
             this.id_cruzamiento = id_cruzamiento;
             this.codigo_variedad = codigo_variedad;
             this.pad_codigo_variedad = pad_codigo_variedad;
-            this.ubicacion_madre = ubicacion_madre;
-            this.ubicacion_padre = ubicacion_padre;
+            this.ubicacion_cruzamiento = ubicacion_cruzamiento;
             this.id_fertilidad = id_fertilidad;
             this.flor = flor;
             this.bayas = bayas;

@@ -6,12 +6,13 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Project.BusinessRules;
 using System.Globalization;
+using System.Drawing;
 
 namespace Project.Novaseed
 {
     public partial class Clones : System.Web.UI.Page
     {
-        private int contFertilidad, contImagen, contCodificado, valorAñoInt32;
+        private int contFertilidad, contImagen, contClonesCodificacion, valorAñoInt32;
         private string valorAñoString;
 
         protected void Page_Load(object sender, EventArgs e)
@@ -19,7 +20,7 @@ namespace Project.Novaseed
             CatalogClones cc = new CatalogClones();
             contFertilidad = 0;
             contImagen = 0;
-            contCodificado = 0;
+            contClonesCodificacion = 0;
 
             //PREGUNTA SI ES DISTINTO DE NULL PORQUE EL USUARIO PUEDE ESCRIBIR DESDE LA URL Y NO TENDRÍA AÑO ASIGNADO
             if (Request.QueryString["valor"] != null)
@@ -86,16 +87,13 @@ namespace Project.Novaseed
 
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
-                //Ecuentra el CheckBox en la fila
-                CheckBox chkEstaCodificado = (e.Row.FindControl("chkEstaCodificado") as CheckBox);
+                int indexClonesCodificacion = cc.GetClonesEstaCodificado(valorAñoInt32, contClonesCodificacion);
 
-                int indexCodificado = cc.GetEstaCodificado(valorAñoInt32, contCodificado);
-
-                if (indexCodificado == 1)
-                    chkEstaCodificado.Checked = true;
+                if (indexClonesCodificacion == 1)
+                    e.Row.BackColor = Color.LightGreen;
                 else
-                    chkEstaCodificado.Checked = false;
-                contCodificado = contCodificado + 1;
+                    e.Row.BackColor = Color.FromArgb(255, 204, 203);
+                contClonesCodificacion = contClonesCodificacion + 1;
 
             }
         }

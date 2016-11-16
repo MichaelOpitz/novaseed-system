@@ -383,7 +383,7 @@ namespace Project.Novaseed
          */ 
         protected void btnMejoramientoCancelar_Click(object sender, EventArgs e)
         {
-            Response.Redirect("Mejoramiento.aspx");            
+            Response.Redirect("Menu.aspx");            
         }
 
         /*

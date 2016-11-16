@@ -10,492 +10,528 @@
 namespace Project.Novaseed {
     
     
-    public partial class Cosecha6papas {
+    public partial class Cosecha12papas {
         
         /// <summary>
-        /// Control lbl6papasAño.
+        /// Control lbl12papasAño.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl6papasAño;
+        protected global::System.Web.UI.WebControls.Label lbl12papasAño;
         
         /// <summary>
-        /// Control btnAgregar12papas.
+        /// Control btnAgregar24papas.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAgregar12papas;
+        protected global::System.Web.UI.WebControls.Button btnAgregar24papas;
         
         /// <summary>
-        /// Control gdv6papas.
+        /// Control gdv12papas.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gdv6papas;
+        protected global::System.Web.UI.WebControls.GridView gdv12papas;
         
         /// <summary>
-        /// Control txt6papasCodigoSeleccionado.
+        /// Control txt12papasCodigoSeleccionado.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt6papasCodigoSeleccionado;
+        protected global::System.Web.UI.WebControls.TextBox txt12papasCodigoSeleccionado;
         
         /// <summary>
-        /// Control txt6papasCantidadPapas.
+        /// Control txt12papasCantidadPapas.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt6papasCantidadPapas;
+        protected global::System.Web.UI.WebControls.TextBox txt12papasCantidadPapas;
         
         /// <summary>
-        /// Control txt6papasPosicion.
+        /// Control txt12papasPosicion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt6papasPosicion;
+        protected global::System.Web.UI.WebControls.TextBox txt12papasPosicion;
         
         /// <summary>
-        /// Control chk6papasFlor.
+        /// Control chk12papasFlor.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox chk6papasFlor;
+        protected global::System.Web.UI.WebControls.CheckBox chk12papasFlor;
         
         /// <summary>
-        /// Control chk6papasBayas.
+        /// Control chk12papasBayas.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox chk6papasBayas;
+        protected global::System.Web.UI.WebControls.CheckBox chk12papasBayas;
         
         /// <summary>
-        /// Control ddl6papasFertilidad.
+        /// Control ddl12papasFertilidad.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddl6papasFertilidad;
+        protected global::System.Web.UI.WebControls.DropDownList ddl12papasFertilidad;
         
         /// <summary>
-        /// Control ddl6papasEmergencia40.
+        /// Control ddl12papasEmergencia40.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddl6papasEmergencia40;
+        protected global::System.Web.UI.WebControls.DropDownList ddl12papasEmergencia40;
         
         /// <summary>
-        /// Control ddl6papasMetribuzina.
+        /// Control ddl12papasMetribuzina.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddl6papasMetribuzina;
+        protected global::System.Web.UI.WebControls.DropDownList ddl12papasMetribuzina;
         
         /// <summary>
-        /// Control ddl6papasEmergencia.
+        /// Control ddl12papasEmergencia.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddl6papasEmergencia;
+        protected global::System.Web.UI.WebControls.DropDownList ddl12papasEmergencia;
         
         /// <summary>
-        /// Control ddl6papasMadurez.
+        /// Control ddl12papasMadurez.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddl6papasMadurez;
+        protected global::System.Web.UI.WebControls.DropDownList ddl12papasMadurez;
         
         /// <summary>
-        /// Control ddl6papasDesarrollo.
+        /// Control ddl12papasDesarrollo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddl6papasDesarrollo;
+        protected global::System.Web.UI.WebControls.DropDownList ddl12papasDesarrollo;
         
         /// <summary>
-        /// Control ddl6papasTipoHoja.
+        /// Control ddl12papasTipoHoja.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddl6papasTipoHoja;
+        protected global::System.Web.UI.WebControls.DropDownList ddl12papasTipoHoja;
         
         /// <summary>
-        /// Control ddl6papasBrotacion.
+        /// Control ddl12papasBrotacion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddl6papasBrotacion;
+        protected global::System.Web.UI.WebControls.DropDownList ddl12papasBrotacion;
         
         /// <summary>
-        /// Control ddl6papasTamaño.
+        /// Control ddl12papasTamaño.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddl6papasTamaño;
+        protected global::System.Web.UI.WebControls.DropDownList ddl12papasTamaño;
         
         /// <summary>
-        /// Control ddl6papasDistribucion.
+        /// Control ddl12papasDistribucion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddl6papasDistribucion;
+        protected global::System.Web.UI.WebControls.DropDownList ddl12papasDistribucion;
         
         /// <summary>
-        /// Control ddl6papasForma.
+        /// Control ddl12papasForma.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddl6papasForma;
+        protected global::System.Web.UI.WebControls.DropDownList ddl12papasForma;
         
         /// <summary>
-        /// Control ddl6papasRegularidad.
+        /// Control ddl12papasRegularidad.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddl6papasRegularidad;
+        protected global::System.Web.UI.WebControls.DropDownList ddl12papasRegularidad;
         
         /// <summary>
-        /// Control ddl6papasProfundidad.
+        /// Control ddl12papasProfundidad.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddl6papasProfundidad;
+        protected global::System.Web.UI.WebControls.DropDownList ddl12papasProfundidad;
         
         /// <summary>
-        /// Control ddl6papasCalidadPiel.
+        /// Control ddl12papasCalidadPiel.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddl6papasCalidadPiel;
+        protected global::System.Web.UI.WebControls.DropDownList ddl12papasCalidadPiel;
         
         /// <summary>
-        /// Control ddl6papasTuberculosVerdes.
+        /// Control ddl12papasTuberculosVerdes.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddl6papasTuberculosVerdes;
+        protected global::System.Web.UI.WebControls.DropDownList ddl12papasTuberculosVerdes;
         
         /// <summary>
-        /// Control ddl6papasTizonFollaje.
+        /// Control ddl12papasTizonFollaje.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddl6papasTizonFollaje;
+        protected global::System.Web.UI.WebControls.DropDownList ddl12papasTizonFollaje;
         
         /// <summary>
-        /// Control ddl6papasTizonTuberculo.
+        /// Control ddl12papasTizonTuberculo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddl6papasTizonTuberculo;
+        protected global::System.Web.UI.WebControls.DropDownList ddl12papasTizonTuberculo;
         
         /// <summary>
-        /// Control ddl6papasNumero.
+        /// Control ddl12papasNumero.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddl6papasNumero;
+        protected global::System.Web.UI.WebControls.DropDownList ddl12papasNumero;
         
         /// <summary>
-        /// Control ddl6papasCiudadPlantacion.
+        /// Control ddl12papasCiudadPlantacion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddl6papasCiudadPlantacion;
+        protected global::System.Web.UI.WebControls.DropDownList ddl12papasCiudadPlantacion;
         
         /// <summary>
-        /// Control lst6papasColorCarne.
+        /// Control lst12papasColorCarne.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListBox lst6papasColorCarne;
+        protected global::System.Web.UI.WebControls.ListBox lst12papasColorCarne;
         
         /// <summary>
-        /// Control lst6papasColorPiel.
+        /// Control lst12papasColorPiel.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListBox lst6papasColorPiel;
+        protected global::System.Web.UI.WebControls.ListBox lst12papasColorPiel;
         
         /// <summary>
-        /// Control txt6papasTotalKg.
+        /// Control txt12papasTotalKg.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt6papasTotalKg;
+        protected global::System.Web.UI.WebControls.TextBox txt12papasTotalKg;
         
         /// <summary>
-        /// Control txt6papasTuberculosPlanta.
+        /// Control txt12papasTuberculosPlanta.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt6papasTuberculosPlanta;
+        protected global::System.Web.UI.WebControls.TextBox txt12papasTuberculosPlanta;
         
         /// <summary>
-        /// Control txt6papasConsumo.
+        /// Control txt12papasConsumo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt6papasConsumo;
+        protected global::System.Web.UI.WebControls.TextBox txt12papasConsumo;
         
         /// <summary>
-        /// Control txt6papasSemillon.
+        /// Control txt12papasSemillon.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt6papasSemillon;
+        protected global::System.Web.UI.WebControls.TextBox txt12papasSemillon;
         
         /// <summary>
-        /// Control txt6papasToneladasHectarea.
+        /// Control txt12papasToneladasHectarea.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt6papasToneladasHectarea;
+        protected global::System.Web.UI.WebControls.TextBox txt12papasToneladasHectarea;
         
         /// <summary>
-        /// Control txt6papasSemilla.
+        /// Control txt12papasSemilla.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt6papasSemilla;
+        protected global::System.Web.UI.WebControls.TextBox txt12papasSemilla;
         
         /// <summary>
-        /// Control txt6papasSemillita.
+        /// Control txt12papasSemillita.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt6papasSemillita;
+        protected global::System.Web.UI.WebControls.TextBox txt12papasSemillita;
         
         /// <summary>
-        /// Control txt6papasBajoCalibre.
+        /// Control txt12papasBajoCalibre.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt6papasBajoCalibre;
+        protected global::System.Web.UI.WebControls.TextBox txt12papasBajoCalibre;
         
         /// <summary>
-        /// Control txt6papasNumeroTallos.
+        /// Control txt12papasNumeroTallos.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt6papasNumeroTallos;
+        protected global::System.Web.UI.WebControls.TextBox txt12papasNumeroTallos;
         
         /// <summary>
-        /// Control txt6papasRelacionStandard.
+        /// Control txt12papasRelacionStandard.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt6papasRelacionStandard;
+        protected global::System.Web.UI.WebControls.TextBox txt12papasRelacionStandard;
         
         /// <summary>
-        /// Control ddl6papasSensibilidadQuimica.
+        /// Control ddl12papasEnfermedad.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddl6papasSensibilidadQuimica;
+        protected global::System.Web.UI.WebControls.DropDownList ddl12papasEnfermedad;
         
         /// <summary>
-        /// Control txt6papasDañoCosecha.
+        /// Control ddl12papasResistencia.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt6papasDañoCosecha;
+        protected global::System.Web.UI.WebControls.DropDownList ddl12papasResistencia;
         
         /// <summary>
-        /// Control txt6papasDormancia.
+        /// Control btn12papasAgregarEnfermedad.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt6papasDormancia;
+        protected global::System.Web.UI.WebControls.Button btn12papasAgregarEnfermedad;
         
         /// <summary>
-        /// Control txt6papasTizonHoja.
+        /// Control gdv12papasEnfermedades.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt6papasTizonHoja;
+        protected global::System.Web.UI.WebControls.GridView gdv12papasEnfermedades;
         
         /// <summary>
-        /// Control ddl6papasFacilidadMuerte.
+        /// Control ddl12papasSensibilidadQuimica.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddl6papasFacilidadMuerte;
+        protected global::System.Web.UI.WebControls.DropDownList ddl12papasSensibilidadQuimica;
         
         /// <summary>
-        /// Control txt6papasToleranciaSequia.
+        /// Control txt12papasDañoCosecha.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt6papasToleranciaSequia;
+        protected global::System.Web.UI.WebControls.TextBox txt12papasDañoCosecha;
         
         /// <summary>
-        /// Control txt6papasToleranciaCalor.
+        /// Control txt12papasDormancia.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt6papasToleranciaCalor;
+        protected global::System.Web.UI.WebControls.TextBox txt12papasDormancia;
         
         /// <summary>
-        /// Control txt6papasToleranciaSal.
+        /// Control txt12papasTizonHoja.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt6papasToleranciaSal;
+        protected global::System.Web.UI.WebControls.TextBox txt12papasTizonHoja;
         
         /// <summary>
-        /// Control txt6papasPutrefaccionSuave.
+        /// Control ddl12papasFacilidadMuerte.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt6papasPutrefaccionSuave;
+        protected global::System.Web.UI.WebControls.DropDownList ddl12papasFacilidadMuerte;
         
         /// <summary>
-        /// Control txt6papasPutrefaccionRosa.
+        /// Control txt12papasToleranciaSequia.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt6papasPutrefaccionRosa;
+        protected global::System.Web.UI.WebControls.TextBox txt12papasToleranciaSequia;
         
         /// <summary>
-        /// Control txt6papasSilverScurf.
+        /// Control txt12papasToleranciaCalor.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt6papasSilverScurf;
+        protected global::System.Web.UI.WebControls.TextBox txt12papasToleranciaCalor;
         
         /// <summary>
-        /// Control txt6papasBlackleg.
+        /// Control txt12papasToleranciaSal.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt6papasBlackleg;
+        protected global::System.Web.UI.WebControls.TextBox txt12papasToleranciaSal;
         
         /// <summary>
-        /// Control txt6papasHematomas.
+        /// Control txt12papasPutrefaccionSuave.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt6papasHematomas;
+        protected global::System.Web.UI.WebControls.TextBox txt12papasPutrefaccionSuave;
         
         /// <summary>
-        /// Control btn6papasGuardar.
+        /// Control txt12papasPutrefaccionRosa.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn6papasGuardar;
+        protected global::System.Web.UI.WebControls.TextBox txt12papasPutrefaccionRosa;
         
         /// <summary>
-        /// Control btn6papasCancelar.
+        /// Control txt12papasSilverScurf.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn6papasCancelar;
+        protected global::System.Web.UI.WebControls.TextBox txt12papasSilverScurf;
+        
+        /// <summary>
+        /// Control txt12papasBlackleg.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txt12papasBlackleg;
+        
+        /// <summary>
+        /// Control txt12papasHematomas.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txt12papasHematomas;
+        
+        /// <summary>
+        /// Control btn12papasGuardar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn12papasGuardar;
+        
+        /// <summary>
+        /// Control btn12papasCancelar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn12papasCancelar;
     }
 }

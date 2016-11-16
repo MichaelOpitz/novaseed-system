@@ -6,12 +6,13 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Project.BusinessRules;
 using System.ComponentModel;
+using System.Drawing;
 
 namespace Project.Novaseed
 {
     public partial class Cruzamiento : System.Web.UI.Page
     {
-        private int contFertilidad, contFlor, valorAñoInt32;
+        private int contFertilidad, contFlor, contCruzamientoVasos, valorAñoInt32;
         private string valorAñoString;
 
         protected void Page_Load(object sender, EventArgs e)
@@ -19,6 +20,7 @@ namespace Project.Novaseed
             CatalogCruzamiento cc = new CatalogCruzamiento();
             contFertilidad = 0;
             contFlor = 0;
+            contCruzamientoVasos = 0;
             //PREGUNTA SI ES DISTINTO DE NULL PORQUE EL USUARIO PUEDE ESCRIBIR DESDE LA URL Y NO TENDRÍA AÑO ASIGNADO
             if (Request.QueryString["valor"] != null)
                 valorAñoString = Request.QueryString["valor"];
@@ -79,7 +81,17 @@ namespace Project.Novaseed
                 else
                     chkCruzamientoFlor.Checked = false;
                 contFlor = contFlor + 1;
+            }
 
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                int indexCruzamientoVasos = cc.GetCruzamientoEstaEnVasos(valorAñoInt32, contCruzamientoVasos);
+
+                if (indexCruzamientoVasos == 1)
+                    e.Row.BackColor = Color.LightGreen;
+                else
+                    e.Row.BackColor = Color.FromArgb(255, 204, 203);
+                contCruzamientoVasos = contCruzamientoVasos + 1;
             }
         }
 
@@ -92,8 +104,7 @@ namespace Project.Novaseed
                 string codigo_variedad = HttpUtility.HtmlDecode((string)this.gdvCruzamiento.Rows[e.RowIndex].Cells[3].Text);
                 string pad_codigo_variedad = HttpUtility.HtmlDecode((string)this.gdvCruzamiento.Rows[e.RowIndex].Cells[5].Text);
 
-                string ubicacion_madre = e.NewValues[0].ToString();
-                string ubicacion_padre = e.NewValues[1].ToString();
+                string ubicacion_cruzamiento = e.NewValues[0].ToString();
                 DropDownList ddlCruzamientoFertilidad = (DropDownList)gdvCruzamiento.Rows[e.RowIndex].FindControl("ddlCruzamientoFertilidad");
                 string id_fertilidad = ddlCruzamientoFertilidad.SelectedValue;
                 CheckBox chkCruzamientoFlor = (CheckBox)gdvCruzamiento.Rows[e.RowIndex].FindControl("chkCruzamientoFlor");
@@ -101,11 +112,19 @@ namespace Project.Novaseed
                 if (chkCruzamientoFlor.Checked)
                     flor = true;
                 else
+                {
                     flor = false;
-                string bayas = e.NewValues[2].ToString();
+                    string bayasCantidad = e.NewValues[1].ToString();
+                    if (!bayasCantidad.Equals(""))
+                    {
+                        int bc = Int32.Parse(bayasCantidad);
+                        if (bc > 0)
+                            Page.ClientScript.RegisterStartupScript(GetType(), "Script", "<script>alert('¡No puede haber bayas si no hay flores!')</script>");
+                    }
+                }
+                string bayas = e.NewValues[1].ToString();
                 Project.BusinessRules.Cruzamiento cruzamiento = new Project.BusinessRules.Cruzamiento(Int32.Parse(id_cruzamiento),
-                    codigo_variedad, pad_codigo_variedad, ubicacion_madre, ubicacion_padre, Int32.Parse(id_fertilidad),
-                    flor, Int32.Parse(bayas));
+                  codigo_variedad, pad_codigo_variedad, ubicacion_cruzamiento, Int32.Parse(id_fertilidad), flor, Int32.Parse(bayas));
                 cc.UpdateCruzamiento(cruzamiento);
             }
             catch (Exception ex)

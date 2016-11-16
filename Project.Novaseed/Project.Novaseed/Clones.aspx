@@ -87,15 +87,7 @@
                     <asp:BoundField DataField="azul_clon" HeaderText="Azules" />
                     <asp:BoundField DataField="roja_clon" HeaderText="Rojas" />
                     <asp:BoundField DataField="amarilla_clon" HeaderText="Amarillas" />
-                    <asp:BoundField DataField="bicolor_clon" HeaderText="Bicolor" />
-                    
-                    <asp:TemplateField ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="50px" HeaderText="¿Está Codificado?">
-                        <ItemTemplate>
-                            <asp:CheckBox ID="chkEstaCodificado" runat="server" AutoPostBack="true" Enabled="false" />
-                        </ItemTemplate>
-                        <HeaderStyle Width="70px"></HeaderStyle>
-                        <ItemStyle HorizontalAlign="Center"></ItemStyle>
-                    </asp:TemplateField>
+                    <asp:BoundField DataField="bicolor_clon" HeaderText="Bicolor" />                    
                 </Columns>
             </asp:GridView>
 

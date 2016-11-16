@@ -73,7 +73,7 @@
                     <asp:BoundField DataField="nombre_madre" HeaderText="Nombre Madre" ReadOnly="true" />
                     <asp:BoundField DataField="pad_codigo_variedad" HeaderText="Padre" ReadOnly="true" HeaderStyle-Width="100px"/>
                     <asp:BoundField DataField="nombre_padre" HeaderText="Nombre Padre" ReadOnly="true" />
-                    <asp:BoundField DataField="ubicacion_vasos" HeaderText="Ubicación" />
+                    <asp:BoundField DataField="ubicacion_vasos" HeaderText="Ubicación" ControlStyle-Width="100%"/>
                     <asp:BoundField DataField="cantidad_vasos" HeaderText="Cantidad Vasos" />
                     <asp:TemplateField ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="70px" HeaderText="Fertilidad">
                         <ItemTemplate>

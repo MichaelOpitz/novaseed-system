@@ -22,15 +22,6 @@ namespace Project.Novaseed {
         protected global::System.Web.UI.WebControls.Label lblCodificacionAño;
         
         /// <summary>
-        /// Control btnAgregar6papas.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAgregar6papas;
-        
-        /// <summary>
         /// Control gdvCodificacion.
         /// </summary>
         /// <remarks>
