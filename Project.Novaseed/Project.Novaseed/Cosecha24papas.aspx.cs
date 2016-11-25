@@ -586,7 +586,29 @@ namespace Project.Novaseed
 
         protected void btnAgregar48papas_Click(object sender, EventArgs e)
         {
+            int agrego = 0;
+            foreach (GridViewRow row in gdv24papas.Rows)
+                if (row.RowType == DataControlRowType.DataRow)
+                {
+                    CheckBox chkAgregar48Papas = (row.Cells[0].FindControl("chkAgregar48Papas") as CheckBox);
+                    if (chkAgregar48Papas != null)
+                        if (chkAgregar48Papas.Checked)
+                        {
+                            string id_cosecha = HttpUtility.HtmlDecode((string)this.gdv24papas.Rows[row.RowIndex].Cells[2].Text);
+                            CatalogCosecha cc = new CatalogCosecha();
+                            int existe_48papas = cc.AddCosecha48papas(Int32.Parse(id_cosecha));
+                            if (existe_48papas == 1)
+                                Page.ClientScript.RegisterStartupScript(GetType(), "Script", "<script>alert('La varieadd con ID: " + id_cosecha + " seleccionada ya está en temporadas avanzadas o no tiene una ciudad asignada')</script>");
+                            else
+                                agrego = 1;
+                        }
+                }
 
+            if (agrego == 1)
+            {
+                Page.ClientScript.RegisterStartupScript(GetType(), "Script", "<script>alert('¡Agregado Correctamente!')</script>");
+                Response.Redirect("MenuGeneracion.aspx");
+            }
         }
     }
 }

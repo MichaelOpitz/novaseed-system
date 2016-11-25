@@ -207,6 +207,8 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Site.Master" />
+    <Content Include="UPOV.aspx" />
+    <Content Include="UPOVSeleccionar.aspx" />
     <Content Include="Vasos.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
@@ -385,6 +387,20 @@
       <DependentUpon>Site.Mobile.Master</DependentUpon>
     </Compile>
     <Compile Include="Startup.cs" />
+    <Compile Include="UPOV.aspx.cs">
+      <DependentUpon>UPOV.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UPOV.aspx.designer.cs">
+      <DependentUpon>UPOV.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UPOVSeleccionar.aspx.cs">
+      <DependentUpon>UPOVSeleccionar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UPOVSeleccionar.aspx.designer.cs">
+      <DependentUpon>UPOVSeleccionar.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Vasos.aspx.cs">
       <DependentUpon>Vasos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

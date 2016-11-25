@@ -199,7 +199,7 @@
 
         <hr style="color: #000000" />
         <div class="panel panel-info" style="text-align: center">
-            <div class="panel-heading">Colores de carne y piel</div>
+            <div class="panel-heading" style="text-align: center">Colores de carne y piel</div>
             <div class="panel-body">
                 <br />
                 <div class="col-sm-6">
@@ -215,7 +215,7 @@
 
         <hr style="color: #000000" />
         <div class="panel panel-danger">
-            <div class="panel-heading">Totales</div>
+            <div class="panel-heading" style="text-align: center">Totales</div>
             <div class="panel-body">
                 <br />
                 <div class="row">
@@ -268,7 +268,7 @@
 
         <hr style="color: #000000" />
         <div class="panel panel-primary">
-            <div class="panel-heading">Sensibilidad y Tolerancias</div>
+            <div class="panel-heading" style="text-align: center">Sensibilidad y Tolerancias</div>
             <div class="panel-body">
                 <br />
                 <div class="row">
@@ -313,7 +313,7 @@
 
         <hr style="color: #000000" />
         <div class="panel panel-primary">
-            <div class="panel-heading">Urgencias</div>
+            <div class="panel-heading" style="text-align: center">Urgencias</div>
             <div class="panel-body">
                 <br />
                 <div class="col-sm-2 col-sm-offset-1">

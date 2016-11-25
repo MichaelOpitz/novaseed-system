@@ -199,7 +199,7 @@
 
         <hr style="color: #000000" />
         <div class="panel panel-info" style="text-align: center">
-            <div class="panel-heading">Colores de carne y piel</div>
+            <div class="panel-heading" style="text-align: center">Colores de carne y piel</div>
             <div class="panel-body">
                 <br />
                 <div class="col-sm-6">
@@ -215,11 +215,11 @@
 
         <hr style="color: #000000" />
         <div class="panel panel-danger">
-            <div class="panel-heading">Totales</div>
+            <div class="panel-heading" style="text-align: center">Totales</div>
             <div class="panel-body">
                 <br />
                 <div class="row">
-                    <div class="col-sm-2 col-sm-offset-1">
+                    <div class="col-sm-2 col-sm-offset-2">
                         <asp:TextBox type="text" runat="server" class="form-control" Placeholder="Total Kilogramos" ID="txt48papasTotalKg"></asp:TextBox>
                         <span class="help-block">Total Kilogramos</span>
                     </div>
@@ -235,14 +235,10 @@
                         <asp:TextBox type="text" runat="server" class="form-control" Placeholder="Semillón" ID="txt48papasSemillon"></asp:TextBox>
                         <span class="help-block">Semillón</span>
                     </div>
-                    <div class="col-sm-2">
-                        <asp:TextBox type="text" runat="server" class="form-control" Placeholder="Toneladas/Hectárea" ID="txt48papasToneladasHectarea" ReadOnly="true"></asp:TextBox>
-                        <span class="help-block">Toneladas/Hectárea</span>
-                    </div>
                 </div>
 
                 <div class="row">
-                    <div class="col-sm-2 col-sm-offset-1">
+                    <div class="col-sm-2 col-sm-offset-2">
                         <asp:TextBox type="text" runat="server" class="form-control" Placeholder="Semilla" ID="txt48papasSemilla"></asp:TextBox>
                         <span class="help-block">Semilla</span>
                     </div>
@@ -258,17 +254,13 @@
                         <asp:TextBox type="text" runat="server" class="form-control" Placeholder="Número Tallos" ID="txt48papasNumeroTallos"></asp:TextBox>
                         <span class="help-block">Número Tallos</span>
                     </div>
-                    <div class="col-sm-2">
-                        <asp:TextBox type="text" runat="server" class="form-control" Placeholder="% Relación Standard" ID="txt48papasRelacionStandard" ReadOnly="true"></asp:TextBox>
-                        <span class="help-block">% Relación Standard</span>
-                    </div>
                 </div>
             </div>
         </div>
 
         <hr style="color: #000000" />
         <div class="panel panel-primary">
-            <div class="panel-heading">Enfermedades</div>
+            <div class="panel-heading" style="text-align: center">Enfermedades</div>
             <div class="panel-body">
                 <br />
                 <div class="row">
@@ -325,42 +317,42 @@
 
         <hr style="color: #000000" />
         <div class="panel panel-primary">
-            <div class="panel-heading">Sensibilidad y Tolerancias</div>
+            <div class="panel-heading" style="text-align: center">Sensibilidad y Tolerancias</div>
             <div class="panel-body">
                 <br />
                 <div class="row">
-                    <div class="col-sm-2 ">
+                    <div class="col-sm-2 col-sm-offset-2">
                         <asp:DropDownList type="button" ID="ddl48papasSensibilidadQuimica" runat="server" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
                         <span class="help-block">Sensibilidad Química</span>
                     </div>
-                    <div class="col-sm-3">
+                    <div class="col-sm-2">
                         <asp:TextBox type="text" runat="server" class="form-control" Placeholder="Daño Cosecha" ID="txt48papasDañoCosecha"></asp:TextBox>
                         <span class="help-block">Daño Cosecha</span>
                     </div>
-                    <div class="col-sm-3">
+                    <div class="col-sm-2">
                         <asp:TextBox type="text" runat="server" class="form-control" Placeholder="Dormancia" ID="txt48papasDormancia"></asp:TextBox>
                         <span class="help-block">Dormancia</span>
                     </div>
-                    <div class="col-sm-3">
+                    <div class="col-sm-2">
                         <asp:TextBox type="text" runat="server" class="form-control" Placeholder="Tizon Hoja" ID="txt48papasTizonHoja"></asp:TextBox>
                         <span class="help-block">Tizón Hoja</span>
                     </div>
                 </div>
 
                 <div class="row">
-                    <div class="col-sm-2 ">
+                    <div class="col-sm-2 col-sm-offset-2">
                         <asp:DropDownList type="button" ID="ddl48papasFacilidadMuerte" runat="server" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
                         <span class="help-block">Facilidad Muerte</span>
                     </div>
-                    <div class="col-sm-3">
+                    <div class="col-sm-2">
                         <asp:TextBox type="text" runat="server" class="form-control" Placeholder="Tolerancia Sequía" ID="txt48papasToleranciaSequia"></asp:TextBox>
                         <span class="help-block">Tolerancia Sequía</span>
                     </div>
-                    <div class="col-sm-3">
+                    <div class="col-sm-2">
                         <asp:TextBox type="text" runat="server" class="form-control" Placeholder="Tolerancia Calor" ID="txt48papasToleranciaCalor"></asp:TextBox>
                         <span class="help-block">Tolerancia Calor</span>
                     </div>
-                    <div class="col-sm-3">
+                    <div class="col-sm-2">
                         <asp:TextBox type="text" runat="server" class="form-control" Placeholder="Tolerancia Sal" ID="txt48papasToleranciaSal"></asp:TextBox>
                         <span class="help-block">Tolerancia Sal</span>
                     </div>
@@ -369,8 +361,8 @@
         </div>
 
         <hr style="color: #000000" />
-        <div class="panel panel-primary">
-            <div class="panel-heading">Urgencias</div>
+        <div class="panel panel-info">
+            <div class="panel-heading" style="text-align: center">Urgencias</div>
             <div class="panel-body">
                 <br />
                 <div class="col-sm-2 col-sm-offset-1">
@@ -397,10 +389,43 @@
         </div>
 
         <hr style="color: #000000" />
+        <div class="panel panel-primary">
+            <div class="panel-heading" style="text-align: center">Rendimiento</div>
+            <div class="panel-body">
+                <br />
+                <div class="row">
+                    <div class="col-sm-9 col-sm-offset-3">
+                        <asp:GridView ID="gdv48papasRendimiento" runat="server" Width="70%"
+                            AutoGenerateColumns="False"
+                            CssClass="table table-bordered bs-table"
+                            AllowPaging="True"
+                            AllowSorting="True">
+
+                            <HeaderStyle BackColor="#337ab7" Font-Bold="True" ForeColor="White" />
+                            <EditRowStyle BackColor="#ffffcc" />
+                            <EmptyDataRowStyle ForeColor="Red" CssClass="table table-bordered" />
+                            <EmptyDataTemplate>
+                                ¡No hay rendimiento en la variedad seleccionada!  
+                            </EmptyDataTemplate>
+
+                            <SelectedRowStyle Font-Bold="True" />
+                            <Columns>
+                                <asp:BoundField DataField="codigo_individuo" HeaderText="Código" ReadOnly="true" />
+                                <asp:BoundField DataField="nombre_ciudad" HeaderText="Ciudad" ReadOnly="true" />
+                                <asp:BoundField DataField="porcentaje_relacion_standard" HeaderText="Rendimiento (%)" ReadOnly="true" />
+                                <asp:BoundField DataField="toneladas_hectarea" HeaderText="Toneladas/Hectárea (Ton)" ReadOnly="true" />
+                            </Columns>
+                        </asp:GridView>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <hr style="color: #000000" />
         <div class="row" style="text-align: center">
             <asp:Button type="button" runat="server" Text="Guardar" ID="btn48papasGuardar" class="btn btn-primary btn-md" Width="20%" BorderColor="#000000" OnClientClick="return confirm('¿Desea guardar los cambios?');" OnClick="btn48papasGuardar_Click"></asp:Button>
             <asp:Button type="button" runat="server" Text="Cancelar" ID="btn48papasCancelar" class="btn btn-danger btn-md" Width="20%" BorderColor="#000000" OnClientClick="return confirm('¿Desea cancelar los cambios?');" OnClick="btn48papasCancelar_Click"></asp:Button>
-        </div>
+        </div>        
     </div>
 </asp:Content>
 

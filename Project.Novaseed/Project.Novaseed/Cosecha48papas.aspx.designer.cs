@@ -310,15 +310,6 @@ namespace Project.Novaseed {
         protected global::System.Web.UI.WebControls.TextBox txt48papasSemillon;
         
         /// <summary>
-        /// Control txt48papasToneladasHectarea.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt48papasToneladasHectarea;
-        
-        /// <summary>
         /// Control txt48papasSemilla.
         /// </summary>
         /// <remarks>
@@ -353,15 +344,6 @@ namespace Project.Novaseed {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txt48papasNumeroTallos;
-        
-        /// <summary>
-        /// Control txt48papasRelacionStandard.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt48papasRelacionStandard;
         
         /// <summary>
         /// Control ddl48papasEnfermedad.
@@ -515,6 +497,15 @@ namespace Project.Novaseed {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txt48papasHematomas;
+        
+        /// <summary>
+        /// Control gdv48papasRendimiento.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gdv48papasRendimiento;
         
         /// <summary>
         /// Control btn48papasGuardar.

@@ -315,6 +315,153 @@ namespace Project.BusinessRules
         }
 
         //--------------------------------------------FIN 24PAPAS-----------------------------------------------------------
+        //--------------------------------------------INICIO 48PAPAS--------------------------------------------------------
+
+        /*
+         * Agrega temporada 48papas a una temporada 24papas, devuelve 0 si agrego correctamente, 1 en caso contrario
+         */
+        public int AddCosecha48papas(int id_cosecha)
+        {
+            DataAccess.DataBase bd = new DataBase();
+            bd.Connect(); //método conectar
+            string sql = "cosecha48papasAgregar";
+            bd.CreateCommandSP(sql);
+            bd.CreateParameter("@id_cosecha", DbType.Int32, id_cosecha);
+
+            int existe_48papas;
+            DbDataReader resultado = bd.Query();//disponible resultado
+            resultado.Read();
+            existe_48papas = resultado.GetInt32(0);
+            resultado.Close();
+
+            bd.Close();
+            return existe_48papas;
+        }
+
+        /*
+        * Actualizar la variedad en 48 papas, devuelve 1 si actualizó, 0 en caso contrario
+        */
+        public int UpdateCosecha48papas(Cosecha c)
+        {
+            DataAccess.DataBase bd = new DataBase();
+            bd.Connect(); //método conectar
+            string sql = "cosecha48papasActualizar";
+            bd.CreateCommandSP(sql);
+            bd.CreateParameter("@id_cosecha", DbType.Int32, c.Id_cosecha);
+            bd.CreateParameter("@cantidad_papas", DbType.Int32, c.Cantidad_papas);
+            bd.CreateParameter("@posicion_cosecha", DbType.Double, c.Posicion_cosecha);
+            bd.CreateParameter("@flor_cosecha", DbType.Boolean, c.Flor_cosecha);
+            bd.CreateParameter("@bayas_cosecha", DbType.Boolean, c.Bayas_cosecha);
+            bd.CreateParameter("@id_fertilidad", DbType.Int32, c.Id_fertilidad);
+            bd.CreateParameter("@id_emergencia40", DbType.Int32, c.Id_emergencia_40_dias);
+            bd.CreateParameter("@id_metribuzina", DbType.Int32, c.Id_metribuzina);
+            bd.CreateParameter("@id_emergencia", DbType.Int32, c.Id_emergencia);
+            bd.CreateParameter("@id_madurez", DbType.Int32, c.Id_madurez);
+            bd.CreateParameter("@id_desarrollo_follaje", DbType.Int32, c.Id_desarrollo_follaje);
+            bd.CreateParameter("@id_tipo_hoja", DbType.Int32, c.Id_tipo_hoja);
+            bd.CreateParameter("@id_brotacion", DbType.Int32, c.Id_brotacion);
+            bd.CreateParameter("@id_tamano", DbType.Int32, c.Id_tamaño);
+            bd.CreateParameter("@id_distribucion", DbType.Int32, c.Id_distribucion_calibre);
+            bd.CreateParameter("@id_forma", DbType.Int32, c.Id_forma);
+            bd.CreateParameter("@id_regularidad", DbType.Int32, c.Id_regularidad);
+            bd.CreateParameter("@id_profundidad", DbType.Int32, c.Id_profundidad);
+            bd.CreateParameter("@id_calidad", DbType.Int32, c.Id_calidad_piel);
+            bd.CreateParameter("@id_verdes", DbType.Int32, c.Id_tuberculos_verdes);
+            bd.CreateParameter("@tizon_follaje", DbType.Int32, c.Id_tizon_tardio_follaje);
+            bd.CreateParameter("@tizon_tuberculo", DbType.Int32, c.Id_tizon_tardio_tuberculo);
+            bd.CreateParameter("@id_numero", DbType.Int32, c.Id_numero_tuberculos);
+            bd.CreateParameter("@id_ciudad", DbType.Int32, c.Id_ciudad);
+            bd.CreateParameter("@total_kg", DbType.Double, c.Total_kg);
+            bd.CreateParameter("@tuberculos_planta", DbType.Double, c.Tuberculos_planta);
+            bd.CreateParameter("@consumo", DbType.Int32, c.Consumo);
+            bd.CreateParameter("@semillon", DbType.Int32, c.Semillon);
+            bd.CreateParameter("@semilla", DbType.Int32, c.Semilla);
+            bd.CreateParameter("@semillita", DbType.Int32, c.Semillita);
+            bd.CreateParameter("@bajo_calibre", DbType.Int32, c.Bajo_calibre);
+            bd.CreateParameter("@numero_tallos", DbType.Int32, c.Numero_tallos);
+            bd.CreateParameter("@id_sensibilidad_quimica", DbType.Int32, c.Id_sensibilidad_quimica);
+            bd.CreateParameter("@id_facilidad_muerte", DbType.Int32, c.Id_facilidad_muerte);
+            bd.CreateParameter("@dormancia", DbType.Int32, c.Dormancia);
+            bd.CreateParameter("@tolerancia_sequia", DbType.Int32, c.Tolerancia_sequia);
+            bd.CreateParameter("@tolerancia_calor", DbType.Int32, c.Tolerancia_calor);
+            bd.CreateParameter("@tolerancia_sal", DbType.Int32, c.Tolerancia_sal);
+            bd.CreateParameter("@dano_cosecha", DbType.Int32, c.Daño_cosecha);
+            bd.CreateParameter("@tizon_hoja", DbType.Int32, c.Tizon_hoja);
+            bd.CreateParameter("@putrefaccion_suave", DbType.Int32, c.Putrefaccion_suave);
+            bd.CreateParameter("@putrefaccion_rosa", DbType.Int32, c.Putrefaccion_rosa);
+            bd.CreateParameter("@silver_scurf", DbType.Int32, c.Silver_scurf);
+            bd.CreateParameter("@blackleg", DbType.Int32, c.Blackleg);
+
+            int actualizo;
+            DbDataReader resultado = bd.Query();//disponible resultado
+            resultado.Read();
+            actualizo = resultado.GetInt32(0);
+            resultado.Close();
+
+            bd.Close();
+            return actualizo;
+        }
+
+        /*
+         * Devuelve 1 si la cosecha ya está en UPOV
+         */
+        public int GetCosechaEstaEnUPOV(int año, int posicion)
+        {
+            DataAccess.DataBase bd = new DataBase();
+            bd.Connect(); //método conectar
+            int estaEnUPOV;
+
+            string salida = "cosechaTablaObtener";//comando sql
+            bd.CreateCommandSP(salida);
+            bd.CreateParameter("@ano_cosecha", DbType.Int32, año);
+            bd.CreateParameter("@id_temporada", DbType.Int32, 4);
+            DbDataReader resultado = bd.Query();//disponible resultado
+            List<int> id_cosecha = new List<int>();
+            while (resultado.Read())
+            {
+                id_cosecha.Add(resultado.GetInt32(0));
+            }
+            resultado.Close();
+
+            string salida2 = "cosechaEstaEnUPOV";//comando sql
+            bd.CreateCommandSP(salida2);
+            bd.CreateParameter("@id_cosecha", DbType.Int32, id_cosecha[posicion]);
+            DbDataReader resultado2 = bd.Query();//disponible resultado
+            resultado2.Read();
+            estaEnUPOV = resultado2.GetInt32(0);
+            resultado2.Close();
+
+            bd.Close();
+            return estaEnUPOV;
+        }
+
+        /*
+         * Devuelve codigo del individuo, ciudad, porcentaje de relacion standard y las toneladas por hectárea de una cosecha
+         */
+        public List<Cosecha> GetTablaRendimiento48papas(int id_cosecha)
+        {
+            DataAccess.DataBase bd = new DataBase();
+            bd.Connect(); //método conectar
+            List<Cosecha> cosecha48papas = new List<Cosecha>();
+            string salida = "cosecha48papasTablaRendimientoObtener";//comando sql
+            bd.CreateCommandSP(salida);
+            bd.CreateParameter("@id_cosecha", DbType.Int32, id_cosecha);
+
+            DbDataReader resultado = bd.Query();//disponible resultado
+
+            while (resultado.Read())
+            {
+                Cosecha cos = new Cosecha(resultado.GetString(0), resultado.GetString(1), resultado.GetInt32(2),
+                    resultado.GetDouble(3));
+                cosecha48papas.Add(cos);
+            }
+            resultado.Close();
+            bd.Close();
+
+            return cosecha48papas;
+        }
+
+        //--------------------------------------------FIN 48PAPAS-----------------------------------------------------------
         //--------------------------------------------INICIO METODOS COMUNES------------------------------------------------
         /*
          * Devuelve id_cosecha, madre, padre, posicion, individuo y destino para las distintas temporadas
@@ -346,7 +493,7 @@ namespace Project.BusinessRules
 
         /*
          * Devuelve 1 si la variedad ya esta en etapas avanzadas
-         * el id_temporada recibe la temporada para el color
+         * el id_temporada recibe la temporada para el color verde o rojo
          * Se le resta 1 para obtener la tabla de la cosecha en la temporada anterior
          */
         public int GetCosechaTemporadasAvanzadas(int año, int posicion, int id_temporada)

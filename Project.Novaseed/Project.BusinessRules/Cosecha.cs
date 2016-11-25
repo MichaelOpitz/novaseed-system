@@ -16,11 +16,17 @@ namespace Project.BusinessRules
             porcentaje_relacion_standard, consumo, semillon, semilla, semillita, bajo_calibre, numero_tallos;
         private bool flor_cosecha, bayas_cosecha;
         private double posicion_cosecha, total_kg, tuberculos_planta, toneladas_hectarea;
-        private string codigo_variedad, pad_codigo_variedad, codigo_individuo, nombre_destino, nombre_madre, nombre_padre;
+        private string codigo_variedad, pad_codigo_variedad, codigo_individuo, nombre_destino, nombre_madre, nombre_padre, nombre_ciudad;
         //Atributos tabla urgencia
         private int id_urgencia, id_sensibilidad_quimica, id_facilidad_muerte, dormancia, tolerancia_sequia, tolerancia_calor,
             tolerancia_sal, daño_cosecha, tizon_hoja, putrefaccion_suave, putrefaccion_rosa, silver_scurf, blackleg;
         private double hematomas;
+
+        public string Nombre_ciudad
+        {
+            get { return nombre_ciudad; }
+            set { nombre_ciudad = value; }
+        }
 
         public string Nombre_padre
         {
@@ -373,8 +379,8 @@ namespace Project.BusinessRules
         }
 
         /*
-         * TEMPORADA=6PAPAS
-         * Constructor para mostrar la tabla de 6 papas
+         * TEMPORADA = 6,12,24,48 PAPAS
+         * Constructor para mostrar la tabla de cosecha
          */
         public Cosecha(int id_cosecha, string codigo_variedad, string nombre_madre, string pad_codigo_variedad, string nombre_padre,
             double posicion_cosecha, string codigo_individuo, string nombre_destino)
@@ -390,8 +396,8 @@ namespace Project.BusinessRules
         }
 
         /*
-         * TEMPORADA=6PAPAS
-         * Constructor para actualizar la variedad en 6 papas
+         * TEMPORADA = 6,12,24,48 PAPAS
+         * Constructor para actualizar la variedad en cosecha
          */
         public Cosecha(int id_cosecha, int cantidad_papas, double posicion_cosecha, bool flor_cosecha, bool bayas_cosecha, 
             int id_fertilidad, int id_emergencia40, int id_metribuzina, int id_emergencia, int id_madurez, int id_desarrollo, 
@@ -447,6 +453,18 @@ namespace Project.BusinessRules
             this.putrefaccion_rosa = putrefaccion_rosa;
             this.silver_scurf = silver_scurf;
             this.blackleg = blackleg;
+        }
+
+        /*
+         * TEMPORADA=48PAPAS
+         * Constructor para mostrar la tabla de de rendimiento de 48 papas
+         */
+        public Cosecha(string codigo_individuo, string nombre_ciudad, int porcentaje_relacion_standard, double toneladas_hectarea)
+        {
+            this.codigo_individuo = codigo_individuo;
+            this.nombre_ciudad = nombre_ciudad;
+            this.porcentaje_relacion_standard = porcentaje_relacion_standard;
+            this.toneladas_hectarea = toneladas_hectarea;
         }
     }
 }

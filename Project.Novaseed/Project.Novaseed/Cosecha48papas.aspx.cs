@@ -199,14 +199,14 @@ namespace Project.Novaseed
             CatalogCosecha cc = new CatalogCosecha();
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
-                //
-                //int index24papas48papas = cc.GetCosechaTemporadasAvanzadas(valorAñoInt32, cont48papasUPOV, 4);
+                //devuelve 1 y lo pinta de verde si esta en upov, 0 y rojo en caso contrario
+                int index48papasUPOV = cc.GetCosechaEstaEnUPOV(valorAñoInt32, cont48papasUPOV);
 
-                //if (index24papas48papas == 1)
-                //    e.Row.BackColor = Color.LightGreen;
-                //else
-                //    e.Row.BackColor = Color.FromArgb(255, 204, 203);
-                //cont48papasUPOV = cont48papasUPOV + 1;
+                if (index48papasUPOV == 1)
+                    e.Row.BackColor = Color.LightGreen;
+                else
+                    e.Row.BackColor = Color.FromArgb(255, 204, 203);
+                cont48papasUPOV = cont48papasUPOV + 1;
             }
         }
 
@@ -304,9 +304,9 @@ namespace Project.Novaseed
                     Int32.Parse(tizon_hoja), Int32.Parse(putrefaccion_suave), Int32.Parse(putrefaccion_rosa),
                     Int32.Parse(silver_scurf), Int32.Parse(blackleg));
 
-                //int valor = cc.UpdateCosecha48papas(cosecha);
-                //if (valor == 0)
-                //    Page.ClientScript.RegisterStartupScript(GetType(), "Script", "<script>alert('¡Debe seleccionar una ciudad o ya hay una variedad asignada en esa posición!')</script>");
+                int valor = cc.UpdateCosecha48papas(cosecha);
+                if (valor == 0)
+                    Page.ClientScript.RegisterStartupScript(GetType(), "Script", "<script>alert('¡Debe seleccionar una ciudad o ya hay una variedad asignada en esa posición!')</script>");
             }
             catch (Exception ex)
             {
@@ -435,14 +435,6 @@ namespace Project.Novaseed
             double tuberculos_planta = cc.GetCosechaValoresDouble(id_cosecha, 25);
             this.txt48papasTuberculosPlanta.Text = tuberculos_planta.ToString();
 
-            //Toneladas/hectarea
-            double toneladas_hectarea = cc.GetCosechaValoresDouble(id_cosecha, 26);
-            this.txt48papasToneladasHectarea.Text = toneladas_hectarea.ToString();
-
-            // % Relacion Standard
-            int porcentaje_relacion = cc.GetCosechaValoresEnteros(id_cosecha, 27);
-            this.txt48papasRelacionStandard.Text = porcentaje_relacion.ToString() + "%";
-
             //Consumo
             int consumo = cc.GetCosechaValoresEnteros(id_cosecha, 28);
             this.txt48papasConsumo.Text = consumo.ToString();
@@ -518,6 +510,11 @@ namespace Project.Novaseed
             //Blackleg
             int blackleg = cc.GetCosechaValoresEnteros(id_cosecha, 46);
             this.txt48papasBlackleg.Text = blackleg.ToString();
+
+            List<Cosecha> tablaRendimiento = new List<Cosecha>();
+            tablaRendimiento = cc.GetTablaRendimiento48papas(id_cosecha);
+            this.gdv48papasRendimiento.DataSource = tablaRendimiento;
+            this.gdv48papasRendimiento.DataBind();
         }
 
         protected void btn48papasAgregarEnfermedad_Click(object sender, EventArgs e)
@@ -586,7 +583,29 @@ namespace Project.Novaseed
 
         protected void btnAgregarUPOV_Click(object sender, EventArgs e)
         {
+            int agrego = 0;
+            foreach (GridViewRow row in gdv48papas.Rows)
+                if (row.RowType == DataControlRowType.DataRow)
+                {
+                    CheckBox chkAgregarUPOV = (row.Cells[0].FindControl("chkAgregarUPOV") as CheckBox);
+                    if (chkAgregarUPOV != null)
+                        if (chkAgregarUPOV.Checked)
+                        {
+                            string id_cosecha = HttpUtility.HtmlDecode((string)this.gdv48papas.Rows[row.RowIndex].Cells[2].Text);
+                            CatalogUPOV cu = new CatalogUPOV();
+                            int existe_upov = cu.AddUPOV(Int32.Parse(id_cosecha));
+                            if (existe_upov == 1)
+                                Page.ClientScript.RegisterStartupScript(GetType(), "Script", "<script>alert('La varieadd con ID: " + id_cosecha + " seleccionada ya generó el informe UPOV o no tiene una ciudad asignada')</script>");
+                            else
+                                agrego = 1;
+                        }
+                }
 
+            if (agrego == 1)
+            {
+                Page.ClientScript.RegisterStartupScript(GetType(), "Script", "<script>alert('¡Agregado Correctamente!')</script>");
+                Response.Redirect("MenuGeneracion.aspx");
+            }
         }
     }
 }
