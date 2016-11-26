@@ -67,6 +67,8 @@ namespace Project.BusinessRules
             bd.CreateParameter("@id_ciudad", DbType.Int32, c.Id_ciudad);
             bd.CreateParameter("@total_kg", DbType.Double, c.Total_kg);
             bd.CreateParameter("@tuberculos_planta", DbType.Double, c.Tuberculos_planta);
+            bd.CreateParameter("@toneladas_hectarea", DbType.Double, c.Toneladas_hectarea);
+            bd.CreateParameter("@porcentaje_relacion", DbType.Int32, c.Porcentaje_relacion_standard);
             bd.CreateParameter("@consumo", DbType.Int32, c.Consumo);
             bd.CreateParameter("@semillon", DbType.Int32, c.Semillon);
             bd.CreateParameter("@semilla", DbType.Int32, c.Semilla);
@@ -176,6 +178,8 @@ namespace Project.BusinessRules
             bd.CreateParameter("@id_ciudad", DbType.Int32, c.Id_ciudad);
             bd.CreateParameter("@total_kg", DbType.Double, c.Total_kg);
             bd.CreateParameter("@tuberculos_planta", DbType.Double, c.Tuberculos_planta);
+            bd.CreateParameter("@toneladas_hectarea", DbType.Double, c.Toneladas_hectarea);
+            bd.CreateParameter("@porcentaje_relacion", DbType.Int32, c.Porcentaje_relacion_standard);
             bd.CreateParameter("@consumo", DbType.Int32, c.Consumo);
             bd.CreateParameter("@semillon", DbType.Int32, c.Semillon);
             bd.CreateParameter("@semilla", DbType.Int32, c.Semilla);
@@ -285,6 +289,8 @@ namespace Project.BusinessRules
             bd.CreateParameter("@id_ciudad", DbType.Int32, c.Id_ciudad);
             bd.CreateParameter("@total_kg", DbType.Double, c.Total_kg);
             bd.CreateParameter("@tuberculos_planta", DbType.Double, c.Tuberculos_planta);
+            bd.CreateParameter("@toneladas_hectarea", DbType.Double, c.Toneladas_hectarea);
+            bd.CreateParameter("@porcentaje_relacion", DbType.Int32, c.Porcentaje_relacion_standard);
             bd.CreateParameter("@consumo", DbType.Int32, c.Consumo);
             bd.CreateParameter("@semillon", DbType.Int32, c.Semillon);
             bd.CreateParameter("@semilla", DbType.Int32, c.Semilla);
@@ -373,6 +379,8 @@ namespace Project.BusinessRules
             bd.CreateParameter("@id_ciudad", DbType.Int32, c.Id_ciudad);
             bd.CreateParameter("@total_kg", DbType.Double, c.Total_kg);
             bd.CreateParameter("@tuberculos_planta", DbType.Double, c.Tuberculos_planta);
+            bd.CreateParameter("@toneladas_hectarea", DbType.Double, c.Toneladas_hectarea);
+            bd.CreateParameter("@porcentaje_relacion", DbType.Int32, c.Porcentaje_relacion_standard);
             bd.CreateParameter("@consumo", DbType.Int32, c.Consumo);
             bd.CreateParameter("@semillon", DbType.Int32, c.Semillon);
             bd.CreateParameter("@semilla", DbType.Int32, c.Semilla);

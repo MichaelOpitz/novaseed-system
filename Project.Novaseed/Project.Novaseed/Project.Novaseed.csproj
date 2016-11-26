@@ -164,16 +164,23 @@
     <Content Include="Cosecha6papas.aspx" />
     <Content Include="Cruzamiento.aspx" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Licencia.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Mejoramiento.aspx" />
     <Content Include="Menu.aspx" />
     <Content Include="MenuGeneracion.aspx" />
+    <Content Include="MenuProduccion.aspx" />
     <Content Include="packages.config" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Account\Web.config" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="ProduccionFiltrar.aspx" />
+    <Content Include="ProduccionFiltrarPorProductorCiudadCategoria.aspx" />
+    <Content Include="ProduccionFiltrarVariedad.aspx" />
+    <Content Include="ProduccionIngresar.aspx" />
+    <Content Include="ProduccionSeleccionIngresar.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -342,6 +349,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Licencia.aspx.cs">
+      <DependentUpon>Licencia.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Licencia.aspx.designer.cs">
+      <DependentUpon>Licencia.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -370,7 +384,49 @@
     <Compile Include="MenuGeneracion.aspx.designer.cs">
       <DependentUpon>MenuGeneracion.aspx</DependentUpon>
     </Compile>
+    <Compile Include="MenuProduccion.aspx.cs">
+      <DependentUpon>MenuProduccion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MenuProduccion.aspx.designer.cs">
+      <DependentUpon>MenuProduccion.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="ProduccionFiltrar.aspx.cs">
+      <DependentUpon>ProduccionFiltrar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProduccionFiltrar.aspx.designer.cs">
+      <DependentUpon>ProduccionFiltrar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ProduccionFiltrarPorProductorCiudadCategoria.aspx.cs">
+      <DependentUpon>ProduccionFiltrarPorProductorCiudadCategoria.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProduccionFiltrarPorProductorCiudadCategoria.aspx.designer.cs">
+      <DependentUpon>ProduccionFiltrarPorProductorCiudadCategoria.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ProduccionFiltrarVariedad.aspx.cs">
+      <DependentUpon>ProduccionFiltrarVariedad.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProduccionFiltrarVariedad.aspx.designer.cs">
+      <DependentUpon>ProduccionFiltrarVariedad.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ProduccionIngresar.aspx.cs">
+      <DependentUpon>ProduccionIngresar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProduccionIngresar.aspx.designer.cs">
+      <DependentUpon>ProduccionIngresar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ProduccionSeleccionIngresar.aspx.cs">
+      <DependentUpon>ProduccionSeleccionIngresar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProduccionSeleccionIngresar.aspx.designer.cs">
+      <DependentUpon>ProduccionSeleccionIngresar.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>

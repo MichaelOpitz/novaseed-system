@@ -68,7 +68,7 @@ namespace Project.BusinessRules
         }
 
         /*
-         * Funcion que devuelve una lista de años comenzando del primer cruzamiento hasta el actual
+         * Funcion que devuelve una lista de años comenzando del primer cruzamiento hasta el ultimo informe upov
          */ 
         public List<Cruzamiento> GetAñoCruzamiento_fn()
         {

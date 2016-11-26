@@ -236,7 +236,7 @@
                         <span class="help-block">Semillón</span>
                     </div>
                     <div class="col-sm-2">
-                        <asp:TextBox type="text" runat="server" class="form-control" Placeholder="Toneladas/Hectárea" ID="txt6papasToneladasHectarea" ReadOnly="true"></asp:TextBox>
+                        <asp:TextBox type="text" runat="server" class="form-control" Placeholder="Toneladas/Hectárea" ID="txt6papasToneladasHectarea" ></asp:TextBox>
                         <span class="help-block">Toneladas/Hectárea</span>
                     </div>
                 </div>
@@ -259,7 +259,7 @@
                         <span class="help-block">Número Tallos</span>
                     </div>
                     <div class="col-sm-2">
-                        <asp:TextBox type="text" runat="server" class="form-control" Placeholder="% Relación Standard" ID="txt6papasRelacionStandard" ReadOnly="true"></asp:TextBox>
+                        <asp:TextBox type="text" runat="server" class="form-control" Placeholder="% Relación Standard" ID="txt6papasRelacionStandard" ></asp:TextBox>
                         <span class="help-block">% Relación Standard</span>
                     </div>
                 </div>

@@ -23,5 +23,15 @@ namespace Project.Novaseed
         {
             Response.Redirect("MenuGeneracion.aspx");
         }
+
+        protected void btnMenuProduccion_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("MenuProduccion.aspx");
+        }
+
+        protected void btnMenuLicencia_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Licencia.aspx");
+        }
     }
 }

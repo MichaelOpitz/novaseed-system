@@ -396,7 +396,7 @@ namespace Project.BusinessRules
         }
 
         /*
-         * TEMPORADA = 6,12,24,48 PAPAS
+         * TEMPORADA = 6,12,24 PAPAS
          * Constructor para actualizar la variedad en cosecha
          */
         public Cosecha(int id_cosecha, int cantidad_papas, double posicion_cosecha, bool flor_cosecha, bool bayas_cosecha, 
@@ -404,11 +404,73 @@ namespace Project.BusinessRules
             int id_tipo_hoja, int id_brotacion, int id_tamaño, int id_distribucion, int id_forma, int id_regularidad, 
             int id_profundidad, int id_calidad, int id_tuberculos_verdes, int id_tizon_tardio_follaje, 
             int id_tizon_tardio_tuberculo, int id_numero, int id_ciudad, double total_kg, double tuberculos_planta, 
-            int consumo, int semillon, int semilla, int semillita, int bajo_calibre, int numero_tallos, 
-            int id_sensibilidad_quimica, int id_facilidad_muerte, int dormancia, int tolerancia_sequia, int tolerancia_calor, 
-            int tolerancia_sal, int daño_cosecha, int tizon_hoja, int putrefaccion_suave, int putrefaccion_rosa, 
-            int silver_scurf, int blackleg)
+            double toneladas_hectarea, int porcentaje_relacion_standard, int consumo, int semillon, int semilla, int semillita, 
+            int bajo_calibre, int numero_tallos, int id_sensibilidad_quimica, int id_facilidad_muerte, int dormancia, 
+            int tolerancia_sequia, int tolerancia_calor, int tolerancia_sal, int daño_cosecha, int tizon_hoja, 
+            int putrefaccion_suave, int putrefaccion_rosa, int silver_scurf, int blackleg)
         {            
+            this.id_cosecha = id_cosecha;
+            this.cantidad_papas = cantidad_papas;
+            this.posicion_cosecha = posicion_cosecha;
+            this.flor_cosecha = flor_cosecha;
+            this.bayas_cosecha = bayas_cosecha;
+            this.id_fertilidad = id_fertilidad;
+            this.id_emergencia_40_dias = id_emergencia40;
+            this.id_metribuzina = id_metribuzina;
+            this.id_emergencia = id_emergencia;
+            this.id_madurez = id_madurez;
+            this.id_desarrollo_follaje = id_desarrollo;
+            this.id_tipo_hoja = id_tipo_hoja;
+            this.id_brotacion = id_brotacion;
+            this.id_tamaño = id_tamaño;
+            this.id_distribucion_calibre = id_distribucion;
+            this.id_forma = id_forma;
+            this.id_regularidad = id_regularidad;
+            this.id_profundidad = id_profundidad;
+            this.id_calidad_piel = id_calidad;
+            this.id_tuberculos_verdes = id_tuberculos_verdes;
+            this.id_tizon_tardio_follaje = id_tizon_tardio_follaje;
+            this.id_tizon_tardio_tuberculo = id_tizon_tardio_tuberculo;
+            this.id_numero_tuberculos = id_numero;
+            this.id_ciudad = id_ciudad;
+            this.total_kg = total_kg;
+            this.tuberculos_planta = tuberculos_planta;
+            this.toneladas_hectarea = toneladas_hectarea;
+            this.porcentaje_relacion_standard = porcentaje_relacion_standard;
+            this.consumo = consumo;
+            this.semillon = semillon;
+            this.semilla = semilla;
+            this.semillita = semillita;
+            this.bajo_calibre = bajo_calibre;
+            this.numero_tallos = numero_tallos;
+            this.id_sensibilidad_quimica = id_sensibilidad_quimica;
+            this.id_facilidad_muerte = id_facilidad_muerte;
+            this.dormancia = dormancia;
+            this.tolerancia_sequia = tolerancia_sequia;
+            this.tolerancia_calor = tolerancia_calor;
+            this.tolerancia_sal = tolerancia_sal;
+            this.daño_cosecha = daño_cosecha;
+            this.tizon_hoja = tizon_hoja;
+            this.putrefaccion_suave = putrefaccion_suave;
+            this.putrefaccion_rosa = putrefaccion_rosa;
+            this.silver_scurf = silver_scurf;
+            this.blackleg = blackleg;
+        }
+
+        /*
+         * TEMPORADA = 48 PAPAS
+         * Constructor para actualizar la variedad en cosecha
+         */
+        public Cosecha(int id_cosecha, int cantidad_papas, double posicion_cosecha, bool flor_cosecha, bool bayas_cosecha,
+            int id_fertilidad, int id_emergencia40, int id_metribuzina, int id_emergencia, int id_madurez, int id_desarrollo,
+            int id_tipo_hoja, int id_brotacion, int id_tamaño, int id_distribucion, int id_forma, int id_regularidad,
+            int id_profundidad, int id_calidad, int id_tuberculos_verdes, int id_tizon_tardio_follaje,
+            int id_tizon_tardio_tuberculo, int id_numero, int id_ciudad, double total_kg, double tuberculos_planta,
+            int consumo, int semillon, int semilla, int semillita,
+            int bajo_calibre, int numero_tallos, int id_sensibilidad_quimica, int id_facilidad_muerte, int dormancia,
+            int tolerancia_sequia, int tolerancia_calor, int tolerancia_sal, int daño_cosecha, int tizon_hoja,
+            int putrefaccion_suave, int putrefaccion_rosa, int silver_scurf, int blackleg)
+        {
             this.id_cosecha = id_cosecha;
             this.cantidad_papas = cantidad_papas;
             this.posicion_cosecha = posicion_cosecha;

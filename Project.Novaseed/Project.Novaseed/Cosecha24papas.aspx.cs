@@ -269,6 +269,8 @@ namespace Project.Novaseed
 
                 string total_kg = this.txt24papasTotalKg.Text.Replace(",", ".");
                 string tuberculos_planta = this.txt24papasTuberculosPlanta.Text.Replace(",", ".");
+                string toneladas_hectarea = this.txt24papasToneladasHectarea.Text.Replace(",", ".");
+                string porcentaje_relacion = this.txt24papasRelacionStandard.Text.Replace("%", "");
                 string consumo = this.txt24papasConsumo.Text;
                 string semillon = this.txt24papasSemillon.Text;
                 string semilla = this.txt24papasSemilla.Text;
@@ -297,6 +299,7 @@ namespace Project.Novaseed
                     Int32.Parse(id_regularidad), Int32.Parse(id_profundidad), Int32.Parse(id_calidad), Int32.Parse(id_verdes),
                     Int32.Parse(id_tizon_follaje), Int32.Parse(id_tizon_tuberculo), Int32.Parse(id_numero), Int32.Parse(id_ciudad),
                     Double.Parse(total_kg, CultureInfo.InvariantCulture), Double.Parse(tuberculos_planta, CultureInfo.InvariantCulture),
+                    Double.Parse(toneladas_hectarea, CultureInfo.InvariantCulture), Int32.Parse(porcentaje_relacion),
                     Int32.Parse(consumo), Int32.Parse(semillon), Int32.Parse(semilla), Int32.Parse(semillita), 
                     Int32.Parse(bajo_calibre), Int32.Parse(numero_tallos), Int32.Parse(id_sensibildiad_quimica), 
                     Int32.Parse(id_facilidad_muerte), Int32.Parse(dormancia), Int32.Parse(tolerancia_sequia), 

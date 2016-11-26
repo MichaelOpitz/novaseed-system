@@ -38,8 +38,8 @@ namespace Project.Novaseed
         private void PoblarGrilla()
         {
             CatalogCodificacion cc = new CatalogCodificacion();
-            gdvCodificacion.DataSource = cc.GetCodificacionPadres(valorAñoInt32);
-            gdvCodificacion.DataBind();
+            this.gdvCodificacion.DataSource = cc.GetCodificacionPadres(valorAñoInt32);
+            this.gdvCodificacion.DataBind();
         }
 
         protected void gdvCodificacion_SelectedIndexChanged(object sender, EventArgs e)

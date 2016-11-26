@@ -480,5 +480,13 @@ namespace Project.BusinessRules
             this.id_brote_tamano = id_brote_tamano;
             this.nombre_variedad_upov = nombre_variedad_upov;
         }
+
+        /*
+         * Constructor para la funcion que obtiene el menor año del total de informes upov
+         */ 
+        public UPOV(int año_upov)
+        {
+            this.ano_upov = año_upov;
+        }
     }
 }

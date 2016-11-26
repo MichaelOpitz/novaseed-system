@@ -38,7 +38,7 @@ namespace Project.BusinessRules
         {
             DataAccess.DataBase bd = new DataBase();
             bd.Connect(); //método conectar
-            string sql = "upovActualizar";
+            string sql = "upovActualizarAgregarVariedadMadrePadreProduccion";
             bd.CreateCommandSP(sql);
             bd.CreateParameter("@id_upov", DbType.Int32, u.Id_upov);
             bd.CreateParameter("@id_inflorescencia_tamano", DbType.Int32, u.Id_inflorescencia_tamano);
@@ -185,6 +185,30 @@ namespace Project.BusinessRules
 
             bd.Close();
             return estaGenerado;
+        }
+
+        /*
+         * Funcion que devuelve una lista de años comenzando del primer informe upov hasta el ultimo
+         */
+        public List<UPOV> GetAñoUPOVProduccion_fn()
+        {
+            DataAccess.DataBase bd = new DataBase();
+            bd.Connect(); //método conectar
+            List<UPOV> años = new List<UPOV>();
+            string salida = "select * from dbo.fn_añoUPOVProduccionObtener()";//comando sql
+            bd.CreateCommand(salida);
+
+            DbDataReader resultado = bd.Query();//disponible resultado
+
+            while (resultado.Read())
+            {
+                UPOV upov = new UPOV(resultado.GetInt32(0));
+                años.Add(upov);
+            }
+            resultado.Close();
+            bd.Close();
+
+            return años;
         }
 
         //----------------------------------------------CARACTERISTICAS UPOV--------------------------------------------      

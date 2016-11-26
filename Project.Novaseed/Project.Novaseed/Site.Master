@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%: Page.Title %> - Mi aplicación ASP.NET</title>
+    <title><%: Page.Title %></title>
 
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
@@ -54,13 +54,12 @@
                     <ul class="nav navbar-nav">
                         <li><a runat="server" href="~/Mejoramiento">Mejoramiento</a></li>
                         <li><a runat="server" href="~/MenuGeneracion">Año de Generación</a></li>
-                        <li><a runat="server" href="~/Contact">Produccion</a></li>
-                        <li><a runat="server" href="~/Contact">Licencia</a></li>
+                        <li><a runat="server" href="~/MenuProduccion">Produccion</a></li>
+                        <li><a runat="server" href="~/Licencia">Licencia</a></li>
                     </ul>
                     <asp:LoginView runat="server" ViewStateMode="Disabled">
                         <AnonymousTemplate>
-                            <ul class="nav navbar-nav navbar-right">
-                                <li><a runat="server" href="~/Account/Register">Registrarse</a></li>
+                            <ul class="nav navbar-nav navbar-right">                                
                                 <li><a runat="server" href="~/Login">Cerrar sesión</a></li>
                             </ul>
                         </AnonymousTemplate>

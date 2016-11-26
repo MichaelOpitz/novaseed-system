@@ -11,11 +11,11 @@
     <br />
     <div class="row" style="height:auto; text-align:center">
         <asp:button type="button" runat="server" class="btn btn-primary" id="btnMenuMejoramiento" style='width: 160px; height: 140px; border-color: #000000' Text="Mejoramiento" OnClick="btnMenuMejoramiento_Click" ></asp:button>        
-        <asp:button type="button" runat="server" class="btn btn-default" id="btnMenuGeneracion" style='width: 160px; height: 140px; border-color: #000000' Text="Año de Generacion" OnClick="btnMenuGeneracion_Click" ></asp:button>
+        <asp:button type="button" runat="server" class="btn btn-default" id="btnMenuGeneracion" style='width: 160px; height: 140px; border-color: #000000' Text="Año de Generación" OnClick="btnMenuGeneracion_Click" ></asp:button>
     </div>
     <div class="row" style="height:auto; text-align:center">
-        <asp:button type="button" runat="server" class="btn btn-default" id="btnMenuProduccion" style='width: 160px; height: 140px; border-color: #000000' Text="Produccion" ></asp:button>
-        <asp:button type="button" runat="server" class="btn btn-primary" id="btnMenuLicencia" style='width: 160px; height: 140px; border-color: #000000' Text="Licencias"></asp:button>
+        <asp:button type="button" runat="server" class="btn btn-default" id="btnMenuProduccion" style='width: 160px; height: 140px; border-color: #000000' Text="Producción" OnClick="btnMenuProduccion_Click" ></asp:button>
+        <asp:button type="button" runat="server" class="btn btn-primary" id="btnMenuLicencia" style='width: 160px; height: 140px; border-color: #000000' Text="Licencias" OnClick="btnMenuLicencia_Click"></asp:button>
     </div>
 
 </asp:Content>

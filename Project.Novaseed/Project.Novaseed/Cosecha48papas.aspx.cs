@@ -268,7 +268,7 @@ namespace Project.Novaseed
                 string id_ciudad = this.ddl48papasCiudadPlantacion.SelectedValue;
 
                 string total_kg = this.txt48papasTotalKg.Text.Replace(",", ".");
-                string tuberculos_planta = this.txt48papasTuberculosPlanta.Text.Replace(",", ".");
+                string tuberculos_planta = this.txt48papasTuberculosPlanta.Text.Replace(",", ".");                
                 string consumo = this.txt48papasConsumo.Text;
                 string semillon = this.txt48papasSemillon.Text;
                 string semilla = this.txt48papasSemilla.Text;

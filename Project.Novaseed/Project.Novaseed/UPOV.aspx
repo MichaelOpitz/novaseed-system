@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Informe UPOV" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"
+﻿<%@ Page Title="UPOV" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"
     CodeBehind="UPOV.aspx.cs" Inherits="Project.Novaseed.UPOV" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
@@ -479,7 +479,7 @@
         </div>
 
         <div class="row" style="text-align: center">
-            <asp:Button type="button" runat="server" Text="Guardar" ID="btnUPOVGuardar" class="btn btn-primary btn-md" Width="20%" BorderColor="#000000" OnClientClick="return confirm('¿Desea guardar los cambios?');" OnClick="btnUPOVGuardar_Click"></asp:Button>
+            <asp:Button type="button" runat="server" Text="Guardar" ID="btnUPOVGuardar" class="btn btn-primary btn-md" Width="20%" BorderColor="#000000" OnClientClick="return confirm('¿Desea guardar los cambios?\nSi lo hace, agregará o modificará la producción');" OnClick="btnUPOVGuardar_Click"></asp:Button>
             <asp:Button type="button" runat="server" Text="Cancelar" ID="btnUPOVCancelar" class="btn btn-danger btn-md" Width="20%" BorderColor="#000000" OnClientClick="return confirm('¿Desea cancelar los cambios?');" OnClick="UPOVCancelar_Click"></asp:Button>
         </div>
 
