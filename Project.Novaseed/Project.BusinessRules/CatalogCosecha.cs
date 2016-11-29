@@ -320,6 +320,28 @@ namespace Project.BusinessRules
             return actualizo;
         }
 
+        /*
+         * Elimina una variedad en temporada 24papas a través del id_cosecha
+         * Devuelve 1 si eliminó, 0 en caso contrario
+         */
+        public int DeleteCosecha24papas(int id_cosecha)
+        {
+            DataAccess.DataBase bd = new DataBase();
+            bd.Connect(); //método conectar
+            string sql = "cosecha24papasEliminar";
+            bd.CreateCommandSP(sql);
+            bd.CreateParameter("@id_cosecha", DbType.Int32, id_cosecha);
+
+            int elimino;
+            DbDataReader resultado = bd.Query();//disponible resultado
+            resultado.Read();
+            elimino = resultado.GetInt32(0);
+            resultado.Close();
+
+            bd.Close();
+            return elimino;
+        }
+
         //--------------------------------------------FIN 24PAPAS-----------------------------------------------------------
         //--------------------------------------------INICIO 48PAPAS--------------------------------------------------------
 
@@ -469,6 +491,28 @@ namespace Project.BusinessRules
             return cosecha48papas;
         }
 
+        /*
+         * Elimina una variedad en temporada 48papas a través del id_cosecha
+         * Devuelve 1 si eliminó, 0 en caso contrario
+         */
+        public int DeleteCosecha48papas(int id_cosecha)
+        {
+            DataAccess.DataBase bd = new DataBase();
+            bd.Connect(); //método conectar
+            string sql = "cosecha48papasEliminar";
+            bd.CreateCommandSP(sql);
+            bd.CreateParameter("@id_cosecha", DbType.Int32, id_cosecha);
+
+            int elimino;
+            DbDataReader resultado = bd.Query();//disponible resultado
+            resultado.Read();
+            elimino = resultado.GetInt32(0);
+            resultado.Close();
+
+            bd.Close();
+            return elimino;
+        }
+
         //--------------------------------------------FIN 48PAPAS-----------------------------------------------------------
         //--------------------------------------------INICIO METODOS COMUNES------------------------------------------------
         /*
@@ -587,6 +631,176 @@ namespace Project.BusinessRules
             resultado.Close();
             bd.Close();
             return atributo;
+        }
+
+        /*
+        * Actualizar el color de la carne de la variedad en cualquier temporada
+        */
+        public void UpdateCosechaColorCarne(int id_color_carne, int id_cosecha)
+        {
+            DataAccess.DataBase bd = new DataBase();
+            bd.Connect(); //método conectar
+            string sql = "cosechaColorCarneActualizar";
+            bd.CreateCommandSP(sql);
+            bd.CreateParameter("@id_color_carne", DbType.Int32, id_color_carne);
+            bd.CreateParameter("@id_cosecha", DbType.Int32, id_cosecha);
+            bd.Execute();
+            bd.Close();
+        }
+
+        /*
+        * Elimina el color de la carne de la variedad en cualquier temporada
+        */
+        public void DeleteCosechaColorCarne(int id_cosecha)
+        {
+            DataAccess.DataBase bd = new DataBase();
+            bd.Connect(); //método conectar
+            string sql = "cosechaColorCarneEliminar";
+            bd.CreateCommandSP(sql);
+            bd.CreateParameter("@id_cosecha", DbType.Int32, id_cosecha);
+            bd.Execute();
+            bd.Close();
+        }
+
+        /*
+         * Devuelve el id_color_carne de la cosecha seleccionada
+         */
+        public List<Cosecha> GetCosechaColorCarne(int id_cosecha)
+        {
+            DataAccess.DataBase bd = new DataBase();
+            bd.Connect(); //método conectar
+            List<Cosecha> colores = new List<Cosecha>();
+            string salida = "cosechaColorCarneObtener";//comando sql
+            bd.CreateCommandSP(salida);
+            bd.CreateParameter("@id_cosecha", DbType.Int32, id_cosecha);
+
+            DbDataReader resultado = bd.Query();//disponible resultado
+
+            while (resultado.Read())
+            {
+                Cosecha color = new Cosecha(resultado.GetInt32(0));
+                colores.Add(color);
+            }
+            resultado.Close();
+            bd.Close();
+
+            return colores;
+        }
+
+        /*
+        * Actualizar el color de la carne de la variedad en cualquier temporada
+        */
+        public void UpdateCosechaColorPiel(int id_color_piel, int id_cosecha)
+        {
+            DataAccess.DataBase bd = new DataBase();
+            bd.Connect(); //método conectar
+            string sql = "cosechaColorPielActualizar";
+            bd.CreateCommandSP(sql);
+            bd.CreateParameter("@id_color_piel", DbType.Int32, id_color_piel);
+            bd.CreateParameter("@id_cosecha", DbType.Int32, id_cosecha);
+            bd.Execute();
+            bd.Close();
+        }
+
+        /*
+        * Elimina el color de la piel de la variedad en cualquier temporada
+        */
+        public void DeleteCosechaColorPiel(int id_cosecha)
+        {
+            DataAccess.DataBase bd = new DataBase();
+            bd.Connect(); //método conectar
+            string sql = "cosechaColorPielEliminar";
+            bd.CreateCommandSP(sql);
+            bd.CreateParameter("@id_cosecha", DbType.Int32, id_cosecha);
+            bd.Execute();
+            bd.Close();
+        }
+
+        /*
+         * Devuelve el id_color_piel de la cosecha seleccionada
+         */
+        public List<Cosecha> GetCosechaColorPiel(int id_cosecha)
+        {
+            DataAccess.DataBase bd = new DataBase();
+            bd.Connect(); //método conectar
+            List<Cosecha> colores = new List<Cosecha>();
+            string salida = "cosechaColorPielObtener";//comando sql
+            bd.CreateCommandSP(salida);
+            bd.CreateParameter("@id_cosecha", DbType.Int32, id_cosecha);
+
+            DbDataReader resultado = bd.Query();//disponible resultado
+
+            while (resultado.Read())
+            {
+                Cosecha color = new Cosecha(resultado.GetInt32(0));
+                colores.Add(color);
+            }
+            resultado.Close();
+            bd.Close();
+
+            return colores;
+        }
+
+        /*
+         * Agrega enfermedades a la variedad, devuelve 0 si agrego correctamente, 1 en caso contrario
+         */
+        public int AddCosechaEnfermedades(string nombre_enfermedad, int id_cosecha, string nombre_resistencia_variedad)
+        {
+            DataAccess.DataBase bd = new DataBase();
+            bd.Connect(); //método conectar
+            string sql = "cosechaEnfermedadesAgregar";
+            bd.CreateCommandSP(sql);
+            bd.CreateParameter("@nombre_enfermedad", DbType.String, nombre_enfermedad);
+            bd.CreateParameter("@id_cosecha", DbType.Int32, id_cosecha);
+            bd.CreateParameter("@nombre_resistencia_variedad", DbType.String, nombre_resistencia_variedad);
+
+            int existe_enfermedad;
+            DbDataReader resultado = bd.Query();//disponible resultado
+            resultado.Read();
+            existe_enfermedad = resultado.GetInt32(0);
+            resultado.Close();
+
+            bd.Close();
+            return existe_enfermedad;
+        }
+
+        /*
+        * Elimina la enfermedad de la variedad en cualquier temporada
+        */
+        public void DeleteCosechaEnfermedades(int id_cosecha)
+        {
+            DataAccess.DataBase bd = new DataBase();
+            bd.Connect(); //método conectar
+            string sql = "cosechaEnfermedadesEliminar";
+            bd.CreateCommandSP(sql);
+            bd.CreateParameter("@id_cosecha", DbType.Int32, id_cosecha);
+            bd.Execute();
+            bd.Close();
+        }
+
+        /*
+         * Devuelve el nombre de la enfermedad y resistencia de la variedad en la cosecha seleccionada
+         */
+        public List<Cosecha> GetCosechaEnfermedades(int id_cosecha)
+        {
+            DataAccess.DataBase bd = new DataBase();
+            bd.Connect(); //método conectar
+            List<Cosecha> enfermedades = new List<Cosecha>();
+            string salida = "cosechaEnfermedadesObtener";//comando sql
+            bd.CreateCommandSP(salida);
+            bd.CreateParameter("@id_cosecha", DbType.Int32, id_cosecha);
+
+            DbDataReader resultado = bd.Query();//disponible resultado
+
+            while (resultado.Read())
+            {
+                Cosecha color = new Cosecha(resultado.GetString(0), resultado.GetString(1));
+                enfermedades.Add(color);
+            }
+            resultado.Close();
+            bd.Close();
+
+            return enfermedades;
         }
         //--------------------------------------------FIN METODOS COMUNES-------------------------------------------------------
     }

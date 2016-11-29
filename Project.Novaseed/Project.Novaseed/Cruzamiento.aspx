@@ -64,12 +64,12 @@
 
                         <ItemStyle HorizontalAlign="Center"></ItemStyle>
                     </asp:TemplateField>
-                    <asp:BoundField DataField="id_cruzamiento" HeaderText="ID" ReadOnly="true" />
-                    <asp:BoundField DataField="codigo_variedad" HeaderText="Madre" ReadOnly="true" HeaderStyle-Width="100px"/>
-                    <asp:BoundField DataField="nombre_madre" HeaderText="Nombre Madre" ReadOnly="true" />
-                    <asp:BoundField DataField="pad_codigo_variedad" HeaderText="Padre" ReadOnly="true" HeaderStyle-Width="100px"/>
-                    <asp:BoundField DataField="nombre_padre" HeaderText="Nombre Padre" ReadOnly="true" />
-                    <asp:BoundField DataField="ubicacion_cruzamiento" HeaderText="Ubicación Madre" />
+                    <asp:BoundField DataField="id_cruzamiento" HeaderText="ID" ReadOnly="true" HeaderStyle-Width="30px"/>
+                    <asp:BoundField DataField="codigo_variedad" HeaderText="Madre" ReadOnly="true" HeaderStyle-Width="110px"/>
+                    <asp:BoundField DataField="nombre_madre" HeaderText="Nombre Madre" ReadOnly="true" HeaderStyle-Width="120px"/>
+                    <asp:BoundField DataField="pad_codigo_variedad" HeaderText="Padre" ReadOnly="true" HeaderStyle-Width="110px"/>
+                    <asp:BoundField DataField="nombre_padre" HeaderText="Nombre Padre" ReadOnly="true" HeaderStyle-Width="120px"/>
+                    <asp:BoundField DataField="ubicacion_cruzamiento" HeaderText="Ubicación Madre" HeaderStyle-Width="90px" ControlStyle-Width="90px"/>
                     <asp:TemplateField ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="70px" HeaderText="Fertilidad">
                         <ItemTemplate>
                             <asp:DropDownList type="button" ID="ddlCruzamientoFertilidad" runat="server" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
@@ -80,7 +80,7 @@
                             <asp:CheckBox ID="chkCruzamientoFlor" runat="server" AutoPostBack="true" />
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:BoundField DataField="bayas" HeaderText="Bayas" />
+                    <asp:BoundField DataField="bayas" HeaderText="Bayas" HeaderStyle-Width="70px" ControlStyle-Width="70px"/>
                 </Columns>
             </asp:GridView>
         </div>

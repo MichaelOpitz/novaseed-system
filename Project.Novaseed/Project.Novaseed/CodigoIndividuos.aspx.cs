@@ -66,10 +66,18 @@ namespace Project.Novaseed
                 int indexCodificacionCosecha = cc.GetCodificacionEstaEnCosecha(codigo_variedad, pad_codigo_variedad,
                     valorAñoInt32, contCodificacionCosecha);
 
+                //Ecuentra el CheckBox en la fila
+                CheckBox chkAgregar6Papas = (e.Row.FindControl("chkAgregar6Papas") as CheckBox);
                 if (indexCodificacionCosecha == 1)
+                {
                     e.Row.BackColor = Color.LightGreen;
+                    chkAgregar6Papas.Enabled = false;
+                }
                 else
+                {
                     e.Row.BackColor = Color.FromArgb(255, 204, 203);
+                    chkAgregar6Papas.Enabled = true;
+                }
                 contCodificacionCosecha = contCodificacionCosecha + 1;
             }
         }

@@ -87,10 +87,18 @@ namespace Project.Novaseed
             {
                 int indexCruzamientoVasos = cc.GetCruzamientoEstaEnVasos(valorAñoInt32, contCruzamientoVasos);
 
+                //Ecuentra el CheckBox en la fila
+                CheckBox chkVasosAgregar = (e.Row.FindControl("chkVasosAgregar") as CheckBox);
                 if (indexCruzamientoVasos == 1)
+                {
                     e.Row.BackColor = Color.LightGreen;
+                    chkVasosAgregar.Enabled = false;
+                }
                 else
+                {
                     e.Row.BackColor = Color.FromArgb(255, 204, 203);
+                    chkVasosAgregar.Enabled = true;
+                }
                 contCruzamientoVasos = contCruzamientoVasos + 1;
             }
         }

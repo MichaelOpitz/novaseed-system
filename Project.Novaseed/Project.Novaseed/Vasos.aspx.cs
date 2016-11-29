@@ -73,10 +73,18 @@ namespace Project.Novaseed
             {
                 int indexVasosClones = cv.GetVasosEstaEnClones(valorAñoInt32, contVasosClones);
 
+                //Ecuentra el CheckBox en la fila
+                CheckBox chkClonesAgregar = (e.Row.FindControl("chkClonesAgregar") as CheckBox);
                 if (indexVasosClones == 1)
+                {
                     e.Row.BackColor = Color.LightGreen;
+                    chkClonesAgregar.Enabled = false;
+                }
                 else
+                {
                     e.Row.BackColor = Color.FromArgb(255, 204, 203);
+                    chkClonesAgregar.Enabled = true;
+                }
                 contVasosClones = contVasosClones + 1;
             }
         }

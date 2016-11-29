@@ -21,6 +21,41 @@ namespace Project.BusinessRules
         private int id_urgencia, id_sensibilidad_quimica, id_facilidad_muerte, dormancia, tolerancia_sequia, tolerancia_calor,
             tolerancia_sal, daño_cosecha, tizon_hoja, putrefaccion_suave, putrefaccion_rosa, silver_scurf, blackleg;
         private double hematomas;
+        //Atributo común de tabla ColorCarne y ColorPiel
+        private int id_color;
+        //Atributo tabla enfermedades
+        private int id_enfermedades, id_resistencia_variedad;
+        private string nombre_enfermedad, resistencia_variedad;
+
+        public string Resistencia_variedad
+        {
+            get { return resistencia_variedad; }
+            set { resistencia_variedad = value; }
+        }        
+
+        public string Nombre_enfermedad
+        {
+            get { return nombre_enfermedad; }
+            set { nombre_enfermedad = value; }
+        }
+
+        public int Id_resistencia_variedad
+        {
+            get { return id_resistencia_variedad; }
+            set { id_resistencia_variedad = value; }
+        }
+
+        public int Id_enfermedades
+        {
+            get { return id_enfermedades; }
+            set { id_enfermedades = value; }
+        }
+
+        public int Id_color
+        {
+            get { return id_color; }
+            set { id_color = value; }
+        }
 
         public string Nombre_ciudad
         {
@@ -528,5 +563,22 @@ namespace Project.BusinessRules
             this.porcentaje_relacion_standard = porcentaje_relacion_standard;
             this.toneladas_hectarea = toneladas_hectarea;
         }
+
+        /*
+         * Constructor para obtener el id de color carne y color piel
+         */
+        public Cosecha(int id_color)
+        {
+            this.id_color = id_color;
+        }
+
+        /*
+         * Constructor para obtener las enfermedades y resistencias
+         */
+        public Cosecha(string nombre_enfermedad, string resistencia_variedad)
+        {
+            this.nombre_enfermedad = nombre_enfermedad;
+            this.resistencia_variedad = resistencia_variedad;
+        } 
     }
 }

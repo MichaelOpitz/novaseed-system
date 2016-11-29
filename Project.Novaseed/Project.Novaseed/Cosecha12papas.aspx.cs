@@ -201,11 +201,18 @@ namespace Project.Novaseed
             {
                 //el tercer parametro es 3 por el id_temporada que es 24 papas(3 para el color, 2 para el obtener en catalog)
                 int index6papas12papas = cc.GetCosechaTemporadasAvanzadas(valorAñoInt32, cont12papas24papas, 3);
-
+                //Ecuentra el CheckBox en la fila
+                CheckBox chkAgregar24Papas = (e.Row.FindControl("chkAgregar24Papas") as CheckBox);
                 if (index6papas12papas == 1)
+                {
                     e.Row.BackColor = Color.LightGreen;
+                    chkAgregar24Papas.Enabled = false;
+                }
                 else
+                {
                     e.Row.BackColor = Color.FromArgb(255, 204, 203);
+                    chkAgregar24Papas.Enabled = true;
+                }
                 cont12papas24papas = cont12papas24papas + 1;
             }
         }
@@ -238,6 +245,7 @@ namespace Project.Novaseed
                 int selected = this.gdv12papas.SelectedIndex;
 
                 string id_cosecha = HttpUtility.HtmlDecode((string)this.gdv12papas.Rows[selected].Cells[2].Text);
+                int id_cosechaEntero = Int32.Parse(id_cosecha);
                 string cantidad_papas = this.txt12papasCantidadPapas.Text;
                 string posicion_cosecha = this.txt12papasPosicion.Text.Replace(",", ".");
                 bool flor_cosecha = false;
@@ -297,7 +305,7 @@ namespace Project.Novaseed
                 string blackleg = this.txt12papasBlackleg.Text;
 
                 CatalogCosecha cc = new CatalogCosecha();
-                Cosecha cosecha = new Cosecha(Int32.Parse(id_cosecha), Int32.Parse(cantidad_papas), Double.Parse(posicion_cosecha, CultureInfo.InvariantCulture),
+                Cosecha cosecha = new Cosecha(id_cosechaEntero, Int32.Parse(cantidad_papas), Double.Parse(posicion_cosecha, CultureInfo.InvariantCulture),
                     flor_cosecha, bayas_cosecha, Int32.Parse(id_fertilidad), Int32.Parse(id_emergencia40), Int32.Parse(id_metribuzina),
                     Int32.Parse(id_emergencia), Int32.Parse(id_madurez), Int32.Parse(id_desarrollo), Int32.Parse(id_tipo_hoja),
                     Int32.Parse(id_brotacion), Int32.Parse(id_tamaño), Int32.Parse(id_distribucion), Int32.Parse(id_forma),
@@ -311,6 +319,32 @@ namespace Project.Novaseed
                     Int32.Parse(tolerancia_calor), Int32.Parse(tolerancia_sal), Int32.Parse(daño_cosecha),
                     Int32.Parse(tizon_hoja), Int32.Parse(putrefaccion_suave), Int32.Parse(putrefaccion_rosa),
                     Int32.Parse(silver_scurf), Int32.Parse(blackleg));
+
+                cc.DeleteCosechaColorCarne(id_cosechaEntero);
+                List<int> selectedCarne = this.lst12papasColorCarne.GetSelectedIndices().ToList();
+                for (int i = 0; i < selectedCarne.Count; i++)
+                {
+                    string id_color_carne = this.lst12papasColorCarne.Items[selectedCarne[i]].Value;
+                    cc.UpdateCosechaColorCarne(Int32.Parse(id_color_carne), id_cosechaEntero);
+                }
+
+                cc.DeleteCosechaColorPiel(id_cosechaEntero);
+                List<int> selectedPiel = this.lst12papasColorPiel.GetSelectedIndices().ToList();
+                for (int i = 0; i < selectedPiel.Count; i++)
+                {
+                    string id_color_piel = this.lst12papasColorPiel.Items[selectedPiel[i]].Value;
+                    cc.UpdateCosechaColorPiel(Int32.Parse(id_color_piel), id_cosechaEntero);
+                }
+
+                cc.DeleteCosechaEnfermedades(id_cosechaEntero);
+                foreach (GridViewRow row in gdv12papasEnfermedades.Rows)
+                {
+                    string nombre_enfermedad = HttpUtility.HtmlDecode((string)this.gdv12papasEnfermedades.Rows[row.RowIndex].Cells[0].Text);                    
+                    string resistencia_variedad = HttpUtility.HtmlDecode((string)this.gdv12papasEnfermedades.Rows[row.RowIndex].Cells[1].Text);
+                    int valorEnfermedad = cc.AddCosechaEnfermedades(nombre_enfermedad, id_cosechaEntero, resistencia_variedad);
+                    if(valorEnfermedad == 0)
+                        Page.ClientScript.RegisterStartupScript(GetType(), "Script", "<script>alert('¡Error al ingresar enfermedad!')</script>");
+                }
 
                 int valor = cc.UpdateCosecha12papas(cosecha);
                 if (valor == 0)
@@ -428,12 +462,20 @@ namespace Project.Novaseed
             this.ddl12papasCiudadPlantacion.SelectedValue = ciudad.ToString();
 
             //Color Carne
-            int carne = cc.GetCosechaValoresEnteros(id_cosecha, 22);
-            this.lst12papasColorCarne.SelectedValue = carne.ToString();
+            this.lst12papasColorCarne.SelectedIndex = -1;
+            List<Project.BusinessRules.Cosecha> colorCarne = cc.GetCosechaColorCarne(id_cosecha);
+            foreach (ListItem item in this.lst12papasColorCarne.Items)
+                for (int i = 0; i < colorCarne.Count; i++)
+                    if (item.Value == colorCarne[i].Id_color.ToString())
+                        item.Selected = true;
 
             //Color Piel
-            int piel = cc.GetCosechaValoresEnteros(id_cosecha, 23);
-            this.lst12papasColorPiel.SelectedValue = piel.ToString();
+            this.lst12papasColorPiel.SelectedIndex = -1;
+            List<Project.BusinessRules.Cosecha> colorPiel = cc.GetCosechaColorPiel(id_cosecha);
+            foreach (ListItem item in this.lst12papasColorPiel.Items)
+                for (int i = 0; i < colorPiel.Count; i++)
+                    if (item.Value == colorPiel[i].Id_color.ToString())
+                        item.Selected = true;
 
             //Total Kilogramos
             double total_kg = cc.GetCosechaValoresDouble(id_cosecha, 24);
@@ -526,6 +568,10 @@ namespace Project.Novaseed
             //Blackleg
             int blackleg = cc.GetCosechaValoresEnteros(id_cosecha, 46);
             this.txt12papasBlackleg.Text = blackleg.ToString();
+            
+            //Enfermedades y resistencia en el gridview
+            this.gdv12papasEnfermedades.DataSource = cc.GetCosechaEnfermedades(id_cosecha);
+            this.gdv12papasEnfermedades.DataBind();
         }        
 
         protected void btn12papasAgregarEnfermedad_Click(object sender, EventArgs e)
@@ -552,6 +598,7 @@ namespace Project.Novaseed
                     listEnfermedad.Add(this.ddl12papasEnfermedad.SelectedItem.ToString());
                     listResistencia.Add(this.ddl12papasResistencia.SelectedItem.ToString());
 
+                    //Agrega las enfermedades con sus resistencias al dataset para luego dejarlo en el gridview
                     for (int i = 0; i < listEnfermedad.Count && i < listResistencia.Count; i++)
                     {
                         table.Rows.Add(listEnfermedad[i], listResistencia[i]);
@@ -580,6 +627,7 @@ namespace Project.Novaseed
 
                 for (int i = 0; i < listEnfermedad.Count && i < listResistencia.Count; i++)
                 {
+                    //saca la enfermedad seleccionada
                     if (i != e.RowIndex)
                         table.Rows.Add(listEnfermedad[i], listResistencia[i]);
                 }

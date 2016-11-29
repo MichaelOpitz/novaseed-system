@@ -46,13 +46,13 @@
                 </EmptyDataTemplate>
 
                 <Columns>
-                    <asp:TemplateField ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="70px" HeaderText="Agregar">
+                    <asp:TemplateField ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="60px" HeaderText="Agregar">
                         <ItemTemplate>
                             <asp:CheckBox ID="chkClonesAgregar" runat="server" AutoPostBack="true" />
                         </ItemTemplate>
                     </asp:TemplateField>
                     <%--botones de acción sobre los registros...--%>
-                    <asp:TemplateField ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="200px">
+                    <asp:TemplateField ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="150px">
                         <ItemTemplate>
                             <%--Botones de eliminar y editar cliente...--%>
                             <asp:Button ID="btnDelete" runat="server" Text="Quitar" CssClass="btn btn-danger" CommandName="Delete" OnClientClick="return confirm('¿Eliminar vaso?\nSi lo hace eliminará todos los registros de etapas avanzadas');" />
@@ -64,26 +64,26 @@
                             <asp:Button ID="btnCancel" runat="server" Text="Cancelar" CssClass="btn btn-default" CommandName="Cancel" />
                         </EditItemTemplate>
 
-                        <HeaderStyle Width="200px"></HeaderStyle>
+                        <HeaderStyle Width="150px"></HeaderStyle>
 
                         <ItemStyle HorizontalAlign="Center"></ItemStyle>
                     </asp:TemplateField>
-                    <asp:BoundField DataField="id_vasos" HeaderText="ID" ReadOnly="true" />
-                    <asp:BoundField DataField="codigo_variedad" HeaderText="Madre" ReadOnly="true" HeaderStyle-Width="100px"/>
-                    <asp:BoundField DataField="nombre_madre" HeaderText="Nombre Madre" ReadOnly="true" />
-                    <asp:BoundField DataField="pad_codigo_variedad" HeaderText="Padre" ReadOnly="true" HeaderStyle-Width="100px"/>
-                    <asp:BoundField DataField="nombre_padre" HeaderText="Nombre Padre" ReadOnly="true" />
-                    <asp:BoundField DataField="ubicacion_vasos" HeaderText="Ubicación" ControlStyle-Width="100%"/>
-                    <asp:BoundField DataField="cantidad_vasos" HeaderText="Cantidad Vasos" />
-                    <asp:TemplateField ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="70px" HeaderText="Fertilidad">
+                    <asp:BoundField DataField="id_vasos" HeaderText="ID" ReadOnly="true" HeaderStyle-Width="30px"/>
+                    <asp:BoundField DataField="codigo_variedad" HeaderText="Madre" ReadOnly="true" HeaderStyle-Width="110px"/>
+                    <asp:BoundField DataField="nombre_madre" HeaderText="Nombre Madre" ReadOnly="true" HeaderStyle-Width="100px"/>
+                    <asp:BoundField DataField="pad_codigo_variedad" HeaderText="Padre" ReadOnly="true" HeaderStyle-Width="110px"/>
+                    <asp:BoundField DataField="nombre_padre" HeaderText="Nombre Padre" ReadOnly="true" HeaderStyle-Width="100px"/>
+                    <asp:BoundField DataField="ubicacion_vasos" HeaderText="Ubicación" HeaderStyle-Width="50px" ControlStyle-Width="50px"/>
+                    <asp:BoundField DataField="cantidad_vasos" HeaderText="Cantidad Vasos" HeaderStyle-Width="50px" ControlStyle-Width="50px"/>
+                    <asp:TemplateField ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="50px" HeaderText="Fertilidad">
                         <ItemTemplate>
                             <asp:DropDownList type="button" ID="ddlVasosFertilidad" runat="server" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:BoundField DataField="azul_vasos" HeaderText="Azules" />
-                    <asp:BoundField DataField="roja_vasos" HeaderText="Rojas" />
-                    <asp:BoundField DataField="amarilla_vasos" HeaderText="Amarillas" />
-                    <asp:BoundField DataField="bicolor_vasos" HeaderText="Bicolor" />
+                    <asp:BoundField DataField="azul_vasos" HeaderText="Azules" HeaderStyle-Width="50px" ControlStyle-Width="50px"/>
+                    <asp:BoundField DataField="roja_vasos" HeaderText="Rojas" HeaderStyle-Width="50px" ControlStyle-Width="50px"/>
+                    <asp:BoundField DataField="amarilla_vasos" HeaderText="Amarillas" HeaderStyle-Width="50px" ControlStyle-Width="50px"/>
+                    <asp:BoundField DataField="bicolor_vasos" HeaderText="Bicolor" HeaderStyle-Width="50px" ControlStyle-Width="50px"/>
                 </Columns>
             </asp:GridView>
         </div>

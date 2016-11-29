@@ -201,24 +201,31 @@ namespace Project.Novaseed
             {
                 //devuelve 1 y lo pinta de verde si esta en upov, 0 y rojo en caso contrario
                 int index48papasUPOV = cc.GetCosechaEstaEnUPOV(valorAñoInt32, cont48papasUPOV);
-
+                //Ecuentra el CheckBox en la fila
+                CheckBox chkAgregarUPOV = (e.Row.FindControl("chkAgregarUPOV") as CheckBox);
                 if (index48papasUPOV == 1)
+                {
                     e.Row.BackColor = Color.LightGreen;
+                    chkAgregarUPOV.Enabled = false;
+                }
                 else
+                {
                     e.Row.BackColor = Color.FromArgb(255, 204, 203);
+                    chkAgregarUPOV.Enabled = true;
+                }
                 cont48papasUPOV = cont48papasUPOV + 1;
             }
         }
 
         protected void Cosecha48papasGridView_RowDeleting(Object sender, GridViewDeleteEventArgs e)
         {
-            //CatalogCosecha cc = new CatalogCosecha();
-            //string id_cosecha = HttpUtility.HtmlDecode((string)this.gdv24papas.Rows[e.RowIndex].Cells[2].Text);
-            //int valor = cc.DeleteCosecha24papas(Int32.Parse(id_cosecha));
-            //if (valor == 0)
-            //    Page.ClientScript.RegisterStartupScript(GetType(), "Script", "<script>alert('Error!\n¡No se pudo eliminar la variedad!')</script>");
+            CatalogCosecha cc = new CatalogCosecha();
+            string id_cosecha = HttpUtility.HtmlDecode((string)this.gdv48papas.Rows[e.RowIndex].Cells[2].Text);
+            int valor = cc.DeleteCosecha48papas(Int32.Parse(id_cosecha));
+            if (valor == 0)
+                Page.ClientScript.RegisterStartupScript(GetType(), "Script", "<script>alert('Error!\n¡No se pudo eliminar la variedad!')</script>");
 
-            //PoblarGrilla();
+            PoblarGrilla();
         }
 
         protected void btn48papasCancelar_Click(object sender, EventArgs e)
@@ -233,6 +240,7 @@ namespace Project.Novaseed
                 int selected = this.gdv48papas.SelectedIndex;
 
                 string id_cosecha = HttpUtility.HtmlDecode((string)this.gdv48papas.Rows[selected].Cells[2].Text);
+                int id_cosechaEntero = Int32.Parse(id_cosecha);
                 string cantidad_papas = this.txt48papasCantidadPapas.Text;
                 string posicion_cosecha = this.txt48papasPosicion.Text.Replace(",", ".");
                 bool flor_cosecha = false;
@@ -290,7 +298,7 @@ namespace Project.Novaseed
                 string blackleg = this.txt48papasBlackleg.Text;
 
                 CatalogCosecha cc = new CatalogCosecha();
-                Cosecha cosecha = new Cosecha(Int32.Parse(id_cosecha), Int32.Parse(cantidad_papas), Double.Parse(posicion_cosecha, CultureInfo.InvariantCulture),
+                Cosecha cosecha = new Cosecha(id_cosechaEntero, Int32.Parse(cantidad_papas), Double.Parse(posicion_cosecha, CultureInfo.InvariantCulture),
                     flor_cosecha, bayas_cosecha, Int32.Parse(id_fertilidad), Int32.Parse(id_emergencia40), Int32.Parse(id_metribuzina),
                     Int32.Parse(id_emergencia), Int32.Parse(id_madurez), Int32.Parse(id_desarrollo), Int32.Parse(id_tipo_hoja),
                     Int32.Parse(id_brotacion), Int32.Parse(id_tamaño), Int32.Parse(id_distribucion), Int32.Parse(id_forma),
@@ -303,6 +311,32 @@ namespace Project.Novaseed
                     Int32.Parse(tolerancia_calor), Int32.Parse(tolerancia_sal), Int32.Parse(daño_cosecha),
                     Int32.Parse(tizon_hoja), Int32.Parse(putrefaccion_suave), Int32.Parse(putrefaccion_rosa),
                     Int32.Parse(silver_scurf), Int32.Parse(blackleg));
+
+                cc.DeleteCosechaColorCarne(id_cosechaEntero);
+                List<int> selectedCarne = this.lst48papasColorCarne.GetSelectedIndices().ToList();
+                for (int i = 0; i < selectedCarne.Count; i++)
+                {
+                    string id_color_carne = this.lst48papasColorCarne.Items[selectedCarne[i]].Value;
+                    cc.UpdateCosechaColorCarne(Int32.Parse(id_color_carne), id_cosechaEntero);
+                }
+
+                cc.DeleteCosechaColorPiel(id_cosechaEntero);
+                List<int> selectedPiel = this.lst48papasColorPiel.GetSelectedIndices().ToList();
+                for (int i = 0; i < selectedPiel.Count; i++)
+                {
+                    string id_color_piel = this.lst48papasColorPiel.Items[selectedPiel[i]].Value;
+                    cc.UpdateCosechaColorPiel(Int32.Parse(id_color_piel), id_cosechaEntero);
+                }
+
+                cc.DeleteCosechaEnfermedades(id_cosechaEntero);
+                foreach (GridViewRow row in gdv48papasEnfermedades.Rows)
+                {
+                    string nombre_enfermedad = HttpUtility.HtmlDecode((string)this.gdv48papasEnfermedades.Rows[row.RowIndex].Cells[0].Text);
+                    string resistencia_variedad = HttpUtility.HtmlDecode((string)this.gdv48papasEnfermedades.Rows[row.RowIndex].Cells[1].Text);
+                    int valorEnfermedad = cc.AddCosechaEnfermedades(nombre_enfermedad, id_cosechaEntero, resistencia_variedad);
+                    if (valorEnfermedad == 0)
+                        Page.ClientScript.RegisterStartupScript(GetType(), "Script", "<script>alert('¡Error al ingresar enfermedad!')</script>");
+                }
 
                 int valor = cc.UpdateCosecha48papas(cosecha);
                 if (valor == 0)
@@ -420,12 +454,20 @@ namespace Project.Novaseed
             this.ddl48papasCiudadPlantacion.SelectedValue = ciudad.ToString();
 
             //Color Carne
-            int carne = cc.GetCosechaValoresEnteros(id_cosecha, 22);
-            this.lst48papasColorCarne.SelectedValue = carne.ToString();
+            this.lst48papasColorCarne.SelectedIndex = -1;
+            List<Project.BusinessRules.Cosecha> colorCarne = cc.GetCosechaColorCarne(id_cosecha);
+            foreach (ListItem item in this.lst48papasColorCarne.Items)
+                for (int i = 0; i < colorCarne.Count; i++)
+                    if (item.Value == colorCarne[i].Id_color.ToString())
+                        item.Selected = true;
 
             //Color Piel
-            int piel = cc.GetCosechaValoresEnteros(id_cosecha, 23);
-            this.lst48papasColorPiel.SelectedValue = piel.ToString();
+            this.lst48papasColorPiel.SelectedIndex = -1;
+            List<Project.BusinessRules.Cosecha> colorPiel = cc.GetCosechaColorPiel(id_cosecha);
+            foreach (ListItem item in this.lst48papasColorPiel.Items)
+                for (int i = 0; i < colorPiel.Count; i++)
+                    if (item.Value == colorPiel[i].Id_color.ToString())
+                        item.Selected = true;
 
             //Total Kilogramos
             double total_kg = cc.GetCosechaValoresDouble(id_cosecha, 24);
@@ -511,10 +553,15 @@ namespace Project.Novaseed
             int blackleg = cc.GetCosechaValoresEnteros(id_cosecha, 46);
             this.txt48papasBlackleg.Text = blackleg.ToString();
 
+            //Gridview Rendimiento para el ranking de variedades
             List<Cosecha> tablaRendimiento = new List<Cosecha>();
             tablaRendimiento = cc.GetTablaRendimiento48papas(id_cosecha);
             this.gdv48papasRendimiento.DataSource = tablaRendimiento;
             this.gdv48papasRendimiento.DataBind();
+
+            //Enfermedades y resistencia en el gridview
+            this.gdv48papasEnfermedades.DataSource = cc.GetCosechaEnfermedades(id_cosecha);
+            this.gdv48papasEnfermedades.DataBind();
         }
 
         protected void btn48papasAgregarEnfermedad_Click(object sender, EventArgs e)

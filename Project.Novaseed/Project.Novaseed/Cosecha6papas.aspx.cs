@@ -186,11 +186,18 @@ namespace Project.Novaseed
             {
                 //el tercer parametro es 2 por el id_temporada que es 12 papas(2 para el color, 1 para el obtener en catalog)
                 int index6papas12papas = cc.GetCosechaTemporadasAvanzadas(valorAñoInt32, cont6papas12papas, 2);
-
+                //Ecuentra el CheckBox en la fila
+                CheckBox chkAgregar12Papas = (e.Row.FindControl("chkAgregar12Papas") as CheckBox);
                 if (index6papas12papas == 1)
+                {
                     e.Row.BackColor = Color.LightGreen;
+                    chkAgregar12Papas.Enabled = false;
+                }
                 else
+                {
                     e.Row.BackColor = Color.FromArgb(255, 204, 203);
+                    chkAgregar12Papas.Enabled = true;
+                }
                 cont6papas12papas = cont6papas12papas + 1;
             }
         }
@@ -311,12 +318,20 @@ namespace Project.Novaseed
             this.ddl6papasCiudadPlantacion.SelectedValue = ciudad.ToString();
 
             //Color Carne
-            int carne = cc.GetCosechaValoresEnteros(id_cosecha, 22);
-            this.lst6papasColorCarne.SelectedValue = carne.ToString();
+            this.lst6papasColorCarne.SelectedIndex = -1;
+            List<Project.BusinessRules.Cosecha> colorCarne = cc.GetCosechaColorCarne(id_cosecha);
+            foreach (ListItem item in this.lst6papasColorCarne.Items)
+                for (int i = 0; i < colorCarne.Count; i++)
+                    if (item.Value == colorCarne[i].Id_color.ToString())
+                        item.Selected = true;
 
             //Color Piel
-            int piel = cc.GetCosechaValoresEnteros(id_cosecha, 23);
-            this.lst6papasColorPiel.SelectedValue = piel.ToString();
+            this.lst6papasColorPiel.SelectedIndex = -1;
+            List<Project.BusinessRules.Cosecha> colorPiel = cc.GetCosechaColorPiel(id_cosecha);
+            foreach (ListItem item in this.lst6papasColorPiel.Items)
+                for (int i = 0; i < colorPiel.Count; i++)
+                    if (item.Value == colorPiel[i].Id_color.ToString())
+                        item.Selected = true;
 
             //Total Kilogramos
             double total_kg = cc.GetCosechaValoresDouble(id_cosecha, 24);
@@ -492,6 +507,22 @@ namespace Project.Novaseed
                     Int32.Parse(tolerancia_calor), Int32.Parse(tolerancia_sal), Int32.Parse(daño_cosecha),
                     Int32.Parse(tizon_hoja), Int32.Parse(putrefaccion_suave), Int32.Parse(putrefaccion_rosa),
                     Int32.Parse(silver_scurf), Int32.Parse(blackleg));
+
+                cc.DeleteCosechaColorCarne(Int32.Parse(id_cosecha));
+                List<int> selectedCarne = this.lst6papasColorCarne.GetSelectedIndices().ToList();
+                for (int i = 0; i < selectedCarne.Count; i++)
+                {
+                    string id_color_carne = this.lst6papasColorCarne.Items[selectedCarne[i]].Value;
+                    cc.UpdateCosechaColorCarne(Int32.Parse(id_color_carne), Int32.Parse(id_cosecha));
+                }
+
+                cc.DeleteCosechaColorPiel(Int32.Parse(id_cosecha));
+                List<int> selectedPiel = this.lst6papasColorPiel.GetSelectedIndices().ToList();
+                for (int i = 0; i < selectedPiel.Count; i++)
+                {
+                    string id_color_piel = this.lst6papasColorPiel.Items[selectedPiel[i]].Value;
+                    cc.UpdateCosechaColorPiel(Int32.Parse(id_color_piel), Int32.Parse(id_cosecha));
+                }
 
                 int valor = cc.UpdateCosecha6papas(cosecha);
                 if (valor == 0)

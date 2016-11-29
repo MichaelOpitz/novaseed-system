@@ -310,7 +310,7 @@
                                 <asp:TemplateField ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="100px">
                                     <ItemTemplate>
                                         <%--Botones de eliminar y editar cliente...--%>
-                                        <asp:Button ID="btnDeleteEnfermedad" runat="server" Text="Quitar" CssClass="btn btn-danger" CommandName="Delete" OnClientClick="return confirm('¿Deseas eliminar la enfermedad?');" />
+                                        <asp:Button ID="btnDeleteEnfermedad" runat="server" Text="Quitar" CssClass="btn btn-danger" CommandName="Delete" OnClientClick="return confirm('¿Deseas eliminar la enfermedad?\nNo olvide guardar los cambios');" />
                                     </ItemTemplate>
                                     <HeaderStyle Width="100px"></HeaderStyle>
                                     <ItemStyle HorizontalAlign="Center"></ItemStyle>
