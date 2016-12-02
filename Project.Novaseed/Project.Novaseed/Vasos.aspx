@@ -23,6 +23,9 @@
         </div>
         <br />
         <div class="row">
+            <h5><asp:Label id="lblVasosError" runat="server" Font-Bold="true" Text="" ForeColor="Red"/></h5>
+        </div>
+        <div class="row">
             <asp:Button type="button" runat="server" id="btnAgregarClones" class="btn btn-primary btn-block" Style="border-color: #000000" Text="Agregar a Clones" OnClick="btnAgregarClones_Click" OnClientClick="return confirm('Agregará a Clones\n¿Está seguro?');"></asp:Button>
         </div>
         <div class="row">

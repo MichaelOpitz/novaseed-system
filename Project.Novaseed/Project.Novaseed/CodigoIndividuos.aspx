@@ -19,7 +19,10 @@
                 <span class="help-block">Año de la codificación</span>
             </div>
         </div>        
-        <hr />        
+        <hr />   
+        <div class="row">
+            <h5><asp:Label id="lblCodificacionError" runat="server" Font-Bold="true" Text="" ForeColor="Red"/></h5>
+        </div>     
         <div class="row">
             <asp:Button type="button" runat="server" ID="btnAgregar6papas" class="btn btn-primary btn-block" Style="border-color: #000000" Text="Agregar a 6 Papas" OnClick="btnAgregar6papas_Click" OnClientClick="return confirm('¿Desea crear la temporada 6 papas para esta codificación?');"></asp:Button>
         </div>

@@ -175,15 +175,16 @@ namespace Project.BusinessRules
         }
 
         /*         
-         * Constructor que filtra por productor, ciudad y/o categoria
+         * Constructor que filtra por productor, ciudad y/o categoria         
          */
-        public Produccion(string nombre_productor, string nombre_ciudad, string codigo_variedad, string nombre_categoria_produccion,
-            double prod_cantidad_total, double cantidad_productor, double superficie_produccion,
+        public Produccion(string nombre_productor, string nombre_ciudad, string codigo_variedad, string nombre_variedad,
+            string nombre_categoria_produccion, double prod_cantidad_total, double cantidad_productor, double superficie_produccion,
             double cosecha_produccion, bool licencia_produccion)
         {
             this.nombre_productor = nombre_productor;
             this.nombre_ciudad = nombre_ciudad;
             this.codigo_variedad = codigo_variedad;
+            this.nombre_variedad = nombre_variedad;
             this.nombre_categoria_produccion = nombre_categoria_produccion;
             this.prod_cantidad_total = prod_cantidad_total;
             this.cantidad_productor = cantidad_productor;
@@ -203,13 +204,14 @@ namespace Project.BusinessRules
         /*         
          * Constructor obtiene las licencias activas
          */
-        public Produccion(string nombre_productor, string nombre_ciudad, string codigo_variedad, string nombre_categoria_produccion,
-            double prod_cantidad_total, double cantidad_productor, double superficie_produccion,
+        public Produccion(string nombre_productor, string nombre_ciudad, string codigo_variedad, string nombre_variedad,
+            string nombre_categoria_produccion, double prod_cantidad_total, double cantidad_productor, double superficie_produccion,
             double cosecha_produccion)
         {
             this.nombre_productor = nombre_productor;
             this.nombre_ciudad = nombre_ciudad;
             this.codigo_variedad = codigo_variedad;
+            this.nombre_variedad = nombre_variedad;
             this.nombre_categoria_produccion = nombre_categoria_produccion;
             this.prod_cantidad_total = prod_cantidad_total;
             this.cantidad_productor = cantidad_productor;

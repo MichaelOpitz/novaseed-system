@@ -19,6 +19,9 @@
         </div>
         <br />
         <div class="row">
+            <h5><asp:Label id="lblCruzamientoError" runat="server" Font-Bold="true" Text="" ForeColor="Red"/></h5>
+        </div>
+        <div class="row">
             <asp:Button type="button" runat="server" ID="btnAgregarVasos" class="btn btn-primary btn-block" Style="border-color: #000000" Text="Agregar a Vasos" OnClick="btnAgregarVasos_Click" OnClientClick="return confirm('Agregará a Vasos\n¿Está seguro?');"></asp:Button>
         </div>
         <div class="row">

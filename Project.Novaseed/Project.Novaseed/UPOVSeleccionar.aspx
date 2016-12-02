@@ -31,11 +31,11 @@
                     <asp:BoundField DataField="codigo_individuo" HeaderText="Código" ReadOnly="true" />
                     <asp:BoundField DataField="nombre_upov" HeaderText="Nombre UPOV" ReadOnly="true" />
                     <asp:BoundField DataField="nombre_ciudad" HeaderText="Ciudad" ReadOnly="true" />
-                    <asp:BoundField DataField="codigo_variedad" HeaderText="Madre" ReadOnly="true"/>
+                    <asp:BoundField DataField="codigo_variedad" HeaderText="Madre" ReadOnly="true" />
                     <asp:BoundField DataField="nombre_madre" HeaderText="Nombre Madre" ReadOnly="true" />
                     <asp:BoundField DataField="pad_codigo_variedad" HeaderText="Padre" ReadOnly="true" />
                     <asp:BoundField DataField="nombre_padre" HeaderText="Nombre Padre" ReadOnly="true" />
-                    <asp:CommandField SelectText="UPOV" ShowSelectButton="True" />                                       
+                    <asp:CommandField SelectText="UPOV" ShowSelectButton="True" />
                 </Columns>
             </asp:GridView>
 

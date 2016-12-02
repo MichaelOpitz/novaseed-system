@@ -11,17 +11,17 @@
                 <div class="row" style="text-align: left">
                     <div class="col-sm-4">
                         <%--<h5><span class="label label-primary">Color Carne</span></h5>--%>
-                        <asp:DropDownList type="button" ID="ddlMejoramientoColorCarne" runat="server" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
+                        <asp:DropDownList type="button" ID="ddlMejoramientoColorCarne" runat="server" Width="80%" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
                         <span class="help-block">Seleccione Color Carne</span>
                     </div>
                     <div class="col-sm-4">
                         <h5><%--<span class="label label-primary">Color Piel</span>--%></h5>
-                        <asp:DropDownList type="button" ID="ddlMejoramientoColorPiel" runat="server" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
+                        <asp:DropDownList type="button" ID="ddlMejoramientoColorPiel" runat="server" Width="80%" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
                         <span class="help-block">Seleccione Color Piel</span>
                     </div>
                     <div class="col-sm-4">
                         <h5><%--<span class="label label-primary">Tamaño</span>--%></h5>
-                        <asp:DropDownList type="button" ID="ddlMejoramientoTamaño" runat="server" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
+                        <asp:DropDownList type="button" ID="ddlMejoramientoTamaño" runat="server" Width="80%" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
                         <span class="help-block">Seleccione Tamaño</span>
                     </div>
                 </div>
@@ -29,17 +29,17 @@
                 <div class="row" style="text-align: left">
                     <div class="col-sm-4">
                         <%--<h5><span class="label label-primary">Madurez</span></h5>--%>
-                        <asp:DropDownList type="button" ID="ddlMejoramientoMadurez" runat="server" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
+                        <asp:DropDownList type="button" ID="ddlMejoramientoMadurez" runat="server" Width="80%" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
                         <span class="help-block">Seleccione Madurez</span>
                     </div>
                     <div class="col-sm-4">
                         <%--<h5><span class="label label-primary">Forma</span></h5>--%>
-                        <asp:DropDownList type="button" ID="ddlMejoramientoForma" runat="server" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
+                        <asp:DropDownList type="button" ID="ddlMejoramientoForma" runat="server" Width="80%" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
                         <span class="help-block">Seleccione Forma</span>
                     </div>
                     <div class="col-sm-4">
                         <%--<h5><span class="label label-primary">Calidad Piel</span></h5>--%>
-                        <asp:DropDownList type="button" ID="ddlMejoramientoCalidadPiel" runat="server" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
+                        <asp:DropDownList type="button" ID="ddlMejoramientoCalidadPiel" runat="server" Width="80%" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
                         <span class="help-block">Seleccione Calidad Piel</span>
                     </div>
                 </div>
@@ -47,17 +47,17 @@
                 <div class="row" style="text-align: left">
                     <div class="col-sm-4">
                         <%--<h5><span class="label label-primary">Distribucion Calibre</span></h5>--%>
-                        <asp:DropDownList type="button" ID="ddlMejoramientoDistribucion" runat="server" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
+                        <asp:DropDownList type="button" ID="ddlMejoramientoDistribucion" runat="server" Width="80%" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
                         <span class="help-block">Seleccione Distribucion Calibre</span>
                     </div>
                     <div class="col-sm-4">
                         <%--<h5><span class="label label-primary">Tipo Hoja</span></h5>--%>
-                        <asp:DropDownList type="button" ID="ddlMejoramientoTipoHoja" runat="server" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
+                        <asp:DropDownList type="button" ID="ddlMejoramientoTipoHoja" runat="server" Width="80%" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
                         <span class="help-block">Seleccione Tipo Hoja</span>
                     </div>
                     <div class="col-sm-4">
                         <%--<h5><span class="label label-primary">Profundidad Ojos</span></h5>--%>
-                        <asp:DropDownList type="button" ID="ddlMejoramientoProfundidad" runat="server" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
+                        <asp:DropDownList type="button" ID="ddlMejoramientoProfundidad" runat="server" Width="80%" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
                         <span class="help-block">Seleccione Profundidad Ojos</span>
                     </div>
                 </div>
@@ -65,17 +65,17 @@
                 <div class="row" style="text-align: left">
                     <div class="col-sm-4">
                         <h5><%--<span class="label label-primary">Regularidad</span>--%></h5>
-                        <asp:DropDownList type="button" ID="ddlMejoramientoRegularidad" runat="server" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
+                        <asp:DropDownList type="button" ID="ddlMejoramientoRegularidad" runat="server" Width="80%" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
                         <span class="help-block">Seleccione Regularidad</span>
                     </div>
                     <div class="col-sm-4">
                         <%--<h5><span class="label label-primary">Desarrollo Follaje</span></h5>--%>
-                        <asp:DropDownList type="button" ID="ddlMejoramientoDesarrollo" runat="server" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
+                        <asp:DropDownList type="button" ID="ddlMejoramientoDesarrollo" runat="server" Width="80%" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
                         <span class="help-block">Seleccione Desarrollo Follaje</span>
                     </div>
                     <div class="col-sm-4">
                         <%--<h5><span class="label label-primary">Brotación</span></h5>--%>
-                        <asp:DropDownList type="button" ID="ddlMejoramientoBrotacion" runat="server" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
+                        <asp:DropDownList type="button" ID="ddlMejoramientoBrotacion" runat="server" Width="80%" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
                         <span class="help-block">Seleccione Brotación</span>
                     </div>
                 </div>
@@ -83,17 +83,17 @@
                 <div class="row" style="text-align: left">
                     <div class="col-sm-4">
                         <%--<h5><span class="label label-primary">Emergencia</span></h5>--%>
-                        <asp:DropDownList type="button" ID="ddlMejoramientoEmergencia" runat="server" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
+                        <asp:DropDownList type="button" ID="ddlMejoramientoEmergencia" runat="server" Width="80%" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
                         <span class="help-block">Seleccione Emergencia</span>
                     </div>
                     <div class="col-sm-4">
                         <h5><%--<span class="label label-primary">Emergencia a 40 Días</span>--%></h5>
-                        <asp:DropDownList type="button" ID="ddlMejoramientoEmergencia40" runat="server" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
+                        <asp:DropDownList type="button" ID="ddlMejoramientoEmergencia40" runat="server" Width="80%" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
                         <span class="help-block">Seleccione Emergencia 40 Días</span>
                     </div>
                     <div class="col-sm-4">
                         <h5><%--<span class="label label-primary">Metribuzina</span>--%></h5>
-                        <asp:DropDownList type="button" ID="ddlMejoramientoMetribuzina" runat="server" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
+                        <asp:DropDownList type="button" ID="ddlMejoramientoMetribuzina" runat="server" Width="80%" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
                         <span class="help-block">Seleccione Metribuzina</span>
                     </div>
                 </div>
@@ -101,17 +101,17 @@
                 <div class="row" style="text-align: left">
                     <div class="col-sm-4">
                         <%--<h5><span class="label label-primary">Tubérculos Verdes</span></h5>--%>
-                        <asp:DropDownList type="button" ID="ddlMejoramientoTuberculosVerdes" runat="server" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
+                        <asp:DropDownList type="button" ID="ddlMejoramientoTuberculosVerdes" runat="server" Width="80%" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
                         <span class="help-block">Seleccione Tubérculos Verdes</span>
                     </div>
                     <div class="col-sm-4">
                         <%--<h5><span class="label label-primary">Tizon Tardío Follaje</span></h5>--%>
-                        <asp:DropDownList type="button" ID="ddlMejoramientoTizonFollaje" runat="server" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
+                        <asp:DropDownList type="button" ID="ddlMejoramientoTizonFollaje" runat="server" Width="80%" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
                         <span class="help-block">Seleccione Tizón Tardío Follaje</span>
                     </div>
                     <div class="col-sm-4">
                         <%--<h5><span class="label label-primary">Tizon Tardío Tubérculo</span></h5>--%>
-                        <asp:DropDownList type="button" ID="ddlMejoramientoTizonTuberculo" runat="server" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
+                        <asp:DropDownList type="button" ID="ddlMejoramientoTizonTuberculo" runat="server" Width="80%" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
                         <span class="help-block">Seleccione Tizón Tardío Tubérculo</span>
                     </div>
                 </div>
@@ -119,17 +119,17 @@
                 <div class="row" style="text-align: left">
                     <div class="col-sm-4">
                         <%--<h5><span class="label label-primary">Numero Tubérculos</span></h5>--%>
-                        <asp:DropDownList type="button" ID="ddlMejoramientoNumero" runat="server" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
+                        <asp:DropDownList type="button" ID="ddlMejoramientoNumero" runat="server" Width="80%" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
                         <span class="help-block">Seleccione Número Tubérculos</span>
                     </div>
                     <div class="col-sm-4">
                         <%--<h5><span class="label label-primary">Fertilidad</span></h5>--%>
-                        <asp:DropDownList type="button" ID="ddlMejoramientoFertilidad" runat="server" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
+                        <asp:DropDownList type="button" ID="ddlMejoramientoFertilidad" runat="server" Width="80%" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
                         <span class="help-block">Seleccione Fertilidad</span>
                     </div>
                     <div class="col-sm-4">
                         <%--<h5><span class="label label-primary">Destino</span></h5>--%>
-                        <asp:DropDownList type="button" ID="ddlMejoramientoDestino" runat="server" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
+                        <asp:DropDownList type="button" ID="ddlMejoramientoDestino" runat="server" Width="80%" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
                         <span class="help-block">Seleccione Destino</span>
                     </div>
                 </div>

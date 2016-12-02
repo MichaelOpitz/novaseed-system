@@ -10,6 +10,9 @@
         </div>
         <br />
         <div class="row">
+            <h5><asp:Label id="lbl24papasError" runat="server" Font-Bold="true" Text="" ForeColor="Red"/></h5>
+        </div>
+        <div class="row">
             <asp:Button type="button" runat="server" ID="btnAgregar48papas" class="btn btn-danger btn-block" Style="border-color: #000000" Text="Agregar a 48 Papas" OnClientClick="return confirm('¿Desea agregar a 48 Papas?');" OnClick="btnAgregar48papas_Click"></asp:Button>
         </div>
         <div class="row">
@@ -68,21 +71,23 @@
         <div class="panel panel-primary">
             <div class="panel-heading" style="text-align: center">Código Individuo y Emergencias</div>
             <div class="panel-body">
-                <br />
+                
                 <div class="row">
-                    <div class="col-sm-3">
+                    <div class="col-sm-3" style="margin-top:20px">                        
                         <asp:TextBox type="text" runat="server" class="form-control" ID="txt24papasCodigoSeleccionado" Placeholder="Código" Style="border: 3px double #000000" ReadOnly="true" Font-Bold="true"></asp:TextBox>
                         <span class="help-block" style="font: 700">Código Seleccionado</span>
                     </div>
                     <div class="col-sm-3">
+                        <asp:RegularExpressionValidator ID="re24papasCantidadPapas" runat="server" ValidationExpression="^(2[0-4]{1,1})|(1[0-9]{1,1})|([0-9]{1})$" ErrorMessage="Debe ser un número entre 0 y 24" ControlToValidate="txt24papasCantidadPapas" ForeColor="Red" ValidationGroup="modificar24papas"></asp:RegularExpressionValidator>
                         <asp:TextBox type="text" runat="server" class="form-control" ID="txt24papasCantidadPapas" Placeholder="Cantidad Papas" Style="border: 3px solid #1E90FF"></asp:TextBox>
                         <span class="help-block">Cantidad de Papas</span>
                     </div>
                     <div class="col-sm-3">
+                        <asp:RegularExpressionValidator ID="re24papasPosicion" runat="server" ValidationExpression="^[0-9]{1,2}([.,][0-9]{1,2})*" ErrorMessage="Debe ser un número valido" ControlToValidate="txt24papasPosicion" ForeColor="Red" ValidationGroup="modificar24papas"></asp:RegularExpressionValidator>
                         <asp:TextBox type="text" runat="server" class="form-control" ID="txt24papasPosicion" Placeholder="Posición" Style="border: 3px solid #1E90FF"></asp:TextBox>
                         <span class="help-block">Posición</span>
                     </div>
-                    <div class="col-sm-2">
+                    <div class="col-sm-2" style="margin-top:20px">
                         <asp:CheckBox ID="chk24papasFlor" runat="server" AutoPostBack="true" Text="Flor" />
                     </div>
                     <div class="col-sm-2">
@@ -92,20 +97,20 @@
 
                 <div class="row">
                     <div class="col-sm-3">
-                        <asp:DropDownList type="button" ID="ddl24papasFertilidad" runat="server" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
+                        <asp:DropDownList type="button" ID="ddl24papasFertilidad" runat="server" Width="80%" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
                         <span class="help-block">Fertilidad</span>
                     </div>
                     <div class="col-sm-3">
-                        <asp:DropDownList type="button" ID="ddl24papasEmergencia40" runat="server" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
+                        <asp:DropDownList type="button" ID="ddl24papasEmergencia40" runat="server" Width="80%" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
                         <span class="help-block">Emergencia a 40 Días</span>
                     </div>
 
                     <div class="col-sm-3">
-                        <asp:DropDownList type="button" ID="ddl24papasMetribuzina" runat="server" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
+                        <asp:DropDownList type="button" ID="ddl24papasMetribuzina" runat="server" Width="80%" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
                         <span class="help-block">Metribuzina</span>
                     </div>
                     <div class="col-sm-3">
-                        <asp:DropDownList type="button" ID="ddl24papasEmergencia" runat="server" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
+                        <asp:DropDownList type="button" ID="ddl24papasEmergencia" runat="server" Width="80%" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
                         <span class="help-block">Emergencia</span>
                     </div>
                 </div>
@@ -119,45 +124,45 @@
                 <br />
                 <div class="row">
                     <div class="col-sm-3 ">
-                        <asp:DropDownList type="button" ID="ddl24papasMadurez" runat="server" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
+                        <asp:DropDownList type="button" ID="ddl24papasMadurez" runat="server" Width="80%" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
                         <span class="help-block">Madurez</span>
                     </div>
                     <div class="col-sm-5">
-                        <asp:DropDownList type="button" ID="ddl24papasDesarrollo" runat="server" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
+                        <asp:DropDownList type="button" ID="ddl24papasDesarrollo" runat="server" Width="80%" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
                         <span class="help-block">Desarrollo Follaje</span>
                     </div>
                     <div class="col-sm-4">
-                        <asp:DropDownList type="button" ID="ddl24papasTipoHoja" runat="server" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
+                        <asp:DropDownList type="button" ID="ddl24papasTipoHoja" runat="server" Width="80%" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
                         <span class="help-block">Tipo Hoja</span>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col-sm-3">
-                        <asp:DropDownList type="button" ID="ddl24papasBrotacion" runat="server" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
+                        <asp:DropDownList type="button" ID="ddl24papasBrotacion" runat="server" Width="80%" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
                         <span class="help-block">Brotación</span>
                     </div>
                     <div class="col-sm-5">
-                        <asp:DropDownList type="button" ID="ddl24papasTamaño" runat="server" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
+                        <asp:DropDownList type="button" ID="ddl24papasTamaño" runat="server" Width="80%" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
                         <span class="help-block">Tamaño</span>
                     </div>
                     <div class="col-sm-4">
-                        <asp:DropDownList type="button" ID="ddl24papasDistribucion" runat="server" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
+                        <asp:DropDownList type="button" ID="ddl24papasDistribucion" runat="server" Width="80%" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
                         <span class="help-block">Distribución Calibre</span>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col-sm-3">
-                        <asp:DropDownList type="button" ID="ddl24papasForma" runat="server" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
+                        <asp:DropDownList type="button" ID="ddl24papasForma" runat="server" Width="80%" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
                         <span class="help-block">Forma</span>
                     </div>
                     <div class="col-sm-5">
-                        <asp:DropDownList type="button" ID="ddl24papasRegularidad" runat="server" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
+                        <asp:DropDownList type="button" ID="ddl24papasRegularidad" runat="server" Width="80%" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
                         <span class="help-block">Regularidad</span>
                     </div>
                     <div class="col-sm-4">
-                        <asp:DropDownList type="button" ID="ddl24papasProfundidad" runat="server" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
+                        <asp:DropDownList type="button" ID="ddl24papasProfundidad" runat="server" Width="80%" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
                         <span class="help-block">Profundidad Ojo</span>
                     </div>
                 </div>
@@ -170,28 +175,28 @@
             <div class="panel-body">
                 <br />
                 <div class="col-sm-4">
-                    <asp:DropDownList type="button" ID="ddl24papasCalidadPiel" runat="server" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
+                    <asp:DropDownList type="button" ID="ddl24papasCalidadPiel" runat="server" Width="80%" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
                     <span class="help-block">Calidad Piel</span>
                 </div>
                 <div class="col-sm-4">
-                    <asp:DropDownList type="button" ID="ddl24papasTuberculosVerdes" runat="server" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
+                    <asp:DropDownList type="button" ID="ddl24papasTuberculosVerdes" runat="server" Width="80%" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
                     <span class="help-block">Tubérculos Verdes</span>
                 </div>
                 <div class="col-sm-4">
-                    <asp:DropDownList type="button" ID="ddl24papasTizonFollaje" runat="server" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
+                    <asp:DropDownList type="button" ID="ddl24papasTizonFollaje" runat="server" Width="80%" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
                     <span class="help-block">Tizon Tardío Follaje</span>
                 </div>
 
                 <div class="col-sm-4">
-                    <asp:DropDownList type="button" ID="ddl24papasTizonTuberculo" runat="server" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
+                    <asp:DropDownList type="button" ID="ddl24papasTizonTuberculo" runat="server" Width="80%" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
                     <span class="help-block">Tizon Tardío Tubérculo</span>
                 </div>
                 <div class="col-sm-4">
-                    <asp:DropDownList type="button" ID="ddl24papasNumero" runat="server" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
+                    <asp:DropDownList type="button" ID="ddl24papasNumero" runat="server" Width="80%" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
                     <span class="help-block">Numero de Tubérculos</span>
                 </div>
                 <div class="col-sm-4">
-                    <asp:DropDownList type="button" ID="ddl24papasCiudadPlantacion" runat="server" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
+                    <asp:DropDownList type="button" ID="ddl24papasCiudadPlantacion" runat="server" Width="80%" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
                     <span class="help-block">Ciudad de Plantación</span>
                 </div>
             </div>
@@ -217,25 +222,30 @@
         <div class="panel panel-danger">
             <div class="panel-heading" style="text-align: center">Totales</div>
             <div class="panel-body">
-                <br />
+                
                 <div class="row">
                     <div class="col-sm-2 col-sm-offset-1">
+                        <asp:RegularExpressionValidator ID="re24papasTotalKg" runat="server" ValidationExpression="^[0-9]{1,5}([.,][0-9]{1,2})*" ErrorMessage="Debe ser de 0 a 5 digitos" ControlToValidate="txt24papasTotalKg" ForeColor="Red" ValidationGroup="modificar24papas"></asp:RegularExpressionValidator>
                         <asp:TextBox type="text" runat="server" class="form-control" Placeholder="Total Kilogramos" ID="txt24papasTotalKg"></asp:TextBox>
                         <span class="help-block">Total Kilogramos</span>
                     </div>
                     <div class="col-sm-2">
+                        <asp:RegularExpressionValidator ID="re24papasTuberculosPlanta" runat="server" ValidationExpression="^[0-9]{1,3}([.,][0-9]{1,2})*" ErrorMessage="Debe ser entre 0 y 999" ControlToValidate="txt24papasTuberculosPlanta" ForeColor="Red" ValidationGroup="modificar24papas"></asp:RegularExpressionValidator>
                         <asp:TextBox type="text" runat="server" class="form-control" Placeholder="Tubérculos/planta" ID="txt24papasTuberculosPlanta"></asp:TextBox>
                         <span class="help-block">Tubérculos/Planta</span>
                     </div>
                     <div class="col-sm-2">
+                        <asp:RegularExpressionValidator ID="re24papasConsumo" runat="server" ValidationExpression="^[0-9]{0,2}" ErrorMessage="Debe ser entre 0 y 99" ControlToValidate="txt24papasConsumo" ForeColor="Red" ValidationGroup="modificar24papas"></asp:RegularExpressionValidator>
                         <asp:TextBox type="text" runat="server" class="form-control" Placeholder="Consumo" ID="txt24papasConsumo"></asp:TextBox>
                         <span class="help-block">Consumo</span>
                     </div>
                     <div class="col-sm-2">
+                        <asp:RegularExpressionValidator ID="re24papasSemillon" runat="server" ValidationExpression="^[0-9]{0,2}" ErrorMessage="Debe ser entre 0 y 99" ControlToValidate="txt24papasSemillon" ForeColor="Red" ValidationGroup="modificar24papas"></asp:RegularExpressionValidator>
                         <asp:TextBox type="text" runat="server" class="form-control" Placeholder="Semillón" ID="txt24papasSemillon"></asp:TextBox>
                         <span class="help-block">Semillón</span>
                     </div>
                     <div class="col-sm-2">
+                        <asp:RegularExpressionValidator ID="re24papasToneladasHectarea" runat="server" ValidationExpression="^[0-9]{1,4}([.,][0-9]{1,2})*" ErrorMessage="Debe ser entre 0 y 9999" ControlToValidate="txt24papasToneladasHectarea" ForeColor="Red" ValidationGroup="modificar24papas"></asp:RegularExpressionValidator>
                         <asp:TextBox type="text" runat="server" class="form-control" Placeholder="Toneladas/Hectárea" ID="txt24papasToneladasHectarea" ></asp:TextBox>
                         <span class="help-block">Toneladas/Hectárea</span>
                     </div>
@@ -243,22 +253,27 @@
 
                 <div class="row">
                     <div class="col-sm-2 col-sm-offset-1">
+                        <asp:RegularExpressionValidator ID="re24papasSemilla" runat="server" ValidationExpression="^[0-9]{0,2}" ErrorMessage="Debe ser entre 0 y 99" ControlToValidate="txt24papasSemilla" ForeColor="Red" ValidationGroup="modificar24papas"></asp:RegularExpressionValidator>
                         <asp:TextBox type="text" runat="server" class="form-control" Placeholder="Semilla" ID="txt24papasSemilla"></asp:TextBox>
                         <span class="help-block">Semilla</span>
                     </div>
                     <div class="col-sm-2">
+                        <asp:RegularExpressionValidator ID="re24papasSemillita" runat="server" ValidationExpression="^[0-9]{0,2}" ErrorMessage="Debe ser entre 0 y 99" ControlToValidate="txt24papasSemillita" ForeColor="Red" ValidationGroup="modificar24papas"></asp:RegularExpressionValidator>
                         <asp:TextBox type="text" runat="server" class="form-control" Placeholder="Semillita" ID="txt24papasSemillita"></asp:TextBox>
                         <span class="help-block">Semillita</span>
                     </div>
                     <div class="col-sm-2">
+                        <asp:RegularExpressionValidator ID="re24papasBajoCalibre" runat="server" ValidationExpression="^[0-9]{0,2}" ErrorMessage="Debe ser entre 0 y 99" ControlToValidate="txt24papasBajoCalibre" ForeColor="Red" ValidationGroup="modificar24papas"></asp:RegularExpressionValidator>
                         <asp:TextBox type="text" runat="server" class="form-control" Placeholder="Bajo Calibre" ID="txt24papasBajoCalibre"></asp:TextBox>
                         <span class="help-block">Bajo Calibre</span>
                     </div>
                     <div class="col-sm-2">
+                        <asp:RegularExpressionValidator ID="re24papasNumeroTallos" runat="server" ValidationExpression="^[0-9]{0,2}" ErrorMessage="Debe ser entre 0 y 99" ControlToValidate="txt24papasNumeroTallos" ForeColor="Red" ValidationGroup="modificar24papas"></asp:RegularExpressionValidator>
                         <asp:TextBox type="text" runat="server" class="form-control" Placeholder="Número Tallos" ID="txt24papasNumeroTallos"></asp:TextBox>
                         <span class="help-block">Número Tallos</span>
                     </div>
                     <div class="col-sm-2">
+                        <asp:RegularExpressionValidator ID="re24papasRelacionStandard" runat="server" ValidationExpression="^[0-9]{0,3}[%]{0,1}" ErrorMessage="Debe ser entre 0 y 999" ControlToValidate="txt24papasRelacionStandard" ForeColor="Red" ValidationGroup="modificar24papas"></asp:RegularExpressionValidator>
                         <asp:TextBox type="text" runat="server" class="form-control" Placeholder="% Relación Standard" ID="txt24papasRelacionStandard" ></asp:TextBox>
                         <span class="help-block">% Relación Standard</span>
                     </div>
@@ -327,40 +342,46 @@
         <div class="panel panel-primary">
             <div class="panel-heading" style="text-align: center">Sensibilidad y Tolerancias</div>
             <div class="panel-body">
-                <br />
+                
                 <div class="row">
-                    <div class="col-sm-2 ">
-                        <asp:DropDownList type="button" ID="ddl24papasSensibilidadQuimica" runat="server" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
+                    <div class="col-sm-2" style="margin-top:20px">                        
+                        <asp:DropDownList type="button" ID="ddl24papasSensibilidadQuimica" runat="server" Width="80%" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
                         <span class="help-block">Sensibilidad Química</span>
                     </div>
                     <div class="col-sm-3">
+                        <asp:RegularExpressionValidator ID="re24papasDañoCosecha" runat="server" ValidationExpression="^[0-9]{0,2}" ErrorMessage="Debe ser entre 0 y 99" ControlToValidate="txt24papasDañoCosecha" ForeColor="Red" ValidationGroup="modificar24papas"></asp:RegularExpressionValidator>
                         <asp:TextBox type="text" runat="server" class="form-control" Placeholder="Daño Cosecha" ID="txt24papasDañoCosecha"></asp:TextBox>
                         <span class="help-block">Daño Cosecha</span>
                     </div>
                     <div class="col-sm-3">
+                        <asp:RegularExpressionValidator ID="re24papasDormancia" runat="server" ValidationExpression="^[0-9]{0,2}" ErrorMessage="Debe ser entre 0 y 99" ControlToValidate="txt24papasDormancia" ForeColor="Red" ValidationGroup="modificar24papas"></asp:RegularExpressionValidator>
                         <asp:TextBox type="text" runat="server" class="form-control" Placeholder="Dormancia" ID="txt24papasDormancia"></asp:TextBox>
                         <span class="help-block">Dormancia</span>
                     </div>
                     <div class="col-sm-3">
+                        <asp:RegularExpressionValidator ID="re24papasTizonHoja" runat="server" ValidationExpression="^[0-9]{0,2}" ErrorMessage="Debe ser entre 0 y 99" ControlToValidate="txt24papasTizonHoja" ForeColor="Red" ValidationGroup="modificar24papas"></asp:RegularExpressionValidator>
                         <asp:TextBox type="text" runat="server" class="form-control" Placeholder="Tizon Hoja" ID="txt24papasTizonHoja"></asp:TextBox>
                         <span class="help-block">Tizón Hoja</span>
                     </div>
                 </div>
 
                 <div class="row">
-                    <div class="col-sm-2 ">
-                        <asp:DropDownList type="button" ID="ddl24papasFacilidadMuerte" runat="server" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
+                    <div class="col-sm-2" style="margin-top:20px">                        
+                        <asp:DropDownList type="button" ID="ddl24papasFacilidadMuerte" runat="server" Width="80%" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
                         <span class="help-block">Facilidad Muerte</span>
                     </div>
                     <div class="col-sm-3">
+                        <asp:RegularExpressionValidator ID="re24papasToleranciaSequia" runat="server" ValidationExpression="^[0-9]{0,2}" ErrorMessage="Debe ser entre 0 y 99" ControlToValidate="txt24papasToleranciaSequia" ForeColor="Red" ValidationGroup="modificar24papas"></asp:RegularExpressionValidator>
                         <asp:TextBox type="text" runat="server" class="form-control" Placeholder="Tolerancia Sequía" ID="txt24papasToleranciaSequia"></asp:TextBox>
                         <span class="help-block">Tolerancia Sequía</span>
                     </div>
                     <div class="col-sm-3">
+                        <asp:RegularExpressionValidator ID="re24papasToleranciaCalor" runat="server" ValidationExpression="^[0-9]{0,2}" ErrorMessage="Debe ser entre 0 y 99" ControlToValidate="txt24papasToleranciaCalor" ForeColor="Red" ValidationGroup="modificar24papas"></asp:RegularExpressionValidator>
                         <asp:TextBox type="text" runat="server" class="form-control" Placeholder="Tolerancia Calor" ID="txt24papasToleranciaCalor"></asp:TextBox>
                         <span class="help-block">Tolerancia Calor</span>
                     </div>
                     <div class="col-sm-3">
+                        <asp:RegularExpressionValidator ID="re24papasToleranciaSal" runat="server" ValidationExpression="^[0-9]{0,2}" ErrorMessage="Debe ser entre 0 y 99" ControlToValidate="txt24papasToleranciaSal" ForeColor="Red" ValidationGroup="modificar24papas"></asp:RegularExpressionValidator>
                         <asp:TextBox type="text" runat="server" class="form-control" Placeholder="Tolerancia Sal" ID="txt24papasToleranciaSal"></asp:TextBox>
                         <span class="help-block">Tolerancia Sal</span>
                     </div>
@@ -372,24 +393,29 @@
         <div class="panel panel-primary">
             <div class="panel-heading" style="text-align: center">Urgencias</div>
             <div class="panel-body">
-                <br />
+                
                 <div class="col-sm-2 col-sm-offset-1">
+                    <asp:RegularExpressionValidator ID="re24papasPutrefaccionSuave" runat="server" ValidationExpression="^[0-9]{0,2}" ErrorMessage="Debe ser entre 0 y 99" ControlToValidate="txt24papasPutrefaccionSuave" ForeColor="Red" ValidationGroup="modificar24papas"></asp:RegularExpressionValidator>
                     <asp:TextBox type="text" runat="server" class="form-control" Placeholder="Putrefacción Suave" ID="txt24papasPutrefaccionSuave"></asp:TextBox>
                     <span class="help-block">Putrefacción Suave</span>
                 </div>
                 <div class="col-sm-2">
+                    <asp:RegularExpressionValidator ID="re24papasPutrefaccionRosa" runat="server" ValidationExpression="^[0-9]{0,2}" ErrorMessage="Debe ser entre 0 y 99" ControlToValidate="txt24papasPutrefaccionRosa" ForeColor="Red" ValidationGroup="modificar24papas"></asp:RegularExpressionValidator>
                     <asp:TextBox type="text" runat="server" class="form-control" Placeholder="Putrefacción Rosa" ID="txt24papasPutrefaccionRosa"></asp:TextBox>
                     <span class="help-block">Putrefacción Rosa</span>
                 </div>
                 <div class="col-sm-2">
+                    <asp:RegularExpressionValidator ID="re24papasSilverScurf" runat="server" ValidationExpression="^[0-9]{0,2}" ErrorMessage="Debe ser entre 0 y 99" ControlToValidate="txt24papasSilverScurf" ForeColor="Red" ValidationGroup="modificar24papas"></asp:RegularExpressionValidator>
                     <asp:TextBox type="text" runat="server" class="form-control" Placeholder="Silver Scurf" ID="txt24papasSilverScurf"></asp:TextBox>
                     <span class="help-block">Silver Scurf</span>
                 </div>
                 <div class="col-sm-2">
+                    <asp:RegularExpressionValidator ID="re24papasBlackleg" runat="server" ValidationExpression="^[0-9]{0,2}" ErrorMessage="Debe ser entre 0 y 99" ControlToValidate="txt24papasBlackleg" ForeColor="Red" ValidationGroup="modificar24papas"></asp:RegularExpressionValidator>
                     <asp:TextBox type="text" runat="server" class="form-control" Placeholder="Blackleg" ID="txt24papasBlackleg"></asp:TextBox>
                     <span class="help-block">Blackleg</span>
                 </div>
                 <div class="col-sm-2">
+                    <asp:RegularExpressionValidator ID="re24papasHematomas" runat="server" ValidationExpression="" ErrorMessage="Debe ser entre 0 y 99" ControlToValidate="txt24papasHematomas" ForeColor="White" ></asp:RegularExpressionValidator>
                     <asp:TextBox type="text" runat="server" class="form-control" Placeholder="Hematomas" ID="txt24papasHematomas" ReadOnly="true"></asp:TextBox>
                     <span class="help-block">Hematomas</span>
                 </div>
@@ -398,7 +424,7 @@
 
         <hr style="color: #000000" />
         <div class="row" style="text-align: center">
-            <asp:Button type="button" runat="server" Text="Guardar" ID="btn24papasGuardar" class="btn btn-primary btn-md" Width="20%" BorderColor="#000000" OnClientClick="return confirm('¿Desea guardar los cambios?');" OnClick="btn24papasGuardar_Click"></asp:Button>
+            <asp:Button type="button" runat="server" Text="Guardar" ID="btn24papasGuardar" class="btn btn-primary btn-md" Width="20%" BorderColor="#000000" ValidationGroup="modificar24papas" CausesValidation="true" OnClientClick="return confirm('¿Desea guardar los cambios?');" OnClick="btn24papasGuardar_Click"></asp:Button>
             <asp:Button type="button" runat="server" Text="Cancelar" ID="btn24papasCancelar" class="btn btn-danger btn-md" Width="20%" BorderColor="#000000" OnClientClick="return confirm('¿Desea cancelar los cambios?');" OnClick="btn24papasCancelar_Click"></asp:Button>
         </div>
     </div>

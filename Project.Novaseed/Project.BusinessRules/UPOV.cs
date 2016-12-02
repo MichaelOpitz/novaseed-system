@@ -10,7 +10,6 @@ namespace Project.BusinessRules
         private int id_upov;
         private string codigo_individuo, nombre_upov, nombre_ciudad, codigo_variedad, nombre_madre, pad_codigo_variedad,
             nombre_padre, nombre_variedad_upov;
-
         private int id_inflorescencia_tamano, id_brote_tamano_extremo, id_brote_forma, id_brote_proporcion_azul, id_foliolo_brillo_haz,
             id_boton_floral_pigmentacion, id_brote_pigmentacion_base, id_hoja_tamano_contorno, id_foliolo_pubescencia_haz_roseta_apical,
             id_foliolo_ondulacion_borde, id_brote_radiculas, id_segundo_par_foliolos_anchura_longitud, id_brote_porte_extremo, 
@@ -21,18 +20,14 @@ namespace Project.BusinessRules
             id_tuberculo_pigmentacion_piel_reaccion_luz, id_corola_flor_proporcion_azul_pigmentacion_cara_interna, 
             id_corola_flor_tamano, id_hoja_apertura, id_planta_estructura_follaje, id_hoja_color_verde, id_planta_frecuencia_flores,
             id_planta_epoca_madurez, id_inflorescencia_pigmentacion_pendunculo, id_brote_pubescencia_extremo,
-            id_corola_flor_extension_pigmentacion_cara_interna, id_brote_tamano, id_cosecha, ano_upov, id_color_carne, id_color_piel;
+            id_corola_flor_extension_pigmentacion_cara_interna, id_brote_tamano, id_cosecha, ano_upov;
+        //Atributo común de tabla ColorCarne y ColorPiel
+        private int id_color;
 
-        public int Id_color_piel
+        public int Id_color
         {
-            get { return id_color_piel; }
-            set { id_color_piel = value; }
-        }
-
-        public int Id_color_carne
-        {
-            get { return id_color_carne; }
-            set { id_color_carne = value; }
+            get { return id_color; }
+            set { id_color = value; }
         }
 
         public int Ano_upov
@@ -483,7 +478,8 @@ namespace Project.BusinessRules
 
         /*
          * Constructor para la funcion que obtiene el menor año del total de informes upov
-         */ 
+         * Constructor para obtener el id de color carne y color piel
+         */
         public UPOV(int año_upov)
         {
             this.ano_upov = año_upov;

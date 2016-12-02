@@ -28,12 +28,25 @@ namespace Project.Novaseed
                 valorAñoString = "0";
             valorAñoInt32 = Int32.Parse(valorAñoString);
 
+            this.lblCruzamientoError.Visible = false;
+            this.lblCruzamientoError.Text = "";
             if (!Page.IsPostBack)
             {
                 this.lblCruzamientoAño.Text += "(" + valorAñoInt32.ToString() + ")";
                 this.gdvCruzamiento.DataSource = cc.GetCruzamiento(valorAñoInt32);
                 this.gdvCruzamiento.DataBind();
             }
+        }
+
+        /*
+         * Verifica si es un entero
+         */ 
+        public bool EsNumero(object Expression)
+        {
+            bool isNum;
+            double retNum;
+            isNum = Double.TryParse(Convert.ToString(Expression), System.Globalization.NumberStyles.Any, System.Globalization.NumberFormatInfo.InvariantInfo, out retNum);
+            return isNum;
         }
 
         /*
@@ -107,37 +120,60 @@ namespace Project.Novaseed
         {
             try
             {
+                this.lblCruzamientoError.Visible = true;
+                int invalido = 0;
                 CatalogCruzamiento cc = new CatalogCruzamiento();
                 string id_cruzamiento = HttpUtility.HtmlDecode((string)this.gdvCruzamiento.Rows[e.RowIndex].Cells[2].Text);
                 string codigo_variedad = HttpUtility.HtmlDecode((string)this.gdvCruzamiento.Rows[e.RowIndex].Cells[3].Text);
                 string pad_codigo_variedad = HttpUtility.HtmlDecode((string)this.gdvCruzamiento.Rows[e.RowIndex].Cells[5].Text);
 
+                //ubicacion
                 string ubicacion_cruzamiento = e.NewValues[0].ToString();
+                if (ubicacion_cruzamiento.Length == 3)
+                {
+                    string ucPrimero = ubicacion_cruzamiento.Substring(0, 1);
+                    string ucSegundo = ubicacion_cruzamiento.Substring(1, 1);
+                    string ucTercero = ubicacion_cruzamiento.Substring(2, 1);
+                    if (EsNumero(ucPrimero) == false || EsNumero(ucSegundo) == true || EsNumero(ucTercero) == false)
+                    {
+                        this.lblCruzamientoError.Text += "Ubicación incorrecta, Ejemplo '1D1' o '1I1'.<br/>";
+                        invalido = 1;
+                    }
+                }
+                else
+                {
+                    this.lblCruzamientoError.Text += "Ubicación incorrecta, Ejemplo '1D1' o '1I1'.<br/>";
+                    invalido = 1;
+                }
+
+                //fertilidad
                 DropDownList ddlCruzamientoFertilidad = (DropDownList)gdvCruzamiento.Rows[e.RowIndex].FindControl("ddlCruzamientoFertilidad");
                 string id_fertilidad = ddlCruzamientoFertilidad.SelectedValue;
+                //flor
                 CheckBox chkCruzamientoFlor = (CheckBox)gdvCruzamiento.Rows[e.RowIndex].FindControl("chkCruzamientoFlor");
                 bool flor;
                 if (chkCruzamientoFlor.Checked)
                     flor = true;
-                else
-                {
-                    flor = false;
-                    string bayasCantidad = e.NewValues[1].ToString();
-                    if (!bayasCantidad.Equals(""))
-                    {
-                        int bc = Int32.Parse(bayasCantidad);
-                        if (bc > 0)
-                            Page.ClientScript.RegisterStartupScript(GetType(), "Script", "<script>alert('¡No puede haber bayas si no hay flores!')</script>");
-                    }
-                }
+                else                
+                    flor = false;    
+                //bayas
                 string bayas = e.NewValues[1].ToString();
-                Project.BusinessRules.Cruzamiento cruzamiento = new Project.BusinessRules.Cruzamiento(Int32.Parse(id_cruzamiento),
-                  codigo_variedad, pad_codigo_variedad, ubicacion_cruzamiento, Int32.Parse(id_fertilidad), flor, Int32.Parse(bayas));
-                cc.UpdateCruzamiento(cruzamiento);
+                if ((EsNumero(bayas) == false) || (EsNumero(bayas) == true && Int32.Parse(bayas) < 0))
+                {
+                    this.lblCruzamientoError.Text += "Las bayas deben ser un número positivo.<br/>";
+                    invalido = 1;
+                }
+
+                if (invalido == 0)
+                {
+                    Project.BusinessRules.Cruzamiento cruzamiento = new Project.BusinessRules.Cruzamiento(Int32.Parse(id_cruzamiento),
+                      codigo_variedad, pad_codigo_variedad, ubicacion_cruzamiento, Int32.Parse(id_fertilidad), flor, Int32.Parse(bayas));
+                    cc.UpdateCruzamiento(cruzamiento);
+                }
             }
             catch (Exception ex)
             {
-                Page.ClientScript.RegisterStartupScript(GetType(), "Script", "<script>alert('" + ex.ToString() + "')</script>");
+                Page.ClientScript.RegisterStartupScript(GetType(), "Script", "<script>alert('¡Error al modificar, repare los parámetros que ingresó!')</script>");
             }
 
             gdvCruzamiento.EditIndex = -1;

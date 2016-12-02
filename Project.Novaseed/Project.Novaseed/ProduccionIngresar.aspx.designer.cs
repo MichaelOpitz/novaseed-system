@@ -31,6 +31,15 @@ namespace Project.Novaseed {
         protected global::System.Web.UI.WebControls.Label lblProduccionAño;
         
         /// <summary>
+        /// Control lblProduccionError.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblProduccionError;
+        
+        /// <summary>
         /// Control ddlProduccionCiudad.
         /// </summary>
         /// <remarks>
@@ -58,6 +67,15 @@ namespace Project.Novaseed {
         protected global::System.Web.UI.WebControls.DropDownList ddlProduccionProductor;
         
         /// <summary>
+        /// Control reProduccionCantidadTotal.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator reProduccionCantidadTotal;
+        
+        /// <summary>
         /// Control txtProduccionCantidadTotal.
         /// </summary>
         /// <remarks>
@@ -65,6 +83,15 @@ namespace Project.Novaseed {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtProduccionCantidadTotal;
+        
+        /// <summary>
+        /// Control reProduccionCantidadProductor.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator reProduccionCantidadProductor;
         
         /// <summary>
         /// Control txtProduccionCantidadProductor.
@@ -76,6 +103,15 @@ namespace Project.Novaseed {
         protected global::System.Web.UI.WebControls.TextBox txtProduccionCantidadProductor;
         
         /// <summary>
+        /// Control reProduccionSuperficie.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator reProduccionSuperficie;
+        
+        /// <summary>
         /// Control txtProduccionSuperficie.
         /// </summary>
         /// <remarks>
@@ -83,6 +119,15 @@ namespace Project.Novaseed {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtProduccionSuperficie;
+        
+        /// <summary>
+        /// Control reProduccionCosecha.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator reProduccionCosecha;
         
         /// <summary>
         /// Control txtProduccionCosecha.

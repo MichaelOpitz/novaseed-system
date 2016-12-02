@@ -24,6 +24,8 @@ namespace Project.Novaseed
             CatalogUPOV cu = new CatalogUPOV();
             lstUPOV = cu.GetUPOV(Int32.Parse(id_upov));
 
+            this.lblUPOVError.Visible = false;
+            this.lblUPOVError.Text = "";
             if (!Page.IsPostBack)
             {              
                 //NombreVariedad
@@ -473,8 +475,42 @@ namespace Project.Novaseed
                     string valor = lstFormaTuberculos[i].Id_forma.ToString();
                     this.rdbUPOVFormaTuberculos.Items.Add(new ListItem(lstFormaTuberculos[i].Nombre_forma, valor));
                 }
-                this.rdbUPOVFormaTuberculos.SelectedValue = lstUPOV[0].Id_forma.ToString();               
-            }
+                this.rdbUPOVFormaTuberculos.SelectedValue = lstUPOV[0].Id_forma.ToString();
+
+                //ColorCarne
+                List<ColorCarne> lstColorCarne = new List<ColorCarne>();
+                CatalogColorCarne ccc = new CatalogColorCarne();
+                lstColorCarne = ccc.getColorCarne();
+
+                for (int i = 0; i < lstColorCarne.Count; i++)
+                {
+                    string valor = lstColorCarne[i].Id_color_carne.ToString();
+                    this.chkUPOVColorCarne.Items.Add(new ListItem(lstColorCarne[i].Nombre_color_carne, valor));
+                }
+                this.chkUPOVColorCarne.SelectedIndex = -1;
+                List<Project.BusinessRules.UPOV> colorCarne = cu.GetUPOVColorCarne(Int32.Parse(id_upov));
+                foreach (ListItem item in this.chkUPOVColorCarne.Items)
+                    for (int i = 0; i < colorCarne.Count; i++)
+                        if (item.Value == colorCarne[i].Ano_upov.ToString())
+                            item.Selected = true;
+
+                //ColorPiel
+                List<ColorPiel> lstColorPiel = new List<ColorPiel>();
+                CatalogColorPiel ccp = new CatalogColorPiel();
+                lstColorPiel = ccp.getColorPiel();
+
+                for (int i = 0; i < lstColorPiel.Count; i++)
+                {
+                    string valor = lstColorPiel[i].Id_color_piel.ToString();
+                    this.chkUPOVColorPiel.Items.Add(new ListItem(lstColorPiel[i].Nombre_color_piel, valor));
+                }
+                this.chkUPOVColorPiel.SelectedIndex = -1;
+                List<Project.BusinessRules.UPOV> colorPiel = cu.GetUPOVColorPiel(Int32.Parse(id_upov));
+                foreach (ListItem item in this.chkUPOVColorPiel.Items)
+                    for (int i = 0; i < colorPiel.Count; i++)
+                        if (item.Value == colorPiel[i].Ano_upov.ToString())
+                            item.Selected = true;
+            }             
         }
 
         protected void UPOVCancelar_Click(object sender, EventArgs e)
@@ -486,6 +522,8 @@ namespace Project.Novaseed
         {
             try
             {
+                this.lblUPOVError.Visible = true;
+                int invalido = 0;
                 CatalogUPOV cu = new CatalogUPOV();
                 int id_inflorescencia_tamano = Int32.Parse(this.rdbUPOVInflorescenciaTamaño.SelectedValue);
                 int id_brote_tamano_extremo = Int32.Parse(this.rdbUPOVBroteTamañoExtremo.SelectedValue);
@@ -543,15 +581,57 @@ namespace Project.Novaseed
                     id_brote_pubescencia_extremo, id_corola_flor_extension_pigmentacion_cara_interna, id_brote_tamano,
                     nombre_variedad_upov);
 
-                int valor = cu.UpdateUPOV(upov);
-                if (valor == 0)
-                    Page.ClientScript.RegisterStartupScript(GetType(), "Script", "<script>alert('¡No se pudo modificar el informe UPOV!')</script>");
-                else                                   
-                    Response.Redirect("MenuGeneracion.aspx");
+                //Modifica Color Carne
+                int contadorColorCarne = 0;
+                foreach (ListItem listaSeleccionados in this.chkUPOVColorCarne.Items)
+                    if (listaSeleccionados.Selected)
+                        contadorColorCarne += 1;
+
+                if (contadorColorCarne == 1 || (contadorColorCarne > 1 && this.chkUPOVColorCarne.SelectedValue != "1"))
+                {
+                    cu.DeleteUPOVColorCarne(Int32.Parse(id_upov));
+                    foreach (ListItem id_color_carne in this.chkUPOVColorCarne.Items)
+                        if (id_color_carne.Selected)
+                            cu.UpdateUPOVColorCarne(Int32.Parse(id_color_carne.Value), Int32.Parse(id_upov));
+                }
+                else
+                {
+                    this.lblUPOVError.Text += "No puede seleccionar sin información y colores de la carne a la vez.<br/>";
+                    invalido = 1;
+                }
+
+                //Modifica Color Piel
+                int contadorColorPiel = 0;
+                foreach (ListItem listaSeleccionados in this.chkUPOVColorPiel.Items)
+                    if (listaSeleccionados.Selected)
+                        contadorColorPiel += 1;
+
+                if (contadorColorPiel == 1 || (contadorColorPiel > 1 && this.chkUPOVColorPiel.SelectedValue != "1"))
+                {
+                    cu.DeleteUPOVColorPiel(Int32.Parse(id_upov));
+                    foreach (ListItem id_color_piel in this.chkUPOVColorPiel.Items)
+                        if (id_color_piel.Selected)
+                            cu.UpdateUPOVColorPiel(Int32.Parse(id_color_piel.Value), Int32.Parse(id_upov));
+                }
+                else
+                {
+                    this.lblUPOVError.Text += "No puede seleccionar sin información y colores de la piel a la vez.<br/>";
+                    invalido = 1;
+                }
+
+                //Modifica informe UPOV
+                if (invalido == 0)
+                {
+                    int valor = cu.UpdateUPOV(upov);
+                    if (valor == 0)
+                        Page.ClientScript.RegisterStartupScript(GetType(), "Script", "<script>alert('¡No se pudo modificar el informe UPOV!')</script>");
+                    else
+                        Response.Redirect("MenuGeneracion.aspx");
+                }
             }
             catch (Exception ex)
             {
-                Page.ClientScript.RegisterStartupScript(GetType(), "Script", "<script>alert('" + ex.ToString() + "')</script>");
+                Page.ClientScript.RegisterStartupScript(GetType(), "Script", "<script>alert('¡Error al modificar!\nNo se ha podido actualizar el informe upov')</script>");
             }
         }
     }

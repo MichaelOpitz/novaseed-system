@@ -21,7 +21,7 @@
         <br />
         <hr style="color: #000000" />
         <div class="panel panel-primary">
-            <div class="panel-heading" style="text-align: center">Estadísticas</div>
+            <div class="panel-heading" style="text-align: center">Estadísticas de las que pueden o tienen producción</div>
             <div class="panel-body">
                 <div class="row">
                     <div class="col-sm-3">

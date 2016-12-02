@@ -22,6 +22,15 @@ namespace Project.Novaseed {
         protected global::System.Web.UI.WebControls.Label lbl12papasAño;
         
         /// <summary>
+        /// Control lbl12papasError.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl12papasError;
+        
+        /// <summary>
         /// Control btnAgregar24papas.
         /// </summary>
         /// <remarks>
@@ -49,6 +58,15 @@ namespace Project.Novaseed {
         protected global::System.Web.UI.WebControls.TextBox txt12papasCodigoSeleccionado;
         
         /// <summary>
+        /// Control re12papasCantidadPapas.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator re12papasCantidadPapas;
+        
+        /// <summary>
         /// Control txt12papasCantidadPapas.
         /// </summary>
         /// <remarks>
@@ -56,6 +74,15 @@ namespace Project.Novaseed {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txt12papasCantidadPapas;
+        
+        /// <summary>
+        /// Control re12papasPosicion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator re12papasPosicion;
         
         /// <summary>
         /// Control txt12papasPosicion.
@@ -274,6 +301,15 @@ namespace Project.Novaseed {
         protected global::System.Web.UI.WebControls.ListBox lst12papasColorPiel;
         
         /// <summary>
+        /// Control re12papasTotalKg.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator re12papasTotalKg;
+        
+        /// <summary>
         /// Control txt12papasTotalKg.
         /// </summary>
         /// <remarks>
@@ -281,6 +317,15 @@ namespace Project.Novaseed {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txt12papasTotalKg;
+        
+        /// <summary>
+        /// Control re12papasTuberculosPlanta.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator re12papasTuberculosPlanta;
         
         /// <summary>
         /// Control txt12papasTuberculosPlanta.
@@ -292,6 +337,15 @@ namespace Project.Novaseed {
         protected global::System.Web.UI.WebControls.TextBox txt12papasTuberculosPlanta;
         
         /// <summary>
+        /// Control re6papasConsumo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator re6papasConsumo;
+        
+        /// <summary>
         /// Control txt12papasConsumo.
         /// </summary>
         /// <remarks>
@@ -299,6 +353,15 @@ namespace Project.Novaseed {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txt12papasConsumo;
+        
+        /// <summary>
+        /// Control re12papasSemillon.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator re12papasSemillon;
         
         /// <summary>
         /// Control txt12papasSemillon.
@@ -310,6 +373,15 @@ namespace Project.Novaseed {
         protected global::System.Web.UI.WebControls.TextBox txt12papasSemillon;
         
         /// <summary>
+        /// Control re12papasToneladasHectarea.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator re12papasToneladasHectarea;
+        
+        /// <summary>
         /// Control txt12papasToneladasHectarea.
         /// </summary>
         /// <remarks>
@@ -317,6 +389,15 @@ namespace Project.Novaseed {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txt12papasToneladasHectarea;
+        
+        /// <summary>
+        /// Control re12papasSemilla.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator re12papasSemilla;
         
         /// <summary>
         /// Control txt12papasSemilla.
@@ -328,6 +409,15 @@ namespace Project.Novaseed {
         protected global::System.Web.UI.WebControls.TextBox txt12papasSemilla;
         
         /// <summary>
+        /// Control re12papasSemillita.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator re12papasSemillita;
+        
+        /// <summary>
         /// Control txt12papasSemillita.
         /// </summary>
         /// <remarks>
@@ -335,6 +425,15 @@ namespace Project.Novaseed {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txt12papasSemillita;
+        
+        /// <summary>
+        /// Control re12papasBajoCalibre.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator re12papasBajoCalibre;
         
         /// <summary>
         /// Control txt12papasBajoCalibre.
@@ -346,6 +445,15 @@ namespace Project.Novaseed {
         protected global::System.Web.UI.WebControls.TextBox txt12papasBajoCalibre;
         
         /// <summary>
+        /// Control re12papasNumeroTallos.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator re12papasNumeroTallos;
+        
+        /// <summary>
         /// Control txt12papasNumeroTallos.
         /// </summary>
         /// <remarks>
@@ -353,6 +461,15 @@ namespace Project.Novaseed {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txt12papasNumeroTallos;
+        
+        /// <summary>
+        /// Control re12papasRelacionStandard.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator re12papasRelacionStandard;
         
         /// <summary>
         /// Control txt12papasRelacionStandard.
@@ -400,6 +517,15 @@ namespace Project.Novaseed {
         protected global::System.Web.UI.WebControls.GridView gdv12papasEnfermedades;
         
         /// <summary>
+        /// Control re12papasSensibilidadQuimica.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator re12papasSensibilidadQuimica;
+        
+        /// <summary>
         /// Control ddl12papasSensibilidadQuimica.
         /// </summary>
         /// <remarks>
@@ -407,6 +533,15 @@ namespace Project.Novaseed {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddl12papasSensibilidadQuimica;
+        
+        /// <summary>
+        /// Control re12papasDañoCosecha.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator re12papasDañoCosecha;
         
         /// <summary>
         /// Control txt12papasDañoCosecha.
@@ -418,6 +553,15 @@ namespace Project.Novaseed {
         protected global::System.Web.UI.WebControls.TextBox txt12papasDañoCosecha;
         
         /// <summary>
+        /// Control re12papasDormancia.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator re12papasDormancia;
+        
+        /// <summary>
         /// Control txt12papasDormancia.
         /// </summary>
         /// <remarks>
@@ -425,6 +569,15 @@ namespace Project.Novaseed {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txt12papasDormancia;
+        
+        /// <summary>
+        /// Control re12papasTizonHoja.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator re12papasTizonHoja;
         
         /// <summary>
         /// Control txt12papasTizonHoja.
@@ -436,6 +589,15 @@ namespace Project.Novaseed {
         protected global::System.Web.UI.WebControls.TextBox txt12papasTizonHoja;
         
         /// <summary>
+        /// Control re12papasFacilidadMuerte.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator re12papasFacilidadMuerte;
+        
+        /// <summary>
         /// Control ddl12papasFacilidadMuerte.
         /// </summary>
         /// <remarks>
@@ -443,6 +605,15 @@ namespace Project.Novaseed {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddl12papasFacilidadMuerte;
+        
+        /// <summary>
+        /// Control re12papasToleranciaSequia.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator re12papasToleranciaSequia;
         
         /// <summary>
         /// Control txt12papasToleranciaSequia.
@@ -454,6 +625,15 @@ namespace Project.Novaseed {
         protected global::System.Web.UI.WebControls.TextBox txt12papasToleranciaSequia;
         
         /// <summary>
+        /// Control re12papasToleranciaCalor.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator re12papasToleranciaCalor;
+        
+        /// <summary>
         /// Control txt12papasToleranciaCalor.
         /// </summary>
         /// <remarks>
@@ -461,6 +641,15 @@ namespace Project.Novaseed {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txt12papasToleranciaCalor;
+        
+        /// <summary>
+        /// Control re12papasToleranciaSal.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator re12papasToleranciaSal;
         
         /// <summary>
         /// Control txt12papasToleranciaSal.
@@ -472,6 +661,15 @@ namespace Project.Novaseed {
         protected global::System.Web.UI.WebControls.TextBox txt12papasToleranciaSal;
         
         /// <summary>
+        /// Control re12papasPutrefaccionSuave.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator re12papasPutrefaccionSuave;
+        
+        /// <summary>
         /// Control txt12papasPutrefaccionSuave.
         /// </summary>
         /// <remarks>
@@ -479,6 +677,15 @@ namespace Project.Novaseed {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txt12papasPutrefaccionSuave;
+        
+        /// <summary>
+        /// Control re12papasPutrefaccionRosa.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator re12papasPutrefaccionRosa;
         
         /// <summary>
         /// Control txt12papasPutrefaccionRosa.
@@ -490,6 +697,15 @@ namespace Project.Novaseed {
         protected global::System.Web.UI.WebControls.TextBox txt12papasPutrefaccionRosa;
         
         /// <summary>
+        /// Control re12papasSilverScurf.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator re12papasSilverScurf;
+        
+        /// <summary>
         /// Control txt12papasSilverScurf.
         /// </summary>
         /// <remarks>
@@ -499,6 +715,15 @@ namespace Project.Novaseed {
         protected global::System.Web.UI.WebControls.TextBox txt12papasSilverScurf;
         
         /// <summary>
+        /// Control re12papasBlackleg.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator re12papasBlackleg;
+        
+        /// <summary>
         /// Control txt12papasBlackleg.
         /// </summary>
         /// <remarks>
@@ -506,6 +731,15 @@ namespace Project.Novaseed {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txt12papasBlackleg;
+        
+        /// <summary>
+        /// Control re12papasHematomas.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator re12papasHematomas;
         
         /// <summary>
         /// Control txt12papasHematomas.

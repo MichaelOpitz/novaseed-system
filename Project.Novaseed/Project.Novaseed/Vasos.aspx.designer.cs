@@ -49,6 +49,15 @@ namespace Project.Novaseed {
         protected global::System.Web.UI.WebControls.LinkButton btnBuscarVaso;
         
         /// <summary>
+        /// Control lblVasosError.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblVasosError;
+        
+        /// <summary>
         /// Control btnAgregarClones.
         /// </summary>
         /// <remarks>

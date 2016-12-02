@@ -17,16 +17,16 @@
             <div class="panel-body">
                 <br />
                 <div class="row">
-                    <div class="col-sm-2">
-                        <asp:DropDownList type="button" ID="ddlProduccionProductor" runat="server" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
+                    <div class="col-sm-3">
+                        <asp:DropDownList type="button" ID="ddlProduccionProductor" runat="server" Width="80%" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
                         <span class="help-block">Productor</span>
                     </div>
                     <div class="col-sm-3">
-                        <asp:DropDownList type="button" ID="ddlProduccionCiudad" runat="server" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
+                        <asp:DropDownList type="button" ID="ddlProduccionCiudad" runat="server" Width="80%" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
                         <span class="help-block">Ciudad</span>
                     </div>
                     <div class="col-sm-3">
-                        <asp:DropDownList type="button" ID="ddlProduccionCategoriaProduccion" runat="server" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
+                        <asp:DropDownList type="button" ID="ddlProduccionCategoriaProduccion" runat="server" Width="80%" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
                         <span class="help-block">Categoría Producción</span>
                     </div>
                     <div class="col-sm-3">

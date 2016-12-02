@@ -24,8 +24,10 @@
                 <span class="help-block">Padre</span>
             </div>
         </div>
-        <hr style="color: #000000" />
-        <br />
+        <hr style="color: #000000" />        
+        <div class="row">
+            <h5><asp:Label id="lblUPOVError" runat="server" Font-Bold="true" Text="" ForeColor="Red"/></h5>
+        </div>
         <div class="panel panel-primary">
             <div class="panel-heading" style="text-align: center">BROTE</div>
             <div class="panel-body">

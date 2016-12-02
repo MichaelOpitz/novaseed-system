@@ -211,6 +211,114 @@ namespace Project.BusinessRules
             return años;
         }
 
+        /*
+        * Actualizar el color de la carne de la variedad en el informe upov
+        */
+        public void UpdateUPOVColorCarne(int id_color_carne, int id_upov)
+        {
+            DataAccess.DataBase bd = new DataBase();
+            bd.Connect(); //método conectar
+            string sql = "upovColorCarneActualizar";
+            bd.CreateCommandSP(sql);
+            bd.CreateParameter("@id_color_carne", DbType.Int32, id_color_carne);
+            bd.CreateParameter("@id_upov", DbType.Int32, id_upov);
+            bd.Execute();
+            bd.Close();
+        }
+
+        /*
+        * Elimina el color de la carne de la variedad en el informe upov
+        */
+        public void DeleteUPOVColorCarne(int id_upov)
+        {
+            DataAccess.DataBase bd = new DataBase();
+            bd.Connect(); //método conectar
+            string sql = "upovColorCarneEliminar";
+            bd.CreateCommandSP(sql);
+            bd.CreateParameter("@id_upov", DbType.Int32, id_upov);
+            bd.Execute();
+            bd.Close();
+        }
+
+        /*
+         * Devuelve el id_color_carne del informe upov seleccionada
+         */
+        public List<UPOV> GetUPOVColorCarne(int id_upov)
+        {
+            DataAccess.DataBase bd = new DataBase();
+            bd.Connect(); //método conectar
+            List<UPOV> colores = new List<UPOV>();
+            string salida = "upovColorCarneObtener";//comando sql
+            bd.CreateCommandSP(salida);
+            bd.CreateParameter("@id_upov", DbType.Int32, id_upov);
+
+            DbDataReader resultado = bd.Query();//disponible resultado
+
+            while (resultado.Read())
+            {
+                UPOV color = new UPOV(resultado.GetInt32(0));
+                colores.Add(color);
+            }
+            resultado.Close();
+            bd.Close();
+
+            return colores;
+        }
+
+        /*
+        * Actualizar el color de la piel de la variedad en el informe upov
+        */
+        public void UpdateUPOVColorPiel(int id_color_piel, int id_upov)
+        {
+            DataAccess.DataBase bd = new DataBase();
+            bd.Connect(); //método conectar
+            string sql = "upovColorPielActualizar";
+            bd.CreateCommandSP(sql);
+            bd.CreateParameter("@id_color_piel", DbType.Int32, id_color_piel);
+            bd.CreateParameter("@id_upov", DbType.Int32, id_upov);
+            bd.Execute();
+            bd.Close();
+        }
+
+        /*
+        * Elimina el color de la piel de la variedad en el informe upov
+        */
+        public void DeleteUPOVColorPiel(int id_upov)
+        {
+            DataAccess.DataBase bd = new DataBase();
+            bd.Connect(); //método conectar
+            string sql = "upovColorPielEliminar";
+            bd.CreateCommandSP(sql);
+            bd.CreateParameter("@id_upov", DbType.Int32, id_upov);
+            bd.Execute();
+            bd.Close();
+        }
+
+        /*
+         * Devuelve el id_color_piel del informe upov seleccionada
+         */
+        public List<UPOV> GetUPOVColorPiel(int id_upov)
+        {
+            DataAccess.DataBase bd = new DataBase();
+            bd.Connect(); //método conectar
+            List<UPOV> colores = new List<UPOV>();
+            string salida = "upovColorPielObtener";//comando sql
+            bd.CreateCommandSP(salida);
+            bd.CreateParameter("@id_upov", DbType.Int32, id_upov);
+
+            DbDataReader resultado = bd.Query();//disponible resultado
+
+            while (resultado.Read())
+            {
+                UPOV color = new UPOV(resultado.GetInt32(0));
+                colores.Add(color);
+            }
+            resultado.Close();
+            bd.Close();
+
+            return colores;
+        }
+
         //----------------------------------------------CARACTERISTICAS UPOV--------------------------------------------      
         /*
          * Obtiene Boton Floral Pigmentacion para el informe upov

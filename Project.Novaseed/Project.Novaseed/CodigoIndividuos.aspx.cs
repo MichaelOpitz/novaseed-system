@@ -36,11 +36,24 @@ namespace Project.Novaseed
             }
             valorAñoInt32 = Int32.Parse(valorAñoString);
 
+            this.lblCodificacionError.Visible = false;
+            this.lblCodificacionError.Text = "";
             if (!Page.IsPostBack)
             {
                 this.gdvCodigoIndividuos.DataSource = cc.GetCodificacion(codigo_variedad, pad_codigo_variedad, valorAñoInt32);
                 this.gdvCodigoIndividuos.DataBind();
             }
+        }
+
+        /*
+         * Verifica si es un entero
+         */
+        public bool EsNumero(object Expression)
+        {
+            bool isNum;
+            double retNum;
+            isNum = Double.TryParse(Convert.ToString(Expression), System.Globalization.NumberStyles.Any, System.Globalization.NumberFormatInfo.InvariantInfo, out retNum);
+            return isNum;
         }
 
         /*
@@ -68,15 +81,18 @@ namespace Project.Novaseed
 
                 //Ecuentra el CheckBox en la fila
                 CheckBox chkAgregar6Papas = (e.Row.FindControl("chkAgregar6Papas") as CheckBox);
+                //Ecuentra el Button en la fila
+                Button btnEdit = (e.Row.FindControl("btnEdit") as Button);
                 if (indexCodificacionCosecha == 1)
                 {
                     e.Row.BackColor = Color.LightGreen;
                     chkAgregar6Papas.Enabled = false;
+                    btnEdit.Enabled = false;
                 }
                 else
                 {
                     e.Row.BackColor = Color.FromArgb(255, 204, 203);
-                    chkAgregar6Papas.Enabled = true;
+                    chkAgregar6Papas.Enabled = true;                    
                 }
                 contCodificacionCosecha = contCodificacionCosecha + 1;
             }
@@ -87,14 +103,87 @@ namespace Project.Novaseed
             CatalogCodificacion cc = new CatalogCodificacion();
             try
             {
+                this.lblCodificacionError.Visible = true;
                 string id_codificacion = HttpUtility.HtmlDecode((string)this.gdvCodigoIndividuos.Rows[e.RowIndex].Cells[1].Text);
-                string codigo_individuo = e.NewValues[0].ToString();
+                string codigo_individuo = e.NewValues[0].ToString().ToLower();
 
-                Project.BusinessRules.Codificacion cod = new Project.BusinessRules.Codificacion(Int32.Parse(id_codificacion), codigo_individuo);
-                int valor = cc.UpdateCodificacion(cod);
+                //azul
+                string c = codigo_individuo.Substring(0,1);
+                string b = codigo_individuo.Substring(1,1);
+                //roja
+                string r = codigo_individuo.Substring(1,1);
+                //amarilla
+                string t = codigo_individuo.Substring(0,1);
+                string y = codigo_individuo.Substring(1,1);
+                //bicolor
+                string bi = codigo_individuo.Substring(0,1);
+                string ci = codigo_individuo.Substring(1,1);
+                //año
+                bool año = EsNumero(codigo_individuo.Substring(2,4));
+                //guion
+                string guion = codigo_individuo.Substring(6,1);
+                //número de color
+                bool num_color1 = EsNumero(codigo_individuo.Substring(7));
 
-                if (valor == 0)
-                    Page.ClientScript.RegisterStartupScript(GetType(), "Script", "<script>alert('¡No se pudo modificar debido a que el código escrito ya existe en el año!')</script>");
+                bool error = false;
+                //if código azul
+                if ((!codigo_individuo.Equals("") && c.Equals("c") && b.Equals("b")) &&
+                    (año != true || !guion.Equals("-") || num_color1!=true))
+                {
+                    this.lblCodificacionError.Text += "Código color azul incorrecto, Ejemplo: 'cb2016-001'. ";
+                    error = true;                                    
+                }
+                //if código rojo
+                if ((!codigo_individuo.Equals("") && c.Equals("c") && r.Equals("r")) &&
+                    (año != true || !guion.Equals("-") || num_color1 != true))
+                {
+                    this.lblCodificacionError.Text += "Código color rojo incorrecto, Ejemplo: 'cr2016-001'. ";
+                    error = true;
+                }
+                //if código amarilla
+                if ((!codigo_individuo.Equals("") && t.Equals("t") && y.Equals("y")) &&
+                    (año != true || !guion.Equals("-") || num_color1 != true))
+                {
+                    this.lblCodificacionError.Text += "Código color amarillo incorrecto, Ejemplo: 'ty2016-001'. ";
+                    error = true;
+                }
+                //if código bicolor
+                if ((!codigo_individuo.Equals("") && bi.Equals("b") && ci.Equals("c")) &&
+                    (año != true || !guion.Equals("-") || num_color1 != true))
+                {
+                    this.lblCodificacionError.Text += "Código bicolor incorrecto, Ejemplo: 'bc2016-001'. ";
+                    error = true;
+                }
+                //if otro código
+                if (!codigo_individuo.Equals("") &&
+                    (!c.Equals("c") || !b.Equals("b")) &&
+                    (!c.Equals("c") || !r.Equals("r")) &&
+                    (!t.Equals("t") || !y.Equals("y")) &&
+                    (!bi.Equals("b") || !ci.Equals("c")))
+                {
+                    this.lblCodificacionError.Text += "Código incorrecto. ";
+                    error = true;
+                }                  
+
+                if (error == false)
+                {
+                    string año1 = codigo_individuo.Substring(2,1);
+                    string año2 = codigo_individuo.Substring(3,1);
+                    string año3 = codigo_individuo.Substring(4,1);
+                    string año4 = codigo_individuo.Substring(5,1);
+                    string añoConcatenado = año1 + año2 + año3 + año4;
+                    //pregunta si el año seleccionado es el mismo al año del codigo
+                    if (!añoConcatenado.Equals(valorAñoString))
+                        this.lblCodificacionError.Text += "Año incorrecto, debe ser el mismo seleccionado. ";
+                    else
+                    {
+                        Project.BusinessRules.Codificacion cod = new Project.BusinessRules.Codificacion(Int32.Parse(id_codificacion), codigo_individuo);
+                        int valor = cc.UpdateCodificacion(cod);
+
+                        if (valor == 0)
+                            Page.ClientScript.RegisterStartupScript(GetType(), "Script", "<script>alert('¡No se pudo modificar debido a que el código escrito ya existe en el año!')</script>");
+                    }
+                }
 
             }
             catch (Exception ex)

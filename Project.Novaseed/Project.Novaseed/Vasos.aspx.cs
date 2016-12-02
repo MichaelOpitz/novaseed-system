@@ -25,8 +25,10 @@ namespace Project.Novaseed
                 valorAñoString = Request.QueryString["valor"];
             else
                 valorAñoString = "0";
-            valorAñoInt32 = Int32.Parse(valorAñoString);            
+            valorAñoInt32 = Int32.Parse(valorAñoString);
 
+            this.lblVasosError.Visible = false;
+            this.lblVasosError.Text = "";
             if (!Page.IsPostBack)
             {
                 this.txtCantidadTotalVasos.Text = cv.GetCantidadTotalVasos_fn(valorAñoInt32).ToString() + " Vasos";
@@ -34,6 +36,17 @@ namespace Project.Novaseed
                 this.gdvVasos.DataSource = cv.GetVasos(valorAñoInt32);
                 this.gdvVasos.DataBind();
             }                            
+        }
+
+        /*
+         * Verifica si es un entero
+         */
+        public bool EsNumero(object Expression)
+        {
+            bool isNum;
+            double retNum;
+            isNum = Double.TryParse(Convert.ToString(Expression), System.Globalization.NumberStyles.Any, System.Globalization.NumberFormatInfo.InvariantInfo, out retNum);
+            return isNum;
         }
 
         /*
@@ -93,36 +106,104 @@ namespace Project.Novaseed
         {
             CatalogVasos cv = new CatalogVasos();
             try
-            {                
+            {
+                this.lblVasosError.Visible = true;
+                int invalido = 0;
                 string id_vasos = HttpUtility.HtmlDecode((string)this.gdvVasos.Rows[e.RowIndex].Cells[2].Text);
 
+                //ubicacion
                 string ubicacion_vasos = e.NewValues[0].ToString();
+                if (ubicacion_vasos.Length == 3)
+                {
+                    string uvPrimero = ubicacion_vasos.Substring(0, 1);
+                    string uvSegundo = ubicacion_vasos.Substring(1, 1);
+                    string uvTercero = ubicacion_vasos.Substring(2, 1);
+                    if (EsNumero(uvPrimero) == false || EsNumero(uvSegundo) == true || EsNumero(uvTercero) == false)
+                    {
+                        this.lblVasosError.Text += "Ubicación incorrecta, Ejemplo '1D1' o '1I1'.<br/>";
+                        invalido = 1;
+                    }
+                }
+                else
+                {
+                    this.lblVasosError.Text += "Ubicación incorrecta, Ejemplo '1D1' o '1I1'.<br/>";
+                    invalido = 1;
+                }
+
+                //cantidad papas
+                int cantidad = 0;
                 string cantidad_vasos = e.NewValues[1].ToString();
+                if ((EsNumero(cantidad_vasos) == true && (Int32.Parse(cantidad_vasos) < 0 || Int32.Parse(cantidad_vasos) > 999)) || (EsNumero(cantidad_vasos) == false))
+                {
+                    this.lblVasosError.Text += "La cantidad de vasos debe ser un número positivo menor a 999.<br/>";
+                    invalido = 1;
+                }
+                else
+                    cantidad = Int32.Parse(cantidad_vasos);
+                
+                //fertilidad
                 DropDownList ddlVasosFertilidad = (DropDownList)gdvVasos.Rows[e.RowIndex].FindControl("ddlVasosFertilidad");
                 string id_fertilidad = ddlVasosFertilidad.SelectedValue;
 
+                //azules
+                int azul=0;
                 string azul_vasos = e.NewValues[2].ToString();
+                if ((EsNumero(azul_vasos) == true && (Int32.Parse(azul_vasos) < 0 || Int32.Parse(azul_vasos) > 15)) || (EsNumero(azul_vasos) == false))
+                {
+                    this.lblVasosError.Text += "Las azules deben ser un número positivo menor a 15.<br/>";
+                    invalido = 1;
+                }
+                else
+                    azul = Int32.Parse(azul_vasos);
+
+                //rojas
+                int roja = 0;
                 string roja_vasos = e.NewValues[3].ToString();
+                if ((EsNumero(roja_vasos) == true && (Int32.Parse(roja_vasos) < 0 || Int32.Parse(roja_vasos) > 15)) || (EsNumero(roja_vasos) == false))
+                {
+                    this.lblVasosError.Text += "Las rojas deben ser un número positivo menor a 15.<br/>";
+                    invalido = 1;
+                }
+                else
+                    roja = Int32.Parse(roja_vasos);
+
+                //amarillas
+                int amarilla = 0;
                 string amarilla_vasos = e.NewValues[4].ToString();
+                if ((EsNumero(amarilla_vasos) == true && (Int32.Parse(amarilla_vasos) < 0 || Int32.Parse(amarilla_vasos) > 15)) || (EsNumero(amarilla_vasos) == false))
+                {
+                    this.lblVasosError.Text += "Las amarillas deben ser un número positivo menor a 15.<br/>";
+                    invalido = 1;
+                }
+                else
+                    amarilla = Int32.Parse(amarilla_vasos);
+
+                //bicolores
+                int bicolor = 0;
                 string bicolor_vasos = e.NewValues[5].ToString();
+                if ((EsNumero(bicolor_vasos) == true && (Int32.Parse(bicolor_vasos) < 0 || Int32.Parse(bicolor_vasos) > 15)) || (EsNumero(bicolor_vasos) == false))
+                {
+                    this.lblVasosError.Text += "Las bicolores deben ser un número positivo menor a 15.<br/>";
+                    invalido = 1;
+                }
+                else
+                    bicolor = Int32.Parse(bicolor_vasos);
 
-                int cantidad = Int32.Parse(cantidad_vasos);
-                int azul = Int32.Parse(azul_vasos);
-                int roja = Int32.Parse(roja_vasos);
-                int amarilla = Int32.Parse(amarilla_vasos);
-                int bicolor = Int32.Parse(bicolor_vasos);
-                int suma = azul + roja + amarilla + bicolor;
-                if (suma > cantidad)
-                    Page.ClientScript.RegisterStartupScript(GetType(), "Script", "<script>alert('La suma de azules, rojas, amarillas y bicolores("+suma+") no debe ser mayor a la cantidad total("+cantidad+") del vaso')</script>");
+                if (invalido == 0)
+                {
+                    int suma = azul + roja + amarilla + bicolor;
+                    if (suma > cantidad)
+                        Page.ClientScript.RegisterStartupScript(GetType(), "Script", "<script>alert('La suma de azules, rojas, amarillas y bicolores(" + suma + ") no debe ser mayor a la cantidad total(" + cantidad + ") del vaso')</script>");
 
-                Project.BusinessRules.Vasos vasos = new Project.BusinessRules.Vasos(Int32.Parse(id_vasos),
-                        ubicacion_vasos, cantidad, Int32.Parse(id_fertilidad),
-                        azul, roja, amarilla, bicolor);
-                cv.UpdateVasos(vasos);
+                    Project.BusinessRules.Vasos vasos = new Project.BusinessRules.Vasos(Int32.Parse(id_vasos),
+                            ubicacion_vasos, cantidad, Int32.Parse(id_fertilidad),
+                            azul, roja, amarilla, bicolor);
+                    cv.UpdateVasos(vasos);
+                }
             }
             catch (Exception ex)
             {
-                Page.ClientScript.RegisterStartupScript(GetType(), "Script", "<script>alert('" + ex.ToString() + "')</script>");
+                Page.ClientScript.RegisterStartupScript(GetType(), "Script", "<script>alert('¡Error al modificar, repare los parámetros que ingresó!')</script>");
             }
             gdvVasos.EditIndex = -1;
             this.txtCantidadTotalVasos.Text = cv.GetCantidadTotalVasos_fn(valorAñoInt32).ToString() + " Vasos";

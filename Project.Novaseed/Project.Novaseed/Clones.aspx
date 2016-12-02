@@ -20,6 +20,9 @@
         </div>
         <br />
         <div class="row">
+            <h5><asp:Label id="lblClonesError" runat="server" Font-Bold="true" Text="" ForeColor="Red"/></h5>
+        </div>
+        <div class="row">
             <asp:Button type="button" runat="server" ID="btnAgregarCodificacion" class="btn btn-danger btn-block" Style="border-color: #000000" Text="Codificar" OnClick="btnAgregarCodificacion_Click"></asp:Button>
         </div>
         <div class="row">

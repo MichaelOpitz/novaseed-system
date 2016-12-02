@@ -39,6 +39,8 @@ namespace Project.Novaseed
             CatalogProduccion cprod = new CatalogProduccion();
             List<Project.BusinessRules.Produccion> produccion = cprod.GetProduccionPorVariedad(codigo_variedad);
 
+            this.lblProduccionError.Visible = false;
+            this.lblProduccionError.Text = "";
             if (!Page.IsPostBack)
             {
                 this.ddlProduccionCiudad.DataValueField = "id_ciudad";
@@ -75,29 +77,84 @@ namespace Project.Novaseed
         {
             try
             {
+                this.lblProduccionError.Visible = true;
+                int invalido = 0;
                 string id_ciudad = this.ddlProduccionCiudad.SelectedValue;                
                 string id_categoria = this.ddlProduccionCategoriaProduccion.SelectedValue;                
                 string id_productor = this.ddlProduccionProductor.SelectedValue;                
                 string prod_cantidad_total = this.txtProduccionCantidadTotal.Text.Replace(",", ".");
+                try
+                {
+                    double prod_cantidad_totalDouble = double.Parse(prod_cantidad_total, System.Globalization.CultureInfo.InvariantCulture);
+                    if (prod_cantidad_totalDouble < 0 || prod_cantidad_totalDouble > 999.99)
+                        invalido = 1;
+                }
+                catch (Exception exTotal)
+                {
+                    invalido = 1;
+                }
+
                 string cantidad_productor = this.txtProduccionCantidadProductor.Text.Replace(",", ".");
+                try
+                {
+                    double cantidad_productorDouble = double.Parse(cantidad_productor, System.Globalization.CultureInfo.InvariantCulture);
+                    if (cantidad_productorDouble < 0 || cantidad_productorDouble > 999.99)
+                        invalido = 1;
+                }
+                catch (Exception exTotal)
+                {
+                    invalido = 1;
+                }
+
                 string superficie = this.txtProduccionSuperficie.Text.Replace(",", ".");
+                try
+                {
+                    double superficieDouble = double.Parse(superficie, System.Globalization.CultureInfo.InvariantCulture);
+                    if (superficieDouble < 0 || superficieDouble > 99.99)
+                        invalido = 1;
+                }
+                catch (Exception exTotal)
+                {
+                    invalido = 1;
+                }
+
                 string cosecha = this.txtProduccionCosecha.Text.Replace(",", ".");
+                try
+                {
+                    double cosechaDouble = double.Parse(cosecha, System.Globalization.CultureInfo.InvariantCulture);
+                    if (cosechaDouble < 0 || cosechaDouble > 999.99)
+                        invalido = 1;
+                }
+                catch (Exception exTotal)
+                {
+                    invalido = 1;
+                }
+
                 bool licencia = this.chkProduccionLicencia.Checked;
 
-                CatalogProduccion cp = new CatalogProduccion();
-                Produccion produccion = new Produccion(Int32.Parse(id_productor),Int32.Parse(id_ciudad),codigo_variedad,
-                    Int32.Parse(id_categoria),Double.Parse(prod_cantidad_total, CultureInfo.InvariantCulture),
-                    Double.Parse(cantidad_productor, CultureInfo.InvariantCulture),Double.Parse(superficie, CultureInfo.InvariantCulture),
-                    Double.Parse(cosecha, CultureInfo.InvariantCulture),licencia);
-                int valor = cp.UpdateProduccion(produccion);
-                if (valor == 0)
-                    Page.ClientScript.RegisterStartupScript(GetType(), "Script", "<script>alert('¡Error al modificar la producción!')</script>");
+                if (invalido == 0)
+                {
+                    CatalogProduccion cp = new CatalogProduccion();
+                    Produccion produccion = new Produccion(Int32.Parse(id_productor), Int32.Parse(id_ciudad), codigo_variedad,
+                        Int32.Parse(id_categoria), Double.Parse(prod_cantidad_total, CultureInfo.InvariantCulture),
+                        Double.Parse(cantidad_productor, CultureInfo.InvariantCulture), Double.Parse(superficie, CultureInfo.InvariantCulture),
+                        Double.Parse(cosecha, CultureInfo.InvariantCulture), licencia);
+                    int valor = cp.UpdateProduccion(produccion);
+                    if (valor == 0)
+                        Page.ClientScript.RegisterStartupScript(GetType(), "Script", "<script>alert('¡Error al modificar la producción!')</script>");
+                    else
+                        Response.Redirect("MenuProduccion.aspx");
+                }
                 else
-                    Response.Redirect("MenuProduccion.aspx");
+                {
+                    this.lblProduccionError.Text += "Error al modificar, Revise los parámetros indicados y modifiquelos.<br/>";
+                    Page.ClientScript.RegisterStartupScript(GetType(), "Script", "<script>alert('¡Datos incorrectos!\nRevise los parámetros indicados y modifique su valor')</script>");
+                }
             }
             catch (Exception ex)
             {
-                Page.ClientScript.RegisterStartupScript(GetType(), "Script", "<script>alert('" + ex.ToString() + "')</script>");
+                this.lblProduccionError.Text += "ERROR CRÍTICO, NO SE HA PODIDO MODIFICAR LA PRODUCCIÓN, ARREGLE LOS PARÁMETROS E INTENTELO NUEVAMENTE.<br/>";
+                Page.ClientScript.RegisterStartupScript(GetType(), "Script", "<script>alert('Error al modificar!\nNo se ha podido actualizar la producción')</script>");
             }
         }
     }

@@ -27,14 +27,27 @@ namespace Project.Novaseed
                 valorAñoString = Request.QueryString["valor"];
             else
                 valorAñoString = "0";
-            valorAñoInt32 = Int32.Parse(valorAñoString); 
+            valorAñoInt32 = Int32.Parse(valorAñoString);
 
+            this.lblClonesError.Visible = false;
+            this.lblClonesError.Text = "";
             if (!Page.IsPostBack)
             {
                 this.lblClonesAño.Text += "(" + valorAñoInt32.ToString() + ")";
                 this.gdvClones.DataSource = cc.GetClones(valorAñoInt32);
                 this.gdvClones.DataBind();
             }
+        }
+
+        /*
+         * Verifica si es un entero
+         */
+        public bool EsNumero(object Expression)
+        {
+            bool isNum;
+            double retNum;
+            isNum = Double.TryParse(Convert.ToString(Expression), System.Globalization.NumberStyles.Any, System.Globalization.NumberFormatInfo.InvariantInfo, out retNum);
+            return isNum;
         }
 
         /*
@@ -103,6 +116,7 @@ namespace Project.Novaseed
             CatalogClones cc = new CatalogClones();
             try
             {
+                this.lblClonesError.Visible = true;
                 string id_clones = HttpUtility.HtmlDecode((string)this.gdvClones.Rows[e.RowIndex].Cells[1].Text);
 
                 string posicion_clones = e.NewValues[0].ToString();
@@ -110,24 +124,66 @@ namespace Project.Novaseed
                 string id_fertilidad = ddlClonesFertilidad.SelectedValue;
 
                 string azul_clon = e.NewValues[1].ToString();
+                if (EsNumero(azul_clon) == false)
+                    this.lblClonesError.Text += "Las azules deben ser un número. ";
                 string roja_clon = e.NewValues[2].ToString();
+                if (EsNumero(roja_clon) == false)
+                    this.lblClonesError.Text += "Las rojas deben ser un número. ";
                 string amarilla_clon = e.NewValues[3].ToString();
+                if (EsNumero(amarilla_clon) == false)
+                    this.lblClonesError.Text += "Las amarillas deben ser un número. ";
                 string bicolor_clon = e.NewValues[4].ToString();
+                if (EsNumero(bicolor_clon) == false)
+                    this.lblClonesError.Text += "Las bicolores deben ser un número. ";
 
                 int id_clon = Int32.Parse(id_clones);
-                //Reemplaza las comas por los puntos para agregar el valor tipo double en la base de datos
-                posicion_clones = posicion_clones.Replace(",",".");
-                double posicion = Double.Parse(posicion_clones, CultureInfo.InvariantCulture);
-                int id_fertilidadInt32 = Int32.Parse(id_fertilidad);
-                int azul = Int32.Parse(azul_clon);
-                int roja = Int32.Parse(roja_clon);
-                int amarilla = Int32.Parse(amarilla_clon);
-                int bicolor = Int32.Parse(bicolor_clon);
-                                    
+                if (EsNumero(azul_clon) == true && EsNumero(roja_clon) == true && EsNumero(amarilla_clon) == true && 
+                    EsNumero(bicolor_clon) == true)
+                {                    
+                    double posicion = 0;
+                    if (Double.TryParse(posicion_clones, out posicion))
+                    {
+                        //Reemplaza las comas por los puntos para agregar el valor tipo double en la base de datos
+                        posicion_clones = posicion_clones.Replace(",", ".");
+                        posicion = Double.Parse(posicion_clones, CultureInfo.InvariantCulture);
+                        if (posicion < 0)
+                        {
+                            posicion = 0;
+                            this.lblClonesError.Text += "La posición debe ser un número positivo. ";
+                        }
+                    }
+                    else
+                        this.lblClonesError.Text += "La posición debe ser un número valido. ";
+                    int id_fertilidadInt32 = Int32.Parse(id_fertilidad);
+                    int azul = Int32.Parse(azul_clon);
+                    if (azul < 0)
+                    {
+                        azul = 0;
+                        this.lblClonesError.Text += "Las azules deben ser un número positivo. ";
+                    }
+                    int roja = Int32.Parse(roja_clon);
+                    if (roja < 0)
+                    {
+                        roja = 0;
+                        this.lblClonesError.Text += "Las rojas deben ser un número positivo. ";
+                    }
+                    int amarilla = Int32.Parse(amarilla_clon);
+                    if (amarilla < 0)
+                    {
+                        amarilla = 0;
+                        this.lblClonesError.Text += "Las amarillas deben ser un número positivo. ";
+                    }
+                    int bicolor = Int32.Parse(bicolor_clon);
+                    if (bicolor < 0)
+                    {
+                        bicolor = 0;
+                        this.lblClonesError.Text += "Las bicolores deben ser un número positivo. ";
+                    }
 
-                Project.BusinessRules.Clones clon = new Project.BusinessRules.Clones(id_clon, posicion, id_fertilidadInt32, 
-                    azul, roja, amarilla, bicolor);
-                cc.UpdateClones(clon);
+                    Project.BusinessRules.Clones clon = new Project.BusinessRules.Clones(id_clon, posicion, id_fertilidadInt32,
+                        azul, roja, amarilla, bicolor);
+                    cc.UpdateClones(clon);
+                }
             }
             catch (Exception ex)
             {

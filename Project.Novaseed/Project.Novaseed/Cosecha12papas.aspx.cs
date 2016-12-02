@@ -90,6 +90,8 @@ namespace Project.Novaseed
                 valorAñoString = "0";
             valorAñoInt32 = Int32.Parse(valorAñoString);
 
+            this.lbl12papasError.Visible = false;
+            this.lbl12papasError.Text = "";
             if (!Page.IsPostBack)
             {
                 this.ddl12papasFertilidad.DataValueField = "id_fertilidad";
@@ -182,6 +184,17 @@ namespace Project.Novaseed
         }
 
         /*
+         * Verifica si es un entero
+         */
+        public bool EsNumero(object Expression)
+        {
+            bool isNum;
+            double retNum;
+            isNum = Double.TryParse(Convert.ToString(Expression), System.Globalization.NumberStyles.Any, System.Globalization.NumberFormatInfo.InvariantInfo, out retNum);
+            return isNum;
+        }
+
+        /*
         * Llena la grilla de la temporada 12papas con el año seleccionado
         */
         private void PoblarGrilla()
@@ -226,12 +239,7 @@ namespace Project.Novaseed
                 Page.ClientScript.RegisterStartupScript(GetType(), "Script", "<script>alert('Error!\n¡No se pudo eliminar la variedad!')</script>");
 
             PoblarGrilla();
-        }        
-
-        protected void btnAgregar24papas_Click(object sender, EventArgs e)
-        {
-
-        }
+        } 
 
         protected void btn12papasCancelar_Click(object sender, EventArgs e)
         {
@@ -242,12 +250,27 @@ namespace Project.Novaseed
         {
             try
             {
+                this.lbl12papasError.Visible = true;
+                int invalido = 0;
                 int selected = this.gdv12papas.SelectedIndex;
 
                 string id_cosecha = HttpUtility.HtmlDecode((string)this.gdv12papas.Rows[selected].Cells[2].Text);
                 int id_cosechaEntero = Int32.Parse(id_cosecha);
                 string cantidad_papas = this.txt12papasCantidadPapas.Text;
+                if ((EsNumero(cantidad_papas) == true && (Int32.Parse(cantidad_papas) < 0 || Int32.Parse(cantidad_papas) > 12)) || (EsNumero(cantidad_papas) == false))
+                    invalido = 1;
                 string posicion_cosecha = this.txt12papasPosicion.Text.Replace(",", ".");
+                try
+                {
+                    double posicion_cosechaDouble = double.Parse(posicion_cosecha, System.Globalization.CultureInfo.InvariantCulture);
+                    if (posicion_cosechaDouble < 0 || posicion_cosechaDouble > 99.99)
+                        invalido = 1;
+                }
+                catch (Exception exTotal)
+                {
+                    invalido = 1;
+                }
+
                 bool flor_cosecha = false;
                 if (this.chk12papasFlor.Checked == true)
                     flor_cosecha = true;
@@ -281,78 +304,171 @@ namespace Project.Novaseed
                 string id_ciudad = this.ddl12papasCiudadPlantacion.SelectedValue;
 
                 string total_kg = this.txt12papasTotalKg.Text.Replace(",", ".");
+                try
+                {
+                    double total_kgDouble = double.Parse(total_kg, System.Globalization.CultureInfo.InvariantCulture);
+                    if (total_kgDouble < 0 || total_kgDouble > 99999.99)
+                        invalido = 1;
+                }
+                catch (Exception exTotal)
+                {
+                    invalido = 1;
+                }
+
                 string tuberculos_planta = this.txt12papasTuberculosPlanta.Text.Replace(",", ".");
+                try
+                {
+                    double tuberculos_plantaDouble = double.Parse(tuberculos_planta, System.Globalization.CultureInfo.InvariantCulture);
+                    if (tuberculos_plantaDouble < 0 || tuberculos_plantaDouble > 999.99)
+                        invalido = 1;
+                }
+                catch (Exception exTotal)
+                {
+                    invalido = 1;
+                }
+
                 string toneladas_hectarea = this.txt12papasToneladasHectarea.Text.Replace(",", ".");
+                try
+                {
+                    double toneladas_hectareaDouble = double.Parse(toneladas_hectarea, System.Globalization.CultureInfo.InvariantCulture);
+                    if (toneladas_hectareaDouble < 0 || toneladas_hectareaDouble > 9999.99)
+                        invalido = 1;
+                }
+                catch (Exception exTotal)
+                {
+                    invalido = 1;
+                }
+
                 string porcentaje_relacion = this.txt12papasRelacionStandard.Text.Replace("%", "");
+                if ((EsNumero(porcentaje_relacion) == true && (Int32.Parse(porcentaje_relacion) < 0 || Int32.Parse(porcentaje_relacion) > 999)) || (EsNumero(porcentaje_relacion) == false))
+                    invalido = 1;
                 string consumo = this.txt12papasConsumo.Text;
+                if ((EsNumero(consumo) == true && (Int32.Parse(consumo) < 0 || Int32.Parse(consumo) > 99)) || (EsNumero(consumo) == false))
+                    invalido = 1;
                 string semillon = this.txt12papasSemillon.Text;
+                if ((EsNumero(semillon) == true && (Int32.Parse(semillon) < 0 || Int32.Parse(semillon) > 99)) || (EsNumero(semillon) == false))
+                    invalido = 1;
                 string semilla = this.txt12papasSemilla.Text;
+                if ((EsNumero(semilla) == true && (Int32.Parse(semilla) < 0 || Int32.Parse(semilla) > 99)) || (EsNumero(semilla) == false))
+                    invalido = 1;
                 string semillita = this.txt12papasSemillita.Text;
+                if ((EsNumero(semillita) == true && (Int32.Parse(semillita) < 0 || Int32.Parse(semillita) > 99)) || (EsNumero(semillita) == false))
+                    invalido = 1;
                 string bajo_calibre = this.txt12papasBajoCalibre.Text;
+                if ((EsNumero(bajo_calibre) == true && (Int32.Parse(bajo_calibre) < 0 || Int32.Parse(bajo_calibre) > 99)) || (EsNumero(bajo_calibre) == false))
+                    invalido = 1;
                 string numero_tallos = this.txt12papasNumeroTallos.Text;
+                if ((EsNumero(numero_tallos) == true && (Int32.Parse(numero_tallos) < 0 || Int32.Parse(numero_tallos) > 99)) || (EsNumero(numero_tallos) == false))
+                    invalido = 1;
 
                 string id_sensibildiad_quimica = this.ddl12papasSensibilidadQuimica.SelectedValue;
                 string id_facilidad_muerte = this.ddl12papasFacilidadMuerte.SelectedValue;
                 string dormancia = this.txt12papasDormancia.Text;
+                if ((EsNumero(dormancia) == true && (Int32.Parse(dormancia) < 0 || Int32.Parse(dormancia) > 99)) || (EsNumero(dormancia) == false))
+                    invalido = 1;
                 string tolerancia_sequia = this.txt12papasToleranciaSequia.Text;
+                if ((EsNumero(tolerancia_sequia) == true && (Int32.Parse(tolerancia_sequia) < 0 || Int32.Parse(tolerancia_sequia) > 99)) || (EsNumero(tolerancia_sequia) == false))
+                    invalido = 1;
                 string tolerancia_calor = this.txt12papasToleranciaCalor.Text;
+                if ((EsNumero(tolerancia_calor) == true && (Int32.Parse(tolerancia_calor) < 0 || Int32.Parse(tolerancia_calor) > 99)) || (EsNumero(tolerancia_calor) == false))
+                    invalido = 1;
                 string tolerancia_sal = this.txt12papasToleranciaSal.Text;
+                if ((EsNumero(tolerancia_sal) == true && (Int32.Parse(tolerancia_sal) < 0 || Int32.Parse(tolerancia_sal) > 99)) || (EsNumero(tolerancia_sal) == false))
+                    invalido = 1;
                 string daño_cosecha = this.txt12papasDañoCosecha.Text;
+                if ((EsNumero(daño_cosecha) == true && (Int32.Parse(daño_cosecha) < 0 || Int32.Parse(daño_cosecha) > 99)) || (EsNumero(daño_cosecha) == false))
+                    invalido = 1;
                 string tizon_hoja = this.txt12papasTizonHoja.Text;
+                if ((EsNumero(tizon_hoja) == true && (Int32.Parse(tizon_hoja) < 0 || Int32.Parse(tizon_hoja) > 99)) || (EsNumero(tizon_hoja) == false))
+                    invalido = 1;
                 string putrefaccion_suave = this.txt12papasPutrefaccionSuave.Text;
+                if ((EsNumero(putrefaccion_suave) == true && (Int32.Parse(putrefaccion_suave) < 0 || Int32.Parse(putrefaccion_suave) > 99)) || (EsNumero(putrefaccion_suave) == false))
+                    invalido = 1;
                 string putrefaccion_rosa = this.txt12papasPutrefaccionRosa.Text;
+                if ((EsNumero(putrefaccion_rosa) == true && (Int32.Parse(putrefaccion_rosa) < 0 || Int32.Parse(putrefaccion_rosa) > 99)) || (EsNumero(putrefaccion_rosa) == false))
+                    invalido = 1;
                 string silver_scurf = this.txt12papasSilverScurf.Text;
+                if ((EsNumero(silver_scurf) == true && (Int32.Parse(silver_scurf) < 0 || Int32.Parse(silver_scurf) > 99)) || (EsNumero(silver_scurf) == false))
+                    invalido = 1;
                 string blackleg = this.txt12papasBlackleg.Text;
+                if ((EsNumero(blackleg) == true && (Int32.Parse(blackleg) < 0 || Int32.Parse(blackleg) > 99)) || (EsNumero(blackleg) == false))
+                    invalido = 1;
 
-                CatalogCosecha cc = new CatalogCosecha();
-                Cosecha cosecha = new Cosecha(id_cosechaEntero, Int32.Parse(cantidad_papas), Double.Parse(posicion_cosecha, CultureInfo.InvariantCulture),
-                    flor_cosecha, bayas_cosecha, Int32.Parse(id_fertilidad), Int32.Parse(id_emergencia40), Int32.Parse(id_metribuzina),
-                    Int32.Parse(id_emergencia), Int32.Parse(id_madurez), Int32.Parse(id_desarrollo), Int32.Parse(id_tipo_hoja),
-                    Int32.Parse(id_brotacion), Int32.Parse(id_tamaño), Int32.Parse(id_distribucion), Int32.Parse(id_forma),
-                    Int32.Parse(id_regularidad), Int32.Parse(id_profundidad), Int32.Parse(id_calidad), Int32.Parse(id_verdes),
-                    Int32.Parse(id_tizon_follaje), Int32.Parse(id_tizon_tuberculo), Int32.Parse(id_numero), Int32.Parse(id_ciudad),
-                    Double.Parse(total_kg, CultureInfo.InvariantCulture), Double.Parse(tuberculos_planta, CultureInfo.InvariantCulture),
-                    Double.Parse(toneladas_hectarea, CultureInfo.InvariantCulture), Int32.Parse(porcentaje_relacion),
-                    Int32.Parse(consumo), Int32.Parse(semillon), Int32.Parse(semilla), Int32.Parse(semillita),
-                    Int32.Parse(bajo_calibre), Int32.Parse(numero_tallos), Int32.Parse(id_sensibildiad_quimica), 
-                    Int32.Parse(id_facilidad_muerte), Int32.Parse(dormancia), Int32.Parse(tolerancia_sequia),
-                    Int32.Parse(tolerancia_calor), Int32.Parse(tolerancia_sal), Int32.Parse(daño_cosecha),
-                    Int32.Parse(tizon_hoja), Int32.Parse(putrefaccion_suave), Int32.Parse(putrefaccion_rosa),
-                    Int32.Parse(silver_scurf), Int32.Parse(blackleg));
-
-                cc.DeleteCosechaColorCarne(id_cosechaEntero);
-                List<int> selectedCarne = this.lst12papasColorCarne.GetSelectedIndices().ToList();
-                for (int i = 0; i < selectedCarne.Count; i++)
+                if (invalido == 0)
                 {
-                    string id_color_carne = this.lst12papasColorCarne.Items[selectedCarne[i]].Value;
-                    cc.UpdateCosechaColorCarne(Int32.Parse(id_color_carne), id_cosechaEntero);
-                }
+                    CatalogCosecha cc = new CatalogCosecha();
+                    Cosecha cosecha = new Cosecha(id_cosechaEntero, Int32.Parse(cantidad_papas), Double.Parse(posicion_cosecha, CultureInfo.InvariantCulture),
+                        flor_cosecha, bayas_cosecha, Int32.Parse(id_fertilidad), Int32.Parse(id_emergencia40), Int32.Parse(id_metribuzina),
+                        Int32.Parse(id_emergencia), Int32.Parse(id_madurez), Int32.Parse(id_desarrollo), Int32.Parse(id_tipo_hoja),
+                        Int32.Parse(id_brotacion), Int32.Parse(id_tamaño), Int32.Parse(id_distribucion), Int32.Parse(id_forma),
+                        Int32.Parse(id_regularidad), Int32.Parse(id_profundidad), Int32.Parse(id_calidad), Int32.Parse(id_verdes),
+                        Int32.Parse(id_tizon_follaje), Int32.Parse(id_tizon_tuberculo), Int32.Parse(id_numero), Int32.Parse(id_ciudad),
+                        Double.Parse(total_kg, CultureInfo.InvariantCulture), Double.Parse(tuberculos_planta, CultureInfo.InvariantCulture),
+                        Double.Parse(toneladas_hectarea, CultureInfo.InvariantCulture), Int32.Parse(porcentaje_relacion),
+                        Int32.Parse(consumo), Int32.Parse(semillon), Int32.Parse(semilla), Int32.Parse(semillita),
+                        Int32.Parse(bajo_calibre), Int32.Parse(numero_tallos), Int32.Parse(id_sensibildiad_quimica),
+                        Int32.Parse(id_facilidad_muerte), Int32.Parse(dormancia), Int32.Parse(tolerancia_sequia),
+                        Int32.Parse(tolerancia_calor), Int32.Parse(tolerancia_sal), Int32.Parse(daño_cosecha),
+                        Int32.Parse(tizon_hoja), Int32.Parse(putrefaccion_suave), Int32.Parse(putrefaccion_rosa),
+                        Int32.Parse(silver_scurf), Int32.Parse(blackleg));
 
-                cc.DeleteCosechaColorPiel(id_cosechaEntero);
-                List<int> selectedPiel = this.lst12papasColorPiel.GetSelectedIndices().ToList();
-                for (int i = 0; i < selectedPiel.Count; i++)
+                    //Modifica Color Carne
+                    List<int> selectedCarne = this.lst12papasColorCarne.GetSelectedIndices().ToList();
+                    if ((selectedCarne.Count > 1 && !selectedCarne[0].Equals(0)) || (selectedCarne.Count == 1))
+                    {
+                        cc.DeleteCosechaColorCarne(id_cosechaEntero);
+                        for (int i = 0; i < selectedCarne.Count; i++)
+                        {
+                            string id_color_carne = this.lst12papasColorCarne.Items[selectedCarne[i]].Value;
+                            cc.UpdateCosechaColorCarne(Int32.Parse(id_color_carne), id_cosechaEntero);
+                        }
+                    }
+                    else
+                        this.lbl12papasError.Text += "No puede seleccionar sin información y colores de la carne a la vez.<br/>";
+
+                    //Modifica Color Piel
+                    List<int> selectedPiel = this.lst12papasColorPiel.GetSelectedIndices().ToList();
+                    if ((selectedPiel.Count > 1 && !selectedPiel[0].Equals(0)) || (selectedPiel.Count == 1))
+                    {
+                        cc.DeleteCosechaColorPiel(id_cosechaEntero);
+                        for (int i = 0; i < selectedPiel.Count; i++)
+                        {
+                            string id_color_piel = this.lst12papasColorPiel.Items[selectedPiel[i]].Value;
+                            cc.UpdateCosechaColorPiel(Int32.Parse(id_color_piel), id_cosechaEntero);
+                        }
+                    }
+                    else
+                        this.lbl12papasError.Text += "No puede seleccionar sin información y colores de la piel a la vez.<br/>";
+
+                    //Modifica Enfermedades
+                    cc.DeleteCosechaEnfermedades(id_cosechaEntero);
+                    foreach (GridViewRow row in gdv12papasEnfermedades.Rows)
+                    {
+                        string nombre_enfermedad = HttpUtility.HtmlDecode((string)this.gdv12papasEnfermedades.Rows[row.RowIndex].Cells[0].Text);
+                        string resistencia_variedad = HttpUtility.HtmlDecode((string)this.gdv12papasEnfermedades.Rows[row.RowIndex].Cells[1].Text);
+                        int valorEnfermedad = cc.AddCosechaEnfermedades(nombre_enfermedad, id_cosechaEntero, resistencia_variedad);
+                        if (valorEnfermedad == 0)
+                            this.lbl12papasError.Text += "Error al ingresar enfermedad.<br/>";
+                    }
+
+                    //Modifica Cosecha 12 papas
+                    int valor = cc.UpdateCosecha12papas(cosecha);
+                    if (valor == 0)
+                    {
+                        this.lbl12papasError.Text += "Debe seleccionar una ciudad para la variedad o la posición indicada ya existe.<br/>";
+                        Page.ClientScript.RegisterStartupScript(GetType(), "Script", "<script>alert('¡Debe seleccionar una ciudad o ya hay una variedad asignada en esa posición!')</script>");
+                    }
+                }
+                else
                 {
-                    string id_color_piel = this.lst12papasColorPiel.Items[selectedPiel[i]].Value;
-                    cc.UpdateCosechaColorPiel(Int32.Parse(id_color_piel), id_cosechaEntero);
+                    this.lbl12papasError.Text += "Error al modificar, Revise los parámetros indicados y modifiquelos.<br/>";
+                    Page.ClientScript.RegisterStartupScript(GetType(), "Script", "<script>alert('¡Datos incorrectos!\nRevise los parámetros indicados y modifique su valor')</script>");
                 }
-
-                cc.DeleteCosechaEnfermedades(id_cosechaEntero);
-                foreach (GridViewRow row in gdv12papasEnfermedades.Rows)
-                {
-                    string nombre_enfermedad = HttpUtility.HtmlDecode((string)this.gdv12papasEnfermedades.Rows[row.RowIndex].Cells[0].Text);                    
-                    string resistencia_variedad = HttpUtility.HtmlDecode((string)this.gdv12papasEnfermedades.Rows[row.RowIndex].Cells[1].Text);
-                    int valorEnfermedad = cc.AddCosechaEnfermedades(nombre_enfermedad, id_cosechaEntero, resistencia_variedad);
-                    if(valorEnfermedad == 0)
-                        Page.ClientScript.RegisterStartupScript(GetType(), "Script", "<script>alert('¡Error al ingresar enfermedad!')</script>");
-                }
-
-                int valor = cc.UpdateCosecha12papas(cosecha);
-                if (valor == 0)
-                    Page.ClientScript.RegisterStartupScript(GetType(), "Script", "<script>alert('¡Debe seleccionar una ciudad o ya hay una variedad asignada en esa posición!')</script>");
             }
             catch (Exception ex)
             {
-                Page.ClientScript.RegisterStartupScript(GetType(), "Script", "<script>alert('" + ex.ToString() + "')</script>");
+                this.lbl12papasError.Text += "ERROR CRÍTICO, NO SE HA PODIDO MODIFICAR LA VARIEDAD, ARREGLE LOS PARÁMETROS E INTENTELO NUEVAMENTE.<br/>";
+                Page.ClientScript.RegisterStartupScript(GetType(), "Script", "<script>alert('¡Error al modificar!\nNo se ha podido actualizar la variedad')</script>");
             }
             PoblarGrilla();
         }
@@ -640,7 +756,7 @@ namespace Project.Novaseed
             }
         }
 
-        protected void btnAgregar24papas_Click1(object sender, EventArgs e)
+        protected void btnAgregar24papas_Click(object sender, EventArgs e)
         {
             int agrego = 0;
             foreach (GridViewRow row in gdv12papas.Rows)

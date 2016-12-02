@@ -38,5 +38,17 @@ namespace Project.Novaseed
                 this.gdvProduccion.DataBind();
             }
         }
+
+        //pregunta si la licencia es true para cambiarlo a "si" o false para cambiarlo a "no"
+        protected void OnRowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                if (e.Row.Cells[9].Text == "True")
+                    e.Row.Cells[9].Text = "Si";
+                else
+                    e.Row.Cells[9].Text = "No";
+            }
+        }
     }
 }

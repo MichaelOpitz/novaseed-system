@@ -145,8 +145,8 @@ namespace Project.BusinessRules
             while (resultado.Read())
             {
                 Produccion prod = new Produccion(resultado.GetString(0), resultado.GetString(1), resultado.GetString(2),
-                    resultado.GetString(3), resultado.GetDouble(4), resultado.GetDouble(5), resultado.GetDouble(6),
-                    resultado.GetDouble(7), resultado.GetBoolean(8));
+                    resultado.GetString(3), resultado.GetString(4), resultado.GetDouble(5), resultado.GetDouble(6),
+                    resultado.GetDouble(7), resultado.GetDouble(8), resultado.GetBoolean(9));
                 producciones.Add(prod);
             }
             resultado.Close();
@@ -175,8 +175,8 @@ namespace Project.BusinessRules
             while (resultado.Read())
             {
                 Produccion prod = new Produccion(resultado.GetString(0), resultado.GetString(1), resultado.GetString(2),
-                    resultado.GetString(3), resultado.GetDouble(4), resultado.GetDouble(5), resultado.GetDouble(6),
-                    resultado.GetDouble(7), resultado.GetBoolean(8));
+                    resultado.GetString(3), resultado.GetString(4), resultado.GetDouble(5), resultado.GetDouble(6), 
+                    resultado.GetDouble(7), resultado.GetDouble(8), resultado.GetBoolean(9));
                 producciones.Add(prod);
             }
             resultado.Close();
@@ -227,8 +227,8 @@ namespace Project.BusinessRules
             while (resultado.Read())
             {
                 Produccion prod = new Produccion(resultado.GetString(0), resultado.GetString(1), resultado.GetString(2),
-                    resultado.GetString(3), resultado.GetDouble(4), resultado.GetDouble(5), resultado.GetDouble(6),
-                    resultado.GetDouble(7));
+                    resultado.GetString(3), resultado.GetString(4), resultado.GetDouble(5), resultado.GetDouble(6), 
+                    resultado.GetDouble(7), resultado.GetDouble(8));
                 producciones.Add(prod);
             }
             resultado.Close();

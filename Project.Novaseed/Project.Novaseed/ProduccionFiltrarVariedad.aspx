@@ -29,6 +29,7 @@
                     <asp:BoundField DataField="nombre_productor" HeaderText="Productor" ReadOnly="true" />
                     <asp:BoundField DataField="nombre_ciudad" HeaderText="Ciudad" ReadOnly="true" />
                     <asp:BoundField DataField="codigo_variedad" HeaderText="Código Variedad" ReadOnly="true" />
+                    <asp:BoundField DataField="nombre_variedad" HeaderText="Nombre Variedad" ReadOnly="true" />
                     <asp:BoundField DataField="nombre_categoria_produccion" HeaderText="Categoría Producción" ReadOnly="true" />
                     <asp:BoundField DataField="prod_cantidad_total" HeaderText="Cantidad Total" ReadOnly="true" />
                     <asp:BoundField DataField="cantidad_productor" HeaderText="Cantidad Productor" ReadOnly="true" />
