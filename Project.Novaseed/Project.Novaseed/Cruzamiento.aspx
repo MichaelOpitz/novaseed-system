@@ -47,7 +47,7 @@
                 <Columns>
                     <asp:TemplateField ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="50px" HeaderText="Agregar">
                         <ItemTemplate>
-                            <asp:CheckBox ID="chkVasosAgregar" runat="server" AutoPostBack="true" />
+                            <asp:CheckBox ID="chkVasosAgregar" runat="server" />
                         </ItemTemplate>
                     </asp:TemplateField>
                     <%--botones de acción sobre los registros...--%>
@@ -80,7 +80,7 @@
                     </asp:TemplateField>
                     <asp:TemplateField ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="50px" HeaderText="Flor">
                         <ItemTemplate>
-                            <asp:CheckBox ID="chkCruzamientoFlor" runat="server" AutoPostBack="true" />
+                            <asp:CheckBox ID="chkCruzamientoFlor" runat="server" />
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:BoundField DataField="bayas" HeaderText="Bayas" HeaderStyle-Width="70px" ControlStyle-Width="70px"/>

@@ -481,6 +481,15 @@ namespace Project.Novaseed {
         protected global::System.Web.UI.WebControls.GridView gdv48papasEnfermedades;
         
         /// <summary>
+        /// Control re48papasSensibilidadQuimica.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator re48papasSensibilidadQuimica;
+        
+        /// <summary>
         /// Control ddl48papasSensibilidadQuimica.
         /// </summary>
         /// <remarks>
@@ -542,6 +551,15 @@ namespace Project.Novaseed {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txt48papasTizonHoja;
+        
+        /// <summary>
+        /// Control re48papasFacilidadMuerte.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator re48papasFacilidadMuerte;
         
         /// <summary>
         /// Control ddl48papasFacilidadMuerte.

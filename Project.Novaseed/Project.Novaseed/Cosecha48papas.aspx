@@ -36,7 +36,7 @@
                 <Columns>
                     <asp:TemplateField ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="50px" HeaderText="Generar UPOV">
                         <ItemTemplate>
-                            <asp:CheckBox ID="chkAgregarUPOV" runat="server" AutoPostBack="true" />
+                            <asp:CheckBox ID="chkAgregarUPOV" runat="server" />
                         </ItemTemplate>
                         <HeaderStyle Width="100px"></HeaderStyle>
                         <ItemStyle HorizontalAlign="Center"></ItemStyle>
@@ -88,10 +88,10 @@
                         <span class="help-block">Posición</span>
                     </div>
                     <div class="col-sm-2" style="margin-top:20px">
-                        <asp:CheckBox ID="chk48papasFlor" runat="server" AutoPostBack="true" Text="Flor" />
+                        <asp:CheckBox ID="chk48papasFlor" runat="server" Text="Flor" />
                     </div>
                     <div class="col-sm-2">
-                        <asp:CheckBox ID="chk48papasBayas" runat="server" AutoPostBack="true" Text="Bayas" />
+                        <asp:CheckBox ID="chk48papasBayas" runat="server" Text="Bayas" />
                     </div>
                 </div>
 
@@ -334,7 +334,8 @@
             <div class="panel-body">
                 
                 <div class="row">
-                    <div class="col-sm-2 col-sm-offset-2" style="margin-top:20px">                        
+                    <div class="col-sm-3 col-sm-offset-2">
+                        <asp:RegularExpressionValidator ID="re48papasSensibilidadQuimica" runat="server" ValidationExpression="." ErrorMessage="Debe ser entre 0 y 99" ControlToValidate="ddl48papasSensibilidadQuimica" ForeColor="White" ></asp:RegularExpressionValidator>
                         <asp:DropDownList type="button" ID="ddl48papasSensibilidadQuimica" runat="server" Width="80%" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
                         <span class="help-block">Sensibilidad Química</span>
                     </div>
@@ -356,7 +357,8 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-sm-2 col-sm-offset-2" style="margin-top:20px">                        
+                    <div class="col-sm-3 col-sm-offset-2">
+                        <asp:RegularExpressionValidator ID="re48papasFacilidadMuerte" runat="server" ValidationExpression="." ErrorMessage="Debe ser entre 0 y 99" ControlToValidate="ddl48papasFacilidadMuerte" ForeColor="White" ></asp:RegularExpressionValidator>
                         <asp:DropDownList type="button" ID="ddl48papasFacilidadMuerte" runat="server" Width="80%" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
                         <span class="help-block">Facilidad Muerte</span>
                     </div>

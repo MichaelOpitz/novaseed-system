@@ -22,7 +22,7 @@
                 <EditRowStyle BackColor="#ffffcc" />
                 <EmptyDataRowStyle ForeColor="Red" CssClass="table table-bordered" />
                 <EmptyDataTemplate>
-                    ¡No hay produccion en los parametros seleccionados!  
+                    ¡No hay producción en los parámetros seleccionados!  
                 </EmptyDataTemplate>
 
                 <Columns>

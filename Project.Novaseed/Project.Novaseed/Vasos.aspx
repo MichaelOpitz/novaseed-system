@@ -51,7 +51,7 @@
                 <Columns>
                     <asp:TemplateField ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="60px" HeaderText="Agregar">
                         <ItemTemplate>
-                            <asp:CheckBox ID="chkClonesAgregar" runat="server" AutoPostBack="true" />
+                            <asp:CheckBox ID="chkClonesAgregar" runat="server" />
                         </ItemTemplate>
                     </asp:TemplateField>
                     <%--botones de acción sobre los registros...--%>

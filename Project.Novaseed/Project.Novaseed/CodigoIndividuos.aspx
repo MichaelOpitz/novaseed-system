@@ -67,7 +67,7 @@
 
                     <asp:TemplateField ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="70px" HeaderText="Agregar a 6 Papas">
                         <ItemTemplate>
-                            <asp:CheckBox ID="chkAgregar6Papas" runat="server" AutoPostBack="true" />
+                            <asp:CheckBox ID="chkAgregar6Papas" runat="server" />
                         </ItemTemplate>
                         <HeaderStyle Width="170px"></HeaderStyle>
                         <ItemStyle HorizontalAlign="Center"></ItemStyle>

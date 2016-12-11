@@ -13,24 +13,6 @@ namespace Project.Novaseed {
     public partial class Mejoramiento {
         
         /// <summary>
-        /// Control ddlMejoramientoColorCarne.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlMejoramientoColorCarne;
-        
-        /// <summary>
-        /// Control ddlMejoramientoColorPiel.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlMejoramientoColorPiel;
-        
-        /// <summary>
         /// Control ddlMejoramientoTamaño.
         /// </summary>
         /// <remarks>
@@ -58,15 +40,6 @@ namespace Project.Novaseed {
         protected global::System.Web.UI.WebControls.DropDownList ddlMejoramientoForma;
         
         /// <summary>
-        /// Control ddlMejoramientoCalidadPiel.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlMejoramientoCalidadPiel;
-        
-        /// <summary>
         /// Control ddlMejoramientoDistribucion.
         /// </summary>
         /// <remarks>
@@ -74,15 +47,6 @@ namespace Project.Novaseed {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlMejoramientoDistribucion;
-        
-        /// <summary>
-        /// Control ddlMejoramientoTipoHoja.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlMejoramientoTipoHoja;
         
         /// <summary>
         /// Control ddlMejoramientoProfundidad.
@@ -101,15 +65,6 @@ namespace Project.Novaseed {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlMejoramientoRegularidad;
-        
-        /// <summary>
-        /// Control ddlMejoramientoDesarrollo.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlMejoramientoDesarrollo;
         
         /// <summary>
         /// Control ddlMejoramientoBrotacion.
@@ -211,15 +166,6 @@ namespace Project.Novaseed {
         protected global::System.Web.UI.WebControls.TextBox txtMadre;
         
         /// <summary>
-        /// Control btnMejoramientoRefresh.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnMejoramientoRefresh;
-        
-        /// <summary>
         /// Control txtPadre.
         /// </summary>
         /// <remarks>
@@ -227,6 +173,15 @@ namespace Project.Novaseed {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtPadre;
+        
+        /// <summary>
+        /// Control btnMejoramientoRefresh.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnMejoramientoRefresh;
         
         /// <summary>
         /// Control btnCaracteristicaMadre.

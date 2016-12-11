@@ -85,21 +85,6 @@ namespace Project.Novaseed
 
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
-                //Ecuentra el CheckBox en la fila
-                CheckBox chkClonImagen = (e.Row.FindControl("chkClonImagen") as CheckBox);
-
-                int indexImagen = cc.GetImagenClones(valorAñoInt32, contImagen);
-
-                if (indexImagen == 1)
-                    chkClonImagen.Checked = true;
-                else
-                    chkClonImagen.Checked = false;
-                contImagen = contImagen + 1;
-
-            }
-
-            if (e.Row.RowType == DataControlRowType.DataRow)
-            {
                 int indexClonesCodificacion = cc.GetClonesEstaCodificado(valorAñoInt32, contClonesCodificacion);
 
                 if (indexClonesCodificacion == 1)
@@ -118,8 +103,7 @@ namespace Project.Novaseed
             {
                 this.lblClonesError.Visible = true;
                 string id_clones = HttpUtility.HtmlDecode((string)this.gdvClones.Rows[e.RowIndex].Cells[1].Text);
-
-                string posicion_clones = e.NewValues[0].ToString();
+                
                 DropDownList ddlClonesFertilidad = (DropDownList)gdvClones.Rows[e.RowIndex].FindControl("ddlClonesFertilidad");
                 string id_fertilidad = ddlClonesFertilidad.SelectedValue;
 
@@ -139,21 +123,7 @@ namespace Project.Novaseed
                 int id_clon = Int32.Parse(id_clones);
                 if (EsNumero(azul_clon) == true && EsNumero(roja_clon) == true && EsNumero(amarilla_clon) == true && 
                     EsNumero(bicolor_clon) == true)
-                {                    
-                    double posicion = 0;
-                    if (Double.TryParse(posicion_clones, out posicion))
-                    {
-                        //Reemplaza las comas por los puntos para agregar el valor tipo double en la base de datos
-                        posicion_clones = posicion_clones.Replace(",", ".");
-                        posicion = Double.Parse(posicion_clones, CultureInfo.InvariantCulture);
-                        if (posicion < 0)
-                        {
-                            posicion = 0;
-                            this.lblClonesError.Text += "La posición debe ser un número positivo. ";
-                        }
-                    }
-                    else
-                        this.lblClonesError.Text += "La posición debe ser un número valido. ";
+                {
                     int id_fertilidadInt32 = Int32.Parse(id_fertilidad);
                     int azul = Int32.Parse(azul_clon);
                     if (azul < 0)
@@ -180,7 +150,7 @@ namespace Project.Novaseed
                         this.lblClonesError.Text += "Las bicolores deben ser un número positivo. ";
                     }
 
-                    Project.BusinessRules.Clones clon = new Project.BusinessRules.Clones(id_clon, posicion, id_fertilidadInt32,
+                    Project.BusinessRules.Clones clon = new Project.BusinessRules.Clones(id_clon, id_fertilidadInt32,
                         azul, roja, amarilla, bicolor);
                     cc.UpdateClones(clon);
                 }

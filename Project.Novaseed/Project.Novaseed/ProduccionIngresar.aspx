@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Ingresar Producción" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"
+﻿<%@ Page Title="Producción" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"
     CodeBehind="ProduccionIngresar.aspx.cs" Inherits="Project.Novaseed.ProduccionIngresar" %>
 
 
@@ -68,7 +68,7 @@
                         <span class="help-block">Cosecha (Ton)</span>
                     </div>
                     <div class="col-sm-2" style="margin-top:30px">
-                        <asp:CheckBox ID="chkProduccionLicencia" runat="server" AutoPostBack="true" Text="Licencia" />
+                        <asp:CheckBox ID="chkProduccionLicencia" runat="server" Text="Licencia" />
                     </div>
                 </div>
             </div>

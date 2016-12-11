@@ -112,7 +112,7 @@ namespace Project.Novaseed
             this.chartProduccion.Series[0].Points.DataBindXY(nombreArray, cantidadArray);
             this.chartProduccion.Series[0]["LabelStyle"] = "Bottom";
             this.chartProduccion.ChartAreas[0].AxisX.LabelStyle.Angle = 45;
-            this.chartProduccion.ChartAreas[0].Area3DStyle.Enable3D = true;
+            //this.chartProduccion.ChartAreas[0].Area3DStyle.Enable3D = true;
             this.chartProduccion.DataBind();
         }
     }

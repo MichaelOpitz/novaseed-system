@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Menú Año de Generación" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"
+﻿<%@ Page Title="Generación" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"
     CodeBehind="MenuGeneracion.aspx.cs" Inherits="Project.Novaseed.MenuGeneracion" %>
 
 

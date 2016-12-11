@@ -152,6 +152,8 @@
     <Content Include="Account\OpenAuthProviders.ascx" />
     <Content Include="Account\Register.aspx" />
     <Content Include="Account\RegisterExternalLogin.aspx" />
+    <Content Include="Ayuda.aspx" />
+    <Content Include="CiudadAgregar.aspx" />
     <Content Include="Clones.aspx" />
     <Content Include="Codificacion.aspx" />
     <Content Include="CodigoIndividuos.aspx" />
@@ -217,9 +219,14 @@
     <Content Include="Site.Master" />
     <Content Include="UPOV.aspx" />
     <Content Include="UPOVSeleccionar.aspx" />
+    <Content Include="UsuarioAgregar.aspx" />
+    <Content Include="UsuarioEliminar.aspx" />
+    <Content Include="UsuarioModificar.aspx" />
     <Content Include="Vasos.aspx" />
     <Content Include="ViewSwitcher.ascx" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Bundle.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
@@ -277,6 +284,20 @@
     </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Ayuda.aspx.cs">
+      <DependentUpon>Ayuda.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Ayuda.aspx.designer.cs">
+      <DependentUpon>Ayuda.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CiudadAgregar.aspx.cs">
+      <DependentUpon>CiudadAgregar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CiudadAgregar.aspx.designer.cs">
+      <DependentUpon>CiudadAgregar.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Clones.aspx.cs">
       <DependentUpon>Clones.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -458,6 +479,27 @@
     <Compile Include="UPOVSeleccionar.aspx.designer.cs">
       <DependentUpon>UPOVSeleccionar.aspx</DependentUpon>
     </Compile>
+    <Compile Include="UsuarioAgregar.aspx.cs">
+      <DependentUpon>UsuarioAgregar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UsuarioAgregar.aspx.designer.cs">
+      <DependentUpon>UsuarioAgregar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UsuarioEliminar.aspx.cs">
+      <DependentUpon>UsuarioEliminar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UsuarioEliminar.aspx.designer.cs">
+      <DependentUpon>UsuarioEliminar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UsuarioModificar.aspx.cs">
+      <DependentUpon>UsuarioModificar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UsuarioModificar.aspx.designer.cs">
+      <DependentUpon>UsuarioModificar.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Vasos.aspx.cs">
       <DependentUpon>Vasos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -475,6 +517,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="images\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Project.BusinessRules\Project.BusinessRules.csproj">

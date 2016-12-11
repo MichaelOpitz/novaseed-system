@@ -67,8 +67,7 @@
                     <asp:BoundField DataField="codigo_variedad" HeaderText="Madre" ReadOnly="true" HeaderStyle-Width="110px"/>
                     <asp:BoundField DataField="nombre_madre" HeaderText="Nombre Madre" ReadOnly="true" HeaderStyle-Width="100px"/>
                     <asp:BoundField DataField="pad_codigo_variedad" HeaderText="Padre" ReadOnly="true" HeaderStyle-Width="110px"/>
-                    <asp:BoundField DataField="nombre_padre" HeaderText="Nombre Padre" ReadOnly="true" HeaderStyle-Width="100px"/>
-                    <asp:BoundField DataField="posicion_clon" HeaderText="Posicion" HeaderStyle-Width="50px" ControlStyle-Width="50px"/>
+                    <asp:BoundField DataField="nombre_padre" HeaderText="Nombre Padre" ReadOnly="true" HeaderStyle-Width="100px"/>                    
                     <asp:TemplateField ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="50px" HeaderText="Fertilidad">
                         <ItemTemplate>
                             <asp:DropDownList type="button" ID="ddlClonesFertilidad" runat="server" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
@@ -76,14 +75,6 @@
 
                         <HeaderStyle Width="50px"></HeaderStyle>
 
-                        <ItemStyle HorizontalAlign="Center"></ItemStyle>
-                    </asp:TemplateField>
-
-                    <asp:TemplateField ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="50px" HeaderText="Imagen">
-                        <ItemTemplate>
-                            <asp:CheckBox ID="chkClonImagen" runat="server" AutoPostBack="true" Enabled="false" />
-                        </ItemTemplate>
-                        <HeaderStyle Width="50px"></HeaderStyle>
                         <ItemStyle HorizontalAlign="Center"></ItemStyle>
                     </asp:TemplateField>
 

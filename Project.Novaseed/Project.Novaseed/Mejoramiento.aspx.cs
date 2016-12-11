@@ -13,18 +13,10 @@ namespace Project.Novaseed
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            CatalogColorCarne ccc = new CatalogColorCarne();
-            List<Project.BusinessRules.ColorCarne> carne = ccc.getColorCarne();
-            CatalogColorPiel ccp = new CatalogColorPiel();
-            List<Project.BusinessRules.ColorPiel> piel = ccp.getColorPiel();
             CatalogTamaño ct = new CatalogTamaño();
             List<Project.BusinessRules.Tamaño> tamaño = ct.getTamaño();
             CatalogMadurez cm = new CatalogMadurez();
             List<Project.BusinessRules.Madurez> madurez = cm.getMadurez();
-            CatalogTipoHoja cth = new CatalogTipoHoja();
-            List<Project.BusinessRules.TipoHoja> hoja = cth.getTipoHoja();
-            CatalogCalidadPiel ccpiel = new CatalogCalidadPiel();
-            List<Project.BusinessRules.CalidadPiel> calidad = ccpiel.getCalidadPiel();
             CatalogFormaTuberculos cft = new CatalogFormaTuberculos();
             List<Project.BusinessRules.FormaTuberculos> forma = cft.getFormaTuberculos();
             CatalogDistribucionCalibre cdc = new CatalogDistribucionCalibre();
@@ -33,8 +25,6 @@ namespace Project.Novaseed
             List<Project.BusinessRules.ProfundidadOjo> profundidad = cpo.getProfundidadOjo();
             CatalogRegularidad cr = new CatalogRegularidad();
             List<Project.BusinessRules.Regularidad> regularidad = cr.getRegularidad();
-            CatalogDesarrolloFollaje cdf = new CatalogDesarrolloFollaje();
-            List<Project.BusinessRules.DesarrolloFollaje> desarrollo = cdf.getDesarrolloFollaje();
             CatalogBrotacion cb = new CatalogBrotacion();
             List<Project.BusinessRules.Brotacion> brotacion = cb.getBrotacion();
             CatalogEmergencia ce = new CatalogEmergencia();
@@ -62,24 +52,12 @@ namespace Project.Novaseed
 
             if (!Page.IsPostBack)
             {
-                this.ddlMejoramientoColorCarne.DataValueField = "id_color_carne";
-                this.ddlMejoramientoColorCarne.DataTextField = "nombre_color_carne";
-                this.ddlMejoramientoColorCarne.DataSource = carne;
-                this.ddlMejoramientoColorPiel.DataValueField = "id_color_piel";
-                this.ddlMejoramientoColorPiel.DataTextField = "nombre_color_piel";
-                this.ddlMejoramientoColorPiel.DataSource = piel;
                 this.ddlMejoramientoTamaño.DataValueField = "id_tamaño";
                 this.ddlMejoramientoTamaño.DataTextField = "nombre_tamaño";
                 this.ddlMejoramientoTamaño.DataSource = tamaño;
                 this.ddlMejoramientoMadurez.DataValueField = "id_madurez";
                 this.ddlMejoramientoMadurez.DataTextField = "nombre_madurez";
                 this.ddlMejoramientoMadurez.DataSource = madurez;
-                this.ddlMejoramientoTipoHoja.DataValueField = "id_tipo_hoja";
-                this.ddlMejoramientoTipoHoja.DataTextField = "nombre_tipo_hoja";
-                this.ddlMejoramientoTipoHoja.DataSource = hoja;
-                this.ddlMejoramientoCalidadPiel.DataValueField = "id_calidad_piel";
-                this.ddlMejoramientoCalidadPiel.DataTextField = "nombre_calidad_piel";
-                this.ddlMejoramientoCalidadPiel.DataSource = calidad;
                 this.ddlMejoramientoForma.DataValueField = "id_forma";
                 this.ddlMejoramientoForma.DataTextField = "nombre_forma";
                 this.ddlMejoramientoForma.DataSource = forma;
@@ -92,9 +70,6 @@ namespace Project.Novaseed
                 this.ddlMejoramientoRegularidad.DataValueField = "id_regularidad";
                 this.ddlMejoramientoRegularidad.DataTextField = "nombre_regularidad";
                 this.ddlMejoramientoRegularidad.DataSource = regularidad;
-                this.ddlMejoramientoDesarrollo.DataValueField = "id_desarrollo_follaje";
-                this.ddlMejoramientoDesarrollo.DataTextField = "nombre_desarrollo_follaje";
-                this.ddlMejoramientoDesarrollo.DataSource = desarrollo;
                 this.ddlMejoramientoBrotacion.DataValueField = "id_brotacion";
                 this.ddlMejoramientoBrotacion.DataTextField = "nombre_brotacion";
                 this.ddlMejoramientoBrotacion.DataSource = brotacion;
@@ -135,14 +110,6 @@ namespace Project.Novaseed
          */ 
         private void SeleccionDropDown()
         {
-            if (this.ddlMejoramientoColorCarne.SelectedIndex > 0)
-                this.ddlMejoramientoColorCarne.BackColor = Color.LightBlue;
-            else
-                this.ddlMejoramientoColorCarne.BackColor = Color.Transparent;
-            if (this.ddlMejoramientoColorPiel.SelectedIndex > 0)
-                this.ddlMejoramientoColorPiel.BackColor = Color.LightBlue;
-            else
-                this.ddlMejoramientoColorPiel.BackColor = Color.Transparent;
             if (this.ddlMejoramientoTamaño.SelectedIndex > 0)
                 this.ddlMejoramientoTamaño.BackColor = Color.LightBlue;
             else
@@ -155,18 +122,10 @@ namespace Project.Novaseed
                 this.ddlMejoramientoForma.BackColor = Color.LightBlue;
             else
                 this.ddlMejoramientoForma.BackColor = Color.Transparent;
-            if (this.ddlMejoramientoCalidadPiel.SelectedIndex > 0)
-                this.ddlMejoramientoCalidadPiel.BackColor = Color.LightBlue;
-            else
-                this.ddlMejoramientoCalidadPiel.BackColor = Color.Transparent;
             if (this.ddlMejoramientoDistribucion.SelectedIndex > 0)
                 this.ddlMejoramientoDistribucion.BackColor = Color.LightBlue;
             else
                 this.ddlMejoramientoDistribucion.BackColor = Color.Transparent;
-            if (this.ddlMejoramientoTipoHoja.SelectedIndex > 0)
-                this.ddlMejoramientoTipoHoja.BackColor = Color.LightBlue;
-            else
-                this.ddlMejoramientoTipoHoja.BackColor = Color.Transparent;
             if (this.ddlMejoramientoProfundidad.SelectedIndex > 0)
                 this.ddlMejoramientoProfundidad.BackColor = Color.LightBlue;
             else
@@ -175,10 +134,6 @@ namespace Project.Novaseed
                 this.ddlMejoramientoRegularidad.BackColor = Color.LightBlue;
             else
                 this.ddlMejoramientoRegularidad.BackColor = Color.Transparent;
-            if (this.ddlMejoramientoDesarrollo.SelectedIndex > 0)
-                this.ddlMejoramientoDesarrollo.BackColor = Color.LightBlue;
-            else
-                this.ddlMejoramientoDesarrollo.BackColor = Color.Transparent;
             if (this.ddlMejoramientoBrotacion.SelectedIndex > 0)
                 this.ddlMejoramientoBrotacion.BackColor = Color.LightBlue;
             else
@@ -226,17 +181,12 @@ namespace Project.Novaseed
          */ 
         private void RefreshDropDown()
         {
-            this.ddlMejoramientoColorCarne.SelectedIndex = 0;
-            this.ddlMejoramientoColorPiel.SelectedIndex = 0;
             this.ddlMejoramientoTamaño.SelectedIndex = 0;
             this.ddlMejoramientoMadurez.SelectedIndex = 0;
-            this.ddlMejoramientoForma.SelectedIndex = 0;
-            this.ddlMejoramientoCalidadPiel.SelectedIndex = 0;
-            this.ddlMejoramientoDistribucion.SelectedIndex = 0;
-            this.ddlMejoramientoTipoHoja.SelectedIndex = 0;
+            this.ddlMejoramientoForma.SelectedIndex = 0;            
+            this.ddlMejoramientoDistribucion.SelectedIndex = 0;            
             this.ddlMejoramientoProfundidad.SelectedIndex = 0;
-            this.ddlMejoramientoRegularidad.SelectedIndex = 0;
-            this.ddlMejoramientoDesarrollo.SelectedIndex = 0;
+            this.ddlMejoramientoRegularidad.SelectedIndex = 0;            
             this.ddlMejoramientoBrotacion.SelectedIndex = 0;
             this.ddlMejoramientoEmergencia.SelectedIndex = 0;
             this.ddlMejoramientoEmergencia40.SelectedIndex = 0;
@@ -262,14 +212,11 @@ namespace Project.Novaseed
             {
                 SeleccionDropDown();
                 string tamaño = this.ddlMejoramientoTamaño.SelectedValue;
-                string madurez = this.ddlMejoramientoMadurez.SelectedValue;
-                string tipo_hoja = this.ddlMejoramientoTipoHoja.SelectedValue;
-                string calidad_piel = this.ddlMejoramientoCalidadPiel.SelectedValue;
+                string madurez = this.ddlMejoramientoMadurez.SelectedValue;                
                 string forma = this.ddlMejoramientoForma.SelectedValue;
                 string distribucion = this.ddlMejoramientoDistribucion.SelectedValue;
                 string profundidad = this.ddlMejoramientoProfundidad.SelectedValue;
-                string regularidad = this.ddlMejoramientoRegularidad.SelectedValue;
-                string desarrollo_follaje = this.ddlMejoramientoDesarrollo.SelectedValue;
+                string regularidad = this.ddlMejoramientoRegularidad.SelectedValue;                
                 string brotacion = this.ddlMejoramientoBrotacion.SelectedValue;
                 string emergencia = this.ddlMejoramientoEmergencia.SelectedValue;
                 string emergencia40 = this.ddlMejoramientoEmergencia40.SelectedValue;
@@ -280,9 +227,9 @@ namespace Project.Novaseed
                 string numero = this.ddlMejoramientoNumero.SelectedValue;
                 string fertilidad = this.ddlMejoramientoFertilidad.SelectedValue;
                 string destino = this.ddlMejoramientoDestino.SelectedValue;
-                Madre mama = new Madre(Int32.Parse(tamaño), Int32.Parse(madurez), Int32.Parse(tipo_hoja), Int32.Parse(calidad_piel),
+                Madre mama = new Madre(Int32.Parse(tamaño), Int32.Parse(madurez),
                     Int32.Parse(forma), Int32.Parse(distribucion), Int32.Parse(profundidad), Int32.Parse(regularidad),
-                    Int32.Parse(desarrollo_follaje), Int32.Parse(brotacion), Int32.Parse(emergencia), Int32.Parse(emergencia40),
+                    Int32.Parse(brotacion), Int32.Parse(emergencia), Int32.Parse(emergencia40),
                     Int32.Parse(metribuzina), Int32.Parse(verdes), Int32.Parse(tizon_follaje), Int32.Parse(tizon_tuberculo),
                     Int32.Parse(numero), Int32.Parse(fertilidad), Int32.Parse(destino));                
                 lista = madre.getMadre(mama);                
@@ -312,14 +259,11 @@ namespace Project.Novaseed
             {
                 SeleccionDropDown();
                 string tamaño = this.ddlMejoramientoTamaño.SelectedValue;
-                string madurez = this.ddlMejoramientoMadurez.SelectedValue;
-                string tipo_hoja = this.ddlMejoramientoTipoHoja.SelectedValue;
-                string calidad_piel = this.ddlMejoramientoCalidadPiel.SelectedValue;
+                string madurez = this.ddlMejoramientoMadurez.SelectedValue;                
                 string forma = this.ddlMejoramientoForma.SelectedValue;
                 string distribucion = this.ddlMejoramientoDistribucion.SelectedValue;
                 string profundidad = this.ddlMejoramientoProfundidad.SelectedValue;
-                string regularidad = this.ddlMejoramientoRegularidad.SelectedValue;
-                string desarrollo_follaje = this.ddlMejoramientoDesarrollo.SelectedValue;
+                string regularidad = this.ddlMejoramientoRegularidad.SelectedValue;                
                 string brotacion = this.ddlMejoramientoBrotacion.SelectedValue;
                 string emergencia = this.ddlMejoramientoEmergencia.SelectedValue;
                 string emergencia40 = this.ddlMejoramientoEmergencia40.SelectedValue;
@@ -330,9 +274,9 @@ namespace Project.Novaseed
                 string numero = this.ddlMejoramientoNumero.SelectedValue;
                 string fertilidad = this.ddlMejoramientoFertilidad.SelectedValue;
                 string destino = this.ddlMejoramientoDestino.SelectedValue;
-                Padre papa = new Padre(Int32.Parse(tamaño), Int32.Parse(madurez), Int32.Parse(tipo_hoja), Int32.Parse(calidad_piel),
+                Padre papa = new Padre(Int32.Parse(tamaño), Int32.Parse(madurez),
                     Int32.Parse(forma), Int32.Parse(distribucion), Int32.Parse(profundidad), Int32.Parse(regularidad),
-                    Int32.Parse(desarrollo_follaje), Int32.Parse(brotacion), Int32.Parse(emergencia), Int32.Parse(emergencia40),
+                    Int32.Parse(brotacion), Int32.Parse(emergencia), Int32.Parse(emergencia40),
                     Int32.Parse(metribuzina), Int32.Parse(verdes), Int32.Parse(tizon_follaje), Int32.Parse(tizon_tuberculo),
                     Int32.Parse(numero), Int32.Parse(fertilidad), Int32.Parse(destino));
                 lista = padre.getPadre(papa);

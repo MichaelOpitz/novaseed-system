@@ -8,12 +8,12 @@ namespace Project.BusinessRules
     public class Variedad
     {
         
-        protected int id_tamaño, id_madurez, id_tuberculos_verdes, id_tizon_tardio_tuberculo, id_emergencia_40_dias, id_desarrollo_follaje,
-            id_distribucion_calibre, id_profundidad, id_tipo_hoja, id_tizon_tardio_follaje, id_numero_tuberculos, id_metribuzina,
-            id_fertilidad, id_destino, id_regularidad, id_forma, id_emergencia, id_calidad_piel, id_brotacion;
-        protected string codigo_variedad, nombre_variedad, nombre_tamaño, nombre_madurez, nombre_tipo_hoja,
-            nombre_calidad_piel, nombre_forma, nombre_distribucion_calibre, nombre_profundidad, nombre_regularidad,
-            nombre_desarrollo_follaje, nombre_brotacion, nombre_emergencia, nombre_emergencia_40_dias, nombre_metribuzina,
+        protected int id_tamaño, id_madurez, id_tuberculos_verdes, id_tizon_tardio_tuberculo, id_emergencia_40_dias,
+            id_distribucion_calibre, id_profundidad, id_tizon_tardio_follaje, id_numero_tuberculos, id_metribuzina,
+            id_fertilidad, id_destino, id_regularidad, id_forma, id_emergencia, id_brotacion;
+        protected string codigo_variedad, nombre_variedad, nombre_tamaño, nombre_madurez, 
+            nombre_forma, nombre_distribucion_calibre, nombre_profundidad, nombre_regularidad,
+            nombre_brotacion, nombre_emergencia, nombre_emergencia_40_dias, nombre_metribuzina,
             nombre_tuberculos_verdes, nombre_tizon_tardio_follaje, nombre_tizon_tardio_tuberculo,
             nombre_numero_tuberculos, nombre_fertilidad, nombre_destino;
 
@@ -76,13 +76,7 @@ namespace Project.BusinessRules
             get { return nombre_brotacion; }
             set { nombre_brotacion = value; }
         }
-
-        public string Nombre_desarrollo_follaje
-        {
-            get { return nombre_desarrollo_follaje; }
-            set { nombre_desarrollo_follaje = value; }
-        }
-
+        
         public string Nombre_regularidad
         {
             get { return nombre_regularidad; }
@@ -106,19 +100,7 @@ namespace Project.BusinessRules
             get { return nombre_forma; }
             set { nombre_forma = value; }
         }
-
-        public string Nombre_calidad_piel
-        {
-            get { return nombre_calidad_piel; }
-            set { nombre_calidad_piel = value; }
-        }
-
-        public string Nombre_tipo_hoja
-        {
-            get { return nombre_tipo_hoja; }
-            set { nombre_tipo_hoja = value; }
-        }
-
+        
         public string Nombre_madurez
         {
             get { return nombre_madurez; }
@@ -136,13 +118,7 @@ namespace Project.BusinessRules
             get { return id_brotacion; }
             set { id_brotacion = value; }
         }
-
-        public int Id_calidad_piel
-        {
-            get { return id_calidad_piel; }
-            set { id_calidad_piel = value; }
-        }
-
+        
         public int Id_emergencia
         {
             get { return id_emergencia; }
@@ -190,13 +166,7 @@ namespace Project.BusinessRules
             get { return id_tizon_tardio_follaje; }
             set { id_tizon_tardio_follaje = value; }
         }
-
-        public int Id_tipo_hoja
-        {
-            get { return id_tipo_hoja; }
-            set { id_tipo_hoja = value; }
-        }
-
+        
         public int Id_profundidad
         {
             get { return id_profundidad; }
@@ -208,13 +178,7 @@ namespace Project.BusinessRules
             get { return id_distribucion_calibre; }
             set { id_distribucion_calibre = value; }
         }
-
-        public int Id_desarrollo_follaje
-        {
-            get { return id_desarrollo_follaje; }
-            set { id_desarrollo_follaje = value; }
-        }
-
+        
         public int Id_emergencia_40_dias
         {
             get { return id_emergencia_40_dias; }
@@ -257,9 +221,9 @@ namespace Project.BusinessRules
             set { codigo_variedad = value; }
         }
 
-        public Variedad(string codigo_variedad, string nombre_variedad, string nombre_tamaño, string nombre_madurez, string nombre_tipo_hoja,
-            string nombre_calidad_piel, string nombre_forma, string nombre_distribucion_calibre, string nombre_profundidad, string nombre_regularidad,
-            string nombre_desarrollo_follaje, string nombre_brotacion, string nombre_emergencia, string nombre_emergencia_40_dias, string nombre_metribuzina,
+        public Variedad(string codigo_variedad, string nombre_variedad, string nombre_tamaño, string nombre_madurez,
+            string nombre_forma, string nombre_distribucion_calibre, string nombre_profundidad, string nombre_regularidad,
+            string nombre_brotacion, string nombre_emergencia, string nombre_emergencia_40_dias, string nombre_metribuzina,
             string nombre_tuberculos_verdes, string nombre_tizon_tardio_follaje, string nombre_tizon_tardio_tuberculo,
             string nombre_numero_tuberculos, string nombre_fertilidad, string nombre_destino)
         {
@@ -267,13 +231,10 @@ namespace Project.BusinessRules
             this.nombre_variedad = nombre_variedad;
             this.nombre_tamaño = nombre_tamaño;
             this.nombre_madurez = nombre_madurez;
-            this.nombre_tipo_hoja = nombre_tipo_hoja;
-            this.nombre_calidad_piel = nombre_calidad_piel;
             this.nombre_forma = nombre_forma;
             this.nombre_distribucion_calibre = nombre_distribucion_calibre;
             this.nombre_profundidad = nombre_profundidad;
-            this.nombre_regularidad = nombre_regularidad;
-            this.nombre_desarrollo_follaje = nombre_desarrollo_follaje;
+            this.nombre_regularidad = nombre_regularidad;            
             this.nombre_brotacion = nombre_brotacion;
             this.nombre_emergencia = nombre_emergencia;
             this.nombre_emergencia_40_dias = nombre_emergencia_40_dias;
@@ -286,9 +247,9 @@ namespace Project.BusinessRules
             this.nombre_destino = nombre_destino;
         }
 
-        public Variedad(int id_tamaño, int id_madurez, int id_tipo_hoja,
-            int id_calidad_piel, int id_forma, int id_distribucion_calibre, int id_profundidad, int id_regularidad,
-            int id_desarrollo_follaje, int id_brotacion, int id_emergencia, int id_emergencia_40_dias, int id_metribuzina,
+        public Variedad(int id_tamaño, int id_madurez,
+            int id_forma, int id_distribucion_calibre, int id_profundidad, int id_regularidad,
+            int id_brotacion, int id_emergencia, int id_emergencia_40_dias, int id_metribuzina,
             int id_tuberculos_verdes, int id_tizon_tardio_follaje, int id_tizon_tardio_tuberculo,
             int id_numero_tuberculos, int id_fertilidad, int id_destino)
         {
@@ -296,11 +257,9 @@ namespace Project.BusinessRules
             this.id_madurez = id_madurez;
             this.id_tuberculos_verdes = id_tuberculos_verdes;
             this.id_tizon_tardio_tuberculo = id_tizon_tardio_tuberculo;
-            this.id_emergencia_40_dias = id_emergencia_40_dias;
-            this.id_desarrollo_follaje = id_desarrollo_follaje;
+            this.id_emergencia_40_dias = id_emergencia_40_dias;            
             this.id_distribucion_calibre = id_distribucion_calibre;
-            this.id_profundidad = id_profundidad;
-            this.id_tipo_hoja = id_tipo_hoja;
+            this.id_profundidad = id_profundidad;            
             this.id_tizon_tardio_follaje = id_tizon_tardio_follaje;
             this.id_numero_tuberculos = id_numero_tuberculos;
             this.id_metribuzina = id_metribuzina;
@@ -308,8 +267,7 @@ namespace Project.BusinessRules
             this.id_destino = id_destino;
             this.id_regularidad = id_regularidad;
             this.id_forma = id_forma;
-            this.id_emergencia = id_emergencia;
-            this.id_calidad_piel = id_calidad_piel;
+            this.id_emergencia = id_emergencia;            
             this.id_brotacion = id_brotacion;
         }
     }

@@ -13,6 +13,15 @@ namespace Project.Novaseed {
     public partial class Menu {
         
         /// <summary>
+        /// Control imgMenuBanner.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image imgMenuBanner;
+        
+        /// <summary>
         /// Control btnMenuMejoramiento.
         /// </summary>
         /// <remarks>

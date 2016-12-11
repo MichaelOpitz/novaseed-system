@@ -59,8 +59,10 @@
   <ItemGroup>
     <Compile Include="Brotacion.cs" />
     <Compile Include="CalidadPiel.cs" />
+    <Compile Include="Cargo.cs" />
     <Compile Include="CatalogBrotacion.cs" />
     <Compile Include="CatalogCalidadPiel.cs" />
+    <Compile Include="CatalogCargo.cs" />
     <Compile Include="CatalogCategoriaProduccion.cs" />
     <Compile Include="CatalogCiudad.cs" />
     <Compile Include="CatalogClones.cs" />
@@ -83,18 +85,21 @@
     <Compile Include="CatalogMetribuzina.cs" />
     <Compile Include="CatalogNumeroTuberculos.cs" />
     <Compile Include="CatalogPadre.cs" />
+    <Compile Include="CatalogPais.cs" />
     <Compile Include="CatalogProduccion.cs" />
     <Compile Include="CatalogProductor.cs" />
     <Compile Include="CatalogProfundidadOjo.cs" />
     <Compile Include="CatalogRegularidad.cs" />
     <Compile Include="CatalogResistenciaVariedad.cs" />
     <Compile Include="CatalogSensibilidadQuimica.cs" />
+    <Compile Include="CatalogSexo.cs" />
     <Compile Include="CatalogTamaño.cs" />
     <Compile Include="CatalogTipoHoja.cs" />
     <Compile Include="CatalogTizonTardioFollaje.cs" />
     <Compile Include="CatalogTizonTardioTuberculo.cs" />
     <Compile Include="CatalogTuberculosVerdes.cs" />
     <Compile Include="CatalogUPOV.cs" />
+    <Compile Include="CatalogUsuario.cs" />
     <Compile Include="CatalogVasos.cs" />
     <Compile Include="CategoriaProduccion.cs" />
     <Compile Include="Ciudad.cs" />
@@ -119,6 +124,7 @@
     <Compile Include="Metribuzina.cs" />
     <Compile Include="NumeroTuberculos.cs" />
     <Compile Include="Padre.cs" />
+    <Compile Include="Pais.cs" />
     <Compile Include="Produccion.cs" />
     <Compile Include="Productor.cs" />
     <Compile Include="ProfundidadOjo.cs" />
@@ -126,6 +132,7 @@
     <Compile Include="Regularidad.cs" />
     <Compile Include="ResistenciaVariedad.cs" />
     <Compile Include="SensibilidadQuimica.cs" />
+    <Compile Include="Sexo.cs" />
     <Compile Include="Tamaño.cs" />
     <Compile Include="TipoHoja.cs" />
     <Compile Include="TizonTardioFollaje.cs" />
@@ -170,6 +177,7 @@
     <Compile Include="UPOVTalloPigmentacion.cs" />
     <Compile Include="UPOVTuberculoColorBaseOjo.cs" />
     <Compile Include="UPOVTuberculoPigmentacionPielReaccionLuz.cs" />
+    <Compile Include="Usuario.cs" />
     <Compile Include="Variedad.cs" />
     <Compile Include="Vasos.cs" />
   </ItemGroup>

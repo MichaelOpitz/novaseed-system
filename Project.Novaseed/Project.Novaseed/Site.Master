@@ -4,15 +4,15 @@
 
 <html lang="es">
 <head runat="server">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%: Page.Title %></title>
+    <title>Novaseed - <%: Page.Title %></title>
 
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
     </asp:PlaceHolder>
-    <webopt:bundlereference runat="server" path="~/Content/css" />
+    <webopt:BundleReference runat="server" Path="~/Content/css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 
 </head>
@@ -48,19 +48,19 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" runat="server" href="~/Menu">Menú</a>
+                    <a class="navbar-brand" runat="server" href="~/Menu"><span class="glyphicon glyphicon-th"></span> Menú</a>
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li><a runat="server" href="~/Mejoramiento">Mejoramiento</a></li>
-                        <li><a runat="server" href="~/MenuGeneracion">Año de Generación</a></li>
-                        <li><a runat="server" href="~/MenuProduccion">Produccion</a></li>
-                        <li><a runat="server" href="~/Licencia">Licencia</a></li>
+                        <li><a runat="server" href="~/Mejoramiento"><span class="glyphicon glyphicon-upload"></span> Mejoramiento</a></li>
+                        <li><a runat="server" href="~/MenuGeneracion"><span class="glyphicon glyphicon-leaf"></span> Año de Generación</a></li>
+                        <li><a runat="server" href="~/MenuProduccion"><span class="glyphicon glyphicon-briefcase"></span> Producción</a></li>
+                        <li><a runat="server" href="~/Licencia"><span class="glyphicon glyphicon-usd"></span> Licencia</a></li>                        
                     </ul>
                     <asp:LoginView runat="server" ViewStateMode="Disabled">
                         <AnonymousTemplate>
                             <ul class="nav navbar-nav navbar-right">                                
-                                <li><a runat="server" href="~/Login">Cerrar sesión</a></li>
+                                <li><a runat="server" href="~/Login"><span class="glyphicon glyphicon-log-in"></span> Cerrar sesión</a></li>
                             </ul>
                         </AnonymousTemplate>
                         <LoggedInTemplate>

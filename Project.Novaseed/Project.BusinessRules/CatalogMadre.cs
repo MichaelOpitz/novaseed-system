@@ -18,14 +18,11 @@ namespace Project.BusinessRules
             string sql = "madreObtener";
             bd.CreateCommandSP(sql);
             bd.CreateParameter("@id_tamaño", DbType.Int32, m.Id_tamaño);
-            bd.CreateParameter("@id_madurez", DbType.Int32, m.Id_madurez);
-            bd.CreateParameter("@id_tipo_hoja", DbType.Int32, m.Id_tipo_hoja);
-            bd.CreateParameter("@id_calidad_piel", DbType.Int32, m.Id_calidad_piel);
+            bd.CreateParameter("@id_madurez", DbType.Int32, m.Id_madurez);                        
             bd.CreateParameter("@id_forma", DbType.Int32, m.Id_forma);
             bd.CreateParameter("@id_distribucion", DbType.Int32, m.Id_distribucion_calibre);
             bd.CreateParameter("@id_profundidad", DbType.Int32, m.Id_profundidad);
-            bd.CreateParameter("@id_regularidad", DbType.Int32, m.Id_regularidad);
-            bd.CreateParameter("@id_desarrollo", DbType.Int32, m.Id_desarrollo_follaje);
+            bd.CreateParameter("@id_regularidad", DbType.Int32, m.Id_regularidad);            
             bd.CreateParameter("@id_brotacion", DbType.Int32, m.Id_brotacion);
             bd.CreateParameter("@id_emergencia", DbType.Int32, m.Id_emergencia);
             bd.CreateParameter("@id_emergencia_40", DbType.Int32, m.Id_emergencia_40_dias);
@@ -43,11 +40,11 @@ namespace Project.BusinessRules
             {
                 try
                 {
-                    Madre mama = new Madre(resultado.GetString(0), resultado.GetString(1), resultado.GetString(2), resultado.GetString(3),
-                        resultado.GetString(4), resultado.GetString(5), resultado.GetString(6), resultado.GetString(7), resultado.GetString(8),
-                        resultado.GetString(9), resultado.GetString(10), resultado.GetString(11), resultado.GetString(12), resultado.GetString(13),
-                        resultado.GetString(14), resultado.GetString(15), resultado.GetString(16), resultado.GetString(17),
-                        resultado.GetString(18), resultado.GetString(19), resultado.GetString(20), resultado.GetString(21));
+                    Madre mama = new Madre(resultado.GetString(0), resultado.GetString(1), resultado.GetString(2), 
+                        resultado.GetString(3), resultado.GetString(4), resultado.GetString(5), resultado.GetString(6), 
+                        resultado.GetString(7), resultado.GetString(8), resultado.GetString(9), resultado.GetString(10), 
+                        resultado.GetString(11), resultado.GetString(12), resultado.GetString(13), resultado.GetString(14), 
+                        resultado.GetString(15), resultado.GetString(16), resultado.GetString(17), resultado.GetString(18));
                     madre.Add(mama);
                 }
                 catch (Exception e)
@@ -76,11 +73,11 @@ namespace Project.BusinessRules
             {
                 try
                 {
-                    Madre mama = new Madre(resultado.GetString(0), resultado.GetString(1), resultado.GetString(2), resultado.GetString(3),
-                        resultado.GetString(4), resultado.GetString(5), resultado.GetString(6), resultado.GetString(7), resultado.GetString(8),
-                        resultado.GetString(9), resultado.GetString(10), resultado.GetString(11), resultado.GetString(12), resultado.GetString(13),
-                        resultado.GetString(14), resultado.GetString(15), resultado.GetString(16), resultado.GetString(17),
-                        resultado.GetString(18), resultado.GetString(19), resultado.GetString(20), resultado.GetString(21));
+                    Madre mama = new Madre(resultado.GetString(0), resultado.GetString(1), resultado.GetString(2), 
+                        resultado.GetString(3), resultado.GetString(4), resultado.GetString(5), resultado.GetString(6), 
+                        resultado.GetString(7), resultado.GetString(8), resultado.GetString(9), resultado.GetString(10), 
+                        resultado.GetString(11), resultado.GetString(12), resultado.GetString(13), resultado.GetString(14), 
+                        resultado.GetString(15), resultado.GetString(16), resultado.GetString(17), resultado.GetString(18));
                     madre.Add(mama);
                 }
                 catch (Exception e)

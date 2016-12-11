@@ -481,6 +481,15 @@ namespace Project.Novaseed {
         protected global::System.Web.UI.WebControls.TextBox txt6papasRelacionStandard;
         
         /// <summary>
+        /// Control re6papasSensibilidadQuimica.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator re6papasSensibilidadQuimica;
+        
+        /// <summary>
         /// Control ddl6papasSensibilidadQuimica.
         /// </summary>
         /// <remarks>
@@ -542,6 +551,15 @@ namespace Project.Novaseed {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txt6papasTizonHoja;
+        
+        /// <summary>
+        /// Control re6papasFacilidadMuerte.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator re6papasFacilidadMuerte;
         
         /// <summary>
         /// Control ddl6papasFacilidadMuerte.

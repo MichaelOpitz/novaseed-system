@@ -42,8 +42,7 @@ namespace Project.BusinessRules
             bd.Connect(); //método conectar
             string sql = "clonesActualizar";
             bd.CreateCommandSP(sql);
-            bd.CreateParameter("@id_clones", DbType.Int32, c.Id_clones);
-            bd.CreateParameter("@posicion_clones", DbType.Double, c.Posicion_clon);
+            bd.CreateParameter("@id_clones", DbType.Int32, c.Id_clones);            
             bd.CreateParameter("@id_fertilidad", DbType.Int32, c.Id_fertilidad);
             bd.CreateParameter("@azul_clon", DbType.Int32, c.Azul_clon);
             bd.CreateParameter("@roja_clon", DbType.Int32, c.Roja_clon);
@@ -92,8 +91,8 @@ namespace Project.BusinessRules
             while (resultado.Read())
             {
                 Clones clon = new Clones(resultado.GetInt32(0), resultado.GetString(1), resultado.GetString(2), resultado.GetString(3),
-                    resultado.GetString(4), resultado.GetDouble(5), resultado.GetString(6), resultado.GetInt32(7), 
-                    resultado.GetInt32(8), resultado.GetInt32(9), resultado.GetInt32(10));
+                    resultado.GetString(4), resultado.GetString(5), resultado.GetInt32(6), 
+                    resultado.GetInt32(7), resultado.GetInt32(8), resultado.GetInt32(9));
                 clones.Add(clon);
             }
             resultado.Close();
@@ -132,38 +131,6 @@ namespace Project.BusinessRules
 
             bd.Close();
             return id_fertilidad;
-        }
-
-        /*
-         * Devuelve 1 si tiene imagen, 0 en caso contrario de cada clon
-         */
-        public int GetImagenClones(int año, int posicion)
-        {
-            DataAccess.DataBase bd = new DataBase();
-            bd.Connect(); //método conectar
-            int imagen;
-
-            string salida = "clonesObtener";//comando sql
-            bd.CreateCommandSP(salida);
-            bd.CreateParameter("@ano_clones", DbType.Int32, año);
-            DbDataReader resultado = bd.Query();//disponible resultado
-            List<int> id_clones = new List<int>();
-            while (resultado.Read())
-            {
-                id_clones.Add(resultado.GetInt32(0));
-            }
-            resultado.Close();
-
-            string salida2 = "clonesIndexImagenObtener";//comando sql
-            bd.CreateCommandSP(salida2);
-            bd.CreateParameter("@id_clones", DbType.Int32, id_clones[posicion]);
-            DbDataReader resultado2 = bd.Query();//disponible resultado
-            resultado2.Read();
-            imagen = resultado2.GetInt32(0);
-            resultado2.Close();
-
-            bd.Close();
-            return imagen;
         }
 
         /*

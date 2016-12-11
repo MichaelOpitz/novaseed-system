@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Menú Producción" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"
+﻿<%@ Page Title="Producción" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"
     CodeBehind="MenuProduccion.aspx.cs" Inherits="Project.Novaseed.MenuProduccion" %>
 
 
