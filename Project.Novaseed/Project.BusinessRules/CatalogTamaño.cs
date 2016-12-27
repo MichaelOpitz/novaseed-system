@@ -11,23 +11,30 @@ namespace Project.BusinessRules
     {
         public List<Tamaño> getTamaño()
         {
-            DataAccess.DataBase bd = new DataBase();
-            bd.Connect(); //método conectar
-            List<Tamaño> lt = new List<Tamaño>();
-            string sql = "tamañoObtener";
-            bd.CreateCommandSP(sql);
-
-            DbDataReader resultado = bd.Query();
-
-            while (resultado.Read())
+            try
             {
-                Tamaño tamaño = new Tamaño(resultado.GetInt32(0), resultado.GetString(1));
-                lt.Add(tamaño);
-            }
-            resultado.Close();
-            bd.Close();
+                DataAccess.DataBase bd = new DataBase();
+                bd.Connect(); //método conectar
+                List<Tamaño> lt = new List<Tamaño>();
+                string sql = "tamañoObtener";
+                bd.CreateCommandSP(sql);
 
-            return lt;
+                DbDataReader resultado = bd.Query();
+
+                while (resultado.Read())
+                {
+                    Tamaño tamaño = new Tamaño(resultado.GetInt32(0), resultado.GetString(1));
+                    lt.Add(tamaño);
+                }
+                resultado.Close();
+                bd.Close();
+
+                return lt;
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.ToString());
+            }
         }
     }
 }

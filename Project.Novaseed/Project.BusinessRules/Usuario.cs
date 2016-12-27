@@ -7,10 +7,28 @@ namespace Project.BusinessRules
 {
     public class Usuario
     {
-        private int rol, telefono, id_cargo, id_sexo;
+        private int rol, telefono, id_cargo, id_sexo, conectado, no_conectado, id_pais;        
         private string dv, nombre, apellido, nombre_cargo, usuario_persona, password, email, direccion;
         private DateTime fecha_nacimiento, fecha_creacion, fecha_ultima_conexion;
         private bool administrador;
+
+        public int Id_pais
+        {
+            get { return id_pais; }
+            set { id_pais = value; }
+        }
+
+        public int No_conectado
+        {
+            get { return no_conectado; }
+            set { no_conectado = value; }
+        }
+
+        public int Conectado
+        {
+            get { return conectado; }
+            set { conectado = value; }
+        }
 
         public bool Administrador
         {
@@ -140,6 +158,83 @@ namespace Project.BusinessRules
             this.usuario_persona = usuario_persona;
             this.password = password;
             this.administrador = administrador;
+        }
+
+        /*
+         * Constructor para obtener el registro de usuarios
+         */
+        public Usuario(int rol, string nombre, string apellido, string nombre_cargo, string usuario_persona, DateTime fecha_ultima_conexion)
+        {
+            this.rol = rol;
+            this.nombre = nombre;
+            this.apellido = apellido;
+            this.nombre_cargo = nombre_cargo;
+            this.usuario_persona = usuario_persona;
+            this.fecha_ultima_conexion = fecha_ultima_conexion;
+        }
+
+        /*
+         * Constructor para obtener la estadística de los usuarios conectados y no conectados
+         */
+        public Usuario(int conectado, int no_conectado)
+        {
+            this.conectado = conectado;
+            this.no_conectado = no_conectado;
+        }
+
+        /*
+         * Constructor para actualizar un usuario(perfil)
+         */
+        public Usuario(int rol, int id_cargo, int id_sexo, string nombre, string apellido, DateTime fecha_nac, string direccion,
+            string email, int telefono, string password, bool administrador)
+        {
+            this.rol = rol;
+            this.id_cargo = id_cargo;
+            this.id_sexo = id_sexo;
+            this.nombre = nombre;
+            this.apellido = apellido;
+            this.fecha_nacimiento = fecha_nac;
+            this.direccion = direccion;
+            this.email = email;
+            this.telefono = telefono;
+            this.password = password;
+            this.administrador = administrador;
+        }
+
+        /*
+         * Constructor para obtener el nombre y cargo del usuario
+         */
+        public Usuario(string nombre, string nombre_cargo)
+        {
+            this.nombre = nombre;
+            this.nombre_cargo = nombre_cargo;
+        }
+
+        /*
+         * Constructor que obtiene el perfil de usuario
+         */
+        public Usuario(int rol, string dv, string nombre, string apellido, DateTime fecha_nacimiento, string email, 
+            int telefono, string direccion, bool administrador, int id_sexo, int id_cargo)
+        {
+            this.rol = rol;
+            this.dv = dv;
+            this.nombre = nombre;
+            this.apellido = apellido;
+            this.fecha_nacimiento = fecha_nacimiento;
+            this.email = email;
+            this.telefono = telefono;
+            this.direccion = direccion;
+            this.administrador = administrador;
+            this.id_sexo = id_sexo;
+            this.id_cargo = id_cargo;
+        }
+
+        /*
+         * Constructor que obtiene la nacionalidad del usuario para el perfil
+         */
+        public Usuario(int id_pais)
+        {
+            this.id_pais = id_pais;
         }
     }
 }

@@ -27,8 +27,14 @@ namespace Project.Novaseed
 
         private void AñoGeneracion(string url)
         {
-            string año = this.ddlGeneracionAño.SelectedValue;
-            Response.Redirect(url + "?valor=" + año);
+            try
+            {
+                string año = this.ddlGeneracionAño.SelectedValue;
+                Response.Redirect(url + "?valor=" + año);
+            }
+            catch (Exception ex)
+            {
+            }
         }
 
         protected void btnGeneracionCruzamiento_Click(object sender, EventArgs e)

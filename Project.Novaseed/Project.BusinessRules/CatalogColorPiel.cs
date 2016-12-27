@@ -11,23 +11,30 @@ namespace Project.BusinessRules
     {
         public List<ColorPiel> getColorPiel()
         {
-            DataAccess.DataBase bd = new DataBase();
-            bd.Connect(); //método conectar
-            List<ColorPiel> cp = new List<ColorPiel>();
-            string sql = "colorPielObtener";
-            bd.CreateCommandSP(sql);
-
-            DbDataReader resultado = bd.Query();
-
-            while (resultado.Read())
+            try
             {
-                ColorPiel piel = new ColorPiel(resultado.GetInt32(0), resultado.GetString(1));
-                cp.Add(piel);
-            }
-            resultado.Close();
-            bd.Close();
+                DataAccess.DataBase bd = new DataBase();
+                bd.Connect(); //método conectar
+                List<ColorPiel> cp = new List<ColorPiel>();
+                string sql = "colorPielObtener";
+                bd.CreateCommandSP(sql);
 
-            return cp;
+                DbDataReader resultado = bd.Query();
+
+                while (resultado.Read())
+                {
+                    ColorPiel piel = new ColorPiel(resultado.GetInt32(0), resultado.GetString(1));
+                    cp.Add(piel);
+                }
+                resultado.Close();
+                bd.Close();
+
+                return cp;
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.ToString());
+            }
         }
     }
 }

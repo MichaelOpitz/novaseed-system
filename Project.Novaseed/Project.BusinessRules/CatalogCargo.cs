@@ -11,23 +11,30 @@ namespace Project.BusinessRules
     {
         public List<Cargo> GetCargo()
         {
-            DataAccess.DataBase bd = new DataBase();
-            bd.Connect(); //método conectar
-            List<Cargo> lc = new List<Cargo>();
-            string sql = "cargoObtener";
-            bd.CreateCommandSP(sql);
-
-            DbDataReader resultado = bd.Query();
-
-            while (resultado.Read())
+            try
             {
-                Cargo cargo = new Cargo(resultado.GetInt32(0), resultado.GetString(1));
-                lc.Add(cargo);
-            }
-            resultado.Close();
-            bd.Close();
+                DataAccess.DataBase bd = new DataBase();
+                bd.Connect(); //método conectar
+                List<Cargo> lc = new List<Cargo>();
+                string sql = "cargoObtener";
+                bd.CreateCommandSP(sql);
 
-            return lc;
+                DbDataReader resultado = bd.Query();
+
+                while (resultado.Read())
+                {
+                    Cargo cargo = new Cargo(resultado.GetInt32(0), resultado.GetString(1));
+                    lc.Add(cargo);
+                }
+                resultado.Close();
+                bd.Close();
+
+                return lc;
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.ToString());
+            }
         }
     }
 }

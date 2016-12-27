@@ -9,18 +9,11 @@
                 <h2>
                     <asp:Label ID="lblClonesAño" runat="server" Font-Bold="true" Text="Clones" /></h2>
             </div>
-            <div class="col-sm-4">
-                <div class="input-group" style="float: right;">
-                    <asp:TextBox ID="txtBuscarClones" runat="server" CssClass="form-control" placeholder="Buscar clon" Width="150px" />
-                    <asp:LinkButton ID="btnBuscarClones" runat="server" CssClass="btn btn-info">
-                       <span class="glyphicon glyphicon-search"></span>
-                    </asp:LinkButton>
-                </div>
-            </div>
         </div>
         <br />
         <div class="row">
-            <h5><asp:Label id="lblClonesError" runat="server" Font-Bold="true" Text="" ForeColor="Red"/></h5>
+            <h5>
+                <asp:Label ID="lblClonesError" runat="server" Font-Bold="true" Text="" ForeColor="Red" /></h5>
         </div>
         <div class="row">
             <asp:Button type="button" runat="server" ID="btnAgregarCodificacion" class="btn btn-danger btn-block" Style="border-color: #000000" Text="Codificar" OnClick="btnAgregarCodificacion_Click"></asp:Button>
@@ -32,6 +25,9 @@
                 CssClass="table table-bordered bs-table"
                 AllowPaging="True"
                 AllowSorting="True"
+                PageSize="8"
+                OnDataBound="ClonesGridView_DataBound"
+                OnPageIndexChanging="ClonesGridView_PageIndexChanging"
                 OnRowDataBound="OnRowDataBound"
                 OnRowUpdating="ClonesGridView_RowUpdating"
                 OnRowCancelingEdit="ClonesGridView_RowCancelingEdit"
@@ -44,6 +40,38 @@
                 <EmptyDataTemplate>
                     ¡No hay clones en el año seleccionado!  
                 </EmptyDataTemplate>
+
+                <PagerTemplate>
+                    <table runat="server" id="testTable1" style="width: 100%" class="k-grid td">
+                        <tr>
+                            <td class="col-md-8 pull-left">
+                                <asp:Label ID="MessageLabel"
+                                    Text="Página: "
+                                    runat="server"
+                                    Font-Bold="true" />
+                                <asp:LinkButton ID="FirstLB" runat="server" CommandName="Page" CommandArgument="First" ToolTip="First" CssClass="btn-pager btn-default" OnClick="FirstLB_Click"> Inicio </asp:LinkButton>
+                                <asp:LinkButton ID="PrevLB" runat="server" CommandName="Page" CommandArgument="Prev" ToolTip="Previous" CssClass="btn-pager btn-default" OnClick="PrevLB_Click"> Anterior </asp:LinkButton>
+                                <asp:DropDownList runat="server" ID="PageDropDownList" AutoPostBack="true" EnableViewState="true" OnSelectedIndexChanged="PageDropDownList_SelectedIndexChanged" CssClass="selectpicker form-control-drp"></asp:DropDownList>
+
+                                <asp:LinkButton ID="NextLB" runat="server" CommandName="Page" CommandArgument="Next" ToolTip="Next" CssClass="btn-pager btn-default" OnClick="NextLB_Click"> Siguiente </asp:LinkButton>
+                                <asp:LinkButton ID="LastLB" runat="server" CommandName="Page" CommandArgument="Last" ToolTip="Last" CssClass="btn-pager btn-default" OnClick="LastLB_Click"> Final</asp:LinkButton>
+                            </td>
+
+                            <td class="col-md-4 pull-right">
+                                <asp:Label ID="PageSizeLabel" runat="server" Text="Tamaño de página: " Font-Bold="true"></asp:Label>
+                                <asp:DropDownList ID="ddlPageSize" runat="server" OnSelectedIndexChanged="ddlPageSize_SelectedIndexChanged" AutoPostBack="true" CssClass="selectpicker form-control-drp">
+                                    <%-- <asp:ListItem Value="0" Text="0" />--%>
+                                    <asp:ListItem Value="8" Text="8" />
+                                    <asp:ListItem Value="10" Text="10" />
+                                    <asp:ListItem Value="12" Text="12" />
+                                </asp:DropDownList>
+                            </td>
+                            <td class="col-md-2">
+                                <asp:Label ID="CurrentPageLabel" runat="server" />
+                            </td>
+                        </tr>
+                    </table>
+                </PagerTemplate>
 
                 <Columns>
                     <%--botones de acción sobre los registros...--%>
@@ -63,11 +91,11 @@
 
                         <ItemStyle HorizontalAlign="Center"></ItemStyle>
                     </asp:TemplateField>
-                    <asp:BoundField DataField="id_clones" HeaderText="ID" ReadOnly="true" HeaderStyle-Width="30px"/>
-                    <asp:BoundField DataField="codigo_variedad" HeaderText="Madre" ReadOnly="true" HeaderStyle-Width="110px"/>
-                    <asp:BoundField DataField="nombre_madre" HeaderText="Nombre Madre" ReadOnly="true" HeaderStyle-Width="100px"/>
-                    <asp:BoundField DataField="pad_codigo_variedad" HeaderText="Padre" ReadOnly="true" HeaderStyle-Width="110px"/>
-                    <asp:BoundField DataField="nombre_padre" HeaderText="Nombre Padre" ReadOnly="true" HeaderStyle-Width="100px"/>                    
+                    <asp:BoundField DataField="id_clones" HeaderText="ID" ReadOnly="true" HeaderStyle-Width="30px" />
+                    <asp:BoundField DataField="codigo_variedad" HeaderText="Madre" ReadOnly="true" HeaderStyle-Width="110px" />
+                    <asp:BoundField DataField="nombre_madre" HeaderText="Nombre Madre" ReadOnly="true" HeaderStyle-Width="100px" />
+                    <asp:BoundField DataField="pad_codigo_variedad" HeaderText="Padre" ReadOnly="true" HeaderStyle-Width="110px" />
+                    <asp:BoundField DataField="nombre_padre" HeaderText="Nombre Padre" ReadOnly="true" HeaderStyle-Width="100px" />
                     <asp:TemplateField ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="50px" HeaderText="Fertilidad">
                         <ItemTemplate>
                             <asp:DropDownList type="button" ID="ddlClonesFertilidad" runat="server" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
@@ -78,10 +106,10 @@
                         <ItemStyle HorizontalAlign="Center"></ItemStyle>
                     </asp:TemplateField>
 
-                    <asp:BoundField DataField="azul_clon" HeaderText="Azules" HeaderStyle-Width="50px" ControlStyle-Width="50px"/>
-                    <asp:BoundField DataField="roja_clon" HeaderText="Rojas" HeaderStyle-Width="50px" ControlStyle-Width="50px"/>
-                    <asp:BoundField DataField="amarilla_clon" HeaderText="Amarillas" HeaderStyle-Width="50px" ControlStyle-Width="50px"/>
-                    <asp:BoundField DataField="bicolor_clon" HeaderText="Bicolor" HeaderStyle-Width="50px" ControlStyle-Width="50px"/>                    
+                    <asp:BoundField DataField="azul_clon" HeaderText="Azules" HeaderStyle-Width="50px" ControlStyle-Width="50px" />
+                    <asp:BoundField DataField="roja_clon" HeaderText="Rojas" HeaderStyle-Width="50px" ControlStyle-Width="50px" />
+                    <asp:BoundField DataField="amarilla_clon" HeaderText="Amarillas" HeaderStyle-Width="50px" ControlStyle-Width="50px" />
+                    <asp:BoundField DataField="bicolor_clon" HeaderText="Bicolor" HeaderStyle-Width="50px" ControlStyle-Width="50px" />
                 </Columns>
             </asp:GridView>
 

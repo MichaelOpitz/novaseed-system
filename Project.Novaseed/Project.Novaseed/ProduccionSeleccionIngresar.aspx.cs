@@ -64,24 +64,184 @@ namespace Project.Novaseed
          */
         protected void OnRowDataBound(object sender, GridViewRowEventArgs e)
         {
-            CatalogProduccion cp = new CatalogProduccion();
-            if (e.Row.RowType == DataControlRowType.DataRow)
+            try
             {
-                //devuelve 1 y lo pinta de verde si esta en upov, 0 y rojo en caso contrario
-                int indexProduccion = cp.GetProduccionVariedad(valorAñoInt32, contProduccion);
+                CatalogProduccion cp = new CatalogProduccion();
+                if (e.Row.RowType == DataControlRowType.DataRow)
+                {
+                    //devuelve 1 y lo pinta de verde si esta en upov, 0 y rojo en caso contrario
+                    int indexProduccion = cp.GetProduccionVariedad(valorAñoInt32, contProduccion);
 
-                if (indexProduccion == 1)
-                {
-                    e.Row.BackColor = Color.LightGreen;
-                    e.Row.Cells[2].ForeColor = Color.Green;
-                    //e.Row.Cells[2].Enabled = false;
+                    if (indexProduccion == 1)
+                    {
+                        e.Row.BackColor = Color.LightGreen;
+                        e.Row.Cells[2].ForeColor = Color.Green;
+                        //e.Row.Cells[2].Enabled = false;
+                    }
+                    else
+                    {
+                        e.Row.BackColor = Color.FromArgb(255, 204, 203);
+                        e.Row.Cells[2].ForeColor = Color.Red;
+                    }
+                    contProduccion = contProduccion + 1;
                 }
-                else
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+
+        protected void ProduccionGridView_DataBound(object sender, EventArgs e)
+        {
+            try
+            {
+                GridViewRow pagerRow = gdvProduccion.BottomPagerRow;
+                DropDownList pageSizeList = (DropDownList)pagerRow.Cells[0].FindControl("ddlPageSize");
+                if (Context.Session["PageSize"] != null)
                 {
-                    e.Row.BackColor = Color.FromArgb(255, 204, 203);
-                    e.Row.Cells[2].ForeColor = Color.Red;
+                    pageSizeList.SelectedValue = Context.Session["PageSize"].ToString();
                 }
-                contProduccion = contProduccion + 1;                
+                DropDownList pageList = (DropDownList)pagerRow.Cells[0].FindControl("PageDropDownList");
+                Label pageLabel = (Label)pagerRow.Cells[0].FindControl("CurrentPageLabel");
+
+                if (pageList != null)
+                {
+                    for (int i = 0; i < gdvProduccion.PageCount; i++)
+                    {
+                        int pageNumber = i + 1;
+                        ListItem item = new ListItem(pageNumber.ToString());
+                        if (i == gdvProduccion.PageIndex)
+                        {
+                            item.Selected = true;
+                        }
+                        pageList.Items.Add(item);
+                    }
+                }
+
+                if (pageLabel != null)
+                {
+                    int currentPage = gdvProduccion.PageIndex + 1;
+                    pageLabel.Text = "Ver " + currentPage.ToString() + " de " + gdvProduccion.PageCount.ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+        protected void ddlPageSize_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                GridViewRow pagerRow = gdvProduccion.BottomPagerRow;
+                DropDownList pageSizeList = (DropDownList)pagerRow.Cells[0].FindControl("ddlPageSize");
+
+                gdvProduccion.PageSize = Convert.ToInt32(pageSizeList.SelectedValue);
+                Context.Session["PageSize"] = pageSizeList.SelectedValue;
+                PoblarGrilla();
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+        protected void PageDropDownList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                GridViewRow pagerRow = gdvProduccion.BottomPagerRow;
+                DropDownList pageList = (DropDownList)pagerRow.Cells[0].FindControl("PageDropDownList");
+                gdvProduccion.PageIndex = pageList.SelectedIndex;
+                PoblarGrilla();
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+        //Siguiente página
+        protected void NextLB_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                GridViewRow pagerRow = gdvProduccion.BottomPagerRow;
+                DropDownList pageList = (DropDownList)pagerRow.Cells[0].FindControl("PageDropDownList");
+                //Aumenta la página en 1
+                gdvProduccion.PageIndex = pageList.SelectedIndex + 1;
+                PoblarGrilla();
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+        //Página anterior
+        protected void PrevLB_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                GridViewRow pagerRow = gdvProduccion.BottomPagerRow;
+                DropDownList pageList = (DropDownList)pagerRow.Cells[0].FindControl("PageDropDownList");
+                //Disminuye la página en 1
+                gdvProduccion.PageIndex = pageList.SelectedIndex - 1;
+                PoblarGrilla();
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+        //Página inicio
+        protected void FirstLB_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                gdvProduccion.PageIndex = 0;
+                PoblarGrilla();
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+        //Página final
+        protected void LastLB_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                GridViewRow pagerRow = gdvProduccion.BottomPagerRow;
+                DropDownList pageList = (DropDownList)pagerRow.Cells[0].FindControl("PageDropDownList");
+                gdvProduccion.PageIndex = pageList.Items.Count;
+                PoblarGrilla();
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+        protected void ProduccionGridView_PageIndexChanging(object sender, EventArgs e)
+        {
+            try
+            {
+                GridViewRow pagerRow = gdvProduccion.BottomPagerRow;
+                DropDownList pageList = (DropDownList)pagerRow.Cells[0].FindControl("PageDropDownList");//error
+                Label pageLabel = (Label)pagerRow.Cells[0].FindControl("CurrentPageLabel");
+                if (pageList != null)
+                {
+                    for (int i = 0; i < gdvProduccion.PageCount; i++)
+                    {
+                        int pageNumber = i + 1;
+                        ListItem item = new ListItem(pageNumber.ToString());
+                        if (i == gdvProduccion.PageIndex)
+                        {
+                            item.Selected = true;
+                        }
+                        pageList.Items.Add(item);
+                    }
+                }
+                if (pageLabel != null)
+                {
+                    int currentPage = gdvProduccion.PageIndex + 1;
+                    pageLabel.Text = "Ver " + currentPage.ToString() + " de " + gdvProduccion.PageCount.ToString();
+                }
+                this.gdvProduccion.Controls[0].Controls[this.gdvProduccion.Controls[0].Controls.Count - 1].Visible = true;
+                PoblarGrilla();
+            }
+            catch (Exception ex)
+            {
             }
         }
     }

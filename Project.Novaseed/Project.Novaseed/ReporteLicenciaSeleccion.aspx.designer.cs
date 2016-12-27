@@ -10,24 +10,15 @@
 namespace Project.Novaseed {
     
     
-    public partial class UsuarioModificar {
+    public partial class ReporteLicenciaSeleccion {
         
         /// <summary>
-        /// Control lblUsuarioModificar.
+        /// Control gdvLicencia.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblUsuarioModificar;
-        
-        /// <summary>
-        /// Control lblUsuarioError.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblUsuarioError;
+        protected global::System.Web.UI.WebControls.GridView gdvLicencia;
     }
 }

@@ -1,17 +1,17 @@
-﻿<%@ Page Title="Login" Language="C#" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="Project.Novaseed.Login" %>
+﻿<%@ Page Title="Novaseed" Language="C#" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="Project.Novaseed.Login" %>
 
 <html lang="es">
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%: Page.Title %> - Mi aplicación ASP.NET</title>
+    <title>Novaseed</title>
 
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
     </asp:PlaceHolder>
     <webopt:BundleReference runat="server" Path="~/Content/css" />
-    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link href="~/logo.ico" rel="shortcut icon" type="image/x-icon" />
 </head>
 
 <body>
@@ -36,78 +36,46 @@
                 <%--Site Scripts--%>
             </Scripts>
         </asp:ScriptManager>
+
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="col-sm-3 col-sm-offset-4" style="text-align:center">
+                    <asp:Image ID="imgLoginBanner" ImageUrl="~/images/logo.png" runat="server" />
+                </div>
+            </div>
+
+            <br />            
+            <div class="row">
+                <div class="col-sm-5 col-sm-offset-4">
+                    <asp:RegularExpressionValidator ID="reLoginIngresar" runat="server" ValidationExpression="^[a-z]{3,49}$" ErrorMessage="Usuario Incorrecto" ControlToValidate="txtLoginUsuario" ForeColor="Red" ValidationGroup="login"></asp:RegularExpressionValidator>                                        
+                    <asp:TextBox type="text" runat="server" class="form-control" Placeholder="Ingrese Usuario" ID="txtLoginUsuario"></asp:TextBox>                    
+                    <asp:RegularExpressionValidator ID="reLoginContraseña" runat="server" ValidationExpression=".{3,49}" ErrorMessage="Contraseña Inválida" ControlToValidate="txtLoginContraseña" ForeColor="Red" ValidationGroup="login"></asp:RegularExpressionValidator>
+                    <asp:TextBox type="password" runat="server" class="form-control" Placeholder="Ingrese Contraseña" ID="txtLoginContraseña"></asp:TextBox>                    
+                </div>
+            </div>
+
+            <br />                        
+            <div class="row" style="margin-top: 20px">
+                <div class="col-sm-3 col-sm-offset-4">
+                    <asp:Button type="button" runat="server" Text="Ingresar" ID="btnLoginIngresar" class="btn btn-primary btn-md" Width="90%" BorderColor="#000000" ValidationGroup="login" CausesValidation="true" OnClick="btnLoginIngresar_Click"></asp:Button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-5 col-sm-offset-4">
+                    <asp:CheckBox ID="chkLoginRecordar" runat="server" Text="Recordar Contraseña" />
+                </div>
+            </div>
+        </div>
+
+        <div class="container body-content" style="margin-top: 30px">
+            <footer>
+                <p>&copy; Novaseed <%: DateTime.Now.Year %>. Todos los derechos reservados.</p>
+                <p>Sistema desarrollado por Michael Opitz</p>
+            </footer>
+        </div>
+
     </form>
-
-
-    <div class="container-fluid" style="background-color:#c8c8c8">
-
-        <div class="row" style="height:40px">
-            <div class="col-sm-7 col-sm-offset-4">
-                <label for="txtLoginUsuario">Usuario</label>
-            </div>
-        </div>
-
-        <div class="row" style="height:60px">
-            <div class="col-sm-7 col-sm-offset-4">
-                <input type="text" class="form-control" id="txtLoginUsuario" placeholder="Usuario">
-            </div>
-        </div>
-
-        <div class="row" style="height:40px">
-            <div class="col-sm-7 col-sm-offset-4">
-                <label for="txtLoginPassword">Password</label>
-            </div>
-        </div>
-
-        <div class="row" style="height:60px">
-            <div class="col-sm-7 col-sm-offset-4">
-                <input type="password" class="form-control" id="txtLoginPassword" placeholder="Password">
-            </div>
-        </div>
-
-        <div class="row" style="height:40px; width:100%">
-            <div class="col-sm-8 col-sm-offset-4">
-                <label><input type="checkbox" id="chkLoginRecordarPassword" value="">Recordar contraseña</label>                
-            </div>
-        </div>
-
-        <div class="row" style="height:60px">
-            <div class="col-sm-7 col-sm-offset-4">
-                <button type="submit" class="btn btn-info" id="btnLoginIngresar">Ingresar</button>
-                <button type="submit" class="btn btn-danger" id="btnLoginCancelar">Cancelar</button>
-            </div>
-        </div>
-
-        <%--<div class="row">
-            <div class="col-sm-5"></div>
-            <div class="col-sm-7">
-                <label for="txtLoginUsuario">Usuario</label>
-                <input type="text" class="form-control" id="txtLoginUsuario" placeholder="Usuario">
-                <label for="txtLoginPassword">Password</label>
-                <input type="password" class="form-control" id="txtLoginPassword" placeholder="Password">
-            </div>
-        </div>--%>
-
-        <%--<div class="row" style="text-align: center">
-            <label class="checkbox-inline">
-                <input type="checkbox" id="chkLoginRecordarPassword" value="option1">
-                <h6>Recordar contraseña</h6>
-            </label>
-        </div>
-
-        <div class="row" style="text-align: center">
-            <button type="submit" class="btn btn-info" id="btnLoginIngresar">Ingresar</button>
-            <button type="submit" class="btn btn-danger" id="btnLoginCancelar">Cancelar</button>
-        </div>--%>
-    </div>
-
-    <div class="container body-content">
-        <footer>
-            <p>&copy; <%: DateTime.Now.Year %> - Novaseed 2016. Todos los derechos reservados.</p>
-            <p>Sistema desarrollado por Michael Opitz</p>
-        </footer>
-    </div>
-
 </body>
 </html>
 

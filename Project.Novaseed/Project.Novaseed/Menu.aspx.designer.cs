@@ -13,6 +13,24 @@ namespace Project.Novaseed {
     public partial class Menu {
         
         /// <summary>
+        /// Control lblMenuNombre.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblMenuNombre;
+        
+        /// <summary>
+        /// Control lblMenuCargo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblMenuCargo;
+        
+        /// <summary>
         /// Control imgMenuBanner.
         /// </summary>
         /// <remarks>

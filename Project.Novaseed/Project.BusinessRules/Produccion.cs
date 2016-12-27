@@ -227,5 +227,16 @@ namespace Project.BusinessRules
             this.nombre_estadistica = nombre_estadistica;
             this.cantidad_estadistica = cantidad_estadistica;
         }
+
+        /*
+         * Constructor para obtener el reporte de produccion
+         */
+        public Produccion(int id_produccion, string nombre_variedad, string nombre_productor, int ano_produccion)
+        {
+            this.id_produccion = id_produccion;
+            this.nombre_variedad = nombre_variedad;
+            this.nombre_productor = nombre_productor;
+            this.ano_produccion = ano_produccion;
+        }
     }
 }

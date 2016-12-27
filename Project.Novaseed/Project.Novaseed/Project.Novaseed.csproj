@@ -39,6 +39,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -146,14 +147,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="About.aspx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Manage.aspx" />
     <Content Include="Account\OpenAuthProviders.ascx" />
     <Content Include="Account\Register.aspx" />
     <Content Include="Account\RegisterExternalLogin.aspx" />
     <Content Include="Ayuda.aspx" />
+    <Content Include="CiudadActualizar.aspx" />
     <Content Include="CiudadAgregar.aspx" />
+    <Content Include="CiudadEliminar.aspx" />
     <Content Include="Clones.aspx" />
     <Content Include="Codificacion.aspx" />
     <Content Include="CodigoIndividuos.aspx" />
@@ -166,9 +168,11 @@
     <Content Include="Cosecha48papas.aspx" />
     <Content Include="Cosecha6papas.aspx" />
     <Content Include="Cruzamiento.aspx" />
+    <Content Include="Enfermedades.aspx" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Licencia.aspx" />
     <Content Include="Login.aspx" />
+    <Content Include="logo.ico" />
     <Content Include="Mejoramiento.aspx" />
     <Content Include="Menu.aspx" />
     <Content Include="MenuGeneracion.aspx" />
@@ -178,12 +182,31 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Account\Web.config" />
+    <Content Include="DataSetNovaseed.xsc">
+      <DependentUpon>DataSetNovaseed.xsd</DependentUpon>
+    </Content>
+    <None Include="DataSetNovaseed.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetNovaseed.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="DataSetNovaseed.xss">
+      <DependentUpon>DataSetNovaseed.xsd</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="ProduccionFiltrar.aspx" />
     <Content Include="ProduccionFiltrarPorProductorCiudadCategoria.aspx" />
     <Content Include="ProduccionFiltrarVariedad.aspx" />
     <Content Include="ProduccionIngresar.aspx" />
     <Content Include="ProduccionSeleccionIngresar.aspx" />
+    <Content Include="ReporteLicencia.aspx" />
+    <Content Include="ReporteLicenciaSeleccion.aspx" />
+    <Content Include="ReporteProduccion.aspx" />
+    <Content Include="ReporteProduccionSeleccion.aspx" />
+    <Content Include="ReporteUPOV.aspx" />
+    <Content Include="ReporteUPOVSeleccion.aspx" />
+    <Content Include="ReporteVariedad.aspx" />
+    <Content Include="ReporteVariedadSeleccion.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -214,14 +237,13 @@
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Default.aspx" />
-    <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Site.Master" />
     <Content Include="UPOV.aspx" />
     <Content Include="UPOVSeleccionar.aspx" />
-    <Content Include="UsuarioAgregar.aspx" />
-    <Content Include="UsuarioEliminar.aspx" />
-    <Content Include="UsuarioModificar.aspx" />
+    <Content Include="Usuario.aspx" />
+    <Content Include="UsuarioPerfil.aspx" />
+    <Content Include="UsuarioRegistro.aspx" />
     <Content Include="Vasos.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config">
@@ -275,13 +297,6 @@
       <DependentUpon>RegisterExternalLogin.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
-    <Compile Include="About.aspx.cs">
-      <DependentUpon>About.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="About.aspx.designer.cs">
-      <DependentUpon>About.aspx</DependentUpon>
-    </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Ayuda.aspx.cs">
@@ -291,12 +306,26 @@
     <Compile Include="Ayuda.aspx.designer.cs">
       <DependentUpon>Ayuda.aspx</DependentUpon>
     </Compile>
+    <Compile Include="CiudadActualizar.aspx.cs">
+      <DependentUpon>CiudadActualizar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CiudadActualizar.aspx.designer.cs">
+      <DependentUpon>CiudadActualizar.aspx</DependentUpon>
+    </Compile>
     <Compile Include="CiudadAgregar.aspx.cs">
       <DependentUpon>CiudadAgregar.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="CiudadAgregar.aspx.designer.cs">
       <DependentUpon>CiudadAgregar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CiudadEliminar.aspx.cs">
+      <DependentUpon>CiudadEliminar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CiudadEliminar.aspx.designer.cs">
+      <DependentUpon>CiudadEliminar.aspx</DependentUpon>
     </Compile>
     <Compile Include="Clones.aspx.cs">
       <DependentUpon>Clones.aspx</DependentUpon>
@@ -361,12 +390,28 @@
     <Compile Include="Cruzamiento.aspx.designer.cs">
       <DependentUpon>Cruzamiento.aspx</DependentUpon>
     </Compile>
+    <Compile Include="DataSetNovaseed.cs">
+      <DependentUpon>DataSetNovaseed.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DataSetNovaseed.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSetNovaseed.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Enfermedades.aspx.cs">
+      <DependentUpon>Enfermedades.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Enfermedades.aspx.designer.cs">
+      <DependentUpon>Enfermedades.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -450,6 +495,62 @@
       <DependentUpon>ProduccionSeleccionIngresar.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReporteLicencia.aspx.cs">
+      <DependentUpon>ReporteLicencia.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReporteLicencia.aspx.designer.cs">
+      <DependentUpon>ReporteLicencia.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ReporteLicenciaSeleccion.aspx.cs">
+      <DependentUpon>ReporteLicenciaSeleccion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReporteLicenciaSeleccion.aspx.designer.cs">
+      <DependentUpon>ReporteLicenciaSeleccion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ReporteProduccion.aspx.cs">
+      <DependentUpon>ReporteProduccion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReporteProduccion.aspx.designer.cs">
+      <DependentUpon>ReporteProduccion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ReporteProduccionSeleccion.aspx.cs">
+      <DependentUpon>ReporteProduccionSeleccion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReporteProduccionSeleccion.aspx.designer.cs">
+      <DependentUpon>ReporteProduccionSeleccion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ReporteUPOV.aspx.cs">
+      <DependentUpon>ReporteUPOV.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReporteUPOV.aspx.designer.cs">
+      <DependentUpon>ReporteUPOV.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ReporteUPOVSeleccion.aspx.cs">
+      <DependentUpon>ReporteUPOVSeleccion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReporteUPOVSeleccion.aspx.designer.cs">
+      <DependentUpon>ReporteUPOVSeleccion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ReporteVariedad.aspx.cs">
+      <DependentUpon>ReporteVariedad.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReporteVariedad.aspx.designer.cs">
+      <DependentUpon>ReporteVariedad.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ReporteVariedadSeleccion.aspx.cs">
+      <DependentUpon>ReporteVariedadSeleccion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReporteVariedadSeleccion.aspx.designer.cs">
+      <DependentUpon>ReporteVariedadSeleccion.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -479,26 +580,26 @@
     <Compile Include="UPOVSeleccionar.aspx.designer.cs">
       <DependentUpon>UPOVSeleccionar.aspx</DependentUpon>
     </Compile>
-    <Compile Include="UsuarioAgregar.aspx.cs">
-      <DependentUpon>UsuarioAgregar.aspx</DependentUpon>
+    <Compile Include="Usuario.aspx.cs">
+      <DependentUpon>Usuario.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="UsuarioAgregar.aspx.designer.cs">
-      <DependentUpon>UsuarioAgregar.aspx</DependentUpon>
+    <Compile Include="Usuario.aspx.designer.cs">
+      <DependentUpon>Usuario.aspx</DependentUpon>
     </Compile>
-    <Compile Include="UsuarioEliminar.aspx.cs">
-      <DependentUpon>UsuarioEliminar.aspx</DependentUpon>
+    <Compile Include="UsuarioPerfil.aspx.cs">
+      <DependentUpon>UsuarioPerfil.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="UsuarioEliminar.aspx.designer.cs">
-      <DependentUpon>UsuarioEliminar.aspx</DependentUpon>
+    <Compile Include="UsuarioPerfil.aspx.designer.cs">
+      <DependentUpon>UsuarioPerfil.aspx</DependentUpon>
     </Compile>
-    <Compile Include="UsuarioModificar.aspx.cs">
-      <DependentUpon>UsuarioModificar.aspx</DependentUpon>
+    <Compile Include="UsuarioRegistro.aspx.cs">
+      <DependentUpon>UsuarioRegistro.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="UsuarioModificar.aspx.designer.cs">
-      <DependentUpon>UsuarioModificar.aspx</DependentUpon>
+    <Compile Include="UsuarioRegistro.aspx.designer.cs">
+      <DependentUpon>UsuarioRegistro.aspx</DependentUpon>
     </Compile>
     <Compile Include="Vasos.aspx.cs">
       <DependentUpon>Vasos.aspx</DependentUpon>
@@ -524,6 +625,12 @@
       <Project>{ab17fc48-769f-48d5-b6d3-61e102d04bee}</Project>
       <Name>Project.BusinessRules</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ReporteLicencia.rdlc" />
+    <EmbeddedResource Include="ReporteProduccion.rdlc" />
+    <EmbeddedResource Include="ReporteUPOV.rdlc" />
+    <EmbeddedResource Include="ReporteVariedad.rdlc" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

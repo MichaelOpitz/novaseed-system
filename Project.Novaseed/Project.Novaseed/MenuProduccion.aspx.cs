@@ -30,8 +30,14 @@ namespace Project.Novaseed
 
         private void AñoGeneracion(string url)
         {
-            string año = this.ddlProduccionAño.SelectedValue;
-            Response.Redirect(url + "?valor=" + año);
+            try
+            {
+                string año = this.ddlProduccionAño.SelectedValue;
+                Response.Redirect(url + "?valor=" + año);
+            }
+            catch (Exception ex)
+            {
+            }
         }
 
         protected void btnMenuProduccionIngresar_Click(object sender, EventArgs e)
@@ -67,53 +73,59 @@ namespace Project.Novaseed
 
         public void Estadisticas(string nombre_estadistica)
         {
-            CatalogProduccion cp = new CatalogProduccion();
-            this.chartProduccion.Visible = true;
-            string value = this.ddlProduccionAño.SelectedValue;
+            try
+            {
+                CatalogProduccion cp = new CatalogProduccion();
+                this.chartProduccion.Visible = true;
+                string value = this.ddlProduccionAño.SelectedValue;
 
-            List<string> nombreArray = new List<string>();
-            List<Int32> cantidadArray = new List<Int32>();
-            // Arreglos del Grafico
-            List<Project.BusinessRules.Produccion> produccion = new List<Produccion>();
-            if (nombre_estadistica == "ranking")
-            {
-                produccion = cp.GetRankingVariedad(Int32.Parse(value));
-                this.chartProduccion.Titles.Add("Ranking de Variedades por Relación Standard");
-            }
-            if (nombre_estadistica == "ciudad")
-            {
-                produccion = cp.GetCiudad(Int32.Parse(value));
-                this.chartProduccion.Titles.Add("Estadística de las Ciudad en Producción");
-            }
-            if (nombre_estadistica == "destino")
-            {
-                produccion = cp.GetDestino(Int32.Parse(value));
-                this.chartProduccion.Titles.Add("Estadística de los Destinos en Producción");
-            }
-            if (nombre_estadistica == "fertilidad")
-            {
-                produccion = cp.GetFertilidad(Int32.Parse(value));
-                this.chartProduccion.Titles.Add("Estadística de las Fertilidades en Producción");
-            }
-            for (int i = 0; i < produccion.Count; i++)
-            {
-                nombreArray.Add(produccion[i].Nombre_estadistica.ToString());
-                cantidadArray.Add(produccion[i].Cantidad_estadistica);
-            }
-            // Se modifica la Paleta de Colores a utilizar por el control.
-            this.chartProduccion.Palette = ChartColorPalette.SeaGreen;
-            // Se agrega un titulo al Grafico.
-            
-            this.chartProduccion.Titles[0].Alignment = ContentAlignment.MiddleCenter;
-            this.chartProduccion.Titles[0].Font = new Font("Trebuchet MS", 14, FontStyle.Bold);
+                List<string> nombreArray = new List<string>();
+                List<Int32> cantidadArray = new List<Int32>();
+                // Arreglos del Grafico
+                List<Project.BusinessRules.Produccion> produccion = new List<Project.BusinessRules.Produccion>();
+                if (nombre_estadistica == "ranking")
+                {
+                    produccion = cp.GetRankingVariedad(Int32.Parse(value));
+                    this.chartProduccion.Titles.Add("Ranking de Variedades por Relación Standard");
+                }
+                if (nombre_estadistica == "ciudad")
+                {
+                    produccion = cp.GetCiudad(Int32.Parse(value));
+                    this.chartProduccion.Titles.Add("Estadística de las Ciudad en Producción");
+                }
+                if (nombre_estadistica == "destino")
+                {
+                    produccion = cp.GetDestino(Int32.Parse(value));
+                    this.chartProduccion.Titles.Add("Estadística de los Destinos en Producción");
+                }
+                if (nombre_estadistica == "fertilidad")
+                {
+                    produccion = cp.GetFertilidad(Int32.Parse(value));
+                    this.chartProduccion.Titles.Add("Estadística de las Fertilidades en Producción");
+                }
+                for (int i = 0; i < produccion.Count; i++)
+                {
+                    nombreArray.Add(produccion[i].Nombre_estadistica.ToString());
+                    cantidadArray.Add(produccion[i].Cantidad_estadistica);
+                }
+                // Se modifica la Paleta de Colores a utilizar por el control.
+                this.chartProduccion.Palette = ChartColorPalette.SeaGreen;
+                // Se agrega un titulo al Grafico.
 
-            this.chartProduccion.ChartAreas[0].AxisX.LabelStyle.Font = new Font("Trebuchet MS", 12, FontStyle.Bold);
-            this.chartProduccion.Series[0].Font = new Font("Trebuchet MS", 12, FontStyle.Bold);
-            this.chartProduccion.Series[0].Points.DataBindXY(nombreArray, cantidadArray);
-            this.chartProduccion.Series[0]["LabelStyle"] = "Bottom";
-            this.chartProduccion.ChartAreas[0].AxisX.LabelStyle.Angle = 45;
-            //this.chartProduccion.ChartAreas[0].Area3DStyle.Enable3D = true;
-            this.chartProduccion.DataBind();
+                this.chartProduccion.Titles[0].Alignment = ContentAlignment.MiddleCenter;
+                this.chartProduccion.Titles[0].Font = new Font("Trebuchet MS", 14, FontStyle.Bold);
+
+                this.chartProduccion.ChartAreas[0].AxisX.LabelStyle.Font = new Font("Trebuchet MS", 12, FontStyle.Bold);
+                this.chartProduccion.Series[0].Font = new Font("Trebuchet MS", 12, FontStyle.Bold);
+                this.chartProduccion.Series[0].Points.DataBindXY(nombreArray, cantidadArray);
+                this.chartProduccion.Series[0]["LabelStyle"] = "Bottom";
+                this.chartProduccion.ChartAreas[0].AxisX.LabelStyle.Angle = 45;
+                //this.chartProduccion.ChartAreas[0].Area3DStyle.Enable3D = true;
+                this.chartProduccion.DataBind();
+            }
+            catch (Exception ex)
+            {
+            }
         }
     }
 }

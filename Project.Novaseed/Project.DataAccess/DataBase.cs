@@ -87,6 +87,31 @@ namespace Project.DataAccess
                 throw new DataAccessException(ex.Message);
             }
         }
+        /*
+         * Crea un DataSet con Procedimiento Almacenado
+         */
+        public DataSet SetSP(string sql, string parametro, DbType tipo, object value)
+        {
+            try
+            {
+                adapter = factory.CreateDataAdapter();
+                this.Connect();
+                this.CreateCommandSP(sql);
+                this.CreateParameter(parametro,tipo,value);
+                adapter.SelectCommand = this.command;
+                DbCommandBuilder cb = factory.CreateCommandBuilder();
+                cb.DataAdapter = adapter;
+                DataSet set = new DataSet();
+
+                //Relleno de datos del dataset
+                adapter.Fill(set);
+                return set;
+            }
+            catch (Exception ex)
+            {
+                throw new DataAccessException(ex.Message);
+            }
+        }
         public DbDataReader Query()
         {
             return this.command.ExecuteReader();

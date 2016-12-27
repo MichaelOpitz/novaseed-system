@@ -31,24 +31,6 @@ namespace Project.Novaseed {
         protected global::System.Web.UI.WebControls.TextBox txtCantidadTotalVasos;
         
         /// <summary>
-        /// Control txtBuscarVasos.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtBuscarVasos;
-        
-        /// <summary>
-        /// Control btnBuscarVaso.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btnBuscarVaso;
-        
-        /// <summary>
         /// Control lblVasosError.
         /// </summary>
         /// <remarks>

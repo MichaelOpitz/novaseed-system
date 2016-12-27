@@ -5,7 +5,7 @@
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <div class="container-fluid">
         <br />
-        <div class="row" >
+        <div class="row">
             <div class="col-sm-3 col-sm-offset-1">
                 <asp:TextBox ID="txtCodificacionMadre" runat="server" class="form-control" ReadOnly="true"></asp:TextBox>
                 <span class="help-block">Código Madre</span>
@@ -18,11 +18,11 @@
                 <asp:TextBox ID="txtCodificacionAño" runat="server" class="form-control" ReadOnly="true"></asp:TextBox>
                 <span class="help-block">Año de la codificación</span>
             </div>
-        </div>        
-        <hr />   
+        </div>
         <div class="row">
-            <h5><asp:Label id="lblCodificacionError" runat="server" Font-Bold="true" Text="" ForeColor="Red"/></h5>
-        </div>     
+            <h5>
+                <asp:Label ID="lblCodificacionError" runat="server" Font-Bold="true" Text="" ForeColor="Red" /></h5>
+        </div>
         <div class="row">
             <asp:Button type="button" runat="server" ID="btnAgregar6papas" class="btn btn-primary btn-block" Style="border-color: #000000" Text="Agregar a 6 Papas" OnClick="btnAgregar6papas_Click" OnClientClick="return confirm('¿Desea crear la temporada 6 papas para esta codificación?');"></asp:Button>
         </div>
@@ -33,6 +33,9 @@
                 CssClass="table table-bordered bs-table"
                 AllowPaging="True"
                 AllowSorting="True"
+                PageSize="8"
+                OnDataBound="CodigoIndividuosGridView_DataBound"
+                OnPageIndexChanging="CodigoIndividuosGridView_PageIndexChanging"
                 OnRowDataBound="OnRowDataBound"
                 OnRowUpdating="CodigoIndividuosGridView_RowUpdating"
                 OnRowCancelingEdit="CodigoIndividuosGridView_RowCancelingEdit"
@@ -45,6 +48,38 @@
                 <EmptyDataTemplate>
                     ¡No hay codificación en los padres seleccionados! 
                 </EmptyDataTemplate>
+
+                <PagerTemplate>
+                    <table runat="server" id="testTable1" style="width: 100%" class="k-grid td">
+                        <tr>
+                            <td class="col-md-8 pull-left">
+                                <asp:Label ID="MessageLabel"
+                                    Text="Página: "
+                                    runat="server"
+                                    Font-Bold="true" />
+                                <asp:LinkButton ID="FirstLB" runat="server" CommandName="Page" CommandArgument="First" ToolTip="First" CssClass="btn-pager btn-default" OnClick="FirstLB_Click"> Inicio </asp:LinkButton>
+                                <asp:LinkButton ID="PrevLB" runat="server" CommandName="Page" CommandArgument="Prev" ToolTip="Previous" CssClass="btn-pager btn-default" OnClick="PrevLB_Click"> Anterior </asp:LinkButton>
+                                <asp:DropDownList runat="server" ID="PageDropDownList" AutoPostBack="true" EnableViewState="true" OnSelectedIndexChanged="PageDropDownList_SelectedIndexChanged" CssClass="selectpicker form-control-drp"></asp:DropDownList>
+
+                                <asp:LinkButton ID="NextLB" runat="server" CommandName="Page" CommandArgument="Next" ToolTip="Next" CssClass="btn-pager btn-default" OnClick="NextLB_Click"> Siguiente </asp:LinkButton>
+                                <asp:LinkButton ID="LastLB" runat="server" CommandName="Page" CommandArgument="Last" ToolTip="Last" CssClass="btn-pager btn-default" OnClick="LastLB_Click"> Final</asp:LinkButton>
+                            </td>
+
+                            <td class="col-md-4 pull-right">
+                                <asp:Label ID="PageSizeLabel" runat="server" Text="Tamaño de página: " Font-Bold="true"></asp:Label>
+                                <asp:DropDownList ID="ddlPageSize" runat="server" OnSelectedIndexChanged="ddlPageSize_SelectedIndexChanged" AutoPostBack="true" CssClass="selectpicker form-control-drp">
+                                    <%-- <asp:ListItem Value="0" Text="0" />--%>
+                                    <asp:ListItem Value="8" Text="8" />
+                                    <asp:ListItem Value="10" Text="10" />
+                                    <asp:ListItem Value="12" Text="12" />
+                                </asp:DropDownList>
+                            </td>
+                            <td class="col-md-2">
+                                <asp:Label ID="CurrentPageLabel" runat="server" />
+                            </td>
+                        </tr>
+                    </table>
+                </PagerTemplate>
 
                 <Columns>
                     <%--botones de acción sobre los registros...--%>

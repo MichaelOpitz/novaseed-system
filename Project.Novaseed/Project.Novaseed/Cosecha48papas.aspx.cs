@@ -209,36 +209,48 @@ namespace Project.Novaseed
          */
         protected void OnRowDataBound(object sender, GridViewRowEventArgs e)
         {
-            CatalogCosecha cc = new CatalogCosecha();
-            if (e.Row.RowType == DataControlRowType.DataRow)
+            try
             {
-                //devuelve 1 y lo pinta de verde si esta en upov, 0 y rojo en caso contrario
-                int index48papasUPOV = cc.GetCosechaEstaEnUPOV(valorAñoInt32, cont48papasUPOV);
-                //Ecuentra el CheckBox en la fila
-                CheckBox chkAgregarUPOV = (e.Row.FindControl("chkAgregarUPOV") as CheckBox);
-                if (index48papasUPOV == 1)
+                CatalogCosecha cc = new CatalogCosecha();
+                if (e.Row.RowType == DataControlRowType.DataRow)
                 {
-                    e.Row.BackColor = Color.LightGreen;
-                    chkAgregarUPOV.Enabled = false;
+                    //devuelve 1 y lo pinta de verde si esta en upov, 0 y rojo en caso contrario
+                    int index48papasUPOV = cc.GetCosechaEstaEnUPOV(valorAñoInt32, cont48papasUPOV);
+                    //Ecuentra el CheckBox en la fila
+                    CheckBox chkAgregarUPOV = (e.Row.FindControl("chkAgregarUPOV") as CheckBox);
+                    if (index48papasUPOV == 1)
+                    {
+                        e.Row.BackColor = Color.LightGreen;
+                        chkAgregarUPOV.Enabled = false;
+                    }
+                    else
+                    {
+                        e.Row.BackColor = Color.FromArgb(255, 204, 203);
+                        chkAgregarUPOV.Enabled = true;
+                    }
+                    cont48papasUPOV = cont48papasUPOV + 1;
                 }
-                else
-                {
-                    e.Row.BackColor = Color.FromArgb(255, 204, 203);
-                    chkAgregarUPOV.Enabled = true;
-                }
-                cont48papasUPOV = cont48papasUPOV + 1;
+            }
+            catch (Exception ex)
+            {
             }
         }
 
         protected void Cosecha48papasGridView_RowDeleting(Object sender, GridViewDeleteEventArgs e)
         {
-            CatalogCosecha cc = new CatalogCosecha();
-            string id_cosecha = HttpUtility.HtmlDecode((string)this.gdv48papas.Rows[e.RowIndex].Cells[2].Text);
-            int valor = cc.DeleteCosecha48papas(Int32.Parse(id_cosecha));
-            if (valor == 0)
-                Page.ClientScript.RegisterStartupScript(GetType(), "Script", "<script>alert('Error!\n¡No se pudo eliminar la variedad!')</script>");
+            try
+            {
+                CatalogCosecha cc = new CatalogCosecha();
+                string id_cosecha = HttpUtility.HtmlDecode((string)this.gdv48papas.Rows[e.RowIndex].Cells[2].Text);
+                int valor = cc.DeleteCosecha48papas(Int32.Parse(id_cosecha));
+                if (valor == 0)
+                    Page.ClientScript.RegisterStartupScript(GetType(), "Script", "<script>alert('Error!\n¡No se pudo eliminar la variedad!')</script>");
 
-            PoblarGrilla();
+                PoblarGrilla();
+            }
+            catch (Exception ex)
+            {
+            }
         }
 
         protected void btn48papasCancelar_Click(object sender, EventArgs e)
@@ -674,38 +686,44 @@ namespace Project.Novaseed
 
         protected void btn48papasAgregarEnfermedad_Click(object sender, EventArgs e)
         {
-            string id_enfermedad = this.ddl48papasEnfermedad.SelectedValue;
-            if (!id_enfermedad.Equals("1"))
+            try
             {
-                if (this.gdv48papasEnfermedades.Rows.Count == 0)
+                string id_enfermedad = this.ddl48papasEnfermedad.SelectedValue;
+                if (!id_enfermedad.Equals("1"))
                 {
-                    table.Rows.Add(this.ddl48papasEnfermedad.SelectedItem, this.ddl48papasResistencia.SelectedItem);
-                    this.gdv48papasEnfermedades.DataSource = table;
+                    if (this.gdv48papasEnfermedades.Rows.Count == 0)
+                    {
+                        table.Rows.Add(this.ddl48papasEnfermedad.SelectedItem, this.ddl48papasResistencia.SelectedItem);
+                        this.gdv48papasEnfermedades.DataSource = table;
+                    }
+                    else
+                    {
+                        listEnfermedad = new List<string>();
+                        listResistencia = new List<string>();
+                        foreach (GridViewRow row in gdv48papasEnfermedades.Rows)
+                        {
+                            string nombre_enfermedad = HttpUtility.HtmlDecode((string)this.gdv48papasEnfermedades.Rows[row.RowIndex].Cells[0].Text);
+                            listEnfermedad.Add(nombre_enfermedad);
+                            string resistencia_variedad = HttpUtility.HtmlDecode((string)this.gdv48papasEnfermedades.Rows[row.RowIndex].Cells[1].Text);
+                            listResistencia.Add(resistencia_variedad);
+                        }
+                        listEnfermedad.Add(this.ddl48papasEnfermedad.SelectedItem.ToString());
+                        listResistencia.Add(this.ddl48papasResistencia.SelectedItem.ToString());
+
+                        for (int i = 0; i < listEnfermedad.Count && i < listResistencia.Count; i++)
+                        {
+                            table.Rows.Add(listEnfermedad[i], listResistencia[i]);
+                        }
+                        this.gdv48papasEnfermedades.DataSource = table;
+                    }
+                    this.gdv48papasEnfermedades.DataBind();
                 }
                 else
-                {
-                    listEnfermedad = new List<string>();
-                    listResistencia = new List<string>();
-                    foreach (GridViewRow row in gdv48papasEnfermedades.Rows)
-                    {
-                        string nombre_enfermedad = HttpUtility.HtmlDecode((string)this.gdv48papasEnfermedades.Rows[row.RowIndex].Cells[0].Text);
-                        listEnfermedad.Add(nombre_enfermedad);
-                        string resistencia_variedad = HttpUtility.HtmlDecode((string)this.gdv48papasEnfermedades.Rows[row.RowIndex].Cells[1].Text);
-                        listResistencia.Add(resistencia_variedad);
-                    }
-                    listEnfermedad.Add(this.ddl48papasEnfermedad.SelectedItem.ToString());
-                    listResistencia.Add(this.ddl48papasResistencia.SelectedItem.ToString());
-
-                    for (int i = 0; i < listEnfermedad.Count && i < listResistencia.Count; i++)
-                    {
-                        table.Rows.Add(listEnfermedad[i], listResistencia[i]);
-                    }
-                    this.gdv48papasEnfermedades.DataSource = table;
-                }
-                this.gdv48papasEnfermedades.DataBind();
+                    Page.ClientScript.RegisterStartupScript(GetType(), "Script", "<script>alert('¡Debe seleccionar una enfermedad!')</script>");
             }
-            else
-                Page.ClientScript.RegisterStartupScript(GetType(), "Script", "<script>alert('¡Debe seleccionar una enfermedad!')</script>");
+            catch (Exception ex)
+            {
+            }
         }
 
         protected void Cosecha48papasEnfermedadesGridView_RowDeleting(Object sender, GridViewDeleteEventArgs e)
@@ -738,28 +756,188 @@ namespace Project.Novaseed
 
         protected void btnAgregarUPOV_Click(object sender, EventArgs e)
         {
-            int agrego = 0;
-            foreach (GridViewRow row in gdv48papas.Rows)
-                if (row.RowType == DataControlRowType.DataRow)
+            try
+            {
+                int agrego = 0;
+                foreach (GridViewRow row in gdv48papas.Rows)
+                    if (row.RowType == DataControlRowType.DataRow)
+                    {
+                        CheckBox chkAgregarUPOV = (row.Cells[0].FindControl("chkAgregarUPOV") as CheckBox);
+                        if (chkAgregarUPOV != null)
+                            if (chkAgregarUPOV.Checked)
+                            {
+                                string id_cosecha = HttpUtility.HtmlDecode((string)this.gdv48papas.Rows[row.RowIndex].Cells[2].Text);
+                                CatalogUPOV cu = new CatalogUPOV();
+                                int existe_upov = cu.AddUPOV(Int32.Parse(id_cosecha));
+                                if (existe_upov == 1)
+                                    Page.ClientScript.RegisterStartupScript(GetType(), "Script", "<script>alert('La varieadd con ID: " + id_cosecha + " seleccionada ya generó el informe UPOV o no tiene una ciudad asignada')</script>");
+                                else
+                                    agrego = 1;
+                            }
+                    }
+
+                if (agrego == 1)
                 {
-                    CheckBox chkAgregarUPOV = (row.Cells[0].FindControl("chkAgregarUPOV") as CheckBox);
-                    if (chkAgregarUPOV != null)
-                        if (chkAgregarUPOV.Checked)
+                    Page.ClientScript.RegisterStartupScript(GetType(), "Script", "<script>alert('¡Agregado Correctamente!')</script>");
+                    Response.Redirect("MenuGeneracion.aspx");
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+
+        protected void Cosecha48papasGridView_DataBound(object sender, EventArgs e)
+        {
+            try
+            {
+                GridViewRow pagerRow = gdv48papas.BottomPagerRow;
+                DropDownList pageSizeList = (DropDownList)pagerRow.Cells[0].FindControl("ddlPageSize");
+                if (Context.Session["PageSize"] != null)
+                {
+                    pageSizeList.SelectedValue = Context.Session["PageSize"].ToString();
+                }
+                DropDownList pageList = (DropDownList)pagerRow.Cells[0].FindControl("PageDropDownList");
+                Label pageLabel = (Label)pagerRow.Cells[0].FindControl("CurrentPageLabel");
+
+                if (pageList != null)
+                {
+                    for (int i = 0; i < gdv48papas.PageCount; i++)
+                    {
+                        int pageNumber = i + 1;
+                        ListItem item = new ListItem(pageNumber.ToString());
+                        if (i == gdv48papas.PageIndex)
                         {
-                            string id_cosecha = HttpUtility.HtmlDecode((string)this.gdv48papas.Rows[row.RowIndex].Cells[2].Text);
-                            CatalogUPOV cu = new CatalogUPOV();
-                            int existe_upov = cu.AddUPOV(Int32.Parse(id_cosecha));
-                            if (existe_upov == 1)
-                                Page.ClientScript.RegisterStartupScript(GetType(), "Script", "<script>alert('La varieadd con ID: " + id_cosecha + " seleccionada ya generó el informe UPOV o no tiene una ciudad asignada')</script>");
-                            else
-                                agrego = 1;
+                            item.Selected = true;
                         }
+                        pageList.Items.Add(item);
+                    }
                 }
 
-            if (agrego == 1)
+                if (pageLabel != null)
+                {
+                    int currentPage = gdv48papas.PageIndex + 1;
+                    pageLabel.Text = "Ver " + currentPage.ToString() + " de " + gdv48papas.PageCount.ToString();
+                }
+            }
+            catch (Exception ex)
             {
-                Page.ClientScript.RegisterStartupScript(GetType(), "Script", "<script>alert('¡Agregado Correctamente!')</script>");
-                Response.Redirect("MenuGeneracion.aspx");
+            }
+        }
+        protected void ddlPageSize_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                GridViewRow pagerRow = gdv48papas.BottomPagerRow;
+                DropDownList pageSizeList = (DropDownList)pagerRow.Cells[0].FindControl("ddlPageSize");
+
+                gdv48papas.PageSize = Convert.ToInt32(pageSizeList.SelectedValue);
+                Context.Session["PageSize"] = pageSizeList.SelectedValue;
+                PoblarGrilla();
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+        protected void PageDropDownList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                GridViewRow pagerRow = gdv48papas.BottomPagerRow;
+                DropDownList pageList = (DropDownList)pagerRow.Cells[0].FindControl("PageDropDownList");
+                gdv48papas.PageIndex = pageList.SelectedIndex;
+                PoblarGrilla();
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+        //Siguiente página
+        protected void NextLB_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                GridViewRow pagerRow = gdv48papas.BottomPagerRow;
+                DropDownList pageList = (DropDownList)pagerRow.Cells[0].FindControl("PageDropDownList");
+                //Aumenta la página en 1
+                gdv48papas.PageIndex = pageList.SelectedIndex + 1;
+                PoblarGrilla();
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+        //Página anterior
+        protected void PrevLB_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                GridViewRow pagerRow = gdv48papas.BottomPagerRow;
+                DropDownList pageList = (DropDownList)pagerRow.Cells[0].FindControl("PageDropDownList");
+                //Disminuye la página en 1
+                gdv48papas.PageIndex = pageList.SelectedIndex - 1;
+                PoblarGrilla();
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+        //Página inicio
+        protected void FirstLB_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                gdv48papas.PageIndex = 0;
+                PoblarGrilla();
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+        //Página final
+        protected void LastLB_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                GridViewRow pagerRow = gdv48papas.BottomPagerRow;
+                DropDownList pageList = (DropDownList)pagerRow.Cells[0].FindControl("PageDropDownList");
+                gdv48papas.PageIndex = pageList.Items.Count;
+                PoblarGrilla();
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+        protected void Cosecha48papasGridView_PageIndexChanging(object sender, EventArgs e)
+        {
+            try
+            {
+                GridViewRow pagerRow = gdv48papas.BottomPagerRow;
+                DropDownList pageList = (DropDownList)pagerRow.Cells[0].FindControl("PageDropDownList");//error
+                Label pageLabel = (Label)pagerRow.Cells[0].FindControl("CurrentPageLabel");
+                if (pageList != null)
+                {
+                    for (int i = 0; i < gdv48papas.PageCount; i++)
+                    {
+                        int pageNumber = i + 1;
+                        ListItem item = new ListItem(pageNumber.ToString());
+                        if (i == gdv48papas.PageIndex)
+                        {
+                            item.Selected = true;
+                        }
+                        pageList.Items.Add(item);
+                    }
+                }
+                if (pageLabel != null)
+                {
+                    int currentPage = gdv48papas.PageIndex + 1;
+                    pageLabel.Text = "Ver " + currentPage.ToString() + " de " + gdv48papas.PageCount.ToString();
+                }
+                this.gdv48papas.Controls[0].Controls[this.gdv48papas.Controls[0].Controls.Count - 1].Visible = true;
+                PoblarGrilla();
+            }
+            catch (Exception ex)
+            {
             }
         }
     }

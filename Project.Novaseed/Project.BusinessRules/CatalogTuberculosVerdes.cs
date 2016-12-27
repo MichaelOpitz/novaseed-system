@@ -11,23 +11,30 @@ namespace Project.BusinessRules
     {
         public List<TuberculosVerdes> getTuberculosVerdes()
         {
-            DataAccess.DataBase bd = new DataBase();
-            bd.Connect(); //método conectar
-            List<TuberculosVerdes> ltv = new List<TuberculosVerdes>();
-            string sql = "tuberculosVerdesObtener";
-            bd.CreateCommandSP(sql);
-
-            DbDataReader resultado = bd.Query();
-
-            while (resultado.Read())
+            try
             {
-                TuberculosVerdes tuberculos = new TuberculosVerdes(resultado.GetInt32(0), resultado.GetString(1));
-                ltv.Add(tuberculos);
-            }
-            resultado.Close();
-            bd.Close();
+                DataAccess.DataBase bd = new DataBase();
+                bd.Connect(); //método conectar
+                List<TuberculosVerdes> ltv = new List<TuberculosVerdes>();
+                string sql = "tuberculosVerdesObtener";
+                bd.CreateCommandSP(sql);
 
-            return ltv;
+                DbDataReader resultado = bd.Query();
+
+                while (resultado.Read())
+                {
+                    TuberculosVerdes tuberculos = new TuberculosVerdes(resultado.GetInt32(0), resultado.GetString(1));
+                    ltv.Add(tuberculos);
+                }
+                resultado.Close();
+                bd.Close();
+
+                return ltv;
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.ToString());
+            }
         }
     }
 }

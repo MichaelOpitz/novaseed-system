@@ -64,41 +64,47 @@ namespace Project.Novaseed
          */
         protected void OnRowDataBound(object sender, GridViewRowEventArgs e)
         {
-            CatalogVasos cv = new CatalogVasos();
-            if (e.Row.RowType == DataControlRowType.DataRow)
+            try
             {
-                //Ecuentra el DropDownList en la fila
-                DropDownList ddlVasosFertilidad = (e.Row.FindControl("ddlVasosFertilidad") as DropDownList);
-                //Llena el dropdown fertilidad
-                CatalogFertilidad cf = new CatalogFertilidad();
-                ddlVasosFertilidad.DataSource = cf.getFertilidad();
-                ddlVasosFertilidad.DataTextField = "nombre_fertilidad";
-                ddlVasosFertilidad.DataValueField = "id_fertilidad";
-                ddlVasosFertilidad.DataBind();
+                CatalogVasos cv = new CatalogVasos();
+                if (e.Row.RowType == DataControlRowType.DataRow)
+                {
+                    //Ecuentra el DropDownList en la fila
+                    DropDownList ddlVasosFertilidad = (e.Row.FindControl("ddlVasosFertilidad") as DropDownList);
+                    //Llena el dropdown fertilidad
+                    CatalogFertilidad cf = new CatalogFertilidad();
+                    ddlVasosFertilidad.DataSource = cf.getFertilidad();
+                    ddlVasosFertilidad.DataTextField = "nombre_fertilidad";
+                    ddlVasosFertilidad.DataValueField = "id_fertilidad";
+                    ddlVasosFertilidad.DataBind();
 
-                //Selecciona la fertilidad de cada vaso
-                int index = cv.GetFertilidadVasos(valorAñoInt32, contFertilidad) - 1;
-                ddlVasosFertilidad.SelectedIndex = index;
-                contFertilidad = contFertilidad + 1;
+                    //Selecciona la fertilidad de cada vaso
+                    int index = cv.GetFertilidadVasos(valorAñoInt32, contFertilidad) - 1;
+                    ddlVasosFertilidad.SelectedIndex = index;
+                    contFertilidad = contFertilidad + 1;
+                }
+
+                if (e.Row.RowType == DataControlRowType.DataRow)
+                {
+                    int indexVasosClones = cv.GetVasosEstaEnClones(valorAñoInt32, contVasosClones);
+
+                    //Ecuentra el CheckBox en la fila
+                    CheckBox chkClonesAgregar = (e.Row.FindControl("chkClonesAgregar") as CheckBox);
+                    if (indexVasosClones == 1)
+                    {
+                        e.Row.BackColor = Color.LightGreen;
+                        chkClonesAgregar.Enabled = false;
+                    }
+                    else
+                    {
+                        e.Row.BackColor = Color.FromArgb(255, 204, 203);
+                        chkClonesAgregar.Enabled = true;
+                    }
+                    contVasosClones = contVasosClones + 1;
+                }
             }
-
-            if (e.Row.RowType == DataControlRowType.DataRow)
-            {
-                int indexVasosClones = cv.GetVasosEstaEnClones(valorAñoInt32, contVasosClones);
-
-                //Ecuentra el CheckBox en la fila
-                CheckBox chkClonesAgregar = (e.Row.FindControl("chkClonesAgregar") as CheckBox);
-                if (indexVasosClones == 1)
-                {
-                    e.Row.BackColor = Color.LightGreen;
-                    chkClonesAgregar.Enabled = false;
-                }
-                else
-                {
-                    e.Row.BackColor = Color.FromArgb(255, 204, 203);
-                    chkClonesAgregar.Enabled = true;
-                }
-                contVasosClones = contVasosClones + 1;
+            catch (Exception ex) 
+            { 
             }
         }
 
@@ -224,14 +230,20 @@ namespace Project.Novaseed
 
         protected void VasosGridView_RowDeleting(Object sender, GridViewDeleteEventArgs e)
         {
-            CatalogVasos cv = new CatalogVasos();
-            string id_vasos = HttpUtility.HtmlDecode((string)this.gdvVasos.Rows[e.RowIndex].Cells[2].Text);
-            int valor = cv.DeleteVasos(Int32.Parse(id_vasos));
-            if (valor == 0)
-                Page.ClientScript.RegisterStartupScript(GetType(), "Script", "<script>alert('Error!\n¡No se pudo eliminar el vaso!')</script>");
+            try
+            {
+                CatalogVasos cv = new CatalogVasos();
+                string id_vasos = HttpUtility.HtmlDecode((string)this.gdvVasos.Rows[e.RowIndex].Cells[2].Text);
+                int valor = cv.DeleteVasos(Int32.Parse(id_vasos));
+                if (valor == 0)
+                    Page.ClientScript.RegisterStartupScript(GetType(), "Script", "<script>alert('Error!\n¡No se pudo eliminar el vaso!')</script>");
 
-            this.txtCantidadTotalVasos.Text = cv.GetCantidadTotalVasos_fn(valorAñoInt32).ToString() + " Vasos";
-            PoblarGrilla();
+                this.txtCantidadTotalVasos.Text = cv.GetCantidadTotalVasos_fn(valorAñoInt32).ToString() + " Vasos";
+                PoblarGrilla();
+            }
+            catch (Exception ex)
+            {
+            }
         }
 
         /*
@@ -270,5 +282,158 @@ namespace Project.Novaseed
             }
         }
 
+        protected void VasosGridView_DataBound(object sender, EventArgs e)
+        {
+            try
+            {
+                GridViewRow pagerRow = gdvVasos.BottomPagerRow;
+                DropDownList pageSizeList = (DropDownList)pagerRow.Cells[0].FindControl("ddlPageSize");
+                if (Context.Session["PageSize"] != null)
+                {
+                    pageSizeList.SelectedValue = Context.Session["PageSize"].ToString();
+                }
+                DropDownList pageList = (DropDownList)pagerRow.Cells[0].FindControl("PageDropDownList");
+                Label pageLabel = (Label)pagerRow.Cells[0].FindControl("CurrentPageLabel");
+
+                if (pageList != null)
+                {
+                    for (int i = 0; i < gdvVasos.PageCount; i++)
+                    {
+                        int pageNumber = i + 1;
+                        ListItem item = new ListItem(pageNumber.ToString());
+                        if (i == gdvVasos.PageIndex)
+                        {
+                            item.Selected = true;
+                        }
+                        pageList.Items.Add(item);
+                    }
+                }
+
+                if (pageLabel != null)
+                {
+                    int currentPage = gdvVasos.PageIndex + 1;
+                    pageLabel.Text = "Ver " + currentPage.ToString() + " de " + gdvVasos.PageCount.ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+        protected void ddlPageSize_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                GridViewRow pagerRow = gdvVasos.BottomPagerRow;
+                DropDownList pageSizeList = (DropDownList)pagerRow.Cells[0].FindControl("ddlPageSize");
+
+                gdvVasos.PageSize = Convert.ToInt32(pageSizeList.SelectedValue);
+                Context.Session["PageSize"] = pageSizeList.SelectedValue;
+                PoblarGrilla();
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+        protected void PageDropDownList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                GridViewRow pagerRow = gdvVasos.BottomPagerRow;
+                DropDownList pageList = (DropDownList)pagerRow.Cells[0].FindControl("PageDropDownList");
+                gdvVasos.PageIndex = pageList.SelectedIndex;
+                PoblarGrilla();
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+        //Siguiente página
+        protected void NextLB_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                GridViewRow pagerRow = gdvVasos.BottomPagerRow;
+                DropDownList pageList = (DropDownList)pagerRow.Cells[0].FindControl("PageDropDownList");
+                //Aumenta la página en 1
+                gdvVasos.PageIndex = pageList.SelectedIndex + 1;
+                PoblarGrilla();
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+        //Página anterior
+        protected void PrevLB_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                GridViewRow pagerRow = gdvVasos.BottomPagerRow;
+                DropDownList pageList = (DropDownList)pagerRow.Cells[0].FindControl("PageDropDownList");
+                //Disminuye la página en 1
+                gdvVasos.PageIndex = pageList.SelectedIndex - 1;
+                PoblarGrilla();
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+        //Página inicio
+        protected void FirstLB_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                gdvVasos.PageIndex = 0;
+                PoblarGrilla();
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+        //Página final
+        protected void LastLB_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                GridViewRow pagerRow = gdvVasos.BottomPagerRow;
+                DropDownList pageList = (DropDownList)pagerRow.Cells[0].FindControl("PageDropDownList");
+                gdvVasos.PageIndex = pageList.Items.Count;
+                PoblarGrilla();
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+        protected void VasosGridView_PageIndexChanging(object sender, EventArgs e)
+        {
+            try
+            {
+                GridViewRow pagerRow = gdvVasos.BottomPagerRow;
+                DropDownList pageList = (DropDownList)pagerRow.Cells[0].FindControl("PageDropDownList");//error
+                Label pageLabel = (Label)pagerRow.Cells[0].FindControl("CurrentPageLabel");
+                if (pageList != null)
+                {
+                    for (int i = 0; i < gdvVasos.PageCount; i++)
+                    {
+                        int pageNumber = i + 1;
+                        ListItem item = new ListItem(pageNumber.ToString());
+                        if (i == gdvVasos.PageIndex)
+                        {
+                            item.Selected = true;
+                        }
+                        pageList.Items.Add(item);
+                    }
+                }
+                if (pageLabel != null)
+                {
+                    int currentPage = gdvVasos.PageIndex + 1;
+                    pageLabel.Text = "Ver " + currentPage.ToString() + " de " + gdvVasos.PageCount.ToString();
+                }
+                this.gdvVasos.Controls[0].Controls[this.gdvVasos.Controls[0].Controls.Count - 1].Visible = true;
+                PoblarGrilla();
+            }
+            catch (Exception ex)
+            {
+            }
+        }
     }
 }

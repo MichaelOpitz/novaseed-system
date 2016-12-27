@@ -11,23 +11,30 @@ namespace Project.BusinessRules
     {
         public List<Productor> GetProductor()
         {
-            DataAccess.DataBase bd = new DataBase();
-            bd.Connect(); //método conectar
-            List<Productor> lp = new List<Productor>();
-            string sql = "productorObtener";
-            bd.CreateCommandSP(sql);
-
-            DbDataReader resultado = bd.Query();
-
-            while (resultado.Read())
+            try
             {
-                Productor prod = new Productor(resultado.GetInt32(0), resultado.GetString(1));
-                lp.Add(prod);
-            }
-            resultado.Close();
-            bd.Close();
+                DataAccess.DataBase bd = new DataBase();
+                bd.Connect(); //método conectar
+                List<Productor> lp = new List<Productor>();
+                string sql = "productorObtener";
+                bd.CreateCommandSP(sql);
 
-            return lp;
+                DbDataReader resultado = bd.Query();
+
+                while (resultado.Read())
+                {
+                    Productor prod = new Productor(resultado.GetInt32(0), resultado.GetString(1));
+                    lp.Add(prod);
+                }
+                resultado.Close();
+                bd.Close();
+
+                return lp;
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.ToString());
+            }
         }
     }
 }

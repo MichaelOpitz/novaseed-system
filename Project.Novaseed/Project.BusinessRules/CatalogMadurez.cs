@@ -11,23 +11,30 @@ namespace Project.BusinessRules
     {
         public List<Madurez> getMadurez()
         {
-            DataAccess.DataBase bd = new DataBase();
-            bd.Connect(); //método conectar
-            List<Madurez> lm = new List<Madurez>();
-            string sql = "madurezObtener";
-            bd.CreateCommandSP(sql);
-
-            DbDataReader resultado = bd.Query();
-
-            while (resultado.Read())
+            try
             {
-                Madurez mad = new Madurez(resultado.GetInt32(0), resultado.GetString(1));
-                lm.Add(mad);
-            }
-            resultado.Close();
-            bd.Close();
+                DataAccess.DataBase bd = new DataBase();
+                bd.Connect(); //método conectar
+                List<Madurez> lm = new List<Madurez>();
+                string sql = "madurezObtener";
+                bd.CreateCommandSP(sql);
 
-            return lm;
+                DbDataReader resultado = bd.Query();
+
+                while (resultado.Read())
+                {
+                    Madurez mad = new Madurez(resultado.GetInt32(0), resultado.GetString(1));
+                    lm.Add(mad);
+                }
+                resultado.Close();
+                bd.Close();
+
+                return lm;
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.ToString());
+            }
         }
     }
 }

@@ -22,6 +22,9 @@
                 CssClass="table table-bordered bs-table"
                 AllowPaging="True"
                 AllowSorting="True"
+                PageSize="4"
+                OnDataBound="Cosecha6papasGridView_DataBound"
+                OnPageIndexChanging="Cosecha6papasGridView_PageIndexChanging"
                 OnRowDataBound="OnRowDataBound"
                 OnRowDeleting="Cosecha6papasGridView_RowDeleting" OnSelectedIndexChanged="gdv6papas_SelectedIndexChanged">
 
@@ -31,6 +34,38 @@
                 <EmptyDataTemplate>
                     ¡No hay datos en el año seleccionado!  
                 </EmptyDataTemplate>
+
+                <PagerTemplate>
+                    <table runat="server" id="testTable1" style="width: 100%" class="k-grid td">
+                        <tr>
+                            <td class="col-md-8 pull-left">
+                                <asp:Label ID="MessageLabel"
+                                    Text="Página: "
+                                    runat="server"
+                                    Font-Bold="true" />
+                                <asp:LinkButton ID="FirstLB" runat="server" CommandName="Page" CommandArgument="First" ToolTip="First" CssClass="btn-pager btn-default" OnClick="FirstLB_Click"> Inicio </asp:LinkButton>
+                                <asp:LinkButton ID="PrevLB" runat="server" CommandName="Page" CommandArgument="Prev" ToolTip="Previous" CssClass="btn-pager btn-default" OnClick="PrevLB_Click"> Anterior </asp:LinkButton>
+                                <asp:DropDownList runat="server" ID="PageDropDownList" AutoPostBack="true" EnableViewState="true" OnSelectedIndexChanged="PageDropDownList_SelectedIndexChanged" CssClass="selectpicker form-control-drp"></asp:DropDownList>
+
+                                <asp:LinkButton ID="NextLB" runat="server" CommandName="Page" CommandArgument="Next" ToolTip="Next" CssClass="btn-pager btn-default" OnClick="NextLB_Click"> Siguiente </asp:LinkButton>
+                                <asp:LinkButton ID="LastLB" runat="server" CommandName="Page" CommandArgument="Last" ToolTip="Last" CssClass="btn-pager btn-default" OnClick="LastLB_Click"> Final</asp:LinkButton>
+                            </td>
+
+                            <td class="col-md-4 pull-right">
+                                <asp:Label ID="PageSizeLabel" runat="server" Text="Tamaño de página: " Font-Bold="true"></asp:Label>
+                                <asp:DropDownList ID="ddlPageSize" runat="server" OnSelectedIndexChanged="ddlPageSize_SelectedIndexChanged" AutoPostBack="true" CssClass="selectpicker form-control-drp">
+                                    <%-- <asp:ListItem Value="0" Text="0" />--%>
+                                    <asp:ListItem Value="4" Text="4" />
+                                    <asp:ListItem Value="6" Text="6" />
+                                    <asp:ListItem Value="8" Text="8" />
+                                </asp:DropDownList>
+                            </td>
+                            <td class="col-md-2">
+                                <asp:Label ID="CurrentPageLabel" runat="server" />
+                            </td>
+                        </tr>
+                    </table>
+                </PagerTemplate>
 
                 <SelectedRowStyle Font-Bold="True" />
                 <Columns>

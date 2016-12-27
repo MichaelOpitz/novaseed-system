@@ -55,8 +55,8 @@ namespace Project.Novaseed
         private void PoblarGrilla()
         {
             CatalogCruzamiento cc = new CatalogCruzamiento();
-            gdvCruzamiento.DataSource = cc.GetCruzamiento(valorAñoInt32);
-            gdvCruzamiento.DataBind();
+            this.gdvCruzamiento.DataSource = cc.GetCruzamiento(valorAñoInt32);
+            this.gdvCruzamiento.DataBind();
         }
 
         /*
@@ -64,55 +64,71 @@ namespace Project.Novaseed
          */
         protected void OnRowDataBound(object sender, GridViewRowEventArgs e)
         {
-            CatalogCruzamiento cc = new CatalogCruzamiento();
-            if (e.Row.RowType == DataControlRowType.DataRow)
+            try
             {
-                //Ecuentra el DropDownList en la fila
-                DropDownList ddlCruzamientoFertilidad = (e.Row.FindControl("ddlCruzamientoFertilidad") as DropDownList);
-                //Llena el dropdown fertilidad
-                CatalogFertilidad cf = new CatalogFertilidad();
-                ddlCruzamientoFertilidad.DataSource = cf.getFertilidad();
-                ddlCruzamientoFertilidad.DataTextField = "nombre_fertilidad";
-                ddlCruzamientoFertilidad.DataValueField = "id_fertilidad";
-                ddlCruzamientoFertilidad.DataBind();
-
-                //Selecciona la fertilidad de cada cruzamiento
-                int index = cc.GetFertilidadCruzamiento(valorAñoInt32, contFertilidad) - 1;
-                ddlCruzamientoFertilidad.SelectedIndex = index;
-                contFertilidad = contFertilidad + 1;
-            }
-
-            if (e.Row.RowType == DataControlRowType.DataRow)
-            {
-                //Ecuentra el DropDownList en la fila
-                CheckBox chkCruzamientoFlor = (e.Row.FindControl("chkCruzamientoFlor") as CheckBox);
-
-                bool indexFlor = cc.GetFlorCruzamiento(valorAñoInt32, contFlor);
-
-                if (indexFlor == true)
-                    chkCruzamientoFlor.Checked = true;
-                else
-                    chkCruzamientoFlor.Checked = false;
-                contFlor = contFlor + 1;
-            }
-
-            if (e.Row.RowType == DataControlRowType.DataRow)
-            {
-                int indexCruzamientoVasos = cc.GetCruzamientoEstaEnVasos(valorAñoInt32, contCruzamientoVasos);
-
-                //Ecuentra el CheckBox en la fila
-                CheckBox chkVasosAgregar = (e.Row.FindControl("chkVasosAgregar") as CheckBox);
-                if (indexCruzamientoVasos == 1)
+                CatalogCruzamiento cc = new CatalogCruzamiento();
+                if (e.Row.RowType == DataControlRowType.DataRow)
                 {
-                    e.Row.BackColor = Color.LightGreen;
-                    chkVasosAgregar.Enabled = false;
+                    //Ecuentra el DropDownList en la fila
+                    DropDownList ddlCruzamientoFertilidad = (e.Row.FindControl("ddlCruzamientoFertilidad") as DropDownList);
+                    //Llena el dropdown fertilidad
+                    CatalogFertilidad cf = new CatalogFertilidad();
+                    ddlCruzamientoFertilidad.DataSource = cf.getFertilidad();
+                    ddlCruzamientoFertilidad.DataTextField = "nombre_fertilidad";
+                    ddlCruzamientoFertilidad.DataValueField = "id_fertilidad";
+                    ddlCruzamientoFertilidad.DataBind();
+
+                    //Selecciona la fertilidad de cada cruzamiento
+                    int index = cc.GetFertilidadCruzamiento(valorAñoInt32, contFertilidad) - 1;
+                    ddlCruzamientoFertilidad.SelectedIndex = index;
+                    contFertilidad = contFertilidad + 1;
                 }
-                else
+
+                if (e.Row.RowType == DataControlRowType.DataRow)
                 {
-                    e.Row.BackColor = Color.FromArgb(255, 204, 203);
-                    chkVasosAgregar.Enabled = true;
+                    //Ecuentra el DropDownList en la fila
+                    CheckBox chkCruzamientoFlor = (e.Row.FindControl("chkCruzamientoFlor") as CheckBox);
+
+                    bool indexFlor = cc.GetFlorCruzamiento(valorAñoInt32, contFlor);
+
+                    if (indexFlor == true)
+                        chkCruzamientoFlor.Checked = true;
+                    else
+                        chkCruzamientoFlor.Checked = false;
+                    contFlor = contFlor + 1;
                 }
-                contCruzamientoVasos = contCruzamientoVasos + 1;
+
+                if (e.Row.RowType == DataControlRowType.DataRow)
+                {
+                    int indexCruzamientoVasos = cc.GetCruzamientoEstaEnVasos(valorAñoInt32, contCruzamientoVasos);
+
+                    //Ecuentra el CheckBox en la fila
+                    CheckBox chkVasosAgregar = (e.Row.FindControl("chkVasosAgregar") as CheckBox);
+                    if (indexCruzamientoVasos == 1)
+                    {
+                        e.Row.BackColor = Color.LightGreen;
+                        chkVasosAgregar.Enabled = false;
+                    }
+                    else
+                    {
+                        e.Row.BackColor = Color.FromArgb(255, 204, 203);
+                        chkVasosAgregar.Enabled = true;
+                    }
+                    contCruzamientoVasos = contCruzamientoVasos + 1;
+                }
+
+                if (e.Row.RowType == DataControlRowType.DataRow)
+                {
+                    //Ecuentra el CheckBox en la fila
+                    CheckBox chkCruzamientoFlor = (e.Row.FindControl("chkCruzamientoFlor") as CheckBox);
+                    if (this.gdvCruzamiento.EditIndex == -1)
+                        chkCruzamientoFlor.Enabled = false;
+                    else
+                        chkCruzamientoFlor.Enabled = true;
+                }
+            }
+            catch (Exception ex)
+            {
             }
         }
 
@@ -176,66 +192,232 @@ namespace Project.Novaseed
                 Page.ClientScript.RegisterStartupScript(GetType(), "Script", "<script>alert('¡Error al modificar, repare los parámetros que ingresó!')</script>");
             }
 
-            gdvCruzamiento.EditIndex = -1;
+            this.gdvCruzamiento.EditIndex = -1;
             PoblarGrilla();
         }
 
         protected void CruzamientoGridView_RowCancelingEdit(Object sender, GridViewCancelEditEventArgs e)
         {
-            gdvCruzamiento.EditIndex = -1;
+            this.gdvCruzamiento.EditIndex = -1;
             PoblarGrilla();
         }
 
         protected void CruzamientoGridView_RowEditing(Object sender, GridViewEditEventArgs e)
         {
-            gdvCruzamiento.EditIndex = e.NewEditIndex;
+            this.gdvCruzamiento.EditIndex = e.NewEditIndex;
             PoblarGrilla();
         }
 
         protected void CruzamientoGridView_RowDeleting(Object sender, GridViewDeleteEventArgs e)
         {
-            CatalogCruzamiento cc = new CatalogCruzamiento();
-            string id_cruzamiento = HttpUtility.HtmlDecode((string)this.gdvCruzamiento.Rows[e.RowIndex].Cells[2].Text);
-            int valor = cc.DeleteCruzamiento(Int32.Parse(id_cruzamiento));
-            if (valor == 0)
-                Page.ClientScript.RegisterStartupScript(GetType(), "Script", "<script>alert('Error!\n¡No se pudo eliminar el cruzamiento!')</script>");
+            try
+            {
+                CatalogCruzamiento cc = new CatalogCruzamiento();
+                string id_cruzamiento = HttpUtility.HtmlDecode((string)this.gdvCruzamiento.Rows[e.RowIndex].Cells[2].Text);
+                int valor = cc.DeleteCruzamiento(Int32.Parse(id_cruzamiento));
+                if (valor == 0)
+                    Page.ClientScript.RegisterStartupScript(GetType(), "Script", "<script>alert('Error!\n¡No se pudo eliminar el cruzamiento!')</script>");
 
-            PoblarGrilla();
+                PoblarGrilla();
+            }
+            catch (Exception ex)
+            {
+            }
         }
 
         /*
          * Recorre todos los CheckBox del GridView para ver los activos y agregarlos a Vasos
-         */ 
+         */
         protected void btnAgregarVasos_Click(object sender, EventArgs e)
         {
-            int agrego = 0;
-            foreach (GridViewRow row in gdvCruzamiento.Rows)
-                if (row.RowType == DataControlRowType.DataRow)
-                {
-                    CheckBox chkVasosAgregar = (row.Cells[0].FindControl("chkVasosAgregar") as CheckBox);
-
-                    if (chkVasosAgregar != null)
+            try
+            {
+                int agrego = 0;
+                foreach (GridViewRow row in gdvCruzamiento.Rows)
+                    if (row.RowType == DataControlRowType.DataRow)
                     {
-                        if (chkVasosAgregar.Checked)
-                        {
-                            string id_cruzamiento = HttpUtility.HtmlDecode((string)this.gdvCruzamiento.Rows[row.RowIndex].Cells[2].Text);
-                            string codigo_variedad = HttpUtility.HtmlDecode((string)this.gdvCruzamiento.Rows[row.RowIndex].Cells[3].Text);
-                            string pad_codigo_variedad = HttpUtility.HtmlDecode((string)this.gdvCruzamiento.Rows[row.RowIndex].Cells[5].Text);
+                        CheckBox chkVasosAgregar = (row.Cells[0].FindControl("chkVasosAgregar") as CheckBox);
 
-                            CatalogVasos cv = new CatalogVasos();                            
-                            int existe_vaso = cv.AddVasos(Int32.Parse(id_cruzamiento), codigo_variedad, pad_codigo_variedad);
-                            if (existe_vaso == 1)
-                                Page.ClientScript.RegisterStartupScript(GetType(), "Script", "<script>alert('El cruzamiento con ID: " + id_cruzamiento + " seleccionado ya tiene un vaso asignado o no tiene bayas')</script>");
-                            else
-                                agrego = 1;
+                        if (chkVasosAgregar != null)
+                        {
+                            if (chkVasosAgregar.Checked)
+                            {
+                                string id_cruzamiento = HttpUtility.HtmlDecode((string)this.gdvCruzamiento.Rows[row.RowIndex].Cells[2].Text);
+                                string codigo_variedad = HttpUtility.HtmlDecode((string)this.gdvCruzamiento.Rows[row.RowIndex].Cells[3].Text);
+                                string pad_codigo_variedad = HttpUtility.HtmlDecode((string)this.gdvCruzamiento.Rows[row.RowIndex].Cells[5].Text);
+
+                                CatalogVasos cv = new CatalogVasos();
+                                int existe_vaso = cv.AddVasos(Int32.Parse(id_cruzamiento), codigo_variedad, pad_codigo_variedad);
+                                if (existe_vaso == 1)
+                                    Page.ClientScript.RegisterStartupScript(GetType(), "Script", "<script>alert('El cruzamiento con ID: " + id_cruzamiento + " seleccionado ya tiene un vaso asignado o no tiene bayas')</script>");
+                                else
+                                    agrego = 1;
+                            }
                         }
                     }
+                //1 para agregar, 0 cuando no se agrega
+                if (agrego == 1)
+                {
+                    Page.ClientScript.RegisterStartupScript(GetType(), "Script", "<script>alert('¡Agregado Correctamente!')</script>");
+                    Response.Redirect("MenuGeneracion.aspx");
                 }
-            //1 para agregar, 0 cuando no se agrega
-            if (agrego == 1)
+            }
+            catch (Exception ex)
             {
-                Page.ClientScript.RegisterStartupScript(GetType(), "Script", "<script>alert('¡Agregado Correctamente!')</script>");
-                Response.Redirect("MenuGeneracion.aspx");
+            }
+        }
+
+        protected void CruzamientoGridView_DataBound(object sender, EventArgs e)
+        {
+            try
+            {
+                GridViewRow pagerRow = gdvCruzamiento.BottomPagerRow;
+                DropDownList pageSizeList = (DropDownList)pagerRow.Cells[0].FindControl("ddlPageSize");
+                if (Context.Session["PageSize"] != null)
+                {
+                    pageSizeList.SelectedValue = Context.Session["PageSize"].ToString();
+                }
+                DropDownList pageList = (DropDownList)pagerRow.Cells[0].FindControl("PageDropDownList");
+                Label pageLabel = (Label)pagerRow.Cells[0].FindControl("CurrentPageLabel");
+
+                if (pageList != null)
+                {
+                    for (int i = 0; i < gdvCruzamiento.PageCount; i++)
+                    {
+                        int pageNumber = i + 1;
+                        ListItem item = new ListItem(pageNumber.ToString());
+                        if (i == gdvCruzamiento.PageIndex)
+                        {
+                            item.Selected = true;
+                        }
+                        pageList.Items.Add(item);
+                    }
+                }
+
+                if (pageLabel != null)
+                {
+                    int currentPage = gdvCruzamiento.PageIndex + 1;
+                    pageLabel.Text = "Ver " + currentPage.ToString() + " de " + gdvCruzamiento.PageCount.ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+        protected void ddlPageSize_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                GridViewRow pagerRow = gdvCruzamiento.BottomPagerRow;
+                DropDownList pageSizeList = (DropDownList)pagerRow.Cells[0].FindControl("ddlPageSize");
+
+                gdvCruzamiento.PageSize = Convert.ToInt32(pageSizeList.SelectedValue);
+                Context.Session["PageSize"] = pageSizeList.SelectedValue;
+                PoblarGrilla();
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+        protected void PageDropDownList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                GridViewRow pagerRow = gdvCruzamiento.BottomPagerRow;
+                DropDownList pageList = (DropDownList)pagerRow.Cells[0].FindControl("PageDropDownList");
+                gdvCruzamiento.PageIndex = pageList.SelectedIndex;
+                PoblarGrilla();
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+        //Siguiente página
+        protected void NextLB_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                GridViewRow pagerRow = gdvCruzamiento.BottomPagerRow;
+                DropDownList pageList = (DropDownList)pagerRow.Cells[0].FindControl("PageDropDownList");
+                //Aumenta la página en 1
+                gdvCruzamiento.PageIndex = pageList.SelectedIndex + 1;
+                PoblarGrilla();
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+        //Página anterior
+        protected void PrevLB_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                GridViewRow pagerRow = gdvCruzamiento.BottomPagerRow;
+                DropDownList pageList = (DropDownList)pagerRow.Cells[0].FindControl("PageDropDownList");
+                //Disminuye la página en 1
+                gdvCruzamiento.PageIndex = pageList.SelectedIndex - 1;
+                PoblarGrilla();
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+        //Página inicio
+        protected void FirstLB_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                gdvCruzamiento.PageIndex = 0;
+                PoblarGrilla();
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+        //Página final
+        protected void LastLB_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                GridViewRow pagerRow = gdvCruzamiento.BottomPagerRow;
+                DropDownList pageList = (DropDownList)pagerRow.Cells[0].FindControl("PageDropDownList");
+                gdvCruzamiento.PageIndex = pageList.Items.Count;
+                PoblarGrilla();
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+        protected void CruzamientoGridView_PageIndexChanging(object sender, EventArgs e)
+        {
+            try
+            {
+                GridViewRow pagerRow = gdvCruzamiento.BottomPagerRow;
+                DropDownList pageList = (DropDownList)pagerRow.Cells[0].FindControl("PageDropDownList");//error
+                Label pageLabel = (Label)pagerRow.Cells[0].FindControl("CurrentPageLabel");
+                if (pageList != null)
+                {
+                    for (int i = 0; i < gdvCruzamiento.PageCount; i++)
+                    {
+                        int pageNumber = i + 1;
+                        ListItem item = new ListItem(pageNumber.ToString());
+                        if (i == gdvCruzamiento.PageIndex)
+                        {
+                            item.Selected = true;
+                        }
+                        pageList.Items.Add(item);
+                    }
+                }
+                if (pageLabel != null)
+                {
+                    int currentPage = gdvCruzamiento.PageIndex + 1;
+                    pageLabel.Text = "Ver " + currentPage.ToString() + " de " + gdvCruzamiento.PageCount.ToString();
+                }
+                this.gdvCruzamiento.Controls[0].Controls[this.gdvCruzamiento.Controls[0].Controls.Count - 1].Visible = true;
+                PoblarGrilla();
+            }
+            catch (Exception ex)
+            {
             }
         }
     }

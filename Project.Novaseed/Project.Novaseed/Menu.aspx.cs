@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Project.BusinessRules;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,10 +9,29 @@ using System.Web.UI.WebControls;
 namespace Project.Novaseed
 {
     public partial class Menu : System.Web.UI.Page
-    {
+    {        
+
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            try
+            {                
+                string user = this.Session["user"].ToString();
+                if (user.Equals(""))
+                {
+                    Response.Redirect("Login.aspx");
+                }
+                CatalogUsuario cu = new CatalogUsuario();
+                List<Project.BusinessRules.Usuario> lstUsuario = cu.GetNombreCargoUsuario(user);
+                if (lstUsuario.Count > 0)
+                {
+                    this.lblMenuNombre.Text = lstUsuario[0].Nombre;
+                    this.lblMenuCargo.Text = lstUsuario[0].Nombre_cargo;
+                }
+            }
+            catch (Exception ex)
+            {
+                Response.Redirect("Login.aspx");
+            }
         }
 
         protected void btnMenuMejoramiento_Click(object sender, EventArgs e)

@@ -22,24 +22,6 @@ namespace Project.Novaseed {
         protected global::System.Web.UI.WebControls.Label lblCruzamientoAño;
         
         /// <summary>
-        /// Control txtBuscarCruzamiento.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtBuscarCruzamiento;
-        
-        /// <summary>
-        /// Control btnBuscarCruzamiento.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btnBuscarCruzamiento;
-        
-        /// <summary>
         /// Control lblCruzamientoError.
         /// </summary>
         /// <remarks>

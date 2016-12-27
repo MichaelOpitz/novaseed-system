@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Project.BusinessRules;
+using System;
 using System.Collections.Generic;
 using System.Security.Claims;
 using System.Security.Principal;
@@ -17,63 +18,100 @@ namespace Project.Novaseed
 
         protected void Page_Init(object sender, EventArgs e)
         {
-            // El código siguiente ayuda a proteger frente a ataques XSRF
-            var requestCookie = Request.Cookies[AntiXsrfTokenKey];
-            Guid requestCookieGuidValue;
-            if (requestCookie != null && Guid.TryParse(requestCookie.Value, out requestCookieGuidValue))
+            try
             {
-                // Utilizar el token Anti-XSRF de la cookie
-                _antiXsrfTokenValue = requestCookie.Value;
-                Page.ViewStateUserKey = _antiXsrfTokenValue;
-            }
-            else
-            {
-                // Generar un nuevo token Anti-XSRF y guardarlo en la cookie
-                _antiXsrfTokenValue = Guid.NewGuid().ToString("N");
-                Page.ViewStateUserKey = _antiXsrfTokenValue;
-
-                var responseCookie = new HttpCookie(AntiXsrfTokenKey)
+                // El código siguiente ayuda a proteger frente a ataques XSRF
+                var requestCookie = Request.Cookies[AntiXsrfTokenKey];
+                Guid requestCookieGuidValue;
+                if (requestCookie != null && Guid.TryParse(requestCookie.Value, out requestCookieGuidValue))
                 {
-                    HttpOnly = true,
-                    Value = _antiXsrfTokenValue
-                };
-                if (FormsAuthentication.RequireSSL && Request.IsSecureConnection)
-                {
-                    responseCookie.Secure = true;
+                    // Utilizar el token Anti-XSRF de la cookie
+                    _antiXsrfTokenValue = requestCookie.Value;
+                    Page.ViewStateUserKey = _antiXsrfTokenValue;
                 }
-                Response.Cookies.Set(responseCookie);
-            }
+                else
+                {
+                    // Generar un nuevo token Anti-XSRF y guardarlo en la cookie
+                    _antiXsrfTokenValue = Guid.NewGuid().ToString("N");
+                    Page.ViewStateUserKey = _antiXsrfTokenValue;
 
-            Page.PreLoad += master_Page_PreLoad;
+                    var responseCookie = new HttpCookie(AntiXsrfTokenKey)
+                    {
+                        HttpOnly = true,
+                        Value = _antiXsrfTokenValue
+                    };
+                    if (FormsAuthentication.RequireSSL && Request.IsSecureConnection)
+                    {
+                        responseCookie.Secure = true;
+                    }
+                    Response.Cookies.Set(responseCookie);
+                }
+
+                Page.PreLoad += master_Page_PreLoad;
+            }
+            catch (Exception ex)
+            {
+            }
         }
 
         protected void master_Page_PreLoad(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            try
             {
-                // Establecer token Anti-XSRF
-                ViewState[AntiXsrfTokenKey] = Page.ViewStateUserKey;
-                ViewState[AntiXsrfUserNameKey] = Context.User.Identity.Name ?? String.Empty;
-            }
-            else
-            {
-                // Validar el token Anti-XSRF
-                if ((string)ViewState[AntiXsrfTokenKey] != _antiXsrfTokenValue
-                    || (string)ViewState[AntiXsrfUserNameKey] != (Context.User.Identity.Name ?? String.Empty))
+                if (!IsPostBack)
                 {
-                    throw new InvalidOperationException("Error de validación del token Anti-XSRF.");
+                    // Establecer token Anti-XSRF
+                    ViewState[AntiXsrfTokenKey] = Page.ViewStateUserKey;
+                    ViewState[AntiXsrfUserNameKey] = Context.User.Identity.Name ?? String.Empty;
                 }
+                else
+                {
+                    // Validar el token Anti-XSRF
+                    if ((string)ViewState[AntiXsrfTokenKey] != _antiXsrfTokenValue
+                        || (string)ViewState[AntiXsrfUserNameKey] != (Context.User.Identity.Name ?? String.Empty))
+                    {
+                        throw new InvalidOperationException("Error de validación del token Anti-XSRF.");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
             }
         }
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            try
+            {
+                CatalogUsuario cu = new CatalogUsuario();
+                string user = this.Session["user"].ToString();
+                List<Project.BusinessRules.Usuario> lstUsuario = cu.GetNombreCargoUsuario(user);
+                this.lblUsuario.Text = lstUsuario[0].Nombre.ToString();
+            }
+            catch (Exception ex)
+            {
+                Response.Redirect("Login.aspx");
+            }
         }
 
         protected void Unnamed_LoggingOut(object sender, LoginCancelEventArgs e)
         {
-            Context.GetOwinContext().Authentication.SignOut();
+            try
+            {
+                Context.GetOwinContext().Authentication.SignOut();
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+
+        /*
+         * Boton que cierra la sesion
+         */ 
+        protected void btnCerrarSession_Click(object sender, EventArgs e)
+        {
+            this.Session.Remove("user");
+            Response.Redirect("Login.aspx");
         }
     }
 

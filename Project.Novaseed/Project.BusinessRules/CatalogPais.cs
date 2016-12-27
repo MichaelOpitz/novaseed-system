@@ -11,23 +11,30 @@ namespace Project.BusinessRules
     {
         public List<Pais> GetPais()
         {
-            DataAccess.DataBase bd = new DataBase();
-            bd.Connect(); //método conectar
-            List<Pais> lp = new List<Pais>();
-            string sql = "paisObtener";
-            bd.CreateCommandSP(sql);
-
-            DbDataReader resultado = bd.Query();
-
-            while (resultado.Read())
+            try
             {
-                Pais pais = new Pais(resultado.GetInt32(0), resultado.GetString(1));
-                lp.Add(pais);
-            }
-            resultado.Close();
-            bd.Close();
+                DataAccess.DataBase bd = new DataBase();
+                bd.Connect(); //método conectar
+                List<Pais> lp = new List<Pais>();
+                string sql = "paisObtener";
+                bd.CreateCommandSP(sql);
 
-            return lp;
+                DbDataReader resultado = bd.Query();
+
+                while (resultado.Read())
+                {
+                    Pais pais = new Pais(resultado.GetInt32(0), resultado.GetString(1));
+                    lp.Add(pais);
+                }
+                resultado.Close();
+                bd.Close();
+
+                return lp;
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.ToString());
+            }
         }
     }
 }

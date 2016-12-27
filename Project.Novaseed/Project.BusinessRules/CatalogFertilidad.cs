@@ -11,23 +11,30 @@ namespace Project.BusinessRules
     {
         public List<Fertilidad> getFertilidad()
         {
-            DataAccess.DataBase bd = new DataBase();
-            bd.Connect(); //método conectar
-            List<Fertilidad> lf = new List<Fertilidad>();
-            string sql = "fertilidadObtener";
-            bd.CreateCommandSP(sql);
-
-            DbDataReader resultado = bd.Query();
-
-            while (resultado.Read())
+            try
             {
-                Fertilidad fertilidad = new Fertilidad(resultado.GetInt32(0), resultado.GetString(1));
-                lf.Add(fertilidad);
-            }
-            resultado.Close();
-            bd.Close();
+                DataAccess.DataBase bd = new DataBase();
+                bd.Connect(); //método conectar
+                List<Fertilidad> lf = new List<Fertilidad>();
+                string sql = "fertilidadObtener";
+                bd.CreateCommandSP(sql);
 
-            return lf;
+                DbDataReader resultado = bd.Query();
+
+                while (resultado.Read())
+                {
+                    Fertilidad fertilidad = new Fertilidad(resultado.GetInt32(0), resultado.GetString(1));
+                    lf.Add(fertilidad);
+                }
+                resultado.Close();
+                bd.Close();
+
+                return lf;
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.ToString());
+            }
         }
     }
 }

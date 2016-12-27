@@ -68,3 +68,5 @@ C:\Users\Michael\Dropbox\Personal\10° Semestre\Sistema\Project.Novaseed\Project
 C:\Users\Michael\Dropbox\Personal\10° Semestre\Sistema\Project.Novaseed\Project.Novaseed\obj\Debug\Project.Novaseed.csprojResolveAssemblyReference.cache
 C:\Users\Michael\Dropbox\Personal\10° Semestre\Sistema\Project.Novaseed\Project.Novaseed\obj\Debug\Project.Novaseed.dll
 C:\Users\Michael\Dropbox\Personal\10° Semestre\Sistema\Project.Novaseed\Project.Novaseed\obj\Debug\Project.Novaseed.pdb
+C:\Users\Michael\Dropbox\Personal\10° Semestre\Sistema\Project.Novaseed\Project.Novaseed\obj\Debug\RdlCompile.cache
+C:\Users\Michael\Dropbox\Personal\10° Semestre\Sistema\Project.Novaseed\Project.Novaseed\obj\Debug\RdlCompile.compiled

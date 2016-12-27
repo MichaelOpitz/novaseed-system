@@ -11,23 +11,30 @@ namespace Project.BusinessRules
     {
         public List<Sexo> GetSexo()
         {
-            DataAccess.DataBase bd = new DataBase();
-            bd.Connect(); //método conectar
-            List<Sexo> ls = new List<Sexo>();
-            string sql = "sexoObtener";
-            bd.CreateCommandSP(sql);
-
-            DbDataReader resultado = bd.Query();
-
-            while (resultado.Read())
+            try
             {
-                Sexo sexo = new Sexo(resultado.GetInt32(0), resultado.GetString(1));
-                ls.Add(sexo);
-            }
-            resultado.Close();
-            bd.Close();
+                DataAccess.DataBase bd = new DataBase();
+                bd.Connect(); //método conectar
+                List<Sexo> ls = new List<Sexo>();
+                string sql = "sexoObtener";
+                bd.CreateCommandSP(sql);
 
-            return ls;
+                DbDataReader resultado = bd.Query();
+
+                while (resultado.Read())
+                {
+                    Sexo sexo = new Sexo(resultado.GetInt32(0), resultado.GetString(1));
+                    ls.Add(sexo);
+                }
+                resultado.Close();
+                bd.Close();
+
+                return ls;
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.ToString());
+            }
         }
     }
 }

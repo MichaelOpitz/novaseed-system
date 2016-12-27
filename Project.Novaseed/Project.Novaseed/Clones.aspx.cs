@@ -56,8 +56,8 @@ namespace Project.Novaseed
         private void PoblarGrilla()
         {
             CatalogClones cc = new CatalogClones();
-            gdvClones.DataSource = cc.GetClones(valorAñoInt32);
-            gdvClones.DataBind();
+            this.gdvClones.DataSource = cc.GetClones(valorAñoInt32);
+            this.gdvClones.DataBind();
         }
 
         /*
@@ -65,34 +65,39 @@ namespace Project.Novaseed
          */
         protected void OnRowDataBound(object sender, GridViewRowEventArgs e)
         {
-            CatalogClones cc = new CatalogClones();
-            if (e.Row.RowType == DataControlRowType.DataRow)
+            try
             {
-                //Ecuentra el DropDownList en la fila
-                DropDownList ddlClonesFertilidad = (e.Row.FindControl("ddlClonesFertilidad") as DropDownList);
-                //Llena el dropdown fertilidad
-                CatalogFertilidad cf = new CatalogFertilidad();
-                ddlClonesFertilidad.DataSource = cf.getFertilidad();
-                ddlClonesFertilidad.DataTextField = "nombre_fertilidad";
-                ddlClonesFertilidad.DataValueField = "id_fertilidad";
-                ddlClonesFertilidad.DataBind();
+                CatalogClones cc = new CatalogClones();
+                if (e.Row.RowType == DataControlRowType.DataRow)
+                {
+                    //Ecuentra el DropDownList en la fila
+                    DropDownList ddlClonesFertilidad = (e.Row.FindControl("ddlClonesFertilidad") as DropDownList);
+                    //Llena el dropdown fertilidad
+                    CatalogFertilidad cf = new CatalogFertilidad();
+                    ddlClonesFertilidad.DataSource = cf.getFertilidad();
+                    ddlClonesFertilidad.DataTextField = "nombre_fertilidad";
+                    ddlClonesFertilidad.DataValueField = "id_fertilidad";
+                    ddlClonesFertilidad.DataBind();
 
-                //Selecciona la fertilidad de cada cruzamiento
-                int index = cc.GetFertilidadClones(valorAñoInt32, contFertilidad) - 1;
-                ddlClonesFertilidad.SelectedIndex = index;
-                contFertilidad = contFertilidad + 1;
+                    //Selecciona la fertilidad de cada cruzamiento
+                    int index = cc.GetFertilidadClones(valorAñoInt32, contFertilidad) - 1;
+                    ddlClonesFertilidad.SelectedIndex = index;
+                    contFertilidad = contFertilidad + 1;
+                }
+
+                if (e.Row.RowType == DataControlRowType.DataRow)
+                {
+                    int indexClonesCodificacion = cc.GetClonesEstaCodificado(valorAñoInt32, contClonesCodificacion);
+
+                    if (indexClonesCodificacion == 1)
+                        e.Row.BackColor = Color.LightGreen;
+                    else
+                        e.Row.BackColor = Color.FromArgb(255, 204, 203);
+                    contClonesCodificacion = contClonesCodificacion + 1;
+                }
             }
-
-            if (e.Row.RowType == DataControlRowType.DataRow)
+            catch (Exception ex)
             {
-                int indexClonesCodificacion = cc.GetClonesEstaCodificado(valorAñoInt32, contClonesCodificacion);
-
-                if (indexClonesCodificacion == 1)
-                    e.Row.BackColor = Color.LightGreen;
-                else
-                    e.Row.BackColor = Color.FromArgb(255, 204, 203);
-                contClonesCodificacion = contClonesCodificacion + 1;
-
             }
         }
 
@@ -154,13 +159,13 @@ namespace Project.Novaseed
                         azul, roja, amarilla, bicolor);
                     cc.UpdateClones(clon);
                 }
+                this.gdvClones.EditIndex = -1;
+                PoblarGrilla();
             }
             catch (Exception ex)
             {
                 Page.ClientScript.RegisterStartupScript(GetType(), "Script", "<script>alert('" + ex.ToString() + "')</script>");
-            }
-            this.gdvClones.EditIndex = -1;
-            PoblarGrilla();
+            }            
         }
 
         protected void ClonesGridView_RowCancelingEdit(Object sender, GridViewCancelEditEventArgs e)
@@ -177,13 +182,19 @@ namespace Project.Novaseed
 
         protected void ClonesGridView_RowDeleting(Object sender, GridViewDeleteEventArgs e)
         {
-            CatalogClones cc = new CatalogClones();
-            string id_clones = HttpUtility.HtmlDecode((string)this.gdvClones.Rows[e.RowIndex].Cells[1].Text);
-            int valor = cc.DeleteClones(Int32.Parse(id_clones));
-            if (valor == 0)
-                Page.ClientScript.RegisterStartupScript(GetType(), "Script", "<script>alert('Error!\n¡No se pudo eliminar el clon!')</script>");
+            try
+            {
+                CatalogClones cc = new CatalogClones();
+                string id_clones = HttpUtility.HtmlDecode((string)this.gdvClones.Rows[e.RowIndex].Cells[1].Text);
+                int valor = cc.DeleteClones(Int32.Parse(id_clones));
+                if (valor == 0)
+                    Page.ClientScript.RegisterStartupScript(GetType(), "Script", "<script>alert('Error!\n¡No se pudo eliminar el clon!')</script>");
 
-            PoblarGrilla();
+                PoblarGrilla();
+            }
+            catch (Exception ex)
+            {
+            }
         }
 
         /*
@@ -209,6 +220,160 @@ namespace Project.Novaseed
             catch(Exception ex)
             {
                 Page.ClientScript.RegisterStartupScript(GetType(), "Script", "<script>alert('" + ex.ToString() + "')</script>");
+            }
+        }
+
+        protected void ClonesGridView_DataBound(object sender, EventArgs e)
+        {
+            try
+            {
+                GridViewRow pagerRow = gdvClones.BottomPagerRow;
+                DropDownList pageSizeList = (DropDownList)pagerRow.Cells[0].FindControl("ddlPageSize");
+                if (Context.Session["PageSize"] != null)
+                {
+                    pageSizeList.SelectedValue = Context.Session["PageSize"].ToString();
+                }
+                DropDownList pageList = (DropDownList)pagerRow.Cells[0].FindControl("PageDropDownList");
+                Label pageLabel = (Label)pagerRow.Cells[0].FindControl("CurrentPageLabel");
+
+                if (pageList != null)
+                {
+                    for (int i = 0; i < gdvClones.PageCount; i++)
+                    {
+                        int pageNumber = i + 1;
+                        ListItem item = new ListItem(pageNumber.ToString());
+                        if (i == gdvClones.PageIndex)
+                        {
+                            item.Selected = true;
+                        }
+                        pageList.Items.Add(item);
+                    }
+                }
+
+                if (pageLabel != null)
+                {
+                    int currentPage = gdvClones.PageIndex + 1;
+                    pageLabel.Text = "Ver " + currentPage.ToString() + " de " + gdvClones.PageCount.ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+        protected void ddlPageSize_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                GridViewRow pagerRow = gdvClones.BottomPagerRow;
+                DropDownList pageSizeList = (DropDownList)pagerRow.Cells[0].FindControl("ddlPageSize");
+
+                gdvClones.PageSize = Convert.ToInt32(pageSizeList.SelectedValue);
+                Context.Session["PageSize"] = pageSizeList.SelectedValue;
+                PoblarGrilla();
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+        protected void PageDropDownList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                GridViewRow pagerRow = gdvClones.BottomPagerRow;
+                DropDownList pageList = (DropDownList)pagerRow.Cells[0].FindControl("PageDropDownList");
+                gdvClones.PageIndex = pageList.SelectedIndex;
+                PoblarGrilla();
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+        //Siguiente página
+        protected void NextLB_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                GridViewRow pagerRow = gdvClones.BottomPagerRow;
+                DropDownList pageList = (DropDownList)pagerRow.Cells[0].FindControl("PageDropDownList");
+                //Aumenta la página en 1
+                gdvClones.PageIndex = pageList.SelectedIndex + 1;
+                PoblarGrilla();
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+        //Página anterior
+        protected void PrevLB_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                GridViewRow pagerRow = gdvClones.BottomPagerRow;
+                DropDownList pageList = (DropDownList)pagerRow.Cells[0].FindControl("PageDropDownList");
+                //Disminuye la página en 1
+                gdvClones.PageIndex = pageList.SelectedIndex - 1;
+                PoblarGrilla();
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+        //Página inicio
+        protected void FirstLB_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                gdvClones.PageIndex = 0;
+                PoblarGrilla();
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+        //Página final
+        protected void LastLB_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                GridViewRow pagerRow = gdvClones.BottomPagerRow;
+                DropDownList pageList = (DropDownList)pagerRow.Cells[0].FindControl("PageDropDownList");
+                gdvClones.PageIndex = pageList.Items.Count;
+                PoblarGrilla();
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+        protected void ClonesGridView_PageIndexChanging(object sender, EventArgs e)
+        {
+            try
+            {
+                GridViewRow pagerRow = gdvClones.BottomPagerRow;
+                DropDownList pageList = (DropDownList)pagerRow.Cells[0].FindControl("PageDropDownList");//error
+                Label pageLabel = (Label)pagerRow.Cells[0].FindControl("CurrentPageLabel");
+                if (pageList != null)
+                {
+                    for (int i = 0; i < gdvClones.PageCount; i++)
+                    {
+                        int pageNumber = i + 1;
+                        ListItem item = new ListItem(pageNumber.ToString());
+                        if (i == gdvClones.PageIndex)
+                        {
+                            item.Selected = true;
+                        }
+                        pageList.Items.Add(item);
+                    }
+                }
+                if (pageLabel != null)
+                {
+                    int currentPage = gdvClones.PageIndex + 1;
+                    pageLabel.Text = "Ver " + currentPage.ToString() + " de " + gdvClones.PageCount.ToString();
+                }
+                this.gdvClones.Controls[0].Controls[this.gdvClones.Controls[0].Controls.Count - 1].Visible = true;
+                PoblarGrilla();
+            }
+            catch (Exception ex)
+            {
             }
         }
     }

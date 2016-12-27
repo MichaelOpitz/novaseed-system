@@ -11,23 +11,30 @@ namespace Project.BusinessRules
     {
         public List<Emergencia> getEmergencia()
         {
-            DataAccess.DataBase bd = new DataBase();
-            bd.Connect(); //método conectar
-            List<Emergencia> le = new List<Emergencia>();
-            string sql = "emergenciaObtener";
-            bd.CreateCommandSP(sql);
-
-            DbDataReader resultado = bd.Query();
-
-            while (resultado.Read())
+            try
             {
-                Emergencia emer = new Emergencia(resultado.GetInt32(0), resultado.GetString(1));
-                le.Add(emer);
-            }
-            resultado.Close();
-            bd.Close();
+                DataAccess.DataBase bd = new DataBase();
+                bd.Connect(); //método conectar
+                List<Emergencia> le = new List<Emergencia>();
+                string sql = "emergenciaObtener";
+                bd.CreateCommandSP(sql);
 
-            return le;
+                DbDataReader resultado = bd.Query();
+
+                while (resultado.Read())
+                {
+                    Emergencia emer = new Emergencia(resultado.GetInt32(0), resultado.GetString(1));
+                    le.Add(emer);
+                }
+                resultado.Close();
+                bd.Close();
+
+                return le;
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.ToString());
+            }
         }
     }
 }

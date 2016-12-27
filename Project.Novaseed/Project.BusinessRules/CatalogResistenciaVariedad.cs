@@ -11,23 +11,30 @@ namespace Project.BusinessRules
     {
         public List<ResistenciaVariedad> GetResistenciaVariedad()
         {
-            DataAccess.DataBase bd = new DataBase();
-            bd.Connect(); //método conectar
-            List<ResistenciaVariedad> lrv = new List<ResistenciaVariedad>();
-            string sql = "resistenciaVariedadObtener";
-            bd.CreateCommandSP(sql);
-
-            DbDataReader resultado = bd.Query();
-
-            while (resultado.Read())
+            try
             {
-                ResistenciaVariedad resistencia = new ResistenciaVariedad(resultado.GetInt32(0), resultado.GetString(1));
-                lrv.Add(resistencia);
-            }
-            resultado.Close();
-            bd.Close();
+                DataAccess.DataBase bd = new DataBase();
+                bd.Connect(); //método conectar
+                List<ResistenciaVariedad> lrv = new List<ResistenciaVariedad>();
+                string sql = "resistenciaVariedadObtener";
+                bd.CreateCommandSP(sql);
 
-            return lrv;
+                DbDataReader resultado = bd.Query();
+
+                while (resultado.Read())
+                {
+                    ResistenciaVariedad resistencia = new ResistenciaVariedad(resultado.GetInt32(0), resultado.GetString(1));
+                    lrv.Add(resistencia);
+                }
+                resultado.Close();
+                bd.Close();
+
+                return lrv;
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.ToString());
+            }
         }
     }
 }

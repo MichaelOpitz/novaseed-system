@@ -16,55 +16,61 @@ namespace Project.Novaseed
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            //PREGUNTA SI ES DISTINTO DE NULL PORQUE EL USUARIO PUEDE ESCRIBIR DESDE LA URL Y NO TENDRÍA AÑO ASIGNADO
-            if (Request.QueryString["ano_produccion"] != null)
-                valorAñoString = Request.QueryString["ano_produccion"];
-            else
-                valorAñoString = "0";
-            valorAñoInt32 = Int32.Parse(valorAñoString);
-
-            //PREGUNTA SI ES DISTINTO DE NULL PORQUE EL USUARIO PUEDE ESCRIBIR DESDE LA URL Y NO TENDRÍA CODIGO ASIGNADO
-            if (Request.QueryString["codigo"] != null)
-                codigo_variedad = Request.QueryString["codigo"];
-            else
-                codigo_variedad = "0";
-
-            CatalogCiudad cc = new CatalogCiudad();
-            List<Project.BusinessRules.Ciudad> ciudad = cc.GetCiudad();
-            CatalogCategoriaProduccion ccp = new CatalogCategoriaProduccion();
-            List<Project.BusinessRules.CategoriaProduccion> categoria = ccp.GetCategoriaProduccion();
-            CatalogProductor cp = new CatalogProductor();
-            List<Project.BusinessRules.Productor> productor = cp.GetProductor();
-
-            CatalogProduccion cprod = new CatalogProduccion();
-            List<Project.BusinessRules.Produccion> produccion = cprod.GetProduccionPorVariedad(codigo_variedad);
-
-            this.lblProduccionError.Visible = false;
-            this.lblProduccionError.Text = "";
-            if (!Page.IsPostBack)
+            try
             {
-                this.ddlProduccionCiudad.DataValueField = "id_ciudad";
-                this.ddlProduccionCiudad.DataTextField = "nombre_ciudad";
-                this.ddlProduccionCiudad.DataSource = ciudad;
-                this.ddlProduccionCategoriaProduccion.DataValueField = "id_categoria_produccion";
-                this.ddlProduccionCategoriaProduccion.DataTextField = "nombre_categoria_produccion";
-                this.ddlProduccionCategoriaProduccion.DataSource = categoria;
-                this.ddlProduccionProductor.DataValueField = "id_productor";
-                this.ddlProduccionProductor.DataTextField = "nombre_productor";
-                this.ddlProduccionProductor.DataSource = productor;
+                //PREGUNTA SI ES DISTINTO DE NULL PORQUE EL USUARIO PUEDE ESCRIBIR DESDE LA URL Y NO TENDRÍA AÑO ASIGNADO
+                if (Request.QueryString["ano_produccion"] != null)
+                    valorAñoString = Request.QueryString["ano_produccion"];
+                else
+                    valorAñoString = "0";
+                valorAñoInt32 = Int32.Parse(valorAñoString);
 
-                this.ddlProduccionCiudad.SelectedValue = produccion[0].Id_ciudad.ToString();
-                this.ddlProduccionCategoriaProduccion.SelectedValue = produccion[0].Id_categoria_produccion.ToString();
-                this.ddlProduccionProductor.SelectedValue = produccion[0].Id_productor.ToString();
-                this.txtProduccionCantidadTotal.Text = produccion[0].Prod_cantidad_total.ToString();
-                this.txtProduccionCantidadProductor.Text = produccion[0].Cantidad_productor.ToString();
-                this.txtProduccionSuperficie.Text = produccion[0].Superficie_produccion.ToString();
-                this.txtProduccionCosecha.Text = produccion[0].Cosecha_produccion.ToString();
-                this.chkProduccionLicencia.Checked = produccion[0].Licencia_produccion;
+                //PREGUNTA SI ES DISTINTO DE NULL PORQUE EL USUARIO PUEDE ESCRIBIR DESDE LA URL Y NO TENDRÍA CODIGO ASIGNADO
+                if (Request.QueryString["codigo"] != null)
+                    codigo_variedad = Request.QueryString["codigo"];
+                else
+                    codigo_variedad = "0";
 
-                this.lblProduccionVariedad.Text += "'" + codigo_variedad.ToString() + "'";
-                this.lblProduccionAño.Text += "'" + valorAñoInt32.ToString() + "'";
-                this.DataBind();
+                CatalogCiudad cc = new CatalogCiudad();
+                List<Project.BusinessRules.Ciudad> ciudad = cc.GetCiudad();
+                CatalogCategoriaProduccion ccp = new CatalogCategoriaProduccion();
+                List<Project.BusinessRules.CategoriaProduccion> categoria = ccp.GetCategoriaProduccion();
+                CatalogProductor cp = new CatalogProductor();
+                List<Project.BusinessRules.Productor> productor = cp.GetProductor();
+
+                CatalogProduccion cprod = new CatalogProduccion();
+                List<Project.BusinessRules.Produccion> produccion = cprod.GetProduccionPorVariedad(codigo_variedad);
+
+                this.lblProduccionError.Visible = false;
+                this.lblProduccionError.Text = "";
+                if (!Page.IsPostBack)
+                {
+                    this.ddlProduccionCiudad.DataValueField = "id_ciudad";
+                    this.ddlProduccionCiudad.DataTextField = "nombre_ciudad";
+                    this.ddlProduccionCiudad.DataSource = ciudad;
+                    this.ddlProduccionCategoriaProduccion.DataValueField = "id_categoria_produccion";
+                    this.ddlProduccionCategoriaProduccion.DataTextField = "nombre_categoria_produccion";
+                    this.ddlProduccionCategoriaProduccion.DataSource = categoria;
+                    this.ddlProduccionProductor.DataValueField = "id_productor";
+                    this.ddlProduccionProductor.DataTextField = "nombre_productor";
+                    this.ddlProduccionProductor.DataSource = productor;
+
+                    this.ddlProduccionCiudad.SelectedValue = produccion[0].Id_ciudad.ToString();
+                    this.ddlProduccionCategoriaProduccion.SelectedValue = produccion[0].Id_categoria_produccion.ToString();
+                    this.ddlProduccionProductor.SelectedValue = produccion[0].Id_productor.ToString();
+                    this.txtProduccionCantidadTotal.Text = produccion[0].Prod_cantidad_total.ToString();
+                    this.txtProduccionCantidadProductor.Text = produccion[0].Cantidad_productor.ToString();
+                    this.txtProduccionSuperficie.Text = produccion[0].Superficie_produccion.ToString();
+                    this.txtProduccionCosecha.Text = produccion[0].Cosecha_produccion.ToString();
+                    this.chkProduccionLicencia.Checked = produccion[0].Licencia_produccion;
+
+                    this.lblProduccionVariedad.Text += "'" + codigo_variedad.ToString() + "'";
+                    this.lblProduccionAño.Text += "'" + valorAñoInt32.ToString() + "'";
+                    this.DataBind();
+                }
+            }
+            catch (Exception ex)
+            {
             }
         }
 

@@ -11,23 +11,30 @@ namespace Project.BusinessRules
     {
         public List<Emergencia40Dias> getEmergencia40Dias()
         {
-            DataAccess.DataBase bd = new DataBase();
-            bd.Connect(); //método conectar
-            List<Emergencia40Dias> le40 = new List<Emergencia40Dias>();
-            string sql = "emergencia40DiasObtener";
-            bd.CreateCommandSP(sql);
-
-            DbDataReader resultado = bd.Query();
-
-            while (resultado.Read())
+            try
             {
-                Emergencia40Dias emer40 = new Emergencia40Dias(resultado.GetInt32(0), resultado.GetString(1));
-                le40.Add(emer40);
-            }
-            resultado.Close();
-            bd.Close();
+                DataAccess.DataBase bd = new DataBase();
+                bd.Connect(); //método conectar
+                List<Emergencia40Dias> le40 = new List<Emergencia40Dias>();
+                string sql = "emergencia40DiasObtener";
+                bd.CreateCommandSP(sql);
 
-            return le40;
+                DbDataReader resultado = bd.Query();
+
+                while (resultado.Read())
+                {
+                    Emergencia40Dias emer40 = new Emergencia40Dias(resultado.GetInt32(0), resultado.GetString(1));
+                    le40.Add(emer40);
+                }
+                resultado.Close();
+                bd.Close();
+
+                return le40;
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.ToString());
+            }
         }
     }
 }

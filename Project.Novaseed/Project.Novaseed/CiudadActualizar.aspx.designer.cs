@@ -10,294 +10,312 @@
 namespace Project.Novaseed {
     
     
-    public partial class UsuarioAgregar {
+    public partial class CiudadActualizar {
         
         /// <summary>
-        /// Control lblUsuarioAgregar.
+        /// Control lblCiudadActualizar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblUsuarioAgregar;
+        protected global::System.Web.UI.WebControls.Label lblCiudadActualizar;
         
         /// <summary>
-        /// Control lblUsuarioError.
+        /// Control lblCiudadError.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblUsuarioError;
+        protected global::System.Web.UI.WebControls.Label lblCiudadError;
         
         /// <summary>
-        /// Control reUsuarioRol.
+        /// Control reCiudadPais.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator reUsuarioRol;
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator reCiudadPais;
         
         /// <summary>
-        /// Control txtUsuarioRol.
+        /// Control ddlCiudadPais.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtUsuarioRol;
+        protected global::System.Web.UI.WebControls.DropDownList ddlCiudadPais;
         
         /// <summary>
-        /// Control lblUsuarioGuion.
+        /// Control reCiudadRegion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblUsuarioGuion;
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator reCiudadRegion;
         
         /// <summary>
-        /// Control reUsuarioDV.
+        /// Control ddlCiudadRegion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator reUsuarioDV;
+        protected global::System.Web.UI.WebControls.DropDownList ddlCiudadRegion;
         
         /// <summary>
-        /// Control txtUsuarioDV.
+        /// Control reCiudadProvincia.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtUsuarioDV;
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator reCiudadProvincia;
         
         /// <summary>
-        /// Control reUsuarioNombre.
+        /// Control ddlCiudadProvincia.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator reUsuarioNombre;
+        protected global::System.Web.UI.WebControls.DropDownList ddlCiudadProvincia;
         
         /// <summary>
-        /// Control txtUsuarioNombre.
+        /// Control reCiudadDDL.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtUsuarioNombre;
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator reCiudadDDL;
         
         /// <summary>
-        /// Control reUsuarioApellido.
+        /// Control ddlCiudad.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator reUsuarioApellido;
+        protected global::System.Web.UI.WebControls.DropDownList ddlCiudad;
         
         /// <summary>
-        /// Control txtUsuarioApellido.
+        /// Control reCiudadTXT.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtUsuarioApellido;
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator reCiudadTXT;
         
         /// <summary>
-        /// Control ddlUsuarioMes.
+        /// Control txtCiudad.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlUsuarioMes;
+        protected global::System.Web.UI.WebControls.TextBox txtCiudad;
         
         /// <summary>
-        /// Control ddlUsuarioAño.
+        /// Control RegularExpressionValidator1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlUsuarioAño;
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator1;
         
         /// <summary>
-        /// Control clrUsuarioFechaNacimiento.
+        /// Control btnCiudadGuardar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Calendar clrUsuarioFechaNacimiento;
+        protected global::System.Web.UI.WebControls.Button btnCiudadGuardar;
         
         /// <summary>
-        /// Control lstUsuarioNacionalidad.
+        /// Control RegularExpressionValidator2.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListBox lstUsuarioNacionalidad;
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator2;
         
         /// <summary>
-        /// Control reUsuarioEmail.
+        /// Control btnCiudadCancelar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator reUsuarioEmail;
+        protected global::System.Web.UI.WebControls.Button btnCiudadCancelar;
         
         /// <summary>
-        /// Control txtUsuarioCorreo.
+        /// Control reProvinciaPais.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtUsuarioCorreo;
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator reProvinciaPais;
         
         /// <summary>
-        /// Control reUsuarioTelefono.
+        /// Control ddlProvinciaPais.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator reUsuarioTelefono;
+        protected global::System.Web.UI.WebControls.DropDownList ddlProvinciaPais;
         
         /// <summary>
-        /// Control txtUsuarioTelefono.
+        /// Control reProvinciaRegion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtUsuarioTelefono;
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator reProvinciaRegion;
         
         /// <summary>
-        /// Control reUsuarioDireccion.
+        /// Control ddlProvinciaRegion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator reUsuarioDireccion;
+        protected global::System.Web.UI.WebControls.DropDownList ddlProvinciaRegion;
         
         /// <summary>
-        /// Control txtUsuarioDireccion.
+        /// Control reProvinciaDDL.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtUsuarioDireccion;
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator reProvinciaDDL;
         
         /// <summary>
-        /// Control chkUsuarioAdministrador.
+        /// Control ddlProvincia.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox chkUsuarioAdministrador;
+        protected global::System.Web.UI.WebControls.DropDownList ddlProvincia;
         
         /// <summary>
-        /// Control ddlUsuarioSexo.
+        /// Control reProvinciaTXT.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlUsuarioSexo;
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator reProvinciaTXT;
         
         /// <summary>
-        /// Control ddlUsuarioCargo.
+        /// Control txtProvincia.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlUsuarioCargo;
+        protected global::System.Web.UI.WebControls.TextBox txtProvincia;
         
         /// <summary>
-        /// Control reUsuarioUser.
+        /// Control btnProvinciaGuardar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator reUsuarioUser;
+        protected global::System.Web.UI.WebControls.Button btnProvinciaGuardar;
         
         /// <summary>
-        /// Control txtUsuarioUser.
+        /// Control btnProvinciaCancelar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtUsuarioUser;
+        protected global::System.Web.UI.WebControls.Button btnProvinciaCancelar;
         
         /// <summary>
-        /// Control reUsuarioPassword.
+        /// Control reRegionPais.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator reUsuarioPassword;
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator reRegionPais;
         
         /// <summary>
-        /// Control txtUsuarioPassword.
+        /// Control ddlRegionPais.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtUsuarioPassword;
+        protected global::System.Web.UI.WebControls.DropDownList ddlRegionPais;
         
         /// <summary>
-        /// Control reUsuarioPasswordRepetir.
+        /// Control reRegionDDL.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator reUsuarioPasswordRepetir;
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator reRegionDDL;
         
         /// <summary>
-        /// Control txtUsuarioPasswordRepetir.
+        /// Control ddlRegion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtUsuarioPasswordRepetir;
+        protected global::System.Web.UI.WebControls.DropDownList ddlRegion;
         
         /// <summary>
-        /// Control btnUsuarioGuardar.
+        /// Control reRegionTXT.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnUsuarioGuardar;
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator reRegionTXT;
         
         /// <summary>
-        /// Control btnUsuarioCancelar.
+        /// Control txtRegion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnUsuarioCancelar;
+        protected global::System.Web.UI.WebControls.TextBox txtRegion;
+        
+        /// <summary>
+        /// Control btnRegionGuardar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnRegionGuardar;
+        
+        /// <summary>
+        /// Control btnRegionCancelar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnRegionCancelar;
     }
 }

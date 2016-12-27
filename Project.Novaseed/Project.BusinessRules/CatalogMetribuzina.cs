@@ -11,23 +11,30 @@ namespace Project.BusinessRules
     {
         public List<Metribuzina> getMetribuzina()
         {
-            DataAccess.DataBase bd = new DataBase();
-            bd.Connect(); //método conectar
-            List<Metribuzina> lm = new List<Metribuzina>();
-            string sql = "metribuzinaObtener";
-            bd.CreateCommandSP(sql);
-
-            DbDataReader resultado = bd.Query();
-
-            while (resultado.Read())
+            try
             {
-                Metribuzina metribuzina = new Metribuzina(resultado.GetInt32(0), resultado.GetString(1));
-                lm.Add(metribuzina);
-            }
-            resultado.Close();
-            bd.Close();
+                DataAccess.DataBase bd = new DataBase();
+                bd.Connect(); //método conectar
+                List<Metribuzina> lm = new List<Metribuzina>();
+                string sql = "metribuzinaObtener";
+                bd.CreateCommandSP(sql);
 
-            return lm;
+                DbDataReader resultado = bd.Query();
+
+                while (resultado.Read())
+                {
+                    Metribuzina metribuzina = new Metribuzina(resultado.GetInt32(0), resultado.GetString(1));
+                    lm.Add(metribuzina);
+                }
+                resultado.Close();
+                bd.Close();
+
+                return lm;
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.ToString());
+            }
         }
     }
 }

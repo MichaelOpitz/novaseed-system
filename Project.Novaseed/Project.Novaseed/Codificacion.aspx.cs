@@ -16,7 +16,6 @@ namespace Project.Novaseed
         protected void Page_Load(object sender, EventArgs e)
         {
             CatalogCodificacion cc = new CatalogCodificacion();
-
             //PREGUNTA SI ES DISTINTO DE NULL PORQUE EL USUARIO PUEDE ESCRIBIR DESDE LA URL Y NO TENDRÍA AÑO ASIGNADO
             if (Request.QueryString["valor"] != null)
                 valorAñoString = Request.QueryString["valor"];

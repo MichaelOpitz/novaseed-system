@@ -221,6 +221,9 @@ namespace Project.BusinessRules
             set { codigo_variedad = value; }
         }
 
+        /*
+         * Constructor para obtener la variedad por codigo
+         */ 
         public Variedad(string codigo_variedad, string nombre_variedad, string nombre_tamaño, string nombre_madurez,
             string nombre_forma, string nombre_distribucion_calibre, string nombre_profundidad, string nombre_regularidad,
             string nombre_brotacion, string nombre_emergencia, string nombre_emergencia_40_dias, string nombre_metribuzina,
@@ -269,6 +272,15 @@ namespace Project.BusinessRules
             this.id_forma = id_forma;
             this.id_emergencia = id_emergencia;            
             this.id_brotacion = id_brotacion;
+        }
+
+        /*
+         * Constructor que obtiene la lista de las variedades para los reportes
+         */
+        public Variedad(string codigo_variedad, string nombre_variedad)
+        {
+            this.codigo_variedad = codigo_variedad;
+            this.nombre_variedad = nombre_variedad;
         }
     }
 }

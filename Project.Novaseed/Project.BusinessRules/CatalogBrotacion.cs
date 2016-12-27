@@ -11,23 +11,30 @@ namespace Project.BusinessRules
     {
         public List<Brotacion> getBrotacion()
         {
-            DataAccess.DataBase bd = new DataBase();
-            bd.Connect(); //método conectar
-            List<Brotacion> lb = new List<Brotacion>();
-            string sql = "brotacionObtener";
-            bd.CreateCommandSP(sql);
-
-            DbDataReader resultado = bd.Query();
-
-            while (resultado.Read())
+            try
             {
-                Brotacion brot = new Brotacion(resultado.GetInt32(0), resultado.GetString(1));
-                lb.Add(brot);
-            }
-            resultado.Close();
-            bd.Close();
+                DataAccess.DataBase bd = new DataBase();
+                bd.Connect(); //método conectar
+                List<Brotacion> lb = new List<Brotacion>();
+                string sql = "brotacionObtener";
+                bd.CreateCommandSP(sql);
 
-            return lb;
+                DbDataReader resultado = bd.Query();
+
+                while (resultado.Read())
+                {
+                    Brotacion brot = new Brotacion(resultado.GetInt32(0), resultado.GetString(1));
+                    lb.Add(brot);
+                }
+                resultado.Close();
+                bd.Close();
+
+                return lb;
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.ToString());
+            }
         }
     }
 }

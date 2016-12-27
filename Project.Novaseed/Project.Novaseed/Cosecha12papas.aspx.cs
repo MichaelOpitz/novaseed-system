@@ -209,37 +209,49 @@ namespace Project.Novaseed
          */
         protected void OnRowDataBound(object sender, GridViewRowEventArgs e)
         {
-            CatalogCosecha cc = new CatalogCosecha();
-            if (e.Row.RowType == DataControlRowType.DataRow)
+            try
             {
-                //el tercer parametro es 3 por el id_temporada que es 24 papas(3 para el color, 2 para el obtener en catalog)
-                int index6papas12papas = cc.GetCosechaTemporadasAvanzadas(valorAñoInt32, cont12papas24papas, 3);
-                //Ecuentra el CheckBox en la fila
-                CheckBox chkAgregar24Papas = (e.Row.FindControl("chkAgregar24Papas") as CheckBox);
-                if (index6papas12papas == 1)
+                CatalogCosecha cc = new CatalogCosecha();
+                if (e.Row.RowType == DataControlRowType.DataRow)
                 {
-                    e.Row.BackColor = Color.LightGreen;
-                    chkAgregar24Papas.Enabled = false;
+                    //el tercer parametro es 3 por el id_temporada que es 24 papas(3 para el color, 2 para el obtener en catalog)
+                    int index6papas12papas = cc.GetCosechaTemporadasAvanzadas(valorAñoInt32, cont12papas24papas, 3);
+                    //Ecuentra el CheckBox en la fila
+                    CheckBox chkAgregar24Papas = (e.Row.FindControl("chkAgregar24Papas") as CheckBox);
+                    if (index6papas12papas == 1)
+                    {
+                        e.Row.BackColor = Color.LightGreen;
+                        chkAgregar24Papas.Enabled = false;
+                    }
+                    else
+                    {
+                        e.Row.BackColor = Color.FromArgb(255, 204, 203);
+                        chkAgregar24Papas.Enabled = true;
+                    }
+                    cont12papas24papas = cont12papas24papas + 1;
                 }
-                else
-                {
-                    e.Row.BackColor = Color.FromArgb(255, 204, 203);
-                    chkAgregar24Papas.Enabled = true;
-                }
-                cont12papas24papas = cont12papas24papas + 1;
+            }
+            catch (Exception ex)
+            {
             }
         }
 
         protected void Cosecha12papasGridView_RowDeleting(Object sender, GridViewDeleteEventArgs e)
         {
-            CatalogCosecha cc = new CatalogCosecha();
-            string id_cosecha = HttpUtility.HtmlDecode((string)this.gdv12papas.Rows[e.RowIndex].Cells[2].Text);
-            int valor = cc.DeleteCosecha12papas(Int32.Parse(id_cosecha));
-            if (valor == 0)
-                Page.ClientScript.RegisterStartupScript(GetType(), "Script", "<script>alert('Error!\n¡No se pudo eliminar la variedad!')</script>");
+            try
+            {
+                CatalogCosecha cc = new CatalogCosecha();
+                string id_cosecha = HttpUtility.HtmlDecode((string)this.gdv12papas.Rows[e.RowIndex].Cells[2].Text);
+                int valor = cc.DeleteCosecha12papas(Int32.Parse(id_cosecha));
+                if (valor == 0)
+                    Page.ClientScript.RegisterStartupScript(GetType(), "Script", "<script>alert('Error!\n¡No se pudo eliminar la variedad!')</script>");
 
-            PoblarGrilla();
-        } 
+                PoblarGrilla();
+            }
+            catch (Exception ex)
+            {
+            }
+        }
 
         protected void btn12papasCancelar_Click(object sender, EventArgs e)
         {
@@ -688,43 +700,49 @@ namespace Project.Novaseed
             //Enfermedades y resistencia en el gridview
             this.gdv12papasEnfermedades.DataSource = cc.GetCosechaEnfermedades(id_cosecha);
             this.gdv12papasEnfermedades.DataBind();
-        }        
+        }
 
         protected void btn12papasAgregarEnfermedad_Click(object sender, EventArgs e)
         {
-            string id_enfermedad = this.ddl12papasEnfermedad.SelectedValue;
-            if (!id_enfermedad.Equals("1"))
+            try
             {
-                if (this.gdv12papasEnfermedades.Rows.Count == 0)
+                string id_enfermedad = this.ddl12papasEnfermedad.SelectedValue;
+                if (!id_enfermedad.Equals("1"))
                 {
-                    table.Rows.Add(this.ddl12papasEnfermedad.SelectedItem, this.ddl12papasResistencia.SelectedItem);
-                    this.gdv12papasEnfermedades.DataSource = table;
+                    if (this.gdv12papasEnfermedades.Rows.Count == 0)
+                    {
+                        table.Rows.Add(this.ddl12papasEnfermedad.SelectedItem, this.ddl12papasResistencia.SelectedItem);
+                        this.gdv12papasEnfermedades.DataSource = table;
+                    }
+                    else
+                    {
+                        listEnfermedad = new List<string>();
+                        listResistencia = new List<string>();
+                        foreach (GridViewRow row in gdv12papasEnfermedades.Rows)
+                        {
+                            string nombre_enfermedad = HttpUtility.HtmlDecode((string)this.gdv12papasEnfermedades.Rows[row.RowIndex].Cells[0].Text);
+                            listEnfermedad.Add(nombre_enfermedad);
+                            string resistencia_variedad = HttpUtility.HtmlDecode((string)this.gdv12papasEnfermedades.Rows[row.RowIndex].Cells[1].Text);
+                            listResistencia.Add(resistencia_variedad);
+                        }
+                        listEnfermedad.Add(this.ddl12papasEnfermedad.SelectedItem.ToString());
+                        listResistencia.Add(this.ddl12papasResistencia.SelectedItem.ToString());
+
+                        //Agrega las enfermedades con sus resistencias al dataset para luego dejarlo en el gridview
+                        for (int i = 0; i < listEnfermedad.Count && i < listResistencia.Count; i++)
+                        {
+                            table.Rows.Add(listEnfermedad[i], listResistencia[i]);
+                        }
+                        this.gdv12papasEnfermedades.DataSource = table;
+                    }
+                    this.gdv12papasEnfermedades.DataBind();
                 }
                 else
-                {
-                    listEnfermedad = new List<string>();
-                    listResistencia = new List<string>();
-                    foreach (GridViewRow row in gdv12papasEnfermedades.Rows)
-                    {
-                        string nombre_enfermedad = HttpUtility.HtmlDecode((string)this.gdv12papasEnfermedades.Rows[row.RowIndex].Cells[0].Text);
-                        listEnfermedad.Add(nombre_enfermedad);
-                        string resistencia_variedad = HttpUtility.HtmlDecode((string)this.gdv12papasEnfermedades.Rows[row.RowIndex].Cells[1].Text);
-                        listResistencia.Add(resistencia_variedad);
-                    }
-                    listEnfermedad.Add(this.ddl12papasEnfermedad.SelectedItem.ToString());
-                    listResistencia.Add(this.ddl12papasResistencia.SelectedItem.ToString());
-
-                    //Agrega las enfermedades con sus resistencias al dataset para luego dejarlo en el gridview
-                    for (int i = 0; i < listEnfermedad.Count && i < listResistencia.Count; i++)
-                    {
-                        table.Rows.Add(listEnfermedad[i], listResistencia[i]);
-                    }
-                    this.gdv12papasEnfermedades.DataSource = table;
-                }
-                this.gdv12papasEnfermedades.DataBind();
+                    Page.ClientScript.RegisterStartupScript(GetType(), "Script", "<script>alert('¡Debe seleccionar una enfermedad!')</script>");
             }
-            else
-                Page.ClientScript.RegisterStartupScript(GetType(), "Script", "<script>alert('¡Debe seleccionar una enfermedad!')</script>");
+            catch (Exception ex)
+            {
+            }
         }
 
         protected void Cosecha12papasEnfermedadesGridView_RowDeleting(Object sender, GridViewDeleteEventArgs e)
@@ -758,29 +776,189 @@ namespace Project.Novaseed
 
         protected void btnAgregar24papas_Click(object sender, EventArgs e)
         {
-            int agrego = 0;
-            foreach (GridViewRow row in gdv12papas.Rows)
-                if (row.RowType == DataControlRowType.DataRow)
+            try
+            {
+                int agrego = 0;
+                foreach (GridViewRow row in gdv12papas.Rows)
+                    if (row.RowType == DataControlRowType.DataRow)
+                    {
+                        CheckBox chkAgregar24Papas = (row.Cells[0].FindControl("chkAgregar24Papas") as CheckBox);
+                        if (chkAgregar24Papas != null)
+                            if (chkAgregar24Papas.Checked)
+                            {
+                                string id_cosecha = HttpUtility.HtmlDecode((string)this.gdv12papas.Rows[row.RowIndex].Cells[2].Text);
+                                CatalogCosecha cc = new CatalogCosecha();
+                                int existe_24papas = cc.AddCosecha24papas(Int32.Parse(id_cosecha));
+                                if (existe_24papas == 1)
+                                    Page.ClientScript.RegisterStartupScript(GetType(), "Script", "<script>alert('La varieadd con ID: " + id_cosecha + " seleccionada ya está en temporadas avanzadas o no tiene una ciudad asignada')</script>");
+                                else
+                                    agrego = 1;
+                            }
+                    }
+
+                if (agrego == 1)
                 {
-                    CheckBox chkAgregar24Papas = (row.Cells[0].FindControl("chkAgregar24Papas") as CheckBox);
-                    if (chkAgregar24Papas != null)
-                        if (chkAgregar24Papas.Checked)
+                    Page.ClientScript.RegisterStartupScript(GetType(), "Script", "<script>alert('¡Agregado Correctamente!')</script>");
+                    Response.Redirect("MenuGeneracion.aspx");
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+
+        protected void Cosecha12papasGridView_DataBound(object sender, EventArgs e)
+        {
+            try
+            {
+                GridViewRow pagerRow = gdv12papas.BottomPagerRow;
+                DropDownList pageSizeList = (DropDownList)pagerRow.Cells[0].FindControl("ddlPageSize");
+                if (Context.Session["PageSize"] != null)
+                {
+                    pageSizeList.SelectedValue = Context.Session["PageSize"].ToString();
+                }
+                DropDownList pageList = (DropDownList)pagerRow.Cells[0].FindControl("PageDropDownList");
+                Label pageLabel = (Label)pagerRow.Cells[0].FindControl("CurrentPageLabel");
+
+                if (pageList != null)
+                {
+                    for (int i = 0; i < gdv12papas.PageCount; i++)
+                    {
+                        int pageNumber = i + 1;
+                        ListItem item = new ListItem(pageNumber.ToString());
+                        if (i == gdv12papas.PageIndex)
                         {
-                            string id_cosecha = HttpUtility.HtmlDecode((string)this.gdv12papas.Rows[row.RowIndex].Cells[2].Text);
-                            CatalogCosecha cc = new CatalogCosecha();
-                            int existe_24papas = cc.AddCosecha24papas(Int32.Parse(id_cosecha));
-                            if (existe_24papas == 1)
-                                Page.ClientScript.RegisterStartupScript(GetType(), "Script", "<script>alert('La varieadd con ID: " + id_cosecha + " seleccionada ya está en temporadas avanzadas o no tiene una ciudad asignada')</script>");
-                            else
-                                agrego = 1;
+                            item.Selected = true;
                         }
+                        pageList.Items.Add(item);
+                    }
                 }
 
-            if (agrego == 1)
-            {
-                Page.ClientScript.RegisterStartupScript(GetType(), "Script", "<script>alert('¡Agregado Correctamente!')</script>");
-                Response.Redirect("MenuGeneracion.aspx");
+                if (pageLabel != null)
+                {
+                    int currentPage = gdv12papas.PageIndex + 1;
+                    pageLabel.Text = "Ver " + currentPage.ToString() + " de " + gdv12papas.PageCount.ToString();
+                }
             }
-        } 
+            catch (Exception ex)
+            {
+            }
+        }
+        protected void ddlPageSize_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                GridViewRow pagerRow = gdv12papas.BottomPagerRow;
+                DropDownList pageSizeList = (DropDownList)pagerRow.Cells[0].FindControl("ddlPageSize");
+
+                gdv12papas.PageSize = Convert.ToInt32(pageSizeList.SelectedValue);
+                Context.Session["PageSize"] = pageSizeList.SelectedValue;
+                PoblarGrilla();
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+        protected void PageDropDownList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                GridViewRow pagerRow = gdv12papas.BottomPagerRow;
+                DropDownList pageList = (DropDownList)pagerRow.Cells[0].FindControl("PageDropDownList");
+                gdv12papas.PageIndex = pageList.SelectedIndex;
+                PoblarGrilla();
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+        //Siguiente página
+        protected void NextLB_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                GridViewRow pagerRow = gdv12papas.BottomPagerRow;
+                DropDownList pageList = (DropDownList)pagerRow.Cells[0].FindControl("PageDropDownList");
+                //Aumenta la página en 1
+                gdv12papas.PageIndex = pageList.SelectedIndex + 1;
+                PoblarGrilla();
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+        //Página anterior
+        protected void PrevLB_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                GridViewRow pagerRow = gdv12papas.BottomPagerRow;
+                DropDownList pageList = (DropDownList)pagerRow.Cells[0].FindControl("PageDropDownList");
+                //Disminuye la página en 1
+                gdv12papas.PageIndex = pageList.SelectedIndex - 1;
+                PoblarGrilla();
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+        //Página inicio
+        protected void FirstLB_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                gdv12papas.PageIndex = 0;
+                PoblarGrilla();
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+        //Página final
+        protected void LastLB_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                GridViewRow pagerRow = gdv12papas.BottomPagerRow;
+                DropDownList pageList = (DropDownList)pagerRow.Cells[0].FindControl("PageDropDownList");
+                gdv12papas.PageIndex = pageList.Items.Count;
+                PoblarGrilla();
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+        protected void Cosecha12papasGridView_PageIndexChanging(object sender, EventArgs e)
+        {
+            try
+            {
+                GridViewRow pagerRow = gdv12papas.BottomPagerRow;
+                DropDownList pageList = (DropDownList)pagerRow.Cells[0].FindControl("PageDropDownList");//error
+                Label pageLabel = (Label)pagerRow.Cells[0].FindControl("CurrentPageLabel");
+                if (pageList != null)
+                {
+                    for (int i = 0; i < gdv12papas.PageCount; i++)
+                    {
+                        int pageNumber = i + 1;
+                        ListItem item = new ListItem(pageNumber.ToString());
+                        if (i == gdv12papas.PageIndex)
+                        {
+                            item.Selected = true;
+                        }
+                        pageList.Items.Add(item);
+                    }
+                }
+                if (pageLabel != null)
+                {
+                    int currentPage = gdv12papas.PageIndex + 1;
+                    pageLabel.Text = "Ver " + currentPage.ToString() + " de " + gdv12papas.PageCount.ToString();
+                }
+                this.gdv12papas.Controls[0].Controls[this.gdv12papas.Controls[0].Controls.Count - 1].Visible = true;
+                PoblarGrilla();
+            }
+            catch (Exception ex)
+            {
+            }
+        }
     }
 }

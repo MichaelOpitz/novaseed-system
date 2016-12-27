@@ -11,23 +11,30 @@ namespace Project.BusinessRules
     {
         public List<FacilidadMuerte> GetFacilidadMuerte()
         {
-            DataAccess.DataBase bd = new DataBase();
-            bd.Connect(); //método conectar
-            List<FacilidadMuerte> lfm = new List<FacilidadMuerte>();
-            string sql = "facilidadMuerteObtener";
-            bd.CreateCommandSP(sql);
-
-            DbDataReader resultado = bd.Query();
-
-            while (resultado.Read())
+            try
             {
-                FacilidadMuerte facilidad = new FacilidadMuerte(resultado.GetInt32(0), resultado.GetString(1));
-                lfm.Add(facilidad);
-            }
-            resultado.Close();
-            bd.Close();
+                DataAccess.DataBase bd = new DataBase();
+                bd.Connect(); //método conectar
+                List<FacilidadMuerte> lfm = new List<FacilidadMuerte>();
+                string sql = "facilidadMuerteObtener";
+                bd.CreateCommandSP(sql);
 
-            return lfm;
+                DbDataReader resultado = bd.Query();
+
+                while (resultado.Read())
+                {
+                    FacilidadMuerte facilidad = new FacilidadMuerte(resultado.GetInt32(0), resultado.GetString(1));
+                    lfm.Add(facilidad);
+                }
+                resultado.Close();
+                bd.Close();
+
+                return lfm;
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.ToString());
+            }
         }
     }
 }

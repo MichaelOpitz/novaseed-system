@@ -13,7 +13,7 @@
         <%: Scripts.Render("~/bundles/modernizr") %>
     </asp:PlaceHolder>
     <webopt:BundleReference runat="server" Path="~/Content/css" />
-    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link href="~/logo.ico" rel="shortcut icon" type="image/x-icon" />
 
 </head>
 <body>
@@ -48,26 +48,34 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" runat="server" href="~/Menu"><span class="glyphicon glyphicon-th"></span> Menú</a>
+                    <a class="navbar-brand" runat="server" href="~/Menu"><b class="glyphicon glyphicon-th"></b> Menú</a>
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li><a runat="server" href="~/Mejoramiento"><span class="glyphicon glyphicon-upload"></span> Mejoramiento</a></li>
-                        <li><a runat="server" href="~/MenuGeneracion"><span class="glyphicon glyphicon-leaf"></span> Año de Generación</a></li>
-                        <li><a runat="server" href="~/MenuProduccion"><span class="glyphicon glyphicon-briefcase"></span> Producción</a></li>
-                        <li><a runat="server" href="~/Licencia"><span class="glyphicon glyphicon-usd"></span> Licencia</a></li>                        
+                        <li><a runat="server" href="~/Mejoramiento"><b class="glyphicon glyphicon-upload"></b> Mejoramiento</a></li>
+                        <li><a runat="server" href="~/MenuGeneracion"><b class="glyphicon glyphicon-leaf"></b> Año de Generación</a></li>
+                        <li><a runat="server" href="~/MenuProduccion"><b class="glyphicon glyphicon-briefcase"></b> Producción</a></li>
+                        <li><a runat="server" href="~/Licencia"><b class="glyphicon glyphicon-usd"></b> Licencia</a></li>
+                        <li style="text-align:center; margin-top:15px; margin-left:15px"><asp:Label ID="lblUsuario" runat="server" ForeColor="White" Text=""/></li>
                     </ul>
                     <asp:LoginView runat="server" ViewStateMode="Disabled">
                         <AnonymousTemplate>
-                            <ul class="nav navbar-nav navbar-right">                                
-                                <li><a runat="server" href="~/Login"><span class="glyphicon glyphicon-log-in"></span> Cerrar sesión</a></li>
+                            <ul class="nav navbar-nav navbar-right">
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Cuenta <b class="caret"></b></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a runat="server" href="~/UsuarioPerfil"><i class="glyphicon glyphicon-edit"></i> Editar Perfil</a></li>
+                                        <li class="divider"></li>                                        
+                                        <li><asp:Button type="button" runat="server" ID="btnCerrarSession" class="btn btn-danger btn-block" Style="border-color: #000000" Text="Cerrar Session" OnClick="btnCerrarSession_Click"></asp:Button></li>
+                                    </ul>
+                                </li>
                             </ul>
                         </AnonymousTemplate>
                         <LoggedInTemplate>
                             <ul class="nav navbar-nav navbar-right">
-                                <li><a runat="server" href="~/Account/Manage" title="Manage your account">Hello, <%: Context.User.Identity.GetUserName()  %> !</a></li>
+                                <li><a runat="server" href="~/Login.aspx" title="Manage your account">Hello, <%: Context.User.Identity.GetUserName()  %> !</a></li>
                                 <li>
-                                    <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Cerrar sesión" LogoutPageUrl="~/" OnLoggingOut="Unnamed_LoggingOut" />
+                                    <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Cerrar sesión" LogoutPageUrl="~/login.aspx" OnLoggingOut="Unnamed_LoggingOut" />
                                 </li>
                             </ul>
                         </LoggedInTemplate>

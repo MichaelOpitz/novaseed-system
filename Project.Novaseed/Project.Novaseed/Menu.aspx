@@ -19,11 +19,11 @@
                             <!-- SIDEBAR USER TITLE -->
                             <div class="profile-usertitle" style="text-align: center">
                                 <div class="profile-usertitle-name">
-                                    Marcus Doe
+                                    <asp:Label id="lblMenuNombre" runat="server" />
 				
                                 </div>
                                 <div class="profile-usertitle-job">
-                                    Developer
+                                    <asp:Label id="lblMenuCargo" runat="server" />
 				
                                 </div>
                             </div>
@@ -40,7 +40,7 @@
                             <div class="profile-usermenu">
                                 <ul class="nav">
                                     <li class="active">
-                                        <a runat="server" href="~/UsuarioModificar.aspx" style="background-color: #E0FFFF">
+                                        <a runat="server" href="~/UsuarioPerfil.aspx" style="background-color: #E0FFFF">
                                             <i class="glyphicon glyphicon-user"></i>
                                             Perfil </a>
                                     </li>
@@ -52,19 +52,8 @@
                                         <!-- Dropdown level 1 -->
                                         <div id="dropdown-lvl1" class="panel-collapse collapse" style="background-color: #FFE4E1; width: 100%">
                                             <ul class="nav nav-list">
-
-                                                <!-- Dropdown level 2 -->
-                                                <li class="panel-collapse collapse" id="dropdownUsuario2" style="background-color: #FFE4E1; width: 100%">
-                                                    <a data-toggle="collapse" href="#dropdownUsuario-lvl2">
-                                                        <i class="glyphicon glyphicon-user"></i>Usuario <i class="caret"></i>
-                                                    </a>
-                                                    <div id="dropdownUsuario-lvl2" class="panel-collapse collapse" style="background-color: #FAFAD2; width: 100%">
-                                                        <ul class="nav nav-list">
-                                                            <li><a runat="server" href="~/UsuarioAgregar.aspx"><i class="glyphicon glyphicon-plus"></i>Agregar</a></li>
-                                                            <li><a runat="server" href="~/UsuarioEliminar.aspx"><i class="glyphicon glyphicon-minus"></i>Eliminar</a></li>
-                                                        </ul>
-                                                    </div>
-                                                </li>
+                                              
+                                                <li><a runat="server" href="~/Usuario.aspx"><i class="glyphicon glyphicon-user"></i>Usuario</a></li>
 
                                                 <li class="divider"></li>
 
@@ -76,25 +65,13 @@
                                                     <div id="dropdownCiudad-lvl2" class="panel-collapse collapse" style="background-color: #FAFAD2; width: 100%">
                                                         <ul class="nav nav-list">
                                                             <li><a runat="server" href="~/CiudadAgregar.aspx"><i class="glyphicon glyphicon-plus"></i>Agregar</a></li>
-                                                            <li><a href="#"><i class="glyphicon glyphicon-pencil"></i>Modificar</a></li>
-                                                            <li><a href="#"><i class="glyphicon glyphicon-minus"></i>Eliminar</a></li>
+                                                            <li><a runat="server" href="~/CiudadActualizar.aspx"><i class="glyphicon glyphicon-pencil"></i>Modificar</a></li>
+                                                            <li><a runat="server" href="~/CiudadEliminar.aspx"><i class="glyphicon glyphicon-minus"></i>Eliminar</a></li>
                                                         </ul>
                                                     </div>
                                                 </li>
 
-                                                <!-- Dropdown level 2 -->
-                                                <li class="panel-collapse collapse" id="dropdownEnfermedades2" style="background-color: #FFE4E1; width: 100%">
-                                                    <a data-toggle="collapse" href="#dropdownEnfermedades-lvl2">
-                                                        <span class="glyphicon glyphicon-warning-sign"></span>Enfermedades <span class="caret"></span>
-                                                    </a>
-                                                    <div id="dropdownEnfermedades-lvl2" class="panel-collapse collapse" style="background-color: #FAFAD2; width: 100%">
-                                                        <ul class="nav nav-list">
-                                                            <li><a href="#"><i class="glyphicon glyphicon-plus"></i>Agregar</a></li>
-                                                            <li><a href="#"><i class="glyphicon glyphicon-pencil"></i>Modificar</a></li>
-                                                            <li><a href="#"><i class="glyphicon glyphicon-minus"></i>Eliminar</a></li>
-                                                        </ul>
-                                                    </div>
-                                                </li>
+                                                <li><a runat="server" href="~/Enfermedades.aspx"><i class="glyphicon glyphicon-warning-sign"></i>Enfermedades</a></li>
                                             </ul>
                                         </div>
                                     </li>
@@ -106,16 +83,15 @@
                                         <!-- Dropdown level 1 -->
                                         <div id="dropdownInforme-lvl1" class="panel-collapse collapse" style="background-color: #FAFAD2; width: 100%">
                                             <ul class="nav nav-list">
-                                                <li><a href="#"><i class="glyphicon glyphicon-asterisk"></i>Informe de Variedades</a></li>
-                                                <li><a href="#"><i class="glyphicon glyphicon-asterisk"></i>Informe UPOV</a></li>
-                                                <li><a href="#"><i class="glyphicon glyphicon-asterisk"></i>Informe Producción</a></li>
-                                                <li><a href="#"><i class="glyphicon glyphicon-asterisk"></i>Informe Licencia</a></li>
-                                                <li><a href="#"><i class="glyphicon glyphicon-asterisk"></i>Informe de Estadísticas</a></li>
+                                                <li><a runat="server" href="~/ReporteVariedadSeleccion.aspx"><i class="glyphicon glyphicon-asterisk"></i>Informe de Variedades</a></li>
+                                                <li><a runat="server" href="~/ReporteUPOVSeleccion.aspx"><i class="glyphicon glyphicon-asterisk"></i>Informe UPOV</a></li>
+                                                <li><a runat="server" href="~/ReporteProduccionSeleccion.aspx"><i class="glyphicon glyphicon-asterisk"></i>Informe Producción</a></li>
+                                                <li><a runat="server" href="~/ReporteLicenciaSeleccion.aspx"><i class="glyphicon glyphicon-asterisk"></i>Informe Licencia</a></li>                                                
                                             </ul>
                                         </div>
                                     </li>
                                     <li>
-                                        <a runat="server" href="#" style="background-color: #E0FFFF">
+                                        <a runat="server" href="~/UsuarioRegistro.aspx" style="background-color: #E0FFFF">
                                             <i class="glyphicon glyphicon-flash"></i>
                                             Registro de Usuarios </a>
                                     </li>

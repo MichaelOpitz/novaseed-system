@@ -11,23 +11,30 @@ namespace Project.BusinessRules
     {
         public List<TipoHoja> getTipoHoja()
         {
-            DataAccess.DataBase bd = new DataBase();
-            bd.Connect(); //método conectar
-            List<TipoHoja> lth = new List<TipoHoja>();
-            string sql = "tipoHojaObtener";
-            bd.CreateCommandSP(sql);
-
-            DbDataReader resultado = bd.Query();
-
-            while (resultado.Read())
+            try
             {
-                TipoHoja hoja = new TipoHoja(resultado.GetInt32(0), resultado.GetString(1));
-                lth.Add(hoja);
-            }
-            resultado.Close();
-            bd.Close();
+                DataAccess.DataBase bd = new DataBase();
+                bd.Connect(); //método conectar
+                List<TipoHoja> lth = new List<TipoHoja>();
+                string sql = "tipoHojaObtener";
+                bd.CreateCommandSP(sql);
 
-            return lth;
+                DbDataReader resultado = bd.Query();
+
+                while (resultado.Read())
+                {
+                    TipoHoja hoja = new TipoHoja(resultado.GetInt32(0), resultado.GetString(1));
+                    lth.Add(hoja);
+                }
+                resultado.Close();
+                bd.Close();
+
+                return lth;
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.ToString());
+            }
         }
     }
 }

@@ -41,7 +41,7 @@ namespace Project.Novaseed
             if (!Page.IsPostBack)
             {
                 this.gdvCodigoIndividuos.DataSource = cc.GetCodificacion(codigo_variedad, pad_codigo_variedad, valorAñoInt32);
-                this.gdvCodigoIndividuos.DataBind();
+                this.gdvCodigoIndividuos.DataBind();                
             }
         }
 
@@ -71,30 +71,36 @@ namespace Project.Novaseed
          */
         protected void OnRowDataBound(object sender, GridViewRowEventArgs e)
         {
-            CatalogCodificacion cc = new CatalogCodificacion();
-            if (e.Row.RowType == DataControlRowType.DataRow)
+            try
             {
-                string codigo_variedad = this.txtCodificacionMadre.Text;
-                string pad_codigo_variedad = this.txtCodificacionPadre.Text;
-                int indexCodificacionCosecha = cc.GetCodificacionEstaEnCosecha(codigo_variedad, pad_codigo_variedad,
-                    valorAñoInt32, contCodificacionCosecha);
+                CatalogCodificacion cc = new CatalogCodificacion();
+                if (e.Row.RowType == DataControlRowType.DataRow)
+                {
+                    string codigo_variedad = this.txtCodificacionMadre.Text;
+                    string pad_codigo_variedad = this.txtCodificacionPadre.Text;
+                    int indexCodificacionCosecha = cc.GetCodificacionEstaEnCosecha(codigo_variedad, pad_codigo_variedad,
+                        valorAñoInt32, contCodificacionCosecha);
 
-                //Ecuentra el CheckBox en la fila
-                CheckBox chkAgregar6Papas = (e.Row.FindControl("chkAgregar6Papas") as CheckBox);
-                //Ecuentra el Button en la fila
-                Button btnEdit = (e.Row.FindControl("btnEdit") as Button);
-                if (indexCodificacionCosecha == 1)
-                {
-                    e.Row.BackColor = Color.LightGreen;
-                    chkAgregar6Papas.Enabled = false;
-                    btnEdit.Enabled = false;
+                    //Ecuentra el CheckBox en la fila
+                    CheckBox chkAgregar6Papas = (e.Row.FindControl("chkAgregar6Papas") as CheckBox);
+                    //Ecuentra el Button en la fila
+                    Button btnEdit = (e.Row.FindControl("btnEdit") as Button);
+                    if (indexCodificacionCosecha == 1)
+                    {
+                        e.Row.BackColor = Color.LightGreen;
+                        chkAgregar6Papas.Enabled = false;
+                        btnEdit.Enabled = false;
+                    }
+                    else
+                    {
+                        e.Row.BackColor = Color.FromArgb(255, 204, 203);
+                        chkAgregar6Papas.Enabled = true;
+                    }
+                    contCodificacionCosecha = contCodificacionCosecha + 1;
                 }
-                else
-                {
-                    e.Row.BackColor = Color.FromArgb(255, 204, 203);
-                    chkAgregar6Papas.Enabled = true;                    
-                }
-                contCodificacionCosecha = contCodificacionCosecha + 1;
+            }
+            catch (Exception ex)
+            {
             }
         }
 
@@ -184,15 +190,13 @@ namespace Project.Novaseed
                             Page.ClientScript.RegisterStartupScript(GetType(), "Script", "<script>alert('¡No se pudo modificar debido a que el código escrito ya existe en el año!')</script>");
                     }
                 }
-
+                this.gdvCodigoIndividuos.EditIndex = -1;
+                PoblarGrilla();
             }
             catch (Exception ex)
             {
                 Page.ClientScript.RegisterStartupScript(GetType(), "Script", "<script>alert('" + ex.ToString() + "')</script>");
-            }
-
-            this.gdvCodigoIndividuos.EditIndex = -1;
-            PoblarGrilla();
+            }            
         }
 
         protected void CodigoIndividuosGridView_RowCancelingEdit(Object sender, GridViewCancelEditEventArgs e)
@@ -207,47 +211,219 @@ namespace Project.Novaseed
             PoblarGrilla();   
         }
 
+        protected void CodigoIndividuosGridView_PageIndexChanging(Object sender, GridViewPageEventArgs e)
+        {
+            this.gdvCodigoIndividuos.PageIndex = e.NewPageIndex;
+            PoblarGrilla();
+        }        
+
         protected void CodigoIndividuosGridView_RowDeleting(Object sender, GridViewDeleteEventArgs e)
         {
-            CatalogCodificacion cc = new CatalogCodificacion();
-            string id_codificacion = HttpUtility.HtmlDecode((string)this.gdvCodigoIndividuos.Rows[e.RowIndex].Cells[1].Text);
-            int valor = cc.DeleteCodificacion(Int32.Parse(id_codificacion));
-            if (valor == 0)
-                Page.ClientScript.RegisterStartupScript(GetType(), "Script", "<script>alert('Error!\n¡No se pudo eliminar el código!')</script>");
+            try
+            {
+                CatalogCodificacion cc = new CatalogCodificacion();
+                string id_codificacion = HttpUtility.HtmlDecode((string)this.gdvCodigoIndividuos.Rows[e.RowIndex].Cells[1].Text);
+                int valor = cc.DeleteCodificacion(Int32.Parse(id_codificacion));
+                if (valor == 0)
+                    Page.ClientScript.RegisterStartupScript(GetType(), "Script", "<script>alert('Error!\n¡No se pudo eliminar el código!')</script>");
 
-            PoblarGrilla();
+                PoblarGrilla();
+            }
+            catch (Exception ex)
+            {
+            }
         }
 
         protected void btnAgregar6papas_Click(object sender, EventArgs e)
         {
-            int agrego = 0;
-            string id_codificacion = "";
-            foreach (GridViewRow row in gdvCodigoIndividuos.Rows)
-                if (row.RowType == DataControlRowType.DataRow)
-                {
-                    CheckBox chkAgregar6Papas = (row.Cells[3].FindControl("chkAgregar6Papas") as CheckBox);
-
-                    if (chkAgregar6Papas != null)
+            try
+            {
+                int agrego = 0;
+                string id_codificacion = "";
+                foreach (GridViewRow row in gdvCodigoIndividuos.Rows)
+                    if (row.RowType == DataControlRowType.DataRow)
                     {
-                        if (chkAgregar6Papas.Checked)
-                        {
-                            id_codificacion = HttpUtility.HtmlDecode((string)this.gdvCodigoIndividuos.Rows[row.RowIndex].Cells[1].Text);
+                        CheckBox chkAgregar6Papas = (row.Cells[3].FindControl("chkAgregar6Papas") as CheckBox);
 
-                            CatalogCosecha cc = new CatalogCosecha();
-                            int existe_6papas = cc.AddCosecha6papas(Int32.Parse(id_codificacion));
-                            if (existe_6papas == 0)
-                                agrego = 1;
+                        if (chkAgregar6Papas != null)
+                        {
+                            if (chkAgregar6Papas.Checked)
+                            {
+                                id_codificacion = HttpUtility.HtmlDecode((string)this.gdvCodigoIndividuos.Rows[row.RowIndex].Cells[1].Text);
+
+                                CatalogCosecha cc = new CatalogCosecha();
+                                int existe_6papas = cc.AddCosecha6papas(Int32.Parse(id_codificacion));
+                                if (existe_6papas == 0)
+                                    agrego = 1;
+                            }
                         }
                     }
+                //1 para agregar, 0 cuando no se agrega
+                if (agrego == 1)
+                {
+                    Page.ClientScript.RegisterStartupScript(GetType(), "Script", "<script>alert('¡Agregado Correctamente!')</script>");
+                    Response.Redirect("MenuGeneracion.aspx");
                 }
-            //1 para agregar, 0 cuando no se agrega
-            if (agrego == 1)
-            {
-                Page.ClientScript.RegisterStartupScript(GetType(), "Script", "<script>alert('¡Agregado Correctamente!')</script>");
-                Response.Redirect("MenuGeneracion.aspx");
+                else
+                    Page.ClientScript.RegisterStartupScript(GetType(), "Script", "<script>alert('La codificacion con ID: " + id_codificacion + " seleccionado ya está en temporada de 6 papas')</script>");
             }
-            else
-                Page.ClientScript.RegisterStartupScript(GetType(), "Script", "<script>alert('La codificacion con ID: " + id_codificacion + " seleccionado ya está en temporada de 6 papas')</script>");
+            catch (Exception ex)
+            {
+            }
+        }
+
+        protected void CodigoIndividuosGridView_DataBound(object sender, EventArgs e)
+        {
+            try
+            {
+                GridViewRow pagerRow = gdvCodigoIndividuos.BottomPagerRow;
+                DropDownList pageSizeList = (DropDownList)pagerRow.Cells[0].FindControl("ddlPageSize");
+                if (Context.Session["PageSize"] != null)
+                {
+                    pageSizeList.SelectedValue = Context.Session["PageSize"].ToString();
+                }
+                DropDownList pageList = (DropDownList)pagerRow.Cells[0].FindControl("PageDropDownList");
+                Label pageLabel = (Label)pagerRow.Cells[0].FindControl("CurrentPageLabel");
+
+                if (pageList != null)
+                {
+                    for (int i = 0; i < gdvCodigoIndividuos.PageCount; i++)
+                    {
+                        int pageNumber = i + 1;
+                        ListItem item = new ListItem(pageNumber.ToString());
+                        if (i == gdvCodigoIndividuos.PageIndex)
+                        {
+                            item.Selected = true;
+                        }
+                        pageList.Items.Add(item);
+                    }
+                }
+
+                if (pageLabel != null)
+                {
+                    int currentPage = gdvCodigoIndividuos.PageIndex + 1;
+                    pageLabel.Text = "Ver " + currentPage.ToString() + " de " + gdvCodigoIndividuos.PageCount.ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+        protected void ddlPageSize_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                GridViewRow pagerRow = gdvCodigoIndividuos.BottomPagerRow;
+                DropDownList pageSizeList = (DropDownList)pagerRow.Cells[0].FindControl("ddlPageSize");
+
+                gdvCodigoIndividuos.PageSize = Convert.ToInt32(pageSizeList.SelectedValue);
+                Context.Session["PageSize"] = pageSizeList.SelectedValue;
+                PoblarGrilla();
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+        protected void PageDropDownList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                GridViewRow pagerRow = gdvCodigoIndividuos.BottomPagerRow;
+                DropDownList pageList = (DropDownList)pagerRow.Cells[0].FindControl("PageDropDownList");
+                gdvCodigoIndividuos.PageIndex = pageList.SelectedIndex;
+                PoblarGrilla();
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+        //Siguiente página
+        protected void NextLB_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                GridViewRow pagerRow = gdvCodigoIndividuos.BottomPagerRow;
+                DropDownList pageList = (DropDownList)pagerRow.Cells[0].FindControl("PageDropDownList");
+                //Aumenta la página en 1
+                gdvCodigoIndividuos.PageIndex = pageList.SelectedIndex + 1;
+                PoblarGrilla();
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+        //Página anterior
+        protected void PrevLB_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                GridViewRow pagerRow = gdvCodigoIndividuos.BottomPagerRow;
+                DropDownList pageList = (DropDownList)pagerRow.Cells[0].FindControl("PageDropDownList");
+                //Disminuye la página en 1
+                gdvCodigoIndividuos.PageIndex = pageList.SelectedIndex - 1;
+                PoblarGrilla();
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+        //Página inicio
+        protected void FirstLB_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                gdvCodigoIndividuos.PageIndex = 0;
+                PoblarGrilla();
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+        //Página final
+        protected void LastLB_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                GridViewRow pagerRow = gdvCodigoIndividuos.BottomPagerRow;
+                DropDownList pageList = (DropDownList)pagerRow.Cells[0].FindControl("PageDropDownList");
+                gdvCodigoIndividuos.PageIndex = pageList.Items.Count;
+                PoblarGrilla();
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+        protected void CodigoIndividuosGridView_PageIndexChanging(object sender, EventArgs e)
+        {
+            try
+            {
+                GridViewRow pagerRow = gdvCodigoIndividuos.BottomPagerRow;
+                DropDownList pageList = (DropDownList)pagerRow.Cells[0].FindControl("PageDropDownList");//error
+                Label pageLabel = (Label)pagerRow.Cells[0].FindControl("CurrentPageLabel");
+                if (pageList != null)
+                {
+                    for (int i = 0; i < gdvCodigoIndividuos.PageCount; i++)
+                    {
+                        int pageNumber = i + 1;
+                        ListItem item = new ListItem(pageNumber.ToString());
+                        if (i == gdvCodigoIndividuos.PageIndex)
+                        {
+                            item.Selected = true;
+                        }
+                        pageList.Items.Add(item);
+                    }
+                }
+                if (pageLabel != null)
+                {
+                    int currentPage = gdvCodigoIndividuos.PageIndex + 1;
+                    pageLabel.Text = "Ver " + currentPage.ToString() + " de " + gdvCodigoIndividuos.PageCount.ToString();
+                }
+                this.gdvCodigoIndividuos.Controls[0].Controls[this.gdvCodigoIndividuos.Controls[0].Controls.Count - 1].Visible = true;
+                PoblarGrilla();
+            }
+            catch (Exception ex)
+            {
+            }
         }
     }
 }
