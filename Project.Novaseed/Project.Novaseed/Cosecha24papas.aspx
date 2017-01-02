@@ -70,32 +70,32 @@
 
                 <SelectedRowStyle Font-Bold="True" />
                 <Columns>
-                    <asp:TemplateField ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="50px" HeaderText="Agregar a 48 Papas">
+                    <asp:TemplateField ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="8%" HeaderText="Agregar a 48 Papas">
                         <ItemTemplate>
                             <asp:CheckBox ID="chkAgregar48Papas" runat="server" />
                         </ItemTemplate>
-                        <HeaderStyle Width="100px"></HeaderStyle>
+                        <HeaderStyle Width="8%"></HeaderStyle>
                         <ItemStyle HorizontalAlign="Center"></ItemStyle>
                     </asp:TemplateField>
 
                     <%--botones de acción sobre los registros...--%>
-                    <asp:TemplateField ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="100px">
+                    <asp:TemplateField ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="8%">
                         <ItemTemplate>
                             <%--Botones de eliminar y editar cliente...--%>
                             <asp:Button ID="btnDelete" runat="server" Text="Quitar" CssClass="btn btn-danger" CommandName="Delete" OnClientClick="return confirm('¿Eliminar variedad de 24 papas?\nSi lo hace eliminará todos los registros de etapas avanzadas');" />
                         </ItemTemplate>
-                        <HeaderStyle Width="100px"></HeaderStyle>
+                        <HeaderStyle Width="8%"></HeaderStyle>
                         <ItemStyle HorizontalAlign="Center"></ItemStyle>
                     </asp:TemplateField>
 
-                    <asp:BoundField DataField="id_cosecha" HeaderText="ID" ReadOnly="true" />
-                    <asp:BoundField DataField="codigo_variedad" HeaderText="Madre" ReadOnly="true" HeaderStyle-Width="100px" />
-                    <asp:BoundField DataField="nombre_madre" HeaderText="Nombre Madre" ReadOnly="true" />
-                    <asp:BoundField DataField="pad_codigo_variedad" HeaderText="Padre" ReadOnly="true" HeaderStyle-Width="100px" />
-                    <asp:BoundField DataField="nombre_padre" HeaderText="Nombre Padre" ReadOnly="true" />
-                    <asp:BoundField DataField="posicion_cosecha" HeaderText="Posición" ReadOnly="true" />
-                    <asp:BoundField DataField="codigo_individuo" HeaderText="Código Individuo" ReadOnly="true" HeaderStyle-Width="100px" />
-                    <asp:BoundField DataField="nombre_destino" HeaderText="Destino" ReadOnly="true" />
+                    <asp:BoundField DataField="id_cosecha" HeaderText="ID" ReadOnly="true"  HeaderStyle-Width="5%"/>
+                    <asp:BoundField DataField="codigo_variedad" HeaderText="Madre" ReadOnly="true" HeaderStyle-Width="10%" />
+                    <asp:BoundField DataField="nombre_madre" HeaderText="Nombre Madre" ReadOnly="true" HeaderStyle-Width="12%"/>
+                    <asp:BoundField DataField="pad_codigo_variedad" HeaderText="Padre" ReadOnly="true" HeaderStyle-Width="10%" />
+                    <asp:BoundField DataField="nombre_padre" HeaderText="Nombre Padre" ReadOnly="true" HeaderStyle-Width="12%"/>
+                    <asp:BoundField DataField="posicion_cosecha" HeaderText="Posición" ReadOnly="true" HeaderStyle-Width="5%"/>
+                    <asp:BoundField DataField="codigo_individuo" HeaderText="Código Individuo" ReadOnly="true" HeaderStyle-Width="10%" />
+                    <asp:BoundField DataField="nombre_destino" HeaderText="Destino" ReadOnly="true" HeaderStyle-Width="8%"/>
 
                     <asp:CommandField SelectText="Seleccionar" ShowSelectButton="True" />
 

@@ -186,7 +186,7 @@ namespace Project.BusinessRules
          * Constructor para actualizar un usuario(perfil)
          */
         public Usuario(int rol, int id_cargo, int id_sexo, string nombre, string apellido, DateTime fecha_nac, string direccion,
-            string email, int telefono, string password, bool administrador)
+            string email, int telefono, bool administrador)
         {
             this.rol = rol;
             this.id_cargo = id_cargo;
@@ -196,8 +196,7 @@ namespace Project.BusinessRules
             this.fecha_nacimiento = fecha_nac;
             this.direccion = direccion;
             this.email = email;
-            this.telefono = telefono;
-            this.password = password;
+            this.telefono = telefono;            
             this.administrador = administrador;
         }
 

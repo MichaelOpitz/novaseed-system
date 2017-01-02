@@ -188,11 +188,11 @@ namespace Project.Novaseed
                 string rol = HttpUtility.HtmlDecode((string)this.gdvUsuario.Rows[e.RowIndex].Cells[1].Text);
                 int valor = cu.DeleteUsuario(Int32.Parse(rol));
                 if (valor == 0)
-                    Page.ClientScript.RegisterStartupScript(GetType(), "Script", "<script>alert('Error!\n¡No se pudo eliminar el usuario!')</script>");
+                    Page.ClientScript.RegisterStartupScript(GetType(), "Script", "<script>alert('¡Error! No se pudo eliminar el usuario')</script>");
             }
             catch (Exception ex)
             {
-                Page.ClientScript.RegisterStartupScript(GetType(), "Script", "<script>alert('Error!\n¡No se pudo eliminar el usuario!')</script>");
+                Page.ClientScript.RegisterStartupScript(GetType(), "Script", "<script>alert('¡Error! No se pudo eliminar el usuario')</script>");
             }
 
             PoblarGrilla();

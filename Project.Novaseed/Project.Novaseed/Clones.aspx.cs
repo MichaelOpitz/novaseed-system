@@ -188,7 +188,7 @@ namespace Project.Novaseed
                 string id_clones = HttpUtility.HtmlDecode((string)this.gdvClones.Rows[e.RowIndex].Cells[1].Text);
                 int valor = cc.DeleteClones(Int32.Parse(id_clones));
                 if (valor == 0)
-                    Page.ClientScript.RegisterStartupScript(GetType(), "Script", "<script>alert('Error!\n¡No se pudo eliminar el clon!')</script>");
+                    Page.ClientScript.RegisterStartupScript(GetType(), "Script", "<script>alert('¡Error! No se pudo eliminar el clon')</script>");
 
                 PoblarGrilla();
             }
@@ -208,7 +208,7 @@ namespace Project.Novaseed
                 int valor = cc.AddCodificacion(valorAñoInt32);
                 if (valor == 1)
                 {
-                    Page.ClientScript.RegisterStartupScript(GetType(), "Script", "<script>alert('¡Se agregaron los clones que no tenian codificación!\nEl resto mantienen sus códigos')</script>");
+                    Page.ClientScript.RegisterStartupScript(GetType(), "Script", "<script>alert('¡Se agregaron los clones que no tenian codificación! El resto mantienen sus códigos')</script>");
                     Response.Redirect("Codificacion.aspx?valor=" + valorAñoInt32);
                 }
                 else

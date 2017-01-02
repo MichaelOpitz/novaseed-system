@@ -111,6 +111,11 @@ namespace Project.Novaseed
         protected void btnCerrarSession_Click(object sender, EventArgs e)
         {
             this.Session.Remove("user");
+            if (Request.Cookies["UserName"] != null && Request.Cookies["Password"] != null)
+            {
+                Response.Cookies["UserName"].Expires = DateTime.Now.AddDays(-1);
+                Response.Cookies["Password"].Expires = DateTime.Now.AddDays(-1);
+            }
             Response.Redirect("Login.aspx");
         }
     }

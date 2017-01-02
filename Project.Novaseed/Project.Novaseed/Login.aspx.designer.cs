@@ -58,6 +58,15 @@ namespace Project.Novaseed {
         protected global::System.Web.UI.WebControls.TextBox txtLoginContraseña;
         
         /// <summary>
+        /// Control lnkLoginOlvidarContraseña.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink lnkLoginOlvidarContraseña;
+        
+        /// <summary>
         /// Control btnLoginIngresar.
         /// </summary>
         /// <remarks>
@@ -74,5 +83,41 @@ namespace Project.Novaseed {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBox chkLoginRecordar;
+        
+        /// <summary>
+        /// Control lblLoginRecuperarContraseña.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblLoginRecuperarContraseña;
+        
+        /// <summary>
+        /// Control reLoginExisteCorreo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator reLoginExisteCorreo;
+        
+        /// <summary>
+        /// Control txtLoginRecuperarContraseña.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtLoginRecuperarContraseña;
+        
+        /// <summary>
+        /// Control btnUsuarioConfirmarContraseña.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnUsuarioConfirmarContraseña;
     }
 }

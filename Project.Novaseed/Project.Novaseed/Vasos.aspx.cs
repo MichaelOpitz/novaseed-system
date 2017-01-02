@@ -236,7 +236,7 @@ namespace Project.Novaseed
                 string id_vasos = HttpUtility.HtmlDecode((string)this.gdvVasos.Rows[e.RowIndex].Cells[2].Text);
                 int valor = cv.DeleteVasos(Int32.Parse(id_vasos));
                 if (valor == 0)
-                    Page.ClientScript.RegisterStartupScript(GetType(), "Script", "<script>alert('Error!\n¡No se pudo eliminar el vaso!')</script>");
+                    Page.ClientScript.RegisterStartupScript(GetType(), "Script", "<script>alert('¡Error! No se pudo eliminar el vaso')</script>");
 
                 this.txtCantidadTotalVasos.Text = cv.GetCantidadTotalVasos_fn(valorAñoInt32).ToString() + " Vasos";
                 PoblarGrilla();

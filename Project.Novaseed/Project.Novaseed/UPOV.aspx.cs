@@ -630,14 +630,14 @@ namespace Project.Novaseed
                 {
                     int valor = cu.UpdateUPOV(upov);
                     if (valor == 0)
-                        Page.ClientScript.RegisterStartupScript(GetType(), "Script", "<script>alert('¡No se pudo modificar el informe UPOV!')</script>");
+                        Page.ClientScript.RegisterStartupScript(GetType(), "Script", "<script>alert('¡Debe seleecionar características(excepto forma y profundidad) para generar el informe UPOV! Solo se ha modificado el nombre')</script>");
                     else
                         Response.Redirect("MenuGeneracion.aspx");
                 }
             }
             catch (Exception ex)
             {
-                Page.ClientScript.RegisterStartupScript(GetType(), "Script", "<script>alert('¡Error al modificar!\nNo se ha podido actualizar el informe upov')</script>");
+                Page.ClientScript.RegisterStartupScript(GetType(), "Script", "<script>alert('¡Error al modificar! No se ha podido actualizar el informe upov')</script>");
             }
         }
     }

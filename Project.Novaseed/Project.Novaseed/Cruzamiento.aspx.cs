@@ -216,7 +216,7 @@ namespace Project.Novaseed
                 string id_cruzamiento = HttpUtility.HtmlDecode((string)this.gdvCruzamiento.Rows[e.RowIndex].Cells[2].Text);
                 int valor = cc.DeleteCruzamiento(Int32.Parse(id_cruzamiento));
                 if (valor == 0)
-                    Page.ClientScript.RegisterStartupScript(GetType(), "Script", "<script>alert('Error!\n¡No se pudo eliminar el cruzamiento!')</script>");
+                    Page.ClientScript.RegisterStartupScript(GetType(), "Script", "<script>alert('¡Error! No se pudo eliminar el cruzamiento')</script>");
 
                 PoblarGrilla();
             }

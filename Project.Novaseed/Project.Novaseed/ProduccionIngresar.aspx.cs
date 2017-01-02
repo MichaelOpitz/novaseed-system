@@ -154,13 +154,13 @@ namespace Project.Novaseed
                 else
                 {
                     this.lblProduccionError.Text += "Error al modificar, Revise los parámetros indicados y modifiquelos.<br/>";
-                    Page.ClientScript.RegisterStartupScript(GetType(), "Script", "<script>alert('¡Datos incorrectos!\nRevise los parámetros indicados y modifique su valor')</script>");
+                    Page.ClientScript.RegisterStartupScript(GetType(), "Script", "<script>alert('¡Datos incorrectos! Revise los parámetros indicados y modifique su valor')</script>");
                 }
             }
             catch (Exception ex)
             {
                 this.lblProduccionError.Text += "ERROR CRÍTICO, NO SE HA PODIDO MODIFICAR LA PRODUCCIÓN, ARREGLE LOS PARÁMETROS E INTENTELO NUEVAMENTE.<br/>";
-                Page.ClientScript.RegisterStartupScript(GetType(), "Script", "<script>alert('Error al modificar!\nNo se ha podido actualizar la producción')</script>");
+                Page.ClientScript.RegisterStartupScript(GetType(), "Script", "<script>alert('¡Error al modificar! No se ha podido actualizar la producción')</script>");
             }
         }
     }

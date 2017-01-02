@@ -19,7 +19,7 @@
             <asp:Button type="button" runat="server" ID="btnAgregarCodificacion" class="btn btn-danger btn-block" Style="border-color: #000000" Text="Codificar" OnClick="btnAgregarCodificacion_Click"></asp:Button>
         </div>
         <div class="row">
-            <asp:GridView ID="gdvClones" runat="server"
+            <asp:GridView ID="gdvClones" runat="server" Width="100%"
                 DataKeyNames="id_clones"
                 AutoGenerateColumns="False"
                 CssClass="table table-bordered bs-table"
@@ -75,7 +75,7 @@
 
                 <Columns>
                     <%--botones de acción sobre los registros...--%>
-                    <asp:TemplateField ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="200px">
+                    <asp:TemplateField ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="18%">
                         <ItemTemplate>
                             <%--Botones de eliminar y editar cliente...--%>
                             <asp:Button ID="btnDelete" runat="server" Text="Quitar" CssClass="btn btn-danger" CommandName="Delete" OnClientClick="return confirm('¿Eliminar clon?\nSi lo hace eliminará todos los registros de etapas avanzadas');" />
@@ -87,29 +87,24 @@
                             <asp:Button ID="btnCancel" runat="server" Text="Cancelar" CssClass="btn btn-default" CommandName="Cancel" />
                         </EditItemTemplate>
 
-                        <HeaderStyle Width="200px"></HeaderStyle>
+                        <HeaderStyle Width="18%"></HeaderStyle>
 
                         <ItemStyle HorizontalAlign="Center"></ItemStyle>
                     </asp:TemplateField>
-                    <asp:BoundField DataField="id_clones" HeaderText="ID" ReadOnly="true" HeaderStyle-Width="30px" />
-                    <asp:BoundField DataField="codigo_variedad" HeaderText="Madre" ReadOnly="true" HeaderStyle-Width="110px" />
-                    <asp:BoundField DataField="nombre_madre" HeaderText="Nombre Madre" ReadOnly="true" HeaderStyle-Width="100px" />
-                    <asp:BoundField DataField="pad_codigo_variedad" HeaderText="Padre" ReadOnly="true" HeaderStyle-Width="110px" />
-                    <asp:BoundField DataField="nombre_padre" HeaderText="Nombre Padre" ReadOnly="true" HeaderStyle-Width="100px" />
-                    <asp:TemplateField ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="50px" HeaderText="Fertilidad">
+                    <asp:BoundField DataField="id_clones" HeaderText="ID" ReadOnly="true" HeaderStyle-Width="5%" />
+                    <asp:BoundField DataField="codigo_variedad" HeaderText="Madre" ReadOnly="true" HeaderStyle-Width="10%" />
+                    <asp:BoundField DataField="nombre_madre" HeaderText="Nombre Madre" ReadOnly="true" HeaderStyle-Width="12%" />
+                    <asp:BoundField DataField="pad_codigo_variedad" HeaderText="Padre" ReadOnly="true" HeaderStyle-Width="10%" />
+                    <asp:BoundField DataField="nombre_padre" HeaderText="Nombre Padre" ReadOnly="true" HeaderStyle-Width="12%" />
+                    <asp:TemplateField ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="10%" HeaderText="Fertilidad">
                         <ItemTemplate>
                             <asp:DropDownList type="button" ID="ddlClonesFertilidad" runat="server" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
-                        </ItemTemplate>
-
-                        <HeaderStyle Width="50px"></HeaderStyle>
-
-                        <ItemStyle HorizontalAlign="Center"></ItemStyle>
+                        </ItemTemplate>                                                
                     </asp:TemplateField>
-
-                    <asp:BoundField DataField="azul_clon" HeaderText="Azules" HeaderStyle-Width="50px" ControlStyle-Width="50px" />
-                    <asp:BoundField DataField="roja_clon" HeaderText="Rojas" HeaderStyle-Width="50px" ControlStyle-Width="50px" />
-                    <asp:BoundField DataField="amarilla_clon" HeaderText="Amarillas" HeaderStyle-Width="50px" ControlStyle-Width="50px" />
-                    <asp:BoundField DataField="bicolor_clon" HeaderText="Bicolor" HeaderStyle-Width="50px" ControlStyle-Width="50px" />
+                    <asp:BoundField DataField="azul_clon" HeaderText="Azules" HeaderStyle-Width="5%" ControlStyle-Width="100%" />
+                    <asp:BoundField DataField="roja_clon" HeaderText="Rojas" HeaderStyle-Width="5%" ControlStyle-Width="100%" />
+                    <asp:BoundField DataField="amarilla_clon" HeaderText="Amarillas" HeaderStyle-Width="5%" ControlStyle-Width="100%" />
+                    <asp:BoundField DataField="bicolor_clon" HeaderText="Bicolor" HeaderStyle-Width="5%" ControlStyle-Width="100%" />
                 </Columns>
             </asp:GridView>
 

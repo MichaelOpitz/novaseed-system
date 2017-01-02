@@ -130,7 +130,7 @@ namespace Project.Novaseed
                 int id_ciudad = Int32.Parse(this.ddlCiudad.SelectedValue);
                 int valor = cc.DeleteCiudad(id_ciudad);
                 if (valor == 0)
-                    Page.ClientScript.RegisterStartupScript(GetType(), "Script", "<script>alert('Error!\n¡No se pudo eliminar la ciudad!')</script>");
+                    Page.ClientScript.RegisterStartupScript(GetType(), "Script", "<script>alert('¡Error! No se pudo eliminar la ciudad')</script>");
                 Response.Redirect("Menu.aspx");
             }
             catch (Exception ex)
@@ -201,7 +201,7 @@ namespace Project.Novaseed
                 int id_provincia = Int32.Parse(this.ddlProvincia.SelectedValue);
                 int valor = cp.DeleteProvincia(id_provincia);
                 if (valor == 0)
-                    Page.ClientScript.RegisterStartupScript(GetType(), "Script", "<script>alert('Error!\n¡No se pudo eliminar la provincia!')</script>");
+                    Page.ClientScript.RegisterStartupScript(GetType(), "Script", "<script>alert('¡Error! No se pudo eliminar la provincia')</script>");
                 Response.Redirect("Menu.aspx");
             }
             catch (Exception ex)
@@ -243,7 +243,7 @@ namespace Project.Novaseed
                 int id_region = Int32.Parse(this.ddlRegion.SelectedValue);
                 int valor = cr.DeleteRegion(id_region);
                 if (valor == 0)
-                    Page.ClientScript.RegisterStartupScript(GetType(), "Script", "<script>alert('Error!\n¡No se pudo eliminar la región!')</script>");
+                    Page.ClientScript.RegisterStartupScript(GetType(), "Script", "<script>alert('¡Error! No se pudo eliminar la región')</script>");
                 Response.Redirect("Menu.aspx");
             }
             catch (Exception ex)

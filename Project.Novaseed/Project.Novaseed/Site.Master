@@ -66,7 +66,7 @@
                                     <ul class="dropdown-menu">
                                         <li><a runat="server" href="~/UsuarioPerfil"><i class="glyphicon glyphicon-edit"></i> Editar Perfil</a></li>
                                         <li class="divider"></li>                                        
-                                        <li><asp:Button type="button" runat="server" ID="btnCerrarSession" class="btn btn-danger btn-block" Style="border-color: #000000" Text="Cerrar Session" OnClick="btnCerrarSession_Click"></asp:Button></li>
+                                        <li><asp:Button type="button" runat="server" ID="btnCerrarSession" class="btn btn-danger btn-block" Style="border-color: #000000" Text="Cerrar Session" OnClientClick="return confirm('Cerrará sesión ¿Está seguro?');" OnClick="btnCerrarSession_Click"></asp:Button></li>
                                     </ul>
                                 </li>
                             </ul>

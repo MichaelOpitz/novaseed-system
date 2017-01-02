@@ -124,7 +124,10 @@
             <asp:Button type="button" runat="server" Text="Características Padre" ID="btnCaracteristicaPadre" class="btn btn-primary btn-md" Width="49%" BorderColor="#000000" OnClick="btnCaracteristicaPadre_Click"></asp:Button>
         </div>        
         <%-- TABLA MADRE --%>
-        <div class="row" style="text-align: center; margin-top: 40px">
+        <div class="row" style="margin-top: 40px">
+            <span class="label label-primary" style="text-align:left">Tabla Madre</span>
+        </div>
+        <div class="row" style="text-align: center">            
             <asp:GridView ID="gdvCaracteristicaMadre" runat="server" AutoGenerateColumns="False" CssClass="table table-bordered bs-table">
 
                 <HeaderStyle BackColor="#337ab7" Font-Bold="True" ForeColor="White" />
@@ -149,7 +152,10 @@
         </div>        
         <hr style="color: #000000" />
         <%-- TABLA PADRE --%>
-        <div class="row" style="text-align: center; margin-top: 40px">
+        <div class="row" style="margin-top: 40px">
+            <span class="label label-primary" style="text-align:left">Tabla Padre</span>
+        </div>
+        <div class="row" style="text-align: center">
             <asp:GridView ID="gdvCaracteristicaPadre" runat="server" AutoGenerateColumns="False" CssClass="table table-bordered bs-table">
 
                 <HeaderStyle BackColor="#337ab7" Font-Bold="True" ForeColor="White" />

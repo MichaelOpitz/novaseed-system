@@ -244,7 +244,7 @@ namespace Project.Novaseed
                 string id_cosecha = HttpUtility.HtmlDecode((string)this.gdv12papas.Rows[e.RowIndex].Cells[2].Text);
                 int valor = cc.DeleteCosecha12papas(Int32.Parse(id_cosecha));
                 if (valor == 0)
-                    Page.ClientScript.RegisterStartupScript(GetType(), "Script", "<script>alert('Error!\n¡No se pudo eliminar la variedad!')</script>");
+                    Page.ClientScript.RegisterStartupScript(GetType(), "Script", "<script>alert('¡Error! No se pudo eliminar la variedad')</script>");
 
                 PoblarGrilla();
             }
@@ -474,13 +474,13 @@ namespace Project.Novaseed
                 else
                 {
                     this.lbl12papasError.Text += "Error al modificar, Revise los parámetros indicados y modifiquelos.<br/>";
-                    Page.ClientScript.RegisterStartupScript(GetType(), "Script", "<script>alert('¡Datos incorrectos!\nRevise los parámetros indicados y modifique su valor')</script>");
+                    Page.ClientScript.RegisterStartupScript(GetType(), "Script", "<script>alert('¡Datos incorrectos! Revise los parámetros indicados y modifique su valor')</script>");
                 }
             }
             catch (Exception ex)
             {
                 this.lbl12papasError.Text += "ERROR CRÍTICO, NO SE HA PODIDO MODIFICAR LA VARIEDAD, ARREGLE LOS PARÁMETROS E INTENTELO NUEVAMENTE.<br/>";
-                Page.ClientScript.RegisterStartupScript(GetType(), "Script", "<script>alert('¡Error al modificar!\nNo se ha podido actualizar la variedad')</script>");
+                Page.ClientScript.RegisterStartupScript(GetType(), "Script", "<script>alert('¡Error al modificar! No se ha podido actualizar la variedad')</script>");
             }
             PoblarGrilla();
         }

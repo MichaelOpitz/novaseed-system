@@ -225,7 +225,7 @@ namespace Project.Novaseed
                 string id_codificacion = HttpUtility.HtmlDecode((string)this.gdvCodigoIndividuos.Rows[e.RowIndex].Cells[1].Text);
                 int valor = cc.DeleteCodificacion(Int32.Parse(id_codificacion));
                 if (valor == 0)
-                    Page.ClientScript.RegisterStartupScript(GetType(), "Script", "<script>alert('Error!\n¡No se pudo eliminar el código!')</script>");
+                    Page.ClientScript.RegisterStartupScript(GetType(), "Script", "<script>alert('¡Error! No se pudo eliminar el código')</script>");
 
                 PoblarGrilla();
             }

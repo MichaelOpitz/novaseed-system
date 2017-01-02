@@ -124,7 +124,7 @@ namespace Project.Novaseed
                 int valor = ce.DeleteEnfermedad(Int32.Parse(id_enfermedad));
                 if (valor == 0)
                 {
-                    Page.ClientScript.RegisterStartupScript(GetType(), "Script", "<script>alert('Error!\n¡No se pudo eliminar la enfermedad!')</script>");
+                    Page.ClientScript.RegisterStartupScript(GetType(), "Script", "<script>alert('¡Error! No se pudo eliminar la enfermedad')</script>");
                     this.lblEnfermedadesError.Text += "No se pudo eliminar, La enfermedad está presente en alguna cosecha.<br/>";
                 }
 

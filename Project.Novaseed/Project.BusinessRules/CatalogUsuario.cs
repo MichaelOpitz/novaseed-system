@@ -84,8 +84,7 @@ namespace Project.BusinessRules
                 bd.CreateParameter("@fecha_nac", DbType.DateTime2, u.Fecha_nacimiento);
                 bd.CreateParameter("@direccion", DbType.String, u.Direccion);
                 bd.CreateParameter("@email", DbType.String, u.Email);
-                bd.CreateParameter("@telefono", DbType.Int32, u.Telefono);
-                bd.CreateParameter("@password", DbType.String, u.Password);
+                bd.CreateParameter("@telefono", DbType.Int32, u.Telefono);                
                 bd.CreateParameter("@administrador", DbType.Boolean, u.Administrador);
                 bd.Execute();
                 bd.Close();
@@ -378,16 +377,16 @@ namespace Project.BusinessRules
         /*
          * Devuelve los parámetros del perfil de usuario
          */
-        public List<Usuario> GetUsuarioPerfilNacionalidad(string usuario)
+        public List<Usuario> GetUsuarioPerfilNacionalidad(int rol)
         {
             try
             {
                 DataAccess.DataBase bd = new DataBase();
                 bd.Connect(); //método conectar
                 List<Usuario> lu = new List<Usuario>();
-                string sql = "usuarioNacionalidadObtener";
+                string sql = "usuarioPerfilNacionalidadObtener";
                 bd.CreateCommandSP(sql);
-                bd.CreateParameter("@usuario", DbType.String, usuario);
+                bd.CreateParameter("@rol", DbType.Int32, rol);
 
                 DbDataReader resultado = bd.Query();
 
@@ -430,6 +429,34 @@ namespace Project.BusinessRules
 
                 bd.Close();
                 return cambio;
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.ToString());
+            }
+        }
+
+        /*
+         * Devuelve 1 si el correo existe, 0 en caso contrario
+         */
+        public int ExistCorreo(string email)
+        {
+            try
+            {
+                DataAccess.DataBase bd = new DataBase();
+                bd.Connect(); //método conectar
+                int existe;
+
+                string salida = "loginExisteCorreo";//comando sql
+                bd.CreateCommandSP(salida);
+                bd.CreateParameter("@email", DbType.String, email);                
+                DbDataReader resultado = bd.Query();//disponible resultado
+                resultado.Read();
+                existe = resultado.GetInt32(0);
+                resultado.Close();
+
+                bd.Close();
+                return existe;
             }
             catch (Exception e)
             {

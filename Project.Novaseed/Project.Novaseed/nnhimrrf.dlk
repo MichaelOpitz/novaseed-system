@@ -15,7 +15,7 @@
 </head>
 
 <body>
-    <form runat="server" style="width:100%">
+    <form runat="server">
         <asp:ScriptManager runat="server">
             <Scripts>
                 <%--To learn more about bundling scripts in ScriptManager see http://go.microsoft.com/fwlink/?LinkID=301884 --%>
@@ -53,6 +53,36 @@
                     <asp:RegularExpressionValidator ID="reLoginContraseña" runat="server" ValidationExpression=".{3,49}" ErrorMessage="Contraseña Inválida" ControlToValidate="txtLoginContraseña" ForeColor="Red" ValidationGroup="login"></asp:RegularExpressionValidator>
                     <asp:TextBox type="password" runat="server" class="form-control" Placeholder="Ingrese Contraseña" ID="txtLoginContraseña"></asp:TextBox>
                     <asp:HyperLink ID="lnkLoginOlvidarContraseña" runat="server" Text="¿Olvidaste tu contraseña?" data-toggle="modal" data-target="#recuperarContraseña"></asp:HyperLink>
+
+                    <!-- Modal -->
+                    <div id="recuperarContraseña" class="modal fade" role="dialog">
+                        <div class="modal-dialog">
+
+                            <!-- Modal content-->
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 class="modal-title">Recuperar Contraseña</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="row">
+                                        <div class="col-sm-8 col-sm-offset-3">
+                                            <h5>
+                                                <asp:Label ID="lblLoginRecuperarContraseña" runat="server" Text="Ingrese su correo para reestrablecer su contraseña" /></h5>
+                                            <asp:TextBox type="text" runat="server" class="form-control" Placeholder="Ingrese Correo Electrónico" ID="txtLoginRecuperarContraseña"></asp:TextBox>
+                                            <span class="help-block">Correo</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <asp:Button type="button" runat="server" Text="Enviar Correo" ID="btnUsuarioConfirmarContraseña" class="btn btn-danger btn-md" Width="40%" BorderColor="#000000" OnClientClick="return confirm('¿Desea cambiar su contraseña?');"></asp:Button>
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
                 </div>
             </div>
 
@@ -64,36 +94,6 @@
             <div class="row">
                 <div class="col-sm-5 col-sm-offset-4">
                     <asp:CheckBox ID="chkLoginRecordar" runat="server" Text="Recordar Contraseña" />
-                </div>
-            </div>
-
-            <!-- Modal -->
-            <div id="recuperarContraseña" class="modal fade" role="dialog">
-                <div class="modal-dialog">
-
-                    <!-- Modal content-->
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title">Recuperar Contraseña</h4>
-                        </div>
-                        <div class="modal-body">
-                            <div class="row">
-                                <div class="col-sm-8 col-sm-offset-3">
-                                    <h5>
-                                        <asp:Label ID="lblLoginRecuperarContraseña" runat="server" Text="Ingrese su correo para reestrablecer la contraseña" /></h5>
-                                    <asp:RegularExpressionValidator ID="reLoginExisteCorreo" runat="server" ValidationExpression="^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$" ErrorMessage="Correo Inválido" ControlToValidate="txtLoginRecuperarContraseña" ForeColor="Red" ValidationGroup="correo"></asp:RegularExpressionValidator>
-                                    <asp:TextBox type="text" runat="server" class="form-control" Placeholder="Ingrese Correo Electrónico" ID="txtLoginRecuperarContraseña"></asp:TextBox>
-                                    <span class="help-block">Correo</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <asp:Button type="button" runat="server" Text="Enviar Correo" ID="btnUsuarioConfirmarContraseña" class="btn btn-danger btn-md" Width="40%" BorderColor="#000000" ValidationGroup="correo" CausesValidation="true" OnClick="btnLoginExisteCorreo_Click"></asp:Button>
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        </div>
-                    </div>
-
                 </div>
             </div>
 
