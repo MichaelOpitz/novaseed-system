@@ -7,7 +7,7 @@
         <div class="row">
             <div class="col-sm-4">
                 <h2>
-                    <asp:Label ID="lblCodificacionAño" runat="server" Font-Bold="true" Text="Codificacion" /></h2>
+                    <asp:Label ID="lblCodificacionAño" runat="server" Font-Bold="true" Text="Codificacion" Font-Names="versalitas"/></h2>
             </div>
         </div>
         <br />

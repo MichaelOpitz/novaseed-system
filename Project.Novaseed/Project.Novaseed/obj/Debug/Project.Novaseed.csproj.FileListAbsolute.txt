@@ -70,3 +70,7 @@ C:\Users\Michael\Dropbox\Personal\10° Semestre\Sistema\Project.Novaseed\Project
 C:\Users\Michael\Dropbox\Personal\10° Semestre\Sistema\Project.Novaseed\Project.Novaseed\obj\Debug\Project.Novaseed.pdb
 C:\Users\Michael\Dropbox\Personal\10° Semestre\Sistema\Project.Novaseed\Project.Novaseed\obj\Debug\RdlCompile.cache
 C:\Users\Michael\Dropbox\Personal\10° Semestre\Sistema\Project.Novaseed\Project.Novaseed\obj\Debug\RdlCompile.compiled
+C:\Users\Michael\Dropbox\Personal\10° Semestre\Sistema\Project.Novaseed\Project.Novaseed\bin\itextsharp.dll
+C:\Users\Michael\Dropbox\Personal\10° Semestre\Sistema\Project.Novaseed\Project.Novaseed\bin\itextsharp.pdfa.dll
+C:\Users\Michael\Dropbox\Personal\10° Semestre\Sistema\Project.Novaseed\Project.Novaseed\bin\itextsharp.xtra.dll
+C:\Users\Michael\Dropbox\Personal\10° Semestre\Sistema\Project.Novaseed\Project.Novaseed\bin\itextsharp.xml

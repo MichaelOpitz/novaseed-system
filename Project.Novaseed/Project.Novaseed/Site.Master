@@ -55,9 +55,8 @@
                         <li><a runat="server" href="~/Mejoramiento"><b class="glyphicon glyphicon-upload"></b> Mejoramiento</a></li>
                         <li><a runat="server" href="~/MenuGeneracion"><b class="glyphicon glyphicon-leaf"></b> Año de Generación</a></li>
                         <li><a runat="server" href="~/MenuProduccion"><b class="glyphicon glyphicon-briefcase"></b> Producción</a></li>
-                        <li><a runat="server" href="~/Licencia"><b class="glyphicon glyphicon-usd"></b> Licencia</a></li>
-                        <li style="text-align:center; margin-top:15px; margin-left:15px"><asp:Label ID="lblUsuario" runat="server" ForeColor="White" Text=""/></li>
-                    </ul>
+                        <li><a runat="server" href="~/Licencia"><b class="glyphicon glyphicon-usd"></b> Licencia</a></li>                        
+                    </ul>                    
                     <asp:LoginView runat="server" ViewStateMode="Disabled">
                         <AnonymousTemplate>
                             <ul class="nav navbar-nav navbar-right">
@@ -66,10 +65,10 @@
                                     <ul class="dropdown-menu">
                                         <li><a runat="server" href="~/UsuarioPerfil"><i class="glyphicon glyphicon-edit"></i> Editar Perfil</a></li>
                                         <li class="divider"></li>                                        
-                                        <li><asp:Button type="button" runat="server" ID="btnCerrarSession" class="btn btn-danger btn-block" Style="border-color: #000000" Text="Cerrar Session" OnClientClick="return confirm('Cerrará sesión ¿Está seguro?');" OnClick="btnCerrarSession_Click"></asp:Button></li>
+                                        <li><asp:Button type="button" runat="server" ID="btnCerrarSession" class="btn btn-danger btn-block" Style="border-color: #000000" Text="Cerrar Sesión" OnClientClick="return confirm('¿Desea Cerrar Sesión?');" OnClick="btnCerrarSession_Click"></asp:Button></li>
                                     </ul>
                                 </li>
-                            </ul>
+                            </ul>                            
                         </AnonymousTemplate>
                         <LoggedInTemplate>
                             <ul class="nav navbar-nav navbar-right">
@@ -80,6 +79,9 @@
                             </ul>
                         </LoggedInTemplate>
                     </asp:LoginView>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li style="text-align:center; margin-top:15px; margin-right:15px"><asp:Label ID="lblUsuario" runat="server" ForeColor="White" Text=""/></li>
+                    </ul>
                 </div>
             </div>
         </div>

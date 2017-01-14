@@ -29,7 +29,7 @@
                 <span class="help-block">Dígito Verificador</span>
             </div>
         </div>
-        
+
         <div class="row">
             <div class="col-sm-3 col-sm-offset-3">
                 <asp:RegularExpressionValidator ID="reUsuarioNombre" runat="server" ValidationExpression="^[a-zA-ZÁÉÍÓÚáéíóú]{1,1}[a-zA-ZÁÉÍÓÚáéíóú\s\-]{0,48}" ErrorMessage="Debe ser sólo letras y guión" ControlToValidate="txtUsuarioNombre" ForeColor="Red" ValidationGroup="modificarPerfil"></asp:RegularExpressionValidator>
@@ -43,34 +43,39 @@
             </div>
         </div>
         <br />
-        <div class="row">
-            <div class="col-sm-6 col-sm-offset-3">
-                <asp:DropDownList type="button" ID="ddlUsuarioMes" runat="server" Width="49%" AppendDataBoundItems="true" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" OnSelectedIndexChanged="ddlUsuarioMes_SelectedIndexChanged" AutoPostBack="True">
-                    <asp:ListItem Selected="True" Value="1">Enero</asp:ListItem>
-                    <asp:ListItem Value="2">Febrero</asp:ListItem>
-                    <asp:ListItem Value="3">Marzo</asp:ListItem>
-                    <asp:ListItem Value="4">Abril</asp:ListItem>
-                    <asp:ListItem Value="5">Mayo</asp:ListItem>
-                    <asp:ListItem Value="6">Junio</asp:ListItem>
-                    <asp:ListItem Value="7">Julio</asp:ListItem>
-                    <asp:ListItem Value="8">Agosto</asp:ListItem>
-                    <asp:ListItem Value="9">Septiembre</asp:ListItem>
-                    <asp:ListItem Value="10">Octubre</asp:ListItem>
-                    <asp:ListItem Value="11">Noviembre</asp:ListItem>
-                    <asp:ListItem Value="12">Diciembre</asp:ListItem>
-                </asp:DropDownList>
-                <asp:DropDownList type="button" ID="ddlUsuarioAño" runat="server" Width="49%" AppendDataBoundItems="true" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" OnSelectedIndexChanged="ddlUsuarioAño_SelectedIndexChanged" AutoPostBack="True"></asp:DropDownList>
-                <asp:Calendar ID="clrUsuarioFechaNacimiento" runat="server" BackColor="White" BorderColor="White" BorderWidth="1px" Font-Names="Verdana" Font-Size="9pt" ForeColor="Black" Height="190px" NextPrevFormat="FullMonth" Width="100%">
-                    <DayHeaderStyle Font-Bold="True" Font-Size="8pt" />
-                    <NextPrevStyle Font-Bold="True" Font-Size="8pt" ForeColor="#333333" VerticalAlign="Bottom" />
-                    <OtherMonthDayStyle ForeColor="#999999" />
-                    <SelectedDayStyle BackColor="#333399" ForeColor="White" />
-                    <TitleStyle BackColor="White" BorderColor="Black" BorderWidth="4px" Font-Bold="True" Font-Size="12pt" ForeColor="#333399" />
-                    <TodayDayStyle BackColor="#CCCCCC" />
-                </asp:Calendar>
-                <span class="help-block">Fecha Nacimiento</span>
-            </div>
-        </div>
+        <asp:UpdatePanel runat="server" ID="UpdatePanel"
+            UpdateMode="Conditional">            
+            <ContentTemplate>
+                <div class="row">
+                    <div class="col-sm-6 col-sm-offset-3">
+                        <asp:DropDownList type="button" ID="ddlUsuarioMes" runat="server" Width="49%" AppendDataBoundItems="true" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" OnSelectedIndexChanged="ddlUsuarioMes_SelectedIndexChanged" AutoPostBack="True">
+                            <asp:ListItem Selected="True" Value="1">Enero</asp:ListItem>
+                            <asp:ListItem Value="2">Febrero</asp:ListItem>
+                            <asp:ListItem Value="3">Marzo</asp:ListItem>
+                            <asp:ListItem Value="4">Abril</asp:ListItem>
+                            <asp:ListItem Value="5">Mayo</asp:ListItem>
+                            <asp:ListItem Value="6">Junio</asp:ListItem>
+                            <asp:ListItem Value="7">Julio</asp:ListItem>
+                            <asp:ListItem Value="8">Agosto</asp:ListItem>
+                            <asp:ListItem Value="9">Septiembre</asp:ListItem>
+                            <asp:ListItem Value="10">Octubre</asp:ListItem>
+                            <asp:ListItem Value="11">Noviembre</asp:ListItem>
+                            <asp:ListItem Value="12">Diciembre</asp:ListItem>
+                        </asp:DropDownList>
+                        <asp:DropDownList type="button" ID="ddlUsuarioAño" runat="server" Width="49%" AppendDataBoundItems="true" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" OnSelectedIndexChanged="ddlUsuarioAño_SelectedIndexChanged" AutoPostBack="True"></asp:DropDownList>
+                        <asp:Calendar ID="clrUsuarioFechaNacimiento" runat="server" BackColor="White" BorderColor="White" BorderWidth="1px" Font-Names="Verdana" Font-Size="9pt" ForeColor="Black" Height="190px" NextPrevFormat="FullMonth" Width="100%">
+                            <DayHeaderStyle Font-Bold="True" Font-Size="8pt" />
+                            <NextPrevStyle Font-Bold="True" Font-Size="8pt" ForeColor="#333333" VerticalAlign="Bottom" />
+                            <OtherMonthDayStyle ForeColor="#999999" />
+                            <SelectedDayStyle BackColor="#333399" ForeColor="White" />
+                            <TitleStyle BackColor="White" BorderColor="Black" BorderWidth="4px" Font-Bold="True" Font-Size="12pt" ForeColor="#333399" />
+                            <TodayDayStyle BackColor="#CCCCCC" />
+                        </asp:Calendar>
+                        <span class="help-block">Fecha Nacimiento</span>
+                    </div>
+                </div>
+            </ContentTemplate>
+        </asp:UpdatePanel>
         <br />
         <div class="row" style="text-align: center">
             <div class="col-sm-6 col-sm-offset-3">
@@ -78,7 +83,7 @@
                 <span class="help-block">Nacionalidad</span>
             </div>
         </div>
-        
+
         <div class="row">
             <div class="col-sm-3 col-sm-offset-3">
                 <asp:RegularExpressionValidator ID="reUsuarioEmail" runat="server" ValidationExpression="^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$" ErrorMessage="Correo inválido" ControlToValidate="txtUsuarioCorreo" ForeColor="Red" ValidationGroup="modificarPerfil"></asp:RegularExpressionValidator>
@@ -91,7 +96,7 @@
                 <span class="help-block">Teléfono Ejemplo: 912345678</span>
             </div>
         </div>
-        
+
         <div class="row">
             <div class="col-sm-3 col-sm-offset-3">
                 <asp:RegularExpressionValidator ID="reUsuarioDireccion" runat="server" ValidationExpression=".{0,299}" ErrorMessage="Dirección incorrecta" ControlToValidate="txtUsuarioDireccion" ForeColor="Red" ValidationGroup="modificarPerfil"></asp:RegularExpressionValidator>
@@ -102,7 +107,7 @@
                 <asp:CheckBox ID="chkUsuarioAdministrador" runat="server" Text="Administrador" />
             </div>
         </div>
-        
+
         <div class="row">
             <div class="col-sm-3 col-sm-offset-3">
                 <asp:DropDownList type="button" ID="ddlUsuarioSexo" runat="server" Width="90%" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
@@ -119,7 +124,7 @@
         <div class="row" style="text-align: center">
             <asp:Button type="button" runat="server" Text="Guardar" ID="btnUsuarioGuardar" class="btn btn-primary btn-md" Width="20%" BorderColor="#000000" ValidationGroup="modificarPerfil" CausesValidation="true" OnClientClick="return confirm('¿Desea guardar los cambios?');" OnClick="btnUsuarioGuardar_Click"></asp:Button>
             <asp:Button type="button" runat="server" Text="Cambiar Contraseña" ID="btnUsuarioCambiarContraseña" class="btn btn-primary btn-md" Width="20%" BorderColor="#000000" data-toggle="modal" data-target="#contraseña"></asp:Button>
-            <asp:Button type="button" runat="server" Text="Cancelar" ID="btnUsuarioCancelar" class="btn btn-danger btn-md" Width="20%" BorderColor="#000000" OnClientClick="return confirm('¿Desea cancelar los cambios?');" OnClick="btnUsuarioCancelar_Click"></asp:Button>            
+            <asp:Button type="button" runat="server" Text="Cancelar" ID="btnUsuarioCancelar" class="btn btn-danger btn-md" Width="20%" BorderColor="#000000" OnClientClick="return confirm('¿Desea cancelar los cambios?');" OnClick="btnUsuarioCancelar_Click"></asp:Button>
         </div>
 
         <!-- Modal -->
@@ -146,14 +151,14 @@
                                 <asp:TextBox type="password" runat="server" class="form-control" Placeholder="Contraseña" ID="txtUsuarioPasswordNueva"></asp:TextBox>
                                 <span class="help-block">Nueva Contraseña</span>
                             </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-8 col-sm-offset-3">
-                            <asp:RegularExpressionValidator ID="reUsuarioPasswordRepetirNueva" runat="server" ValidationExpression=".{3,49}" ErrorMessage="Contraseña debe tener entre 3 y 49 caracteres" ControlToValidate="txtUsuarioPasswordRepetirNueva" ForeColor="Red" ValidationGroup="cambiarContraseña"></asp:RegularExpressionValidator>
-                            <asp:TextBox type="password" runat="server" class="form-control" Placeholder="Repita Contraseña" ID="txtUsuarioPasswordRepetirNueva"></asp:TextBox>
-                            <span class="help-block">Repita Contraseña</span>
                         </div>
-                    </div>
+                        <div class="row">
+                            <div class="col-sm-8 col-sm-offset-3">
+                                <asp:RegularExpressionValidator ID="reUsuarioPasswordRepetirNueva" runat="server" ValidationExpression=".{3,49}" ErrorMessage="Contraseña debe tener entre 3 y 49 caracteres" ControlToValidate="txtUsuarioPasswordRepetirNueva" ForeColor="Red" ValidationGroup="cambiarContraseña"></asp:RegularExpressionValidator>
+                                <asp:TextBox type="password" runat="server" class="form-control" Placeholder="Repita Contraseña" ID="txtUsuarioPasswordRepetirNueva"></asp:TextBox>
+                                <span class="help-block">Repita Contraseña</span>
+                            </div>
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <asp:Button type="button" runat="server" Text="Cambiar Contraseña" ID="btnUsuarioConfirmarContraseña" class="btn btn-danger btn-md" Width="40%" BorderColor="#000000" OnClientClick="return confirm('¿Desea cambiar su contraseña?');" OnClick="btnUsuarioConfirmarContraseña_Click"></asp:Button>

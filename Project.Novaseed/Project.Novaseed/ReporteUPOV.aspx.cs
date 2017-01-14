@@ -1,6 +1,9 @@
 ﻿using Microsoft.Reporting.WebForms;
+using Project.BusinessRules;
 using System;
 using System.Collections.Generic;
+using System.Data;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -10,7 +13,7 @@ namespace Project.Novaseed
 {
     public partial class ReporteUPOV : System.Web.UI.Page
     {        
-        private string valorAñoString;
+        private string id_upovString, nombre_upov;
         private int id_upov;
 
         protected void Page_Load(object sender, EventArgs e)
@@ -26,29 +29,70 @@ namespace Project.Novaseed
                 Response.Redirect("Login.aspx");
             }
 
-            //PREGUNTA SI ES DISTINTO DE NULL PORQUE EL USUARIO PUEDE ESCRIBIR DESDE LA URL Y NO TENDRÍA AÑO ASIGNADO
-            if (Request.QueryString["id_upov"] != null)
-                valorAñoString = Request.QueryString["id_upov"];
-            else
-                valorAñoString = "0";
-            id_upov = Int32.Parse(valorAñoString);                        
+            try
+            {
+                //PREGUNTA SI ES DISTINTO DE NULL PORQUE EL USUARIO PUEDE ESCRIBIR DESDE LA URL Y NO TENDRÍA AÑO ASIGNADO
+                if (Request.QueryString["id_upov"] != null && Request.QueryString["nombre_upov"] != null)
+                {
+                    id_upovString = Request.QueryString["id_upov"];
+                    nombre_upov = Request.QueryString["nombre_upov"];
+                }
+                else
+                {
+                    id_upovString = "0";
+                    nombre_upov = "0";
+                }
+                id_upov = Int32.Parse(id_upovString);
+                string nombre = id_upovString + "-" + nombre_upov;
+
+                //Método para llamar el archivo
+                SetupReport(this.ReportViewer1);
+                //Método para exportar a PDF
+                RenderReport(this.ReportViewer1, Response, nombre.Replace(" ", ""));
+            }
+            catch (Exception ex)
+            {
+            }
         }
 
-        protected void btnReporteUPOV_Click(object sender, EventArgs e)
+        private void SetupReport(ReportViewer reportViewer)
         {
-            DataSetNovaseed.upovNombresReporteDataTable dt = new DataSetNovaseed.upovNombresReporteDataTable();
-            DataSetNovaseedTableAdapters.upovNombresReporteTableAdapter dta = new DataSetNovaseedTableAdapters.upovNombresReporteTableAdapter();
-            dta.Fill(dt, id_upov);
+            try
+            {
+                CatalogUPOV cu = new CatalogUPOV();
+                DataTable dt = new DataTable();
+                dt.Clear();
+                dt = cu.GetUPOVReporte(id_upov).Tables[0];
 
-            ReportDataSource rds = new ReportDataSource();
-            rds.Value = dt;
-            rds.Name = "DataSet1";
+                reportViewer.LocalReport.DataSources.Clear();
+                reportViewer.LocalReport.ReportPath = @"ReporteUPOV.rdlc";
+                reportViewer.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", dt));
+            }
+            catch (Exception ex)
+            {
+            }
+        }
 
-            this.ReportViewer1.LocalReport.DataSources.Clear();
-            this.ReportViewer1.LocalReport.DataSources.Add(rds);
-            this.ReportViewer1.LocalReport.ReportEmbeddedResource = "ReporteUPOV.rdlc";
-            this.ReportViewer1.LocalReport.ReportPath = @"ReporteUPOV.rdlc";            
-            this.ReportViewer1.LocalReport.Refresh();
+        private void RenderReport(ReportViewer reportViewer, HttpResponse response, string nombre)
+        {
+            try
+            {
+                Warning[] warnings;
+                string[] streamids;
+                string mimeType;
+                string encoding;
+                string extension;
+                byte[] bytes = reportViewer.LocalReport.Render("PDF", null, out mimeType, out encoding, out extension, out streamids, out warnings);
+
+                MemoryStream ms = new MemoryStream(bytes);
+                response.ContentType = mimeType;
+                response.AppendHeader("Content-Disposition", "attachment; filename =" + nombre + "_upov." + extension);
+                response.BinaryWrite(ms.ToArray());
+                response.End();
+            }
+            catch (Exception ex)
+            {
+            }
         }
     }
 }

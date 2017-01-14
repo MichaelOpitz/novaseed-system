@@ -7,21 +7,24 @@
         <div class="row">
             <div class="col-sm-4">
                 <h2>
-                    <asp:Label ID="lblVasosAño" runat="server" Font-Bold="true" Text="Vasos" /></h2>
+                    <asp:Label ID="lblVasosAño" runat="server" Font-Bold="true" Text="Vasos" Font-Names="versalitas"/></h2>
             </div>
             <div class="col-sm-3 col-sm-offset-1">
                 <asp:TextBox type="text" runat="server" class="form-control" ID="txtCantidadTotalVasos" Width="80%" ReadOnly="true" Style="background-color: #ffd800; border-color: #000000" Font-Bold="true"></asp:TextBox>
                 <span class="help-block">Cantidad Total de Vasos por Año</span>
+            </div>
+            <div class="col-sm-4" style="text-align: right">
+                <h6>
+                    <asp:Label ID="lblVasosLeyendaVerde" runat="server" Text="Verde significa que está en etapas avanzadas" ForeColor="Green" Font-Italic="true" /></h6>
+                <h6>
+                    <asp:Label ID="lblVasosLeyendaRojo" runat="server" Text="Rojo significa que esta es su última etapa" ForeColor="Red" Font-Italic="true" /></h6>
             </div>
         </div>
         <br />
         <div class="row">
             <h5>
                 <asp:Label ID="lblVasosError" runat="server" Font-Bold="true" Text="" ForeColor="Red" /></h5>
-        </div>
-        <div class="row">
-            <asp:Button type="button" runat="server" ID="btnAgregarClones" class="btn btn-primary btn-block" Style="border-color: #000000" Text="Agregar a Clones" OnClick="btnAgregarClones_Click" OnClientClick="return confirm('Agregará a Clones\n¿Está seguro?');"></asp:Button>
-        </div>
+        </div>        
         <div class="row">
             <asp:GridView ID="gdvVasos" runat="server" Width="100%"
                 DataKeyNames="id_vasos"
@@ -118,6 +121,10 @@
                     <asp:BoundField DataField="bicolor_vasos" HeaderText="Bicolor" HeaderStyle-Width="5%" ControlStyle-Width="100%" />
                 </Columns>
             </asp:GridView>
+        </div>
+        <div class="row" style="text-align:right">
+            <asp:Button type="button" runat="server" ID="btnAgregarClones" class="btn btn-success btn-md" Width="15%" Style="border-color: #000000" Text="Agregar a Clones" OnClick="btnAgregarClones_Click" OnClientClick="return confirm('Agregará a Clones\n¿Está seguro?');"></asp:Button>
+            <asp:Button type="button" runat="server" ID="btnCancelarClones" class="btn btn-danger btn-md" Width="15%" Style="border-color: #000000" Text="Volver al Menú" OnClick="btnCancelarClones_Click" OnClientClick="return confirm('¿Desea volver al menú?');"></asp:Button>
         </div>
     </div>
 </asp:Content>

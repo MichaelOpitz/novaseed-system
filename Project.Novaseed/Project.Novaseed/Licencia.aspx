@@ -7,16 +7,16 @@
         <br />
         <div class="row" style="text-align:center">
             <h2>
-                <asp:Label ID="lblLicencia" runat="server" Font-Bold="true" Text="Licencia" /></h2>
+                <asp:Label ID="lblLicencia" runat="server" Font-Bold="true" Text="Licencia" Font-Names="versalitas"/></h2>
         </div>
         <br />
         <div class="row">
-            <div class="col-sm-4 col-sm-offset-1">
+            <div class="col-sm-4">
                 <asp:DropDownList type="button" ID="ddlLicenciaAño" runat="server" class="btn btn-primary dropdown-toggle" Width="70%" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
                 <span class="help-block">¡Seleccione año para ver las licencias!</span>
             </div>
-            <div class="col-sm-4">
-                <asp:Button type="button" runat="server" class="btn btn-danger btn-block" ID="btnLicencia" Style='border-color: #000000' Text="Buscar Licencias" OnClick="btnLicencia_Click" ></asp:Button>
+            <div class="col-sm-8">
+                <asp:Button type="button" runat="server" class="btn btn-success btn-block" ID="btnLicencia" Style='border-color: #000000' Text="Buscar Licencias" OnClick="btnLicencia_Click" ></asp:Button>
             </div>
         </div>
         <br />

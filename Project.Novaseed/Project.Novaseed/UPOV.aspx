@@ -456,14 +456,13 @@
         <hr style="color: #000000" />
         <div class="panel panel-primary">
             <div class="panel-heading" style="text-align: center">COLORES</div>
-            <div class="panel-body">
-                <br />
+            <div class="panel-body">                
                 <div class="row">
                     <div class="col-sm-3 col-sm-offset-3">
                         <div class="panel panel-default">
                             <div class="panel-heading" style="text-align: center">Carne</div>
                             <div class="panel-body">
-                                <asp:CheckBoxList ID="chkUPOVColorCarne" runat="server" RepeatLayout="Flow" RepeatDirection="Vertical"></asp:CheckBoxList>
+                                <asp:CheckBoxList ID="chkUPOVColorCarne" runat="server" RepeatLayout="Flow" RepeatDirection="Vertical" class="checkbox" Font-Bold="true"></asp:CheckBoxList>
                             </div>
                         </div>
                     </div>
@@ -471,7 +470,7 @@
                         <div class="panel panel-default">
                             <div class="panel-heading" style="text-align: center">Piel</div>
                             <div class="panel-body">
-                                <asp:CheckBoxList ID="chkUPOVColorPiel" runat="server" RepeatLayout="Flow" RepeatDirection="Vertical"></asp:CheckBoxList>
+                                <asp:CheckBoxList ID="chkUPOVColorPiel" runat="server" RepeatLayout="Flow" RepeatDirection="Vertical" class="checkbox" Font-Bold="true"></asp:CheckBoxList>
                             </div>
                         </div>
                     </div>

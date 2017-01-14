@@ -22,6 +22,24 @@ namespace Project.Novaseed {
         protected global::System.Web.UI.WebControls.Label lbl6papasAño;
         
         /// <summary>
+        /// Control lbl6papasLeyendaVerde.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl6papasLeyendaVerde;
+        
+        /// <summary>
+        /// Control lbl6papasLeyendaRojo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl6papasLeyendaRojo;
+        
+        /// <summary>
         /// Control lbl6papasError.
         /// </summary>
         /// <remarks>

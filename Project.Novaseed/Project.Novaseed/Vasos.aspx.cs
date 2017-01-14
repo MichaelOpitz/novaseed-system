@@ -282,6 +282,11 @@ namespace Project.Novaseed
             }
         }
 
+        protected void btnCancelarClones_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("MenuGeneracion.aspx");
+        }
+
         protected void VasosGridView_DataBound(object sender, EventArgs e)
         {
             try

@@ -38,10 +38,17 @@ namespace Project.Novaseed
 
         protected void gdvUPOV_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int selected = this.gdvUPOV.SelectedIndex;
-            string id_upov = HttpUtility.HtmlDecode((string)this.gdvUPOV.Rows[selected].Cells[0].Text);            
+            try
+            {
+                int selected = this.gdvUPOV.SelectedIndex;
+                string id_upov = HttpUtility.HtmlDecode((string)this.gdvUPOV.Rows[selected].Cells[0].Text);
+                string nombre_upov = HttpUtility.HtmlDecode((string)this.gdvUPOV.Rows[selected].Cells[1].Text);
 
-            Response.Redirect("ReporteUPOV.aspx?id_upov=" + id_upov);
+                Response.Redirect("ReporteUPOV.aspx?id_upov=" + id_upov + "&nombre_upov=" + nombre_upov);
+            }
+            catch (Exception ex)
+            {
+            }
         }
 
         protected void UPOVGridView_DataBound(object sender, EventArgs e)

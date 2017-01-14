@@ -35,6 +35,8 @@ namespace Project.Novaseed
                 if (!user.Equals(""))
                     if (!password.Equals(""))
                     {
+                        Funciones f = new Funciones();
+                        password = f.Encriptar(password);
                         CatalogUsuario cu = new CatalogUsuario();
                         int valor = cu.GetLogin(user, password);
                         if (valor == 1)
@@ -59,9 +61,9 @@ namespace Project.Novaseed
                             error += "Usuario o contraseña incorrecta. ";
                     }
                     else
-                        error += "Usuario no puede estar vacio. ";
+                        error += "Contraseña no puede estar vacio. ";
                 else
-                    error += "Contraseña no puede estar vacio. ";
+                    error += "Usuario no puede estar vacio. ";
             }
             catch (Exception ex)
             {

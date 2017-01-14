@@ -42,7 +42,8 @@ namespace Project.Novaseed
                 {
                     CatalogEnfermedades ce = new CatalogEnfermedades();
                     ce.AddEnfermedad(nombre_enfermedad);
-                    Response.Redirect("Menu.aspx");
+                    this.txtEnfermedades.Text = "";
+                    PoblarGrilla();
                 }
                 else
                     this.lblEnfermedadesError.Text += "Error al ingresar una enfermedad, la longitud debe ser la especificada";

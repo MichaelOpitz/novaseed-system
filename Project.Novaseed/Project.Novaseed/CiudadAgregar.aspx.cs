@@ -98,7 +98,7 @@ namespace Project.Novaseed
                 {
                     CatalogCiudad cc = new CatalogCiudad();
                     cc.AddCiudad(nombre_ciudad, id_provincia);
-                    Response.Redirect("Menu.aspx");
+                    this.txtCiudad.Text = "";
                 }
                 else
                     this.lblCiudadError.Text += "Error al ingresar una ciudad, la longitud debe ser la especificada";
@@ -145,7 +145,7 @@ namespace Project.Novaseed
                 {
                     CatalogProvincia cp = new CatalogProvincia();
                     cp.AddProvincia(nombre_provincia, id_region);
-                    Response.Redirect("Menu.aspx");
+                    this.txtProvincia.Text = "";
                 }
                 else
                     this.lblCiudadError.Text += "Error al ingresar una provincia, la longitud debe ser la especificada";
@@ -174,7 +174,7 @@ namespace Project.Novaseed
                 {
                     CatalogRegion cr = new CatalogRegion();
                     cr.AddRegion(nombre_region, id_pais);
-                    Response.Redirect("Menu.aspx");
+                    this.txtRegion.Text = "";
                 }
                 else
                     this.lblCiudadError.Text += "Error al ingresar una región, la longitud debe ser la especificada";

@@ -121,17 +121,20 @@ namespace Project.Novaseed
         protected void btnUsuarioConfirmarContraseña_Click(object sender, EventArgs e)
         {
             try
-            {
+            {                
                 this.btnUsuarioCambiarContraseña.Attributes.Add("AutoPostBack", "False");
                 this.lblUsuarioError.Visible = true;
                 string user = this.Session["user"].ToString();
-                string passwordVieja = this.txtUsuarioPasswordActual.Text;
+                string passwordVieja = this.txtUsuarioPasswordActual.Text;                
                 string passwordNueva = this.txtUsuarioPasswordNueva.Text;
                 string passwordNuevaRepetir = this.txtUsuarioPasswordRepetirNueva.Text;
 
                 if (passwordNueva.Equals(passwordNuevaRepetir))
                 {
+                    Funciones f = new Funciones();
                     CatalogUsuario cu = new CatalogUsuario();
+                    passwordVieja = f.Encriptar(passwordVieja);
+                    passwordNueva = f.Encriptar(passwordNueva);
                     int valor = cu.CambiarContraseña(user, passwordVieja, passwordNueva);
                     if (valor == 0)
                         this.lblUsuarioError.Text += "Error al cambiar la contraseña.<br/>";

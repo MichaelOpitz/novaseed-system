@@ -223,6 +223,11 @@ namespace Project.Novaseed
             }
         }
 
+        protected void btnCancelarCodificacion_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("MenuGeneracion.aspx");
+        }
+
         protected void ClonesGridView_DataBound(object sender, EventArgs e)
         {
             try

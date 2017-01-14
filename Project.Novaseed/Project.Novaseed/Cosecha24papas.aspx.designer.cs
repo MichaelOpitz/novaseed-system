@@ -22,6 +22,24 @@ namespace Project.Novaseed {
         protected global::System.Web.UI.WebControls.Label lbl24papasAño;
         
         /// <summary>
+        /// Control lbl24papasLeyendaVerde.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl24papasLeyendaVerde;
+        
+        /// <summary>
+        /// Control lbl24papasLeyendaRojo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl24papasLeyendaRojo;
+        
+        /// <summary>
         /// Control lbl24papasError.
         /// </summary>
         /// <remarks>
@@ -479,6 +497,15 @@ namespace Project.Novaseed {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txt24papasRelacionStandard;
+        
+        /// <summary>
+        /// Control UpdatePanel.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePanel;
         
         /// <summary>
         /// Control ddl24papasEnfermedad.

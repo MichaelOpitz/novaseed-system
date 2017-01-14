@@ -14,7 +14,7 @@ namespace Project.Novaseed
         {
             try
             {
-                CatalogUsuario cu = new CatalogUsuario();
+                CatalogUsuario cu = new CatalogUsuario();                                
                 CatalogSexo cs = new CatalogSexo();
                 List<Project.BusinessRules.Sexo> sexo = cs.GetSexo();
                 CatalogCargo cc = new CatalogCargo();
@@ -127,10 +127,11 @@ namespace Project.Novaseed
                     if (password == passwordRepetir && !password.Equals(""))
                     {
                         if (!nombre.Equals("") && !usuario.Equals(""))
-                        {                                                        
+                        {
                             List<int> selectedNacionalidad = this.lstUsuarioNacionalidad.GetSelectedIndices().ToList();
                             if ((selectedNacionalidad.Count > 1 && !selectedNacionalidad[0].Equals(0)) || (selectedNacionalidad.Count == 1))
                             {
+                                password = f.Encriptar(password);
                                 CatalogUsuario cu = new CatalogUsuario();
                                 Project.BusinessRules.Usuario u = new Project.BusinessRules.Usuario(Int32.Parse(rol), dv, id_cargo, id_sexo, nombre, apellido, fecha_nac, direccion,
                                     email, Int32.Parse(telefono), usuario, password, administrador);
@@ -146,7 +147,7 @@ namespace Project.Novaseed
                             else
                                 this.lblUsuarioError.Text += "No puede seleccionar sin información y países a la vez.<br/>";
 
-                            Response.Redirect("Menu.aspx");
+                            Response.Redirect("Usuario.aspx");
                         }
                         else
                             this.lblUsuarioError.Text += "Falta el nombre o usuario.<br/>";

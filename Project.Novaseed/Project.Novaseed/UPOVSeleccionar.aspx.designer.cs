@@ -22,6 +22,24 @@ namespace Project.Novaseed {
         protected global::System.Web.UI.WebControls.Label lblUPOVAño;
         
         /// <summary>
+        /// Control lblUPOVLeyendaVerde.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblUPOVLeyendaVerde;
+        
+        /// <summary>
+        /// Control lblUPOVLeyendaRojo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblUPOVLeyendaRojo;
+        
+        /// <summary>
         /// Control gdvUPOV.
         /// </summary>
         /// <remarks>

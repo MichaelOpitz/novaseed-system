@@ -31,6 +31,24 @@ namespace Project.Novaseed {
         protected global::System.Web.UI.WebControls.TextBox txtCantidadTotalVasos;
         
         /// <summary>
+        /// Control lblVasosLeyendaVerde.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblVasosLeyendaVerde;
+        
+        /// <summary>
+        /// Control lblVasosLeyendaRojo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblVasosLeyendaRojo;
+        
+        /// <summary>
         /// Control lblVasosError.
         /// </summary>
         /// <remarks>
@@ -38,6 +56,15 @@ namespace Project.Novaseed {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblVasosError;
+        
+        /// <summary>
+        /// Control gdvVasos.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gdvVasos;
         
         /// <summary>
         /// Control btnAgregarClones.
@@ -49,12 +76,12 @@ namespace Project.Novaseed {
         protected global::System.Web.UI.WebControls.Button btnAgregarClones;
         
         /// <summary>
-        /// Control gdvVasos.
+        /// Control btnCancelarClones.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gdvVasos;
+        protected global::System.Web.UI.WebControls.Button btnCancelarClones;
     }
 }

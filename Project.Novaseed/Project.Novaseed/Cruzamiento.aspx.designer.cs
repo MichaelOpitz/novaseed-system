@@ -22,6 +22,24 @@ namespace Project.Novaseed {
         protected global::System.Web.UI.WebControls.Label lblCruzamientoAño;
         
         /// <summary>
+        /// Control lblCruzamientoLeyendaVerde.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblCruzamientoLeyendaVerde;
+        
+        /// <summary>
+        /// Control lblCruzamientoLeyendaRojo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblCruzamientoLeyendaRojo;
+        
+        /// <summary>
         /// Control lblCruzamientoError.
         /// </summary>
         /// <remarks>
@@ -29,6 +47,15 @@ namespace Project.Novaseed {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblCruzamientoError;
+        
+        /// <summary>
+        /// Control gdvCruzamiento.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gdvCruzamiento;
         
         /// <summary>
         /// Control btnAgregarVasos.
@@ -40,12 +67,12 @@ namespace Project.Novaseed {
         protected global::System.Web.UI.WebControls.Button btnAgregarVasos;
         
         /// <summary>
-        /// Control gdvCruzamiento.
+        /// Control btnCancelarVasos.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gdvCruzamiento;
+        protected global::System.Web.UI.WebControls.Button btnCancelarVasos;
     }
 }

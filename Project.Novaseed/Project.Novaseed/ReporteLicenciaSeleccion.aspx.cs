@@ -38,10 +38,17 @@ namespace Project.Novaseed
 
         protected void gdvLicencia_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int selected = this.gdvLicencia.SelectedIndex;
-            string id_produccion = HttpUtility.HtmlDecode((string)this.gdvLicencia.Rows[selected].Cells[0].Text);
+            try
+            {
+                int selected = this.gdvLicencia.SelectedIndex;
+                string id_produccion = HttpUtility.HtmlDecode((string)this.gdvLicencia.Rows[selected].Cells[0].Text);
+                string nombre_produccion = HttpUtility.HtmlDecode((string)this.gdvLicencia.Rows[selected].Cells[1].Text);
 
-            Response.Redirect("ReporteLicencia.aspx?id_produccion=" + id_produccion);
+                Response.Redirect("ReporteLicencia.aspx?id_produccion=" + id_produccion + "&nombre_produccion=" + nombre_produccion);
+            }
+            catch (Exception ex)
+            {
+            }
         }
 
         protected void LicenciaGridView_DataBound(object sender, EventArgs e)

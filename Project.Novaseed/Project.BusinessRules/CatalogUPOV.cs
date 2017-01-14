@@ -174,49 +174,27 @@ namespace Project.BusinessRules
 
         /*
          * Devuelve una lista con las variedades que tienen informe upov
+         * Metodo para generar el reporte
          */
-        public List<UPOV> GetUPOVNombresReporte(int id_upov)
+        public DataSet GetUPOVReporte(int id_upov)
         {
             try
             {
-                DataAccess.DataBase bd = new DataBase();
-                bd.Connect(); //método conectar
-                List<UPOV> upov = new List<UPOV>();
+                DataAccess.DataBase bd = new DataAccess.DataBase();
+                DataSet set = new DataSet();
                 string salida = "upovNombresReporte";//comando sql
-                bd.CreateCommandSP(salida);
-                bd.CreateParameter("@id_upov", DbType.Int32, id_upov);
-
-                DbDataReader resultado = bd.Query();//disponible resultado
-
-                while (resultado.Read())
-                {
-                    UPOV up = new UPOV(resultado.GetString(0), resultado.GetString(1), resultado.GetString(2), resultado.GetString(3),
-                        resultado.GetString(4), resultado.GetString(5), resultado.GetString(6), resultado.GetString(7),
-                        resultado.GetString(8), resultado.GetString(9), resultado.GetString(10), resultado.GetString(11),
-                        resultado.GetString(12), resultado.GetString(13), resultado.GetString(14), resultado.GetString(15),
-                        resultado.GetString(16), resultado.GetString(17), resultado.GetString(18), resultado.GetString(19),
-                        resultado.GetString(20), resultado.GetString(21), resultado.GetString(22), resultado.GetString(23),
-                        resultado.GetString(24), resultado.GetString(25), resultado.GetString(26), resultado.GetString(27),
-                        resultado.GetString(28), resultado.GetString(29), resultado.GetString(30), resultado.GetString(31),
-                        resultado.GetString(32), resultado.GetString(33), resultado.GetString(34), resultado.GetString(35),
-                        resultado.GetString(36), resultado.GetString(37), resultado.GetString(38), resultado.GetString(39),
-                        resultado.GetString(40), resultado.GetInt32(41));
-                    upov.Add(up);
-                }
-                resultado.Close();
-                bd.Close();
-
-                return upov;
+                set = bd.SetSP(salida, "@id_upov", DbType.Int32, id_upov);
+                return set;
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                throw new Exception(e.ToString());
+                throw new Exception(ex.Message, ex.InnerException);
             }
-        }
+        }        
 
         /*
          * Devuelve el informe upov con todas sus caracteristicas
-         * Devuelve las características del informe upov para generar el reporte
+         * Metodo de año de generacion, categoria UPOV
          */
         public List<UPOV> GetUPOV(int id_upov)
         {

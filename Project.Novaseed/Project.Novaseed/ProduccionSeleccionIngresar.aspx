@@ -6,8 +6,16 @@
     <div class="container-fluid">
         <br />
         <div class="row">
-            <h2>
-                <asp:Label ID="lblProduccionAño" runat="server" Font-Bold="true" Text="Producción" /></h2>
+            <div class="col-sm-8">
+                <h2>
+                    <asp:Label ID="lblProduccionAño" runat="server" Font-Bold="true" Text="Producción" Font-Names="versalitas"/></h2>
+            </div>
+            <div class="col-sm-4" style="text-align: right">
+                <h6>
+                    <asp:Label ID="lbl12papasLeyendaVerde" runat="server" Text="Verde significa que está en etapas avanzadas" ForeColor="Green" Font-Italic="true" /></h6>
+                <h6>
+                    <asp:Label ID="lbl12papasLeyendaRojo" runat="server" Text="Rojo significa que esta es su última etapa" ForeColor="Red" Font-Italic="true" /></h6>
+            </div>
         </div>
         <br />
         <div class="row">

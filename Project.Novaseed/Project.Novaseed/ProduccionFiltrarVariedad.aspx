@@ -7,7 +7,7 @@
         <br />
         <div class="row">
             <h2>
-                <asp:Label ID="lblProduccionAño" runat="server" Font-Bold="true" Text="Filtrar por Variedad en Producción" /></h2>
+                <asp:Label ID="lblProduccionAño" runat="server" Font-Bold="true" Text="Filtrar por Variedad en Producción" Font-Names="versalitas"/></h2>
         </div>
         <br />
         <div class="row">

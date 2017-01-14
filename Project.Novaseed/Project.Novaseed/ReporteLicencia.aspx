@@ -16,7 +16,6 @@
 
             <asp:ScriptManager ID="ScriptManager1" runat="server">
             </asp:ScriptManager>
-            <asp:Button ID="btnReporteLicencia" runat="server" Text="Cargar" Width="46%" OnClick="btnReporteLicencia_Click" />
             <rsweb:ReportViewer ID="ReportViewer1" runat="server" Width="46%" Height="100%">
             </rsweb:ReportViewer>
 

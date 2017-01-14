@@ -5,19 +5,22 @@
     <div class="container-fluid">
         <br />
         <div class="row">
-            <div class="col-sm-4">
+            <div class="col-sm-8">
                 <h2>
-                    <asp:Label ID="lblClonesAño" runat="server" Font-Bold="true" Text="Clones" /></h2>
+                    <asp:Label ID="lblClonesAño" runat="server" Font-Bold="true" Text="Clones" Font-Names="versalitas"/></h2>
+            </div>
+            <div class="col-sm-4" style="text-align: right">
+                <h6>
+                    <asp:Label ID="lblClonesLeyendaVerde" runat="server" Text="Verde significa que está en etapas avanzadas" ForeColor="Green" Font-Italic="true" /></h6>
+                <h6>
+                    <asp:Label ID="lblClonesLeyendaRojo" runat="server" Text="Rojo significa que esta es su última etapa" ForeColor="Red" Font-Italic="true" /></h6>
             </div>
         </div>
         <br />
         <div class="row">
             <h5>
                 <asp:Label ID="lblClonesError" runat="server" Font-Bold="true" Text="" ForeColor="Red" /></h5>
-        </div>
-        <div class="row">
-            <asp:Button type="button" runat="server" ID="btnAgregarCodificacion" class="btn btn-danger btn-block" Style="border-color: #000000" Text="Codificar" OnClick="btnAgregarCodificacion_Click"></asp:Button>
-        </div>
+        </div>        
         <div class="row">
             <asp:GridView ID="gdvClones" runat="server" Width="100%"
                 DataKeyNames="id_clones"
@@ -107,7 +110,10 @@
                     <asp:BoundField DataField="bicolor_clon" HeaderText="Bicolor" HeaderStyle-Width="5%" ControlStyle-Width="100%" />
                 </Columns>
             </asp:GridView>
-
+        </div>
+        <div class="row" style="text-align:right">
+            <asp:Button type="button" runat="server" ID="btnAgregarCodificacion" class="btn btn-success btn-md" Width="15%" Style="border-color: #000000" Text="Codificar" OnClick="btnAgregarCodificacion_Click" OnClientClick="return confirm('¿Desea codificar las variedades que faltan?');"></asp:Button>
+            <asp:Button type="button" runat="server" ID="btnCancelarCodificacion" class="btn btn-danger btn-md" Width="15%" Style="border-color: #000000" Text="Volver al Menú" OnClick="btnCancelarCodificacion_Click" OnClientClick="return confirm('¿Desea volver al menú?');"></asp:Button>
         </div>
     </div>
 </asp:Content>

@@ -1,6 +1,9 @@
 ﻿using Microsoft.Reporting.WebForms;
+using Project.BusinessRules;
 using System;
 using System.Collections.Generic;
+using System.Data;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -10,7 +13,7 @@ namespace Project.Novaseed
 {
     public partial class ReporteVariedad : System.Web.UI.Page
     {
-        private string codigo_variedad;
+        private string codigo_variedad, nombre_variedad;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -25,28 +28,69 @@ namespace Project.Novaseed
                 Response.Redirect("Login.aspx");
             }
 
-            //PREGUNTA SI ES DISTINTO DE NULL PORQUE EL USUARIO PUEDE ESCRIBIR DESDE LA URL Y NO TENDRÍA AÑO ASIGNADO
-            if (Request.QueryString["codigo_variedad"] != null)
-                codigo_variedad = Request.QueryString["codigo_variedad"];
-            else
-                codigo_variedad = "0";
+            try
+            {
+                //PREGUNTA SI ES DISTINTO DE NULL PORQUE EL USUARIO PUEDE ESCRIBIR DESDE LA URL Y NO TENDRÍA AÑO ASIGNADO
+                if (Request.QueryString["codigo_variedad"] != null && Request.QueryString["nombre_variedad"] != null)
+                {
+                    codigo_variedad = Request.QueryString["codigo_variedad"];
+                    nombre_variedad = Request.QueryString["nombre_variedad"];
+                }
+                else
+                {
+                    codigo_variedad = "0";
+                    nombre_variedad = "0";
+                }
+                string nombre = codigo_variedad + "-" + nombre_variedad;
+
+                //Método para llamar el archivo
+                SetupReport(this.ReportViewer1);
+                //Método para exportar a PDF
+                RenderReport(this.ReportViewer1, Response, nombre.Replace(" ", ""));
+            }
+            catch (Exception ex)
+            {
+            }
         }
 
-        protected void btnReporteVariedad_Click(object sender, EventArgs e)
+        private void SetupReport(ReportViewer reportViewer)
         {
-            DataSetNovaseed.variedadReporteDataTable dt = new DataSetNovaseed.variedadReporteDataTable();
-            DataSetNovaseedTableAdapters.variedadReporteTableAdapter dta = new DataSetNovaseedTableAdapters.variedadReporteTableAdapter();
-            dta.Fill(dt, codigo_variedad);
+            try
+            {
+                CatalogVariedad cv = new CatalogVariedad();
+                DataTable dt = new DataTable();
+                dt.Clear();
+                dt = cv.GetVariedadReporte(codigo_variedad).Tables[0];
 
-            ReportDataSource rds = new ReportDataSource();
-            rds.Value = dt;
-            rds.Name = "DataSet1";
+                reportViewer.LocalReport.DataSources.Clear();
+                reportViewer.LocalReport.ReportPath = @"ReporteVariedad.rdlc";
+                reportViewer.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", dt));
+            }
+            catch (Exception ex)
+            {
+            }
+        }
 
-            this.ReportViewer1.LocalReport.DataSources.Clear();
-            this.ReportViewer1.LocalReport.DataSources.Add(rds);
-            this.ReportViewer1.LocalReport.ReportEmbeddedResource = "ReporteVariedad.rdlc";
-            this.ReportViewer1.LocalReport.ReportPath = @"ReporteVariedad.rdlc";
-            this.ReportViewer1.LocalReport.Refresh();
+        private void RenderReport(ReportViewer reportViewer, HttpResponse response, string nombre)
+        {
+            try
+            {
+                Warning[] warnings;
+                string[] streamids;
+                string mimeType;
+                string encoding;
+                string extension;
+                byte[] bytes = reportViewer.LocalReport.Render("PDF", null, out mimeType, out encoding, out extension, out streamids, out warnings);
+
+                MemoryStream ms = new MemoryStream(bytes);
+                response.ContentType = mimeType;
+                response.AppendHeader("Content-Disposition", "attachment; filename =" + nombre + "_variedad." + extension);
+                response.BinaryWrite(ms.ToArray());
+                response.End();
+            }
+            catch (Exception ex)
+            {
+            }
         }
     }
 }

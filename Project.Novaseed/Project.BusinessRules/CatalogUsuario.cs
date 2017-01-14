@@ -463,5 +463,33 @@ namespace Project.BusinessRules
                 throw new Exception(e.ToString());
             }
         }
+
+        /*
+         * Devuelve 1 si el usuario es administrador, 0 en caso contrario
+         */
+        public bool GetUsuarioAdministrador(string user)
+        {
+            try
+            {
+                DataAccess.DataBase bd = new DataBase();
+                bd.Connect(); //método conectar
+                bool administrador;
+
+                string salida = "usuarioAdministradorObtener";//comando sql
+                bd.CreateCommandSP(salida);
+                bd.CreateParameter("@usuario", DbType.String, user);
+                DbDataReader resultado = bd.Query();//disponible resultado
+                resultado.Read();
+                administrador = resultado.GetBoolean(0);
+                resultado.Close();
+
+                bd.Close();
+                return administrador;
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.ToString());
+            }
+        }
     }
 }

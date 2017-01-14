@@ -38,10 +38,17 @@ namespace Project.Novaseed
 
         protected void gdvProduccion_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int selected = this.gdvProduccion.SelectedIndex;
-            string id_produccion = HttpUtility.HtmlDecode((string)this.gdvProduccion.Rows[selected].Cells[0].Text);
+            try
+            {
+                int selected = this.gdvProduccion.SelectedIndex;
+                string id_produccion = HttpUtility.HtmlDecode((string)this.gdvProduccion.Rows[selected].Cells[0].Text);
+                string nombre_produccion = HttpUtility.HtmlDecode((string)this.gdvProduccion.Rows[selected].Cells[1].Text);
 
-            Response.Redirect("ReporteProduccion.aspx?id_produccion=" + id_produccion);
+                Response.Redirect("ReporteProduccion.aspx?id_produccion=" + id_produccion + "&nombre_produccion=" + nombre_produccion);
+            }
+            catch (Exception ex)
+            {
+            }
         }
 
         protected void ProduccionGridView_DataBound(object sender, EventArgs e)

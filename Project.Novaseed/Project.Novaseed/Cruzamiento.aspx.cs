@@ -170,8 +170,11 @@ namespace Project.Novaseed
                 bool flor;
                 if (chkCruzamientoFlor.Checked)
                     flor = true;
-                else                
-                    flor = false;    
+                else
+                {
+                    flor = false;
+                    this.lblCruzamientoError.Text += "Las bayas quedarán en 0 debido a que no tiene flor.<br/>";
+                }
                 //bayas
                 string bayas = e.NewValues[1].ToString();
                 if ((EsNumero(bayas) == false) || (EsNumero(bayas) == true && Int32.Parse(bayas) < 0))
@@ -265,6 +268,11 @@ namespace Project.Novaseed
             catch (Exception ex)
             {
             }
+        }
+
+        protected void btnCancelarVasos_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("MenuGeneracion.aspx");
         }
 
         protected void CruzamientoGridView_DataBound(object sender, EventArgs e)
@@ -419,6 +427,6 @@ namespace Project.Novaseed
             catch (Exception ex)
             {
             }
-        }
+        }        
     }
 }

@@ -5,14 +5,20 @@
     <div class="container-fluid">
         <br />
         <div class="row">
-            <div class="col-sm-4">
+            <div class="col-sm-8">
                 <h2>
-                    <asp:Label ID="lblUPOVAño" runat="server" Font-Bold="true" Text="UPOV" /></h2>
+                    <asp:Label ID="lblUPOVAño" runat="server" Font-Bold="true" Text="UPOV" Font-Names="versalitas"/></h2>
+            </div>
+            <div class="col-sm-4" style="text-align: right">
+                <h6>
+                    <asp:Label ID="lblUPOVLeyendaVerde" runat="server" Text="Verde significa que está en etapas avanzadas" ForeColor="Green" Font-Italic="true" /></h6>
+                <h6>
+                    <asp:Label ID="lblUPOVLeyendaRojo" runat="server" Text="Rojo significa que esta es su última etapa" ForeColor="Red" Font-Italic="true" /></h6>
             </div>
         </div>
         <br />
         <div class="row">
-            <asp:GridView ID="gdvUPOV" runat="server"                
+            <asp:GridView ID="gdvUPOV" runat="server"
                 AutoGenerateColumns="False"
                 CssClass="table table-bordered bs-table"
                 AllowPaging="True"

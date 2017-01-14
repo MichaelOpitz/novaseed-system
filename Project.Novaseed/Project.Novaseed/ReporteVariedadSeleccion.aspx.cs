@@ -40,8 +40,9 @@ namespace Project.Novaseed
         {
             int selected = this.gdvVariedad.SelectedIndex;
             string codigo_variedad = HttpUtility.HtmlDecode((string)this.gdvVariedad.Rows[selected].Cells[0].Text);
+            string nombre_variedad = HttpUtility.HtmlDecode((string)this.gdvVariedad.Rows[selected].Cells[1].Text);
 
-            Response.Redirect("ReporteVariedad.aspx?codigo_variedad=" + codigo_variedad);
+            Response.Redirect("ReporteVariedad.aspx?codigo_variedad=" + codigo_variedad + "&nombre_variedad=" + nombre_variedad);
         }
 
         protected void VariedadGridView_DataBound(object sender, EventArgs e)

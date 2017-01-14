@@ -5,12 +5,21 @@
     <div class="container-fluid">
         <br />
         <div class="row">
-            <h2>
-                <asp:Label ID="lbl6papasAño" runat="server" Font-Bold="true" Text="6 Papas" /></h2>
+            <div class="col-sm-8">
+                <h2>
+                    <asp:Label ID="lbl6papasAño" runat="server" Font-Bold="true" Text="6 Papas" Font-Names="versalitas"/></h2>
+            </div>
+            <div class="col-sm-4" style="text-align: right">
+                <h6>
+                    <asp:Label ID="lbl6papasLeyendaVerde" runat="server" Text="Verde significa que está en etapas avanzadas" ForeColor="Green" Font-Italic="true" /></h6>
+                <h6>
+                    <asp:Label ID="lbl6papasLeyendaRojo" runat="server" Text="Rojo significa que esta es su última etapa" ForeColor="Red" Font-Italic="true" /></h6>
+            </div>
         </div>
         <br />
         <div class="row">
-            <h5><asp:Label id="lbl6papasError" runat="server" Font-Bold="true" Text="" ForeColor="Red"/></h5>
+            <h5>
+                <asp:Label ID="lbl6papasError" runat="server" Font-Bold="true" Text="" ForeColor="Red" /></h5>
         </div>
         <div class="row">
             <asp:Button type="button" runat="server" ID="btnAgregar12papas" class="btn btn-danger btn-block" Style="border-color: #000000" Text="Agregar a 12 Papas" OnClientClick="return confirm('¿Desea agregar a 12 Papas?');" OnClick="btnAgregar12papas_Click"></asp:Button>
@@ -87,14 +96,14 @@
                         <ItemStyle HorizontalAlign="Center"></ItemStyle>
                     </asp:TemplateField>
 
-                    <asp:BoundField DataField="id_cosecha" HeaderText="ID" ReadOnly="true"  HeaderStyle-Width="5%"/>
+                    <asp:BoundField DataField="id_cosecha" HeaderText="ID" ReadOnly="true" HeaderStyle-Width="5%" />
                     <asp:BoundField DataField="codigo_variedad" HeaderText="Madre" ReadOnly="true" HeaderStyle-Width="10%" />
-                    <asp:BoundField DataField="nombre_madre" HeaderText="Nombre Madre" ReadOnly="true" HeaderStyle-Width="12%"/>
+                    <asp:BoundField DataField="nombre_madre" HeaderText="Nombre Madre" ReadOnly="true" HeaderStyle-Width="12%" />
                     <asp:BoundField DataField="pad_codigo_variedad" HeaderText="Padre" ReadOnly="true" HeaderStyle-Width="10%" />
-                    <asp:BoundField DataField="nombre_padre" HeaderText="Nombre Padre" ReadOnly="true" HeaderStyle-Width="12%"/>
-                    <asp:BoundField DataField="posicion_cosecha" HeaderText="Posición" ReadOnly="true" HeaderStyle-Width="5%"/>
+                    <asp:BoundField DataField="nombre_padre" HeaderText="Nombre Padre" ReadOnly="true" HeaderStyle-Width="12%" />
+                    <asp:BoundField DataField="posicion_cosecha" HeaderText="Posición" ReadOnly="true" HeaderStyle-Width="5%" />
                     <asp:BoundField DataField="codigo_individuo" HeaderText="Código Individuo" ReadOnly="true" HeaderStyle-Width="10%" />
-                    <asp:BoundField DataField="nombre_destino" HeaderText="Destino" ReadOnly="true" HeaderStyle-Width="8%"/>
+                    <asp:BoundField DataField="nombre_destino" HeaderText="Destino" ReadOnly="true" HeaderStyle-Width="8%" />
 
                     <asp:CommandField SelectText="Seleccionar" ShowSelectButton="True" />
 
@@ -106,29 +115,29 @@
         <div class="panel panel-primary">
             <div class="panel-heading" style="text-align: center">Código Individuo y Emergencias</div>
             <div class="panel-body">
-                
+
                 <div class="row">
-                    <div class="col-sm-3" style="margin-top:20px">                        
-                        <asp:TextBox type="text" runat="server" class="form-control" ID="txt6papasCodigoSeleccionado" Width="80%" Placeholder="Código" Style="border: 3px double #000000" ReadOnly="true" Font-Bold="true"></asp:TextBox>                        
+                    <div class="col-sm-3" style="margin-top: 20px">
+                        <asp:TextBox type="text" runat="server" class="form-control" ID="txt6papasCodigoSeleccionado" Width="80%" Placeholder="Código" Style="border: 3px double #000000" ReadOnly="true" Font-Bold="true"></asp:TextBox>
                         <span class="help-block" style="font: 700">Código Seleccionado</span>
                     </div>
-                    <div class="col-sm-3">                        
+                    <div class="col-sm-3">
                         <asp:RegularExpressionValidator ID="re6papasCantidadPapas" runat="server" ValidationExpression="^[0-6]{0,1}" ErrorMessage="Debe ser un número entre 0 y 6" ControlToValidate="txt6papasCantidadPapas" ForeColor="Red" ValidationGroup="modificar6papas"></asp:RegularExpressionValidator>
-                        <asp:TextBox type="text" runat="server" class="form-control" ID="txt6papasCantidadPapas" Width="80%" Placeholder="Cantidad Papas" Style="border: 3px solid #1E90FF"></asp:TextBox>                        
-                        <span class="help-block">Cantidad de Papas</span>                        
+                        <asp:TextBox type="text" runat="server" class="form-control" ID="txt6papasCantidadPapas" Width="80%" Placeholder="Cantidad Papas" Style="border: 3px solid #1E90FF"></asp:TextBox>
+                        <span class="help-block">Cantidad de Papas</span>
                     </div>
                     <div class="col-sm-3">
                         <asp:RegularExpressionValidator ID="re6papasPosicion" runat="server" ValidationExpression="^[0-9]{1,2}([.,][0-9]{1,2})*" ErrorMessage="Debe ser un número valido" ControlToValidate="txt6papasPosicion" ForeColor="Red" ValidationGroup="modificar6papas"></asp:RegularExpressionValidator>
-                        <asp:TextBox type="text" runat="server" class="form-control" ID="txt6papasPosicion" Width="80%" Placeholder="Posición" Style="border: 3px solid #1E90FF"></asp:TextBox>                        
+                        <asp:TextBox type="text" runat="server" class="form-control" ID="txt6papasPosicion" Width="80%" Placeholder="Posición" Style="border: 3px solid #1E90FF"></asp:TextBox>
                         <span class="help-block">Posición</span>
                     </div>
-                    <div class="col-sm-2" style="margin-top:20px">
-                        <asp:CheckBox ID="chk6papasFlor" runat="server" Text="Flor" />
+                    <div class="col-sm-2" style="margin-top: 10px">
+                        <asp:CheckBox ID="chk6papasFlor" runat="server" Text="Flor" class="checkbox"/>
                     </div>
                     <div class="col-sm-2">
-                        <asp:CheckBox ID="chk6papasBayas" runat="server" Text="Bayas" />
+                        <asp:CheckBox ID="chk6papasBayas" runat="server" Text="Bayas" class="checkbox"/>
                     </div>
-                </div>                
+                </div>
 
                 <div class="row">
                     <div class="col-sm-3">
@@ -257,7 +266,7 @@
         <div class="panel panel-danger">
             <div class="panel-heading" style="text-align: center">Totales</div>
             <div class="panel-body">
-                
+
                 <div class="row">
                     <div class="col-sm-2 col-sm-offset-1">
                         <asp:RegularExpressionValidator ID="re6papasTotalKg" runat="server" ValidationExpression="^[0-9]{1,5}([.,][0-9]{1,2})*" ErrorMessage="Debe ser de 0 a 5 digitos" ControlToValidate="txt6papasTotalKg" ForeColor="Red" ValidationGroup="modificar6papas"></asp:RegularExpressionValidator>
@@ -281,7 +290,7 @@
                     </div>
                     <div class="col-sm-2">
                         <asp:RegularExpressionValidator ID="re6papasToneladasHectarea" runat="server" ValidationExpression="^[0-9]{1,4}([.,][0-9]{1,2})*" ErrorMessage="Debe ser entre 0 y 9999" ControlToValidate="txt6papasToneladasHectarea" ForeColor="Red" ValidationGroup="modificar6papas"></asp:RegularExpressionValidator>
-                        <asp:TextBox type="text" runat="server" class="form-control" Placeholder="Toneladas/Hectárea" ID="txt6papasToneladasHectarea" ></asp:TextBox>
+                        <asp:TextBox type="text" runat="server" class="form-control" Placeholder="Toneladas/Hectárea" ID="txt6papasToneladasHectarea"></asp:TextBox>
                         <span class="help-block">Toneladas/Hectárea</span>
                     </div>
                 </div>
@@ -309,7 +318,7 @@
                     </div>
                     <div class="col-sm-2">
                         <asp:RegularExpressionValidator ID="re6papasRelacionStandard" runat="server" ValidationExpression="^[0-9]{0,3}[%]{0,1}" ErrorMessage="Debe ser entre 0 y 999" ControlToValidate="txt6papasRelacionStandard" ForeColor="Red" ValidationGroup="modificar6papas"></asp:RegularExpressionValidator>
-                        <asp:TextBox type="text" runat="server" class="form-control" Placeholder="% Relación Standard" ID="txt6papasRelacionStandard" ></asp:TextBox>
+                        <asp:TextBox type="text" runat="server" class="form-control" Placeholder="% Relación Standard" ID="txt6papasRelacionStandard"></asp:TextBox>
                         <span class="help-block">% Relación Standard</span>
                     </div>
                 </div>
@@ -320,10 +329,10 @@
         <div class="panel panel-primary">
             <div class="panel-heading" style="text-align: center">Sensibilidad y Tolerancias</div>
             <div class="panel-body">
-                
+
                 <div class="row">
                     <div class="col-sm-3">
-                        <asp:RegularExpressionValidator ID="re6papasSensibilidadQuimica" runat="server" ValidationExpression="." ErrorMessage="Debe ser entre 0 y 99" ControlToValidate="ddl6papasSensibilidadQuimica" ForeColor="White" ></asp:RegularExpressionValidator>
+                        <asp:RegularExpressionValidator ID="re6papasSensibilidadQuimica" runat="server" ValidationExpression="." ErrorMessage="Debe ser entre 0 y 99" ControlToValidate="ddl6papasSensibilidadQuimica" ForeColor="White"></asp:RegularExpressionValidator>
                         <asp:DropDownList type="button" ID="ddl6papasSensibilidadQuimica" runat="server" Width="80%" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
                         <span class="help-block">Sensibilidad Química</span>
                     </div>
@@ -346,7 +355,7 @@
 
                 <div class="row">
                     <div class="col-sm-3">
-                        <asp:RegularExpressionValidator ID="re6papasFacilidadMuerte" runat="server" ValidationExpression="." ErrorMessage="Debe ser entre 0 y 99" ControlToValidate="ddl6papasFacilidadMuerte" ForeColor="White" ></asp:RegularExpressionValidator>
+                        <asp:RegularExpressionValidator ID="re6papasFacilidadMuerte" runat="server" ValidationExpression="." ErrorMessage="Debe ser entre 0 y 99" ControlToValidate="ddl6papasFacilidadMuerte" ForeColor="White"></asp:RegularExpressionValidator>
                         <asp:DropDownList type="button" ID="ddl6papasFacilidadMuerte" runat="server" Width="80%" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
                         <span class="help-block">Facilidad Muerte</span>
                     </div>
@@ -373,7 +382,7 @@
         <div class="panel panel-primary">
             <div class="panel-heading" style="text-align: center">Urgencias</div>
             <div class="panel-body">
-                
+
                 <div class="col-sm-2 col-sm-offset-1">
                     <asp:RegularExpressionValidator ID="re6papasPutrefaccionSuave" runat="server" ValidationExpression="^[0-9]{0,2}" ErrorMessage="Debe ser entre 0 y 99" ControlToValidate="txt6papasPutrefaccionSuave" ForeColor="Red" ValidationGroup="modificar6papas"></asp:RegularExpressionValidator>
                     <asp:TextBox type="text" runat="server" class="form-control" Placeholder="Putrefacción Suave" ID="txt6papasPutrefaccionSuave"></asp:TextBox>
@@ -395,7 +404,7 @@
                     <span class="help-block">Blackleg</span>
                 </div>
                 <div class="col-sm-2">
-                    <asp:RegularExpressionValidator ID="re6papasHematomas" runat="server" ValidationExpression="" ErrorMessage="Debe ser entre 0 y 99" ControlToValidate="txt6papasHematomas" ForeColor="White" ></asp:RegularExpressionValidator>
+                    <asp:RegularExpressionValidator ID="re6papasHematomas" runat="server" ValidationExpression="" ErrorMessage="Debe ser entre 0 y 99" ControlToValidate="txt6papasHematomas" ForeColor="White"></asp:RegularExpressionValidator>
                     <asp:TextBox type="text" runat="server" class="form-control" Placeholder="Hematomas" ID="txt6papasHematomas" ReadOnly="true"></asp:TextBox>
                     <span class="help-block">Hematomas</span>
                 </div>

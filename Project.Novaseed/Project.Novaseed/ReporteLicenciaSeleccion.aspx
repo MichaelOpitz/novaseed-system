@@ -17,7 +17,7 @@
                 <EditRowStyle BackColor="#ffffcc" />
                 <EmptyDataRowStyle ForeColor="Red" CssClass="table table-bordered" />
                 <EmptyDataTemplate>
-                    ¡No hay existen datos!  
+                    ¡No existen datos!  
                 </EmptyDataTemplate>
 
                 <PagerTemplate>
@@ -59,7 +59,7 @@
                     <asp:BoundField DataField="nombre_productor" HeaderText="Productor" ReadOnly="true" />
                     <asp:BoundField DataField="ano_produccion" HeaderText="Año" ReadOnly="true" />
 
-                    <asp:CommandField SelectText="Ver Licencia" ShowSelectButton="True" />
+                    <asp:CommandField SelectText="Descargar PDF" ShowSelectButton="True" />
                 </Columns>
             </asp:GridView>
         </div>

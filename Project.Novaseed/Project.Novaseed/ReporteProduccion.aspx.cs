@@ -1,6 +1,9 @@
 ﻿using Microsoft.Reporting.WebForms;
+using Project.BusinessRules;
 using System;
 using System.Collections.Generic;
+using System.Data;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -10,7 +13,7 @@ namespace Project.Novaseed
 {
     public partial class ReporteProduccion : System.Web.UI.Page
     {
-        private string valorAñoString;
+        private string id_produccionString, nombre_produccion;
         private int id_produccion;
 
         protected void Page_Load(object sender, EventArgs e)
@@ -26,29 +29,70 @@ namespace Project.Novaseed
                 Response.Redirect("Login.aspx");
             }
 
-            //PREGUNTA SI ES DISTINTO DE NULL PORQUE EL USUARIO PUEDE ESCRIBIR DESDE LA URL Y NO TENDRÍA AÑO ASIGNADO
-            if (Request.QueryString["id_produccion"] != null)
-                valorAñoString = Request.QueryString["id_produccion"];
-            else
-                valorAñoString = "0";
-            id_produccion = Int32.Parse(valorAñoString);
+            try
+            {
+                //PREGUNTA SI ES DISTINTO DE NULL PORQUE EL USUARIO PUEDE ESCRIBIR DESDE LA URL Y NO TENDRÍA AÑO ASIGNADO
+                if (Request.QueryString["id_produccion"] != null && Request.QueryString["nombre_produccion"] != null)
+                {
+                    id_produccionString = Request.QueryString["id_produccion"];
+                    nombre_produccion = Request.QueryString["nombre_produccion"];
+                }
+                else
+                {
+                    id_produccionString = "0";
+                    nombre_produccion = "0";
+                }
+                id_produccion = Int32.Parse(id_produccionString);
+                string nombre = id_produccionString + "-" + nombre_produccion;
+
+                //Método para llamar el archivo
+                SetupReport(this.ReportViewer1);
+                //Método para exportar a PDF
+                RenderReport(this.ReportViewer1, Response, nombre.Replace(" ", ""));
+            }
+            catch (Exception ex)
+            {
+            }
         }
 
-        protected void btnReporteProduccion_Click(object sender, EventArgs e)
+        private void SetupReport(ReportViewer reportViewer)
         {
-            DataSetNovaseed.produccionReporteDataTable dt = new DataSetNovaseed.produccionReporteDataTable();
-            DataSetNovaseedTableAdapters.produccionReporteTableAdapter dta = new DataSetNovaseedTableAdapters.produccionReporteTableAdapter();                        
-            dta.Fill(dt, id_produccion);
+            try
+            {
+                CatalogProduccion cp = new CatalogProduccion();
+                DataTable dt = new DataTable();
+                dt.Clear();
+                dt = cp.GetProduccionReporte(id_produccion).Tables[0];
 
-            ReportDataSource rds = new ReportDataSource();
-            rds.Value = dt;
-            rds.Name = "DataSet1";
+                reportViewer.LocalReport.DataSources.Clear();
+                reportViewer.LocalReport.ReportPath = @"ReporteProduccion.rdlc";
+                reportViewer.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", dt));
+            }
+            catch (Exception ex)
+            {
+            }
+        }
 
-            this.ReportViewer1.LocalReport.DataSources.Clear();
-            this.ReportViewer1.LocalReport.DataSources.Add(rds);
-            this.ReportViewer1.LocalReport.ReportEmbeddedResource = "ReporteProduccion.rdlc";
-            this.ReportViewer1.LocalReport.ReportPath = @"ReporteProduccion.rdlc";
-            this.ReportViewer1.LocalReport.Refresh();
+        private void RenderReport(ReportViewer reportViewer, HttpResponse response, string nombre)
+        {
+            try
+            {
+                Warning[] warnings;
+                string[] streamids;
+                string mimeType;
+                string encoding;
+                string extension;
+                byte[] bytes = reportViewer.LocalReport.Render("PDF", null, out mimeType, out encoding, out extension, out streamids, out warnings);
+
+                MemoryStream ms = new MemoryStream(bytes);
+                response.ContentType = mimeType;
+                response.AppendHeader("Content-Disposition", "attachment; filename =" + nombre + "_produccion." + extension);
+                response.BinaryWrite(ms.ToArray());
+                response.End();
+            }
+            catch (Exception ex)
+            {
+            }
         }
     }
 }

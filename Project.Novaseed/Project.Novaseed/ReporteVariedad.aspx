@@ -15,8 +15,7 @@
         <div>
 
             <asp:ScriptManager ID="ScriptManager1" runat="server">
-            </asp:ScriptManager>            
-            <asp:Button ID="btnReporteVariedad" runat="server" OnClick="btnReporteVariedad_Click" Text="Cargar" Width="45%" />
+            </asp:ScriptManager>
             <rsweb:ReportViewer ID="ReportViewer1" runat="server" Width="45%" Height="100%">
             </rsweb:ReportViewer>
 

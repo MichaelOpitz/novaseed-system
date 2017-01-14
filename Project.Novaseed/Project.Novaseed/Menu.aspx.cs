@@ -21,6 +21,9 @@ namespace Project.Novaseed
                     Response.Redirect("Login.aspx");
                 }
                 CatalogUsuario cu = new CatalogUsuario();
+                bool administrador = cu.GetUsuarioAdministrador(user);
+                if (administrador == false)
+                    this.btnMenuLateralUsuario.Visible = false;
                 List<Project.BusinessRules.Usuario> lstUsuario = cu.GetNombreCargoUsuario(user);
                 if (lstUsuario.Count > 0)
                 {

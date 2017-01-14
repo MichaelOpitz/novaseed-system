@@ -31,15 +31,6 @@ namespace Project.Novaseed {
         protected global::System.Web.UI.ScriptManager ScriptManager1;
         
         /// <summary>
-        /// Control btnReporteLicencia.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnReporteLicencia;
-        
-        /// <summary>
         /// Control ReportViewer1.
         /// </summary>
         /// <remarks>

@@ -118,66 +118,160 @@
         <div class="row">
             <asp:Button type="button" runat="server" ID="btnMejoramientoRefresh" class="btn btn-danger btn-block" Style="border-color: #000000" Text="Limpiar Características" OnClientClick="return confirm('¿Desea limpiar las características?');" OnClick="btnMejoramientoRefresh_Click"></asp:Button>
         </div>
-        <%-- BOTONES MADRE Y PADRE --%>
-        <div class="row" style="text-align: center; margin-top: 30px">
-            <asp:Button type="button" runat="server" Text="Características Madre" ID="btnCaracteristicaMadre" class="btn btn-primary btn-md" Width="49%" BorderColor="#000000" OnClick="btnCaracteristicaMadre_Click"></asp:Button>
-            <asp:Button type="button" runat="server" Text="Características Padre" ID="btnCaracteristicaPadre" class="btn btn-primary btn-md" Width="49%" BorderColor="#000000" OnClick="btnCaracteristicaPadre_Click"></asp:Button>
-        </div>        
-        <%-- TABLA MADRE --%>
-        <div class="row" style="margin-top: 40px">
-            <span class="label label-primary" style="text-align:left">Tabla Madre</span>
-        </div>
-        <div class="row" style="text-align: center">            
-            <asp:GridView ID="gdvCaracteristicaMadre" runat="server" AutoGenerateColumns="False" CssClass="table table-bordered bs-table">
 
-                <HeaderStyle BackColor="#337ab7" Font-Bold="True" ForeColor="White" />
-                <EditRowStyle BackColor="#ffffcc" />
-                <EmptyDataRowStyle ForeColor="Red" CssClass="table table-bordered" />
-                <EmptyDataTemplate>
-                    ¡No hay datos en las características seleccionadas!  
-                </EmptyDataTemplate>
+        <asp:UpdatePanel runat="server" ID="UpdatePanel"
+            UpdateMode="Conditional">
+            <Triggers>
+                <asp:AsyncPostBackTrigger ControlID="btnCaracteristicaPadre"
+                    EventName="Click" />
+            </Triggers>
+            <ContentTemplate>
+                <%-- BOTONES MADRE Y PADRE --%>
+                <div class="row" style="text-align: center; margin-top: 30px">
+                    <asp:Button type="button" runat="server" Text="Características Madre" ID="btnCaracteristicaMadre" class="btn btn-primary btn-md" Width="49%" BorderColor="#000000" OnClick="btnCaracteristicaMadre_Click"></asp:Button>
+                    <asp:Button type="button" runat="server" Text="Características Padre" ID="btnCaracteristicaPadre" class="btn btn-primary btn-md" Width="49%" BorderColor="#000000" OnClick="btnCaracteristicaPadre_Click"></asp:Button>
+                </div>
+                <%-- TABLA MADRE --%>
+                <div class="row" style="margin-top: 40px">
+                    <span class="label label-primary" style="text-align: left">Tabla Madre</span>
+                </div>
+                <div class="row" style="text-align: center">
+                    <asp:GridView ID="gdvCaracteristicaMadre" runat="server" AutoGenerateColumns="False"
+                        CssClass="table table-bordered bs-table"
+                        AllowPaging="True"
+                        AllowSorting="True"
+                        PageSize="6"
+                        OnDataBound="MadreGridView_DataBound"
+                        OnPageIndexChanging="MadreGridView_PageIndexChanging">
 
-                <SelectedRowStyle Font-Bold="True" />
-                <Columns>
-                    <asp:CommandField HeaderText="Seleccionar" ShowSelectButton="True" />
-                    <asp:BoundField DataField="codigo_variedad" HeaderText="Código" />
-                    <asp:BoundField DataField="nombre_variedad" HeaderText="Nombre" />
-                    <asp:BoundField DataField="nombre_madurez" HeaderText="Madurez" />
-                    <asp:BoundField DataField="nombre_forma" HeaderText="Forma" />
-                    <asp:BoundField DataField="nombre_profundidad" HeaderText="Profundidad" />
-                    <asp:BoundField DataField="nombre_regularidad" HeaderText="Regularidad" />
-                    <asp:BoundField DataField="nombre_destino" HeaderText="Destino" />
-                </Columns>
-            </asp:GridView>
-        </div>        
-        <hr style="color: #000000" />
-        <%-- TABLA PADRE --%>
-        <div class="row" style="margin-top: 40px">
-            <span class="label label-primary" style="text-align:left">Tabla Padre</span>
-        </div>
-        <div class="row" style="text-align: center">
-            <asp:GridView ID="gdvCaracteristicaPadre" runat="server" AutoGenerateColumns="False" CssClass="table table-bordered bs-table">
+                        <HeaderStyle BackColor="#337ab7" Font-Bold="True" ForeColor="White" />
+                        <EditRowStyle BackColor="#ffffcc" />
+                        <EmptyDataRowStyle ForeColor="Red" CssClass="table table-bordered" />
+                        <EmptyDataTemplate>
+                            ¡No hay datos en las características seleccionadas!  
+                        </EmptyDataTemplate>
 
-                <HeaderStyle BackColor="#337ab7" Font-Bold="True" ForeColor="White" />
-                <EditRowStyle BackColor="#ffffcc" />
-                <EmptyDataRowStyle ForeColor="Red" CssClass="table table-bordered" />
-                <EmptyDataTemplate>
-                    ¡No hay datos en las características seleccionadas!  
-                </EmptyDataTemplate>
+                        <PagerTemplate>
+                            <table runat="server" id="testTable1" style="width: 100%" class="k-grid td">
+                                <tr>
+                                    <td class="col-md-8 pull-left">
+                                        <asp:Label ID="MessageLabel"
+                                            Text="Página: "
+                                            runat="server"
+                                            Font-Bold="true" />
+                                        <asp:LinkButton ID="FirstLB" runat="server" CommandName="Page" CommandArgument="First" ToolTip="First" CssClass="btn-pager btn-default" OnClick="FirstLB_Click"> Inicio </asp:LinkButton>
+                                        <asp:LinkButton ID="PrevLB" runat="server" CommandName="Page" CommandArgument="Prev" ToolTip="Previous" CssClass="btn-pager btn-default" OnClick="PrevLB_Click"> Anterior </asp:LinkButton>
+                                        <asp:DropDownList runat="server" ID="PageDropDownList" AutoPostBack="true" EnableViewState="true" OnSelectedIndexChanged="PageDropDownList_SelectedIndexChanged" CssClass="selectpicker form-control-drp"></asp:DropDownList>
 
-                <SelectedRowStyle Font-Bold="True" />
-                <Columns>
-                    <asp:CommandField HeaderText="Seleccionar" ShowSelectButton="True" />
-                    <asp:BoundField DataField="codigo_variedad" HeaderText="Código" />
-                    <asp:BoundField DataField="nombre_variedad" HeaderText="Nombre" />
-                    <asp:BoundField DataField="nombre_madurez" HeaderText="Madurez" />
-                    <asp:BoundField DataField="nombre_forma" HeaderText="Forma" />
-                    <asp:BoundField DataField="nombre_profundidad" HeaderText="Profundidad" />
-                    <asp:BoundField DataField="nombre_regularidad" HeaderText="Regularidad" />
-                    <asp:BoundField DataField="nombre_destino" HeaderText="Destino" />
-                </Columns>
-            </asp:GridView>
-        </div>
+                                        <asp:LinkButton ID="NextLB" runat="server" CommandName="Page" CommandArgument="Next" ToolTip="Next" CssClass="btn-pager btn-default" OnClick="NextLB_Click"> Siguiente </asp:LinkButton>
+                                        <asp:LinkButton ID="LastLB" runat="server" CommandName="Page" CommandArgument="Last" ToolTip="Last" CssClass="btn-pager btn-default" OnClick="LastLB_Click"> Final</asp:LinkButton>
+                                    </td>
+
+                                    <td class="col-md-4 pull-right">
+                                        <asp:Label ID="PageSizeLabel" runat="server" Text="Tamaño de página: " Font-Bold="true"></asp:Label>
+                                        <asp:DropDownList ID="ddlPageSize" runat="server" OnSelectedIndexChanged="ddlPageSize_SelectedIndexChanged" AutoPostBack="true" CssClass="selectpicker form-control-drp">
+                                            <%-- <asp:ListItem Value="0" Text="0" />--%>
+                                            <asp:ListItem Value="6" Text="6" />
+                                            <asp:ListItem Value="8" Text="8" />
+                                            <asp:ListItem Value="10" Text="10" />
+                                        </asp:DropDownList>
+                                    </td>
+                                    <td class="col-md-2">
+                                        <asp:Label ID="CurrentPageLabel" runat="server" />
+                                    </td>
+                                </tr>
+                            </table>
+                        </PagerTemplate>
+
+                        <SelectedRowStyle Font-Bold="True" />
+                        <Columns>
+                            <asp:TemplateField ItemStyle-HorizontalAlign="Center" HeaderText="Seleccionar">
+                                <ItemTemplate>
+                                    <asp:CheckBox ID="chkMejoramientoSeleccionarMadre" runat="server" />
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:BoundField DataField="codigo_variedad" HeaderText="Código" />
+                            <asp:BoundField DataField="nombre_variedad" HeaderText="Nombre" />
+                            <asp:BoundField DataField="nombre_madurez" HeaderText="Madurez" />
+                            <asp:BoundField DataField="nombre_forma" HeaderText="Forma" />
+                            <asp:BoundField DataField="nombre_profundidad" HeaderText="Profundidad" />
+                            <asp:BoundField DataField="nombre_regularidad" HeaderText="Regularidad" />
+                            <asp:BoundField DataField="nombre_destino" HeaderText="Destino" />
+                        </Columns>
+                    </asp:GridView>
+                </div>
+                <hr style="color: #000000" />
+                <%-- TABLA PADRE --%>
+                <div class="row" style="margin-top: 40px">
+                    <span class="label label-primary" style="text-align: left">Tabla Padre</span>
+                </div>
+                <div class="row" style="text-align: center">
+                    <asp:GridView ID="gdvCaracteristicaPadre" runat="server" AutoGenerateColumns="False"
+                        CssClass="table table-bordered bs-table"
+                        AllowPaging="True"
+                        AllowSorting="True"
+                        PageSize="6"
+                        OnDataBound="PadreGridView_DataBound"
+                        OnPageIndexChanging="PadreGridView_PageIndexChanging">
+
+                        <HeaderStyle BackColor="#337ab7" Font-Bold="True" ForeColor="White" />
+                        <EditRowStyle BackColor="#ffffcc" />
+                        <EmptyDataRowStyle ForeColor="Red" CssClass="table table-bordered" />
+                        <EmptyDataTemplate>
+                            ¡No hay datos en las características seleccionadas!  
+                        </EmptyDataTemplate>
+
+                        <PagerTemplate>
+                            <table runat="server" id="testTable2" style="width: 100%" class="k-grid td">
+                                <tr>
+                                    <td class="col-md-8 pull-left">
+                                        <asp:Label ID="MessageLabel2"
+                                            Text="Página: "
+                                            runat="server"
+                                            Font-Bold="true" />
+                                        <asp:LinkButton ID="FirstLB2" runat="server" CommandName="Page" CommandArgument="First" ToolTip="First" CssClass="btn-pager btn-default" OnClick="FirstLB2_Click"> Inicio </asp:LinkButton>
+                                        <asp:LinkButton ID="PrevLB2" runat="server" CommandName="Page" CommandArgument="Prev" ToolTip="Previous" CssClass="btn-pager btn-default" OnClick="PrevLB2_Click"> Anterior </asp:LinkButton>
+                                        <asp:DropDownList runat="server" ID="PageDropDownList2" AutoPostBack="true" EnableViewState="true" OnSelectedIndexChanged="PageDropDownList2_SelectedIndexChanged" CssClass="selectpicker form-control-drp"></asp:DropDownList>
+
+                                        <asp:LinkButton ID="NextLB2" runat="server" CommandName="Page" CommandArgument="Next" ToolTip="Next" CssClass="btn-pager btn-default" OnClick="NextLB2_Click"> Siguiente </asp:LinkButton>
+                                        <asp:LinkButton ID="LastLB2" runat="server" CommandName="Page" CommandArgument="Last" ToolTip="Last" CssClass="btn-pager btn-default" OnClick="LastLB2_Click"> Final</asp:LinkButton>
+                                    </td>
+
+                                    <td class="col-md-4 pull-right">
+                                        <asp:Label ID="PageSizeLabel2" runat="server" Text="Tamaño de página: " Font-Bold="true"></asp:Label>
+                                        <asp:DropDownList ID="ddlPageSize2" runat="server" OnSelectedIndexChanged="ddlPageSize2_SelectedIndexChanged" AutoPostBack="true" CssClass="selectpicker form-control-drp">
+                                            <%-- <asp:ListItem Value="0" Text="0" />--%>
+                                            <asp:ListItem Value="6" Text="6" />
+                                            <asp:ListItem Value="8" Text="8" />
+                                            <asp:ListItem Value="10" Text="10" />
+                                        </asp:DropDownList>
+                                    </td>
+                                    <td class="col-md-2">
+                                        <asp:Label ID="CurrentPageLabel2" runat="server" />
+                                    </td>
+                                </tr>
+                            </table>
+                        </PagerTemplate>
+
+                        <SelectedRowStyle Font-Bold="True" />
+                        <Columns>
+                            <asp:TemplateField ItemStyle-HorizontalAlign="Center" HeaderText="Seleccionar">
+                                <ItemTemplate>
+                                    <asp:CheckBox ID="chkMejoramientoSeleccionarPadre" runat="server" />
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:BoundField DataField="codigo_variedad" HeaderText="Código" />
+                            <asp:BoundField DataField="nombre_variedad" HeaderText="Nombre" />
+                            <asp:BoundField DataField="nombre_madurez" HeaderText="Madurez" />
+                            <asp:BoundField DataField="nombre_forma" HeaderText="Forma" />
+                            <asp:BoundField DataField="nombre_profundidad" HeaderText="Profundidad" />
+                            <asp:BoundField DataField="nombre_regularidad" HeaderText="Regularidad" />
+                            <asp:BoundField DataField="nombre_destino" HeaderText="Destino" />
+                        </Columns>
+                    </asp:GridView>
+                </div>
+            </ContentTemplate>
+        </asp:UpdatePanel>
         <%-- BOTONES CRUZAMIENTO Y CANCELAR --%>
         <div class="row" style="text-align: center; margin-top: 30px">
             <asp:Button type="button" runat="server" Text="Generar Cruzamiento" ID="btnMejoramientoCruzamiento" class="btn btn-primary btn-md" Width="20%" BorderColor="#000000" OnClick="btnMejoramientoCruzamiento_Click" OnClientClick="return confirm('¿Desea crear el cruzamiento?');"></asp:Button>

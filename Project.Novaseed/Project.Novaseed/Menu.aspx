@@ -53,7 +53,7 @@
                                         <div id="dropdown-lvl1" class="panel-collapse collapse" style="background-color: #FFE4E1; width: 100%">
                                             <ul class="nav nav-list">
                                               
-                                                <li><a runat="server" href="~/Usuario.aspx"><i class="glyphicon glyphicon-user"></i>Usuario</a></li>
+                                                <li><a runat="server" href="~/Usuario.aspx" id="btnMenuLateralUsuario" ><i class="glyphicon glyphicon-user"></i>Usuario</a></li>
 
                                                 <li class="divider"></li>
 

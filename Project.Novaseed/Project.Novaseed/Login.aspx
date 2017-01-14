@@ -15,7 +15,7 @@
 </head>
 
 <body>
-    <form runat="server" style="width:100%">
+    <form runat="server" style="width: 100%">
         <asp:ScriptManager runat="server">
             <Scripts>
                 <%--To learn more about bundling scripts in ScriptManager see http://go.microsoft.com/fwlink/?LinkID=301884 --%>
@@ -63,7 +63,7 @@
             </div>
             <div class="row">
                 <div class="col-sm-5 col-sm-offset-4">
-                    <asp:CheckBox ID="chkLoginRecordar" runat="server" Text="Recordar Contraseña" />
+                    <asp:CheckBox ID="chkLoginRecordar" runat="server" Text="Recordar Contraseña" class="checkbox" />
                 </div>
             </div>
 
@@ -97,7 +97,7 @@
                 </div>
             </div>
 
-            <div class="container body-content" style="margin-top: 30px">
+            <div class="container body-content" style="margin-top: 70px">
                 <footer>
                     <p>&copy; Novaseed <%: DateTime.Now.Year %>. Todos los derechos reservados.</p>
                     <p>Sistema desarrollado por Michael Opitz</p>

@@ -7,16 +7,19 @@
         <div class="row">
             <div class="col-sm-8">
                 <h2>
-                    <asp:Label ID="lblCruzamientoAño" runat="server" Font-Bold="true" Text="Cruzamientos" /></h2>
+                    <asp:Label ID="lblCruzamientoAño" runat="server" Font-Bold="true" Text="Cruzamientos" Font-Names="versalitas"/></h2>
+            </div>
+            <div class="col-sm-4" style="text-align: right">
+                <h6>
+                    <asp:Label ID="lblCruzamientoLeyendaVerde" runat="server" Text="Verde significa que está en etapas avanzadas" ForeColor="Green" Font-Italic="true" /></h6>
+                <h6>
+                    <asp:Label ID="lblCruzamientoLeyendaRojo" runat="server" Text="Rojo significa que esta es su última etapa" ForeColor="Red" Font-Italic="true" /></h6>
             </div>
         </div>
         <br />
         <div class="row">
             <h5>
                 <asp:Label ID="lblCruzamientoError" runat="server" Font-Bold="true" Text="" ForeColor="Red" /></h5>
-        </div>
-        <div class="row">
-            <asp:Button type="button" runat="server" ID="btnAgregarVasos" class="btn btn-primary btn-block" Style="border-color: #000000" Text="Agregar a Vasos" OnClick="btnAgregarVasos_Click" OnClientClick="return confirm('Agregará a Vasos\n¿Está seguro?');"></asp:Button>
         </div>
         <div class="row">
             <asp:GridView ID="gdvCruzamiento" runat="server" Width="100%"
@@ -115,6 +118,10 @@
                     <asp:BoundField DataField="bayas" HeaderText="Bayas" HeaderStyle-Width="5%" ControlStyle-Width="100%" />
                 </Columns>
             </asp:GridView>
+        </div>
+        <div class="row" style="text-align: right">
+            <asp:Button type="button" runat="server" ID="btnAgregarVasos" class="btn btn-success btn-md" Width="15%" Style="border-color: #000000" Text="Agregar a Vasos" OnClick="btnAgregarVasos_Click" OnClientClick="return confirm('Agregará a Vasos\n¿Está seguro?');"></asp:Button>
+            <asp:Button type="button" runat="server" ID="btnCancelarVasos" class="btn btn-danger btn-md" Width="15%" Style="border-color: #000000" Text="Volver al Menú" OnClick="btnCancelarVasos_Click" OnClientClick="return confirm('¿Desea volver al menú?');"></asp:Button>
         </div>
     </div>
 </asp:Content>

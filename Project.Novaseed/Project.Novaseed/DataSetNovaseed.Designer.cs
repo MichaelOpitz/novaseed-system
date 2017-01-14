@@ -24,13 +24,13 @@ namespace Project.Novaseed {
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
     public partial class DataSetNovaseed : global::System.Data.DataSet {
         
-        private upovNombresReporteDataTable tableupovNombresReporte;
-        
         private produccionReporteDataTable tableproduccionReporte;
         
         private licenciaReporteDataTable tablelicenciaReporte;
         
         private variedadReporteDataTable tablevariedadReporte;
+        
+        private upovNombresReporteDataTable tableupovNombresReporte;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -60,9 +60,6 @@ namespace Project.Novaseed {
             if ((this.DetermineSchemaSerializationMode(info, context) == global::System.Data.SchemaSerializationMode.IncludeSchema)) {
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXmlSchema(new global::System.Xml.XmlTextReader(new global::System.IO.StringReader(strSchema)));
-                if ((ds.Tables["upovNombresReporte"] != null)) {
-                    base.Tables.Add(new upovNombresReporteDataTable(ds.Tables["upovNombresReporte"]));
-                }
                 if ((ds.Tables["produccionReporte"] != null)) {
                     base.Tables.Add(new produccionReporteDataTable(ds.Tables["produccionReporte"]));
                 }
@@ -71,6 +68,9 @@ namespace Project.Novaseed {
                 }
                 if ((ds.Tables["variedadReporte"] != null)) {
                     base.Tables.Add(new variedadReporteDataTable(ds.Tables["variedadReporte"]));
+                }
+                if ((ds.Tables["upovNombresReporte"] != null)) {
+                    base.Tables.Add(new upovNombresReporteDataTable(ds.Tables["upovNombresReporte"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -88,16 +88,6 @@ namespace Project.Novaseed {
             global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
             base.Tables.CollectionChanged += schemaChangedHandler;
             this.Relations.CollectionChanged += schemaChangedHandler;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Browsable(false)]
-        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public upovNombresReporteDataTable upovNombresReporte {
-            get {
-                return this.tableupovNombresReporte;
-            }
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -127,6 +117,16 @@ namespace Project.Novaseed {
         public variedadReporteDataTable variedadReporte {
             get {
                 return this.tablevariedadReporte;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public upovNombresReporteDataTable upovNombresReporte {
+            get {
+                return this.tableupovNombresReporte;
             }
         }
         
@@ -197,9 +197,6 @@ namespace Project.Novaseed {
                 this.Reset();
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXml(reader);
-                if ((ds.Tables["upovNombresReporte"] != null)) {
-                    base.Tables.Add(new upovNombresReporteDataTable(ds.Tables["upovNombresReporte"]));
-                }
                 if ((ds.Tables["produccionReporte"] != null)) {
                     base.Tables.Add(new produccionReporteDataTable(ds.Tables["produccionReporte"]));
                 }
@@ -208,6 +205,9 @@ namespace Project.Novaseed {
                 }
                 if ((ds.Tables["variedadReporte"] != null)) {
                     base.Tables.Add(new variedadReporteDataTable(ds.Tables["variedadReporte"]));
+                }
+                if ((ds.Tables["upovNombresReporte"] != null)) {
+                    base.Tables.Add(new upovNombresReporteDataTable(ds.Tables["upovNombresReporte"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -242,12 +242,6 @@ namespace Project.Novaseed {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         internal void InitVars(bool initTable) {
-            this.tableupovNombresReporte = ((upovNombresReporteDataTable)(base.Tables["upovNombresReporte"]));
-            if ((initTable == true)) {
-                if ((this.tableupovNombresReporte != null)) {
-                    this.tableupovNombresReporte.InitVars();
-                }
-            }
             this.tableproduccionReporte = ((produccionReporteDataTable)(base.Tables["produccionReporte"]));
             if ((initTable == true)) {
                 if ((this.tableproduccionReporte != null)) {
@@ -266,6 +260,12 @@ namespace Project.Novaseed {
                     this.tablevariedadReporte.InitVars();
                 }
             }
+            this.tableupovNombresReporte = ((upovNombresReporteDataTable)(base.Tables["upovNombresReporte"]));
+            if ((initTable == true)) {
+                if ((this.tableupovNombresReporte != null)) {
+                    this.tableupovNombresReporte.InitVars();
+                }
+            }
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -276,20 +276,14 @@ namespace Project.Novaseed {
             this.Namespace = "http://tempuri.org/DataSetNovaseed.xsd";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
-            this.tableupovNombresReporte = new upovNombresReporteDataTable();
-            base.Tables.Add(this.tableupovNombresReporte);
             this.tableproduccionReporte = new produccionReporteDataTable();
             base.Tables.Add(this.tableproduccionReporte);
             this.tablelicenciaReporte = new licenciaReporteDataTable();
             base.Tables.Add(this.tablelicenciaReporte);
             this.tablevariedadReporte = new variedadReporteDataTable();
             base.Tables.Add(this.tablevariedadReporte);
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private bool ShouldSerializeupovNombresReporte() {
-            return false;
+            this.tableupovNombresReporte = new upovNombresReporteDataTable();
+            base.Tables.Add(this.tableupovNombresReporte);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -307,6 +301,12 @@ namespace Project.Novaseed {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private bool ShouldSerializevariedadReporte() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private bool ShouldSerializeupovNombresReporte() {
             return false;
         }
         
@@ -366,9 +366,6 @@ namespace Project.Novaseed {
         }
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public delegate void upovNombresReporteRowChangeEventHandler(object sender, upovNombresReporteRowChangeEvent e);
-        
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public delegate void produccionReporteRowChangeEventHandler(object sender, produccionReporteRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -377,909 +374,8 @@ namespace Project.Novaseed {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public delegate void variedadReporteRowChangeEventHandler(object sender, variedadReporteRowChangeEvent e);
         
-        /// <summary>
-        ///Represents the strongly named DataTable class.
-        ///</summary>
-        [global::System.Serializable()]
-        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class upovNombresReporteDataTable : global::System.Data.TypedTableBase<upovNombresReporteRow> {
-            
-            private global::System.Data.DataColumn columnNOMBRE_INFLORESCENCIA_TAMANO;
-            
-            private global::System.Data.DataColumn columnNOMBRE_BROTE_TAMANO_EXTREMO;
-            
-            private global::System.Data.DataColumn columnNOMBRE_BROTE_FORMA;
-            
-            private global::System.Data.DataColumn columnNOMBRE_BROTE_PROPORCION_AZUL;
-            
-            private global::System.Data.DataColumn columnNOMBRE_FOLIOLO_BRILLO_HAZ;
-            
-            private global::System.Data.DataColumn columnNOMBRE_BOTON_FLORAL_PIGMENTACION;
-            
-            private global::System.Data.DataColumn columnNOMBRE_BROTE_PIGMENTACION_BASE;
-            
-            private global::System.Data.DataColumn columnNOMBRE_HOJA_TAMANO_CONTORNO;
-            
-            private global::System.Data.DataColumn columnNOMBRE_FOLIOLO_PUBESCENCIA_HAZ_ROSETA_APICAL;
-            
-            private global::System.Data.DataColumn columnNOMBRE_FOLIOLO_ONDULACION_BORDE;
-            
-            private global::System.Data.DataColumn columnNOMBRE_BROTE_RADICULAS;
-            
-            private global::System.Data.DataColumn columnNOMBRE_SEGUNDO_PAR_FOLIOLOS_ANCHURA_LONGITUD;
-            
-            private global::System.Data.DataColumn columnNOMBRE_BROTE_PORTE_EXTREMO;
-            
-            private global::System.Data.DataColumn columnPROFUNDIDAD_OJO;
-            
-            private global::System.Data.DataColumn columnNOMBRE_PLANTA_PORTE;
-            
-            private global::System.Data.DataColumn columnNOMBRE_SEGUNDO_PAR_FOLIOLOS_TAMANO;
-            
-            private global::System.Data.DataColumn columnNOMBRE_PLANTA_ALTURA;
-            
-            private global::System.Data.DataColumn columnNOMBRE_BROTE_PIGMENTACION_EXTREMO;
-            
-            private global::System.Data.DataColumn columnNOMBRE_HOJA_FOLIOLOS_SECUNDARIOS;
-            
-            private global::System.Data.DataColumn columnNOMBRE_FOLIOLOS_TERMINALES_COALESCENCIA;
-            
-            private global::System.Data.DataColumn columnNOMBRE_HOJA_PIGMENTACION_NERVIO_CENTRAL;
-            
-            private global::System.Data.DataColumn columnNOMBRE_TUBERCULO_COLOR_BASE_OJO;
-            
-            private global::System.Data.DataColumn columnNOMBRE_BROTE_LONGITUD_RAMIFICACIONES_LATERALES;
-            
-            private global::System.Data.DataColumn columnNOMBRE_FOLIOLO_PROFUNDIDAD_NERVIOS;
-            
-            private global::System.Data.DataColumn columnNOMBRE_FORMA;
-            
-            private global::System.Data.DataColumn columnNOMBRE_TALLO_PIGMENTACION;
-            
-            private global::System.Data.DataColumn columnNOMBRE_BROTE_PUBESCENCIA_BASE;
-            
-            private global::System.Data.DataColumn columnNOMBRE_COROLA_FLOR_INTENSIDAD_PIGMENTACION_CARA_INTERNA;
-            
-            private global::System.Data.DataColumn columnNOMBRE_TUBERCULO_PIGMENTACION_PIEL_REACCION_LUZ;
-            
-            private global::System.Data.DataColumn columnNOMBRE_COROLA_FLOR_PROPORCION_AZUL_PIGMENTACION_CARA_INTERNA;
-            
-            private global::System.Data.DataColumn columnNOMBRE_COROLA_FLOR_TAMANO;
-            
-            private global::System.Data.DataColumn columnNOMBRE_HOJA_APERTURA;
-            
-            private global::System.Data.DataColumn columnNOMBRE_PLANTA_ESTRUCTURA_FOLLAJE;
-            
-            private global::System.Data.DataColumn columnNOMBRE_HOJA_COLOR_VERDE;
-            
-            private global::System.Data.DataColumn columnNOMBRE_PLANTA_FRECUENCIA_FLORES;
-            
-            private global::System.Data.DataColumn columnNOMBRE_PLANTA_EPOCA_MADUREZ;
-            
-            private global::System.Data.DataColumn columnNOMBRE_INFLORESCENCIA_PIGMENTACION_PENDUNCULO;
-            
-            private global::System.Data.DataColumn columnNOMBRE_BROTE_PUBESCENCIA_EXTREMO;
-            
-            private global::System.Data.DataColumn columnNOMBRE_COROLA_FLOR_EXTENSION_PIGMENTACION_CARA_INTERNA;
-            
-            private global::System.Data.DataColumn columnNOMBRE_BROTE_TAMANO;
-            
-            private global::System.Data.DataColumn columnNOMBRE_VARIEDAD_UPOV;
-            
-            private global::System.Data.DataColumn columnANO_UPOV;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public upovNombresReporteDataTable() {
-                this.TableName = "upovNombresReporte";
-                this.BeginInit();
-                this.InitClass();
-                this.EndInit();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal upovNombresReporteDataTable(global::System.Data.DataTable table) {
-                this.TableName = table.TableName;
-                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
-                    this.CaseSensitive = table.CaseSensitive;
-                }
-                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
-                    this.Locale = table.Locale;
-                }
-                if ((table.Namespace != table.DataSet.Namespace)) {
-                    this.Namespace = table.Namespace;
-                }
-                this.Prefix = table.Prefix;
-                this.MinimumCapacity = table.MinimumCapacity;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected upovNombresReporteDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
-                    base(info, context) {
-                this.InitVars();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn NOMBRE_INFLORESCENCIA_TAMANOColumn {
-                get {
-                    return this.columnNOMBRE_INFLORESCENCIA_TAMANO;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn NOMBRE_BROTE_TAMANO_EXTREMOColumn {
-                get {
-                    return this.columnNOMBRE_BROTE_TAMANO_EXTREMO;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn NOMBRE_BROTE_FORMAColumn {
-                get {
-                    return this.columnNOMBRE_BROTE_FORMA;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn NOMBRE_BROTE_PROPORCION_AZULColumn {
-                get {
-                    return this.columnNOMBRE_BROTE_PROPORCION_AZUL;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn NOMBRE_FOLIOLO_BRILLO_HAZColumn {
-                get {
-                    return this.columnNOMBRE_FOLIOLO_BRILLO_HAZ;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn NOMBRE_BOTON_FLORAL_PIGMENTACIONColumn {
-                get {
-                    return this.columnNOMBRE_BOTON_FLORAL_PIGMENTACION;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn NOMBRE_BROTE_PIGMENTACION_BASEColumn {
-                get {
-                    return this.columnNOMBRE_BROTE_PIGMENTACION_BASE;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn NOMBRE_HOJA_TAMANO_CONTORNOColumn {
-                get {
-                    return this.columnNOMBRE_HOJA_TAMANO_CONTORNO;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn NOMBRE_FOLIOLO_PUBESCENCIA_HAZ_ROSETA_APICALColumn {
-                get {
-                    return this.columnNOMBRE_FOLIOLO_PUBESCENCIA_HAZ_ROSETA_APICAL;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn NOMBRE_FOLIOLO_ONDULACION_BORDEColumn {
-                get {
-                    return this.columnNOMBRE_FOLIOLO_ONDULACION_BORDE;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn NOMBRE_BROTE_RADICULASColumn {
-                get {
-                    return this.columnNOMBRE_BROTE_RADICULAS;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn NOMBRE_SEGUNDO_PAR_FOLIOLOS_ANCHURA_LONGITUDColumn {
-                get {
-                    return this.columnNOMBRE_SEGUNDO_PAR_FOLIOLOS_ANCHURA_LONGITUD;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn NOMBRE_BROTE_PORTE_EXTREMOColumn {
-                get {
-                    return this.columnNOMBRE_BROTE_PORTE_EXTREMO;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn PROFUNDIDAD_OJOColumn {
-                get {
-                    return this.columnPROFUNDIDAD_OJO;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn NOMBRE_PLANTA_PORTEColumn {
-                get {
-                    return this.columnNOMBRE_PLANTA_PORTE;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn NOMBRE_SEGUNDO_PAR_FOLIOLOS_TAMANOColumn {
-                get {
-                    return this.columnNOMBRE_SEGUNDO_PAR_FOLIOLOS_TAMANO;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn NOMBRE_PLANTA_ALTURAColumn {
-                get {
-                    return this.columnNOMBRE_PLANTA_ALTURA;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn NOMBRE_BROTE_PIGMENTACION_EXTREMOColumn {
-                get {
-                    return this.columnNOMBRE_BROTE_PIGMENTACION_EXTREMO;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn NOMBRE_HOJA_FOLIOLOS_SECUNDARIOSColumn {
-                get {
-                    return this.columnNOMBRE_HOJA_FOLIOLOS_SECUNDARIOS;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn NOMBRE_FOLIOLOS_TERMINALES_COALESCENCIAColumn {
-                get {
-                    return this.columnNOMBRE_FOLIOLOS_TERMINALES_COALESCENCIA;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn NOMBRE_HOJA_PIGMENTACION_NERVIO_CENTRALColumn {
-                get {
-                    return this.columnNOMBRE_HOJA_PIGMENTACION_NERVIO_CENTRAL;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn NOMBRE_TUBERCULO_COLOR_BASE_OJOColumn {
-                get {
-                    return this.columnNOMBRE_TUBERCULO_COLOR_BASE_OJO;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn NOMBRE_BROTE_LONGITUD_RAMIFICACIONES_LATERALESColumn {
-                get {
-                    return this.columnNOMBRE_BROTE_LONGITUD_RAMIFICACIONES_LATERALES;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn NOMBRE_FOLIOLO_PROFUNDIDAD_NERVIOSColumn {
-                get {
-                    return this.columnNOMBRE_FOLIOLO_PROFUNDIDAD_NERVIOS;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn NOMBRE_FORMAColumn {
-                get {
-                    return this.columnNOMBRE_FORMA;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn NOMBRE_TALLO_PIGMENTACIONColumn {
-                get {
-                    return this.columnNOMBRE_TALLO_PIGMENTACION;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn NOMBRE_BROTE_PUBESCENCIA_BASEColumn {
-                get {
-                    return this.columnNOMBRE_BROTE_PUBESCENCIA_BASE;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn NOMBRE_COROLA_FLOR_INTENSIDAD_PIGMENTACION_CARA_INTERNAColumn {
-                get {
-                    return this.columnNOMBRE_COROLA_FLOR_INTENSIDAD_PIGMENTACION_CARA_INTERNA;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn NOMBRE_TUBERCULO_PIGMENTACION_PIEL_REACCION_LUZColumn {
-                get {
-                    return this.columnNOMBRE_TUBERCULO_PIGMENTACION_PIEL_REACCION_LUZ;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn NOMBRE_COROLA_FLOR_PROPORCION_AZUL_PIGMENTACION_CARA_INTERNAColumn {
-                get {
-                    return this.columnNOMBRE_COROLA_FLOR_PROPORCION_AZUL_PIGMENTACION_CARA_INTERNA;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn NOMBRE_COROLA_FLOR_TAMANOColumn {
-                get {
-                    return this.columnNOMBRE_COROLA_FLOR_TAMANO;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn NOMBRE_HOJA_APERTURAColumn {
-                get {
-                    return this.columnNOMBRE_HOJA_APERTURA;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn NOMBRE_PLANTA_ESTRUCTURA_FOLLAJEColumn {
-                get {
-                    return this.columnNOMBRE_PLANTA_ESTRUCTURA_FOLLAJE;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn NOMBRE_HOJA_COLOR_VERDEColumn {
-                get {
-                    return this.columnNOMBRE_HOJA_COLOR_VERDE;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn NOMBRE_PLANTA_FRECUENCIA_FLORESColumn {
-                get {
-                    return this.columnNOMBRE_PLANTA_FRECUENCIA_FLORES;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn NOMBRE_PLANTA_EPOCA_MADUREZColumn {
-                get {
-                    return this.columnNOMBRE_PLANTA_EPOCA_MADUREZ;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn NOMBRE_INFLORESCENCIA_PIGMENTACION_PENDUNCULOColumn {
-                get {
-                    return this.columnNOMBRE_INFLORESCENCIA_PIGMENTACION_PENDUNCULO;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn NOMBRE_BROTE_PUBESCENCIA_EXTREMOColumn {
-                get {
-                    return this.columnNOMBRE_BROTE_PUBESCENCIA_EXTREMO;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn NOMBRE_COROLA_FLOR_EXTENSION_PIGMENTACION_CARA_INTERNAColumn {
-                get {
-                    return this.columnNOMBRE_COROLA_FLOR_EXTENSION_PIGMENTACION_CARA_INTERNA;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn NOMBRE_BROTE_TAMANOColumn {
-                get {
-                    return this.columnNOMBRE_BROTE_TAMANO;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn NOMBRE_VARIEDAD_UPOVColumn {
-                get {
-                    return this.columnNOMBRE_VARIEDAD_UPOV;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn ANO_UPOVColumn {
-                get {
-                    return this.columnANO_UPOV;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            [global::System.ComponentModel.Browsable(false)]
-            public int Count {
-                get {
-                    return this.Rows.Count;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public upovNombresReporteRow this[int index] {
-                get {
-                    return ((upovNombresReporteRow)(this.Rows[index]));
-                }
-            }
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event upovNombresReporteRowChangeEventHandler upovNombresReporteRowChanging;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event upovNombresReporteRowChangeEventHandler upovNombresReporteRowChanged;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event upovNombresReporteRowChangeEventHandler upovNombresReporteRowDeleting;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event upovNombresReporteRowChangeEventHandler upovNombresReporteRowDeleted;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void AddupovNombresReporteRow(upovNombresReporteRow row) {
-                this.Rows.Add(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public upovNombresReporteRow AddupovNombresReporteRow(
-                        string NOMBRE_INFLORESCENCIA_TAMANO, 
-                        string NOMBRE_BROTE_TAMANO_EXTREMO, 
-                        string NOMBRE_BROTE_FORMA, 
-                        string NOMBRE_BROTE_PROPORCION_AZUL, 
-                        string NOMBRE_FOLIOLO_BRILLO_HAZ, 
-                        string NOMBRE_BOTON_FLORAL_PIGMENTACION, 
-                        string NOMBRE_BROTE_PIGMENTACION_BASE, 
-                        string NOMBRE_HOJA_TAMANO_CONTORNO, 
-                        string NOMBRE_FOLIOLO_PUBESCENCIA_HAZ_ROSETA_APICAL, 
-                        string NOMBRE_FOLIOLO_ONDULACION_BORDE, 
-                        string NOMBRE_BROTE_RADICULAS, 
-                        string NOMBRE_SEGUNDO_PAR_FOLIOLOS_ANCHURA_LONGITUD, 
-                        string NOMBRE_BROTE_PORTE_EXTREMO, 
-                        string PROFUNDIDAD_OJO, 
-                        string NOMBRE_PLANTA_PORTE, 
-                        string NOMBRE_SEGUNDO_PAR_FOLIOLOS_TAMANO, 
-                        string NOMBRE_PLANTA_ALTURA, 
-                        string NOMBRE_BROTE_PIGMENTACION_EXTREMO, 
-                        string NOMBRE_HOJA_FOLIOLOS_SECUNDARIOS, 
-                        string NOMBRE_FOLIOLOS_TERMINALES_COALESCENCIA, 
-                        string NOMBRE_HOJA_PIGMENTACION_NERVIO_CENTRAL, 
-                        string NOMBRE_TUBERCULO_COLOR_BASE_OJO, 
-                        string NOMBRE_BROTE_LONGITUD_RAMIFICACIONES_LATERALES, 
-                        string NOMBRE_FOLIOLO_PROFUNDIDAD_NERVIOS, 
-                        string NOMBRE_FORMA, 
-                        string NOMBRE_TALLO_PIGMENTACION, 
-                        string NOMBRE_BROTE_PUBESCENCIA_BASE, 
-                        string NOMBRE_COROLA_FLOR_INTENSIDAD_PIGMENTACION_CARA_INTERNA, 
-                        string NOMBRE_TUBERCULO_PIGMENTACION_PIEL_REACCION_LUZ, 
-                        string NOMBRE_COROLA_FLOR_PROPORCION_AZUL_PIGMENTACION_CARA_INTERNA, 
-                        string NOMBRE_COROLA_FLOR_TAMANO, 
-                        string NOMBRE_HOJA_APERTURA, 
-                        string NOMBRE_PLANTA_ESTRUCTURA_FOLLAJE, 
-                        string NOMBRE_HOJA_COLOR_VERDE, 
-                        string NOMBRE_PLANTA_FRECUENCIA_FLORES, 
-                        string NOMBRE_PLANTA_EPOCA_MADUREZ, 
-                        string NOMBRE_INFLORESCENCIA_PIGMENTACION_PENDUNCULO, 
-                        string NOMBRE_BROTE_PUBESCENCIA_EXTREMO, 
-                        string NOMBRE_COROLA_FLOR_EXTENSION_PIGMENTACION_CARA_INTERNA, 
-                        string NOMBRE_BROTE_TAMANO, 
-                        string NOMBRE_VARIEDAD_UPOV, 
-                        int ANO_UPOV) {
-                upovNombresReporteRow rowupovNombresReporteRow = ((upovNombresReporteRow)(this.NewRow()));
-                object[] columnValuesArray = new object[] {
-                        NOMBRE_INFLORESCENCIA_TAMANO,
-                        NOMBRE_BROTE_TAMANO_EXTREMO,
-                        NOMBRE_BROTE_FORMA,
-                        NOMBRE_BROTE_PROPORCION_AZUL,
-                        NOMBRE_FOLIOLO_BRILLO_HAZ,
-                        NOMBRE_BOTON_FLORAL_PIGMENTACION,
-                        NOMBRE_BROTE_PIGMENTACION_BASE,
-                        NOMBRE_HOJA_TAMANO_CONTORNO,
-                        NOMBRE_FOLIOLO_PUBESCENCIA_HAZ_ROSETA_APICAL,
-                        NOMBRE_FOLIOLO_ONDULACION_BORDE,
-                        NOMBRE_BROTE_RADICULAS,
-                        NOMBRE_SEGUNDO_PAR_FOLIOLOS_ANCHURA_LONGITUD,
-                        NOMBRE_BROTE_PORTE_EXTREMO,
-                        PROFUNDIDAD_OJO,
-                        NOMBRE_PLANTA_PORTE,
-                        NOMBRE_SEGUNDO_PAR_FOLIOLOS_TAMANO,
-                        NOMBRE_PLANTA_ALTURA,
-                        NOMBRE_BROTE_PIGMENTACION_EXTREMO,
-                        NOMBRE_HOJA_FOLIOLOS_SECUNDARIOS,
-                        NOMBRE_FOLIOLOS_TERMINALES_COALESCENCIA,
-                        NOMBRE_HOJA_PIGMENTACION_NERVIO_CENTRAL,
-                        NOMBRE_TUBERCULO_COLOR_BASE_OJO,
-                        NOMBRE_BROTE_LONGITUD_RAMIFICACIONES_LATERALES,
-                        NOMBRE_FOLIOLO_PROFUNDIDAD_NERVIOS,
-                        NOMBRE_FORMA,
-                        NOMBRE_TALLO_PIGMENTACION,
-                        NOMBRE_BROTE_PUBESCENCIA_BASE,
-                        NOMBRE_COROLA_FLOR_INTENSIDAD_PIGMENTACION_CARA_INTERNA,
-                        NOMBRE_TUBERCULO_PIGMENTACION_PIEL_REACCION_LUZ,
-                        NOMBRE_COROLA_FLOR_PROPORCION_AZUL_PIGMENTACION_CARA_INTERNA,
-                        NOMBRE_COROLA_FLOR_TAMANO,
-                        NOMBRE_HOJA_APERTURA,
-                        NOMBRE_PLANTA_ESTRUCTURA_FOLLAJE,
-                        NOMBRE_HOJA_COLOR_VERDE,
-                        NOMBRE_PLANTA_FRECUENCIA_FLORES,
-                        NOMBRE_PLANTA_EPOCA_MADUREZ,
-                        NOMBRE_INFLORESCENCIA_PIGMENTACION_PENDUNCULO,
-                        NOMBRE_BROTE_PUBESCENCIA_EXTREMO,
-                        NOMBRE_COROLA_FLOR_EXTENSION_PIGMENTACION_CARA_INTERNA,
-                        NOMBRE_BROTE_TAMANO,
-                        NOMBRE_VARIEDAD_UPOV,
-                        ANO_UPOV};
-                rowupovNombresReporteRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowupovNombresReporteRow);
-                return rowupovNombresReporteRow;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public override global::System.Data.DataTable Clone() {
-                upovNombresReporteDataTable cln = ((upovNombresReporteDataTable)(base.Clone()));
-                cln.InitVars();
-                return cln;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Data.DataTable CreateInstance() {
-                return new upovNombresReporteDataTable();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal void InitVars() {
-                this.columnNOMBRE_INFLORESCENCIA_TAMANO = base.Columns["NOMBRE_INFLORESCENCIA_TAMANO"];
-                this.columnNOMBRE_BROTE_TAMANO_EXTREMO = base.Columns["NOMBRE_BROTE_TAMANO_EXTREMO"];
-                this.columnNOMBRE_BROTE_FORMA = base.Columns["NOMBRE_BROTE_FORMA"];
-                this.columnNOMBRE_BROTE_PROPORCION_AZUL = base.Columns["NOMBRE_BROTE_PROPORCION_AZUL"];
-                this.columnNOMBRE_FOLIOLO_BRILLO_HAZ = base.Columns["NOMBRE_FOLIOLO_BRILLO_HAZ"];
-                this.columnNOMBRE_BOTON_FLORAL_PIGMENTACION = base.Columns["NOMBRE_BOTON_FLORAL_PIGMENTACION"];
-                this.columnNOMBRE_BROTE_PIGMENTACION_BASE = base.Columns["NOMBRE_BROTE_PIGMENTACION_BASE"];
-                this.columnNOMBRE_HOJA_TAMANO_CONTORNO = base.Columns["NOMBRE_HOJA_TAMANO_CONTORNO"];
-                this.columnNOMBRE_FOLIOLO_PUBESCENCIA_HAZ_ROSETA_APICAL = base.Columns["NOMBRE_FOLIOLO_PUBESCENCIA_HAZ_ROSETA_APICAL"];
-                this.columnNOMBRE_FOLIOLO_ONDULACION_BORDE = base.Columns["NOMBRE_FOLIOLO_ONDULACION_BORDE"];
-                this.columnNOMBRE_BROTE_RADICULAS = base.Columns["NOMBRE_BROTE_RADICULAS"];
-                this.columnNOMBRE_SEGUNDO_PAR_FOLIOLOS_ANCHURA_LONGITUD = base.Columns["NOMBRE_SEGUNDO_PAR_FOLIOLOS_ANCHURA_LONGITUD"];
-                this.columnNOMBRE_BROTE_PORTE_EXTREMO = base.Columns["NOMBRE_BROTE_PORTE_EXTREMO"];
-                this.columnPROFUNDIDAD_OJO = base.Columns["PROFUNDIDAD_OJO"];
-                this.columnNOMBRE_PLANTA_PORTE = base.Columns["NOMBRE_PLANTA_PORTE"];
-                this.columnNOMBRE_SEGUNDO_PAR_FOLIOLOS_TAMANO = base.Columns["NOMBRE_SEGUNDO_PAR_FOLIOLOS_TAMANO"];
-                this.columnNOMBRE_PLANTA_ALTURA = base.Columns["NOMBRE_PLANTA_ALTURA"];
-                this.columnNOMBRE_BROTE_PIGMENTACION_EXTREMO = base.Columns["NOMBRE_BROTE_PIGMENTACION_EXTREMO"];
-                this.columnNOMBRE_HOJA_FOLIOLOS_SECUNDARIOS = base.Columns["NOMBRE_HOJA_FOLIOLOS_SECUNDARIOS"];
-                this.columnNOMBRE_FOLIOLOS_TERMINALES_COALESCENCIA = base.Columns["NOMBRE_FOLIOLOS_TERMINALES_COALESCENCIA"];
-                this.columnNOMBRE_HOJA_PIGMENTACION_NERVIO_CENTRAL = base.Columns["NOMBRE_HOJA_PIGMENTACION_NERVIO_CENTRAL"];
-                this.columnNOMBRE_TUBERCULO_COLOR_BASE_OJO = base.Columns["NOMBRE_TUBERCULO_COLOR_BASE_OJO"];
-                this.columnNOMBRE_BROTE_LONGITUD_RAMIFICACIONES_LATERALES = base.Columns["NOMBRE_BROTE_LONGITUD_RAMIFICACIONES_LATERALES"];
-                this.columnNOMBRE_FOLIOLO_PROFUNDIDAD_NERVIOS = base.Columns["NOMBRE_FOLIOLO_PROFUNDIDAD_NERVIOS"];
-                this.columnNOMBRE_FORMA = base.Columns["NOMBRE_FORMA"];
-                this.columnNOMBRE_TALLO_PIGMENTACION = base.Columns["NOMBRE_TALLO_PIGMENTACION"];
-                this.columnNOMBRE_BROTE_PUBESCENCIA_BASE = base.Columns["NOMBRE_BROTE_PUBESCENCIA_BASE"];
-                this.columnNOMBRE_COROLA_FLOR_INTENSIDAD_PIGMENTACION_CARA_INTERNA = base.Columns["NOMBRE_COROLA_FLOR_INTENSIDAD_PIGMENTACION_CARA_INTERNA"];
-                this.columnNOMBRE_TUBERCULO_PIGMENTACION_PIEL_REACCION_LUZ = base.Columns["NOMBRE_TUBERCULO_PIGMENTACION_PIEL_REACCION_LUZ"];
-                this.columnNOMBRE_COROLA_FLOR_PROPORCION_AZUL_PIGMENTACION_CARA_INTERNA = base.Columns["NOMBRE_COROLA_FLOR_PROPORCION_AZUL_PIGMENTACION_CARA_INTERNA"];
-                this.columnNOMBRE_COROLA_FLOR_TAMANO = base.Columns["NOMBRE_COROLA_FLOR_TAMANO"];
-                this.columnNOMBRE_HOJA_APERTURA = base.Columns["NOMBRE_HOJA_APERTURA"];
-                this.columnNOMBRE_PLANTA_ESTRUCTURA_FOLLAJE = base.Columns["NOMBRE_PLANTA_ESTRUCTURA_FOLLAJE"];
-                this.columnNOMBRE_HOJA_COLOR_VERDE = base.Columns["NOMBRE_HOJA_COLOR_VERDE"];
-                this.columnNOMBRE_PLANTA_FRECUENCIA_FLORES = base.Columns["NOMBRE_PLANTA_FRECUENCIA_FLORES"];
-                this.columnNOMBRE_PLANTA_EPOCA_MADUREZ = base.Columns["NOMBRE_PLANTA_EPOCA_MADUREZ"];
-                this.columnNOMBRE_INFLORESCENCIA_PIGMENTACION_PENDUNCULO = base.Columns["NOMBRE_INFLORESCENCIA_PIGMENTACION_PENDUNCULO"];
-                this.columnNOMBRE_BROTE_PUBESCENCIA_EXTREMO = base.Columns["NOMBRE_BROTE_PUBESCENCIA_EXTREMO"];
-                this.columnNOMBRE_COROLA_FLOR_EXTENSION_PIGMENTACION_CARA_INTERNA = base.Columns["NOMBRE_COROLA_FLOR_EXTENSION_PIGMENTACION_CARA_INTERNA"];
-                this.columnNOMBRE_BROTE_TAMANO = base.Columns["NOMBRE_BROTE_TAMANO"];
-                this.columnNOMBRE_VARIEDAD_UPOV = base.Columns["NOMBRE_VARIEDAD_UPOV"];
-                this.columnANO_UPOV = base.Columns["ANO_UPOV"];
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            private void InitClass() {
-                this.columnNOMBRE_INFLORESCENCIA_TAMANO = new global::System.Data.DataColumn("NOMBRE_INFLORESCENCIA_TAMANO", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnNOMBRE_INFLORESCENCIA_TAMANO);
-                this.columnNOMBRE_BROTE_TAMANO_EXTREMO = new global::System.Data.DataColumn("NOMBRE_BROTE_TAMANO_EXTREMO", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnNOMBRE_BROTE_TAMANO_EXTREMO);
-                this.columnNOMBRE_BROTE_FORMA = new global::System.Data.DataColumn("NOMBRE_BROTE_FORMA", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnNOMBRE_BROTE_FORMA);
-                this.columnNOMBRE_BROTE_PROPORCION_AZUL = new global::System.Data.DataColumn("NOMBRE_BROTE_PROPORCION_AZUL", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnNOMBRE_BROTE_PROPORCION_AZUL);
-                this.columnNOMBRE_FOLIOLO_BRILLO_HAZ = new global::System.Data.DataColumn("NOMBRE_FOLIOLO_BRILLO_HAZ", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnNOMBRE_FOLIOLO_BRILLO_HAZ);
-                this.columnNOMBRE_BOTON_FLORAL_PIGMENTACION = new global::System.Data.DataColumn("NOMBRE_BOTON_FLORAL_PIGMENTACION", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnNOMBRE_BOTON_FLORAL_PIGMENTACION);
-                this.columnNOMBRE_BROTE_PIGMENTACION_BASE = new global::System.Data.DataColumn("NOMBRE_BROTE_PIGMENTACION_BASE", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnNOMBRE_BROTE_PIGMENTACION_BASE);
-                this.columnNOMBRE_HOJA_TAMANO_CONTORNO = new global::System.Data.DataColumn("NOMBRE_HOJA_TAMANO_CONTORNO", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnNOMBRE_HOJA_TAMANO_CONTORNO);
-                this.columnNOMBRE_FOLIOLO_PUBESCENCIA_HAZ_ROSETA_APICAL = new global::System.Data.DataColumn("NOMBRE_FOLIOLO_PUBESCENCIA_HAZ_ROSETA_APICAL", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnNOMBRE_FOLIOLO_PUBESCENCIA_HAZ_ROSETA_APICAL);
-                this.columnNOMBRE_FOLIOLO_ONDULACION_BORDE = new global::System.Data.DataColumn("NOMBRE_FOLIOLO_ONDULACION_BORDE", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnNOMBRE_FOLIOLO_ONDULACION_BORDE);
-                this.columnNOMBRE_BROTE_RADICULAS = new global::System.Data.DataColumn("NOMBRE_BROTE_RADICULAS", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnNOMBRE_BROTE_RADICULAS);
-                this.columnNOMBRE_SEGUNDO_PAR_FOLIOLOS_ANCHURA_LONGITUD = new global::System.Data.DataColumn("NOMBRE_SEGUNDO_PAR_FOLIOLOS_ANCHURA_LONGITUD", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnNOMBRE_SEGUNDO_PAR_FOLIOLOS_ANCHURA_LONGITUD);
-                this.columnNOMBRE_BROTE_PORTE_EXTREMO = new global::System.Data.DataColumn("NOMBRE_BROTE_PORTE_EXTREMO", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnNOMBRE_BROTE_PORTE_EXTREMO);
-                this.columnPROFUNDIDAD_OJO = new global::System.Data.DataColumn("PROFUNDIDAD_OJO", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnPROFUNDIDAD_OJO);
-                this.columnNOMBRE_PLANTA_PORTE = new global::System.Data.DataColumn("NOMBRE_PLANTA_PORTE", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnNOMBRE_PLANTA_PORTE);
-                this.columnNOMBRE_SEGUNDO_PAR_FOLIOLOS_TAMANO = new global::System.Data.DataColumn("NOMBRE_SEGUNDO_PAR_FOLIOLOS_TAMANO", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnNOMBRE_SEGUNDO_PAR_FOLIOLOS_TAMANO);
-                this.columnNOMBRE_PLANTA_ALTURA = new global::System.Data.DataColumn("NOMBRE_PLANTA_ALTURA", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnNOMBRE_PLANTA_ALTURA);
-                this.columnNOMBRE_BROTE_PIGMENTACION_EXTREMO = new global::System.Data.DataColumn("NOMBRE_BROTE_PIGMENTACION_EXTREMO", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnNOMBRE_BROTE_PIGMENTACION_EXTREMO);
-                this.columnNOMBRE_HOJA_FOLIOLOS_SECUNDARIOS = new global::System.Data.DataColumn("NOMBRE_HOJA_FOLIOLOS_SECUNDARIOS", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnNOMBRE_HOJA_FOLIOLOS_SECUNDARIOS);
-                this.columnNOMBRE_FOLIOLOS_TERMINALES_COALESCENCIA = new global::System.Data.DataColumn("NOMBRE_FOLIOLOS_TERMINALES_COALESCENCIA", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnNOMBRE_FOLIOLOS_TERMINALES_COALESCENCIA);
-                this.columnNOMBRE_HOJA_PIGMENTACION_NERVIO_CENTRAL = new global::System.Data.DataColumn("NOMBRE_HOJA_PIGMENTACION_NERVIO_CENTRAL", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnNOMBRE_HOJA_PIGMENTACION_NERVIO_CENTRAL);
-                this.columnNOMBRE_TUBERCULO_COLOR_BASE_OJO = new global::System.Data.DataColumn("NOMBRE_TUBERCULO_COLOR_BASE_OJO", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnNOMBRE_TUBERCULO_COLOR_BASE_OJO);
-                this.columnNOMBRE_BROTE_LONGITUD_RAMIFICACIONES_LATERALES = new global::System.Data.DataColumn("NOMBRE_BROTE_LONGITUD_RAMIFICACIONES_LATERALES", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnNOMBRE_BROTE_LONGITUD_RAMIFICACIONES_LATERALES);
-                this.columnNOMBRE_FOLIOLO_PROFUNDIDAD_NERVIOS = new global::System.Data.DataColumn("NOMBRE_FOLIOLO_PROFUNDIDAD_NERVIOS", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnNOMBRE_FOLIOLO_PROFUNDIDAD_NERVIOS);
-                this.columnNOMBRE_FORMA = new global::System.Data.DataColumn("NOMBRE_FORMA", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnNOMBRE_FORMA);
-                this.columnNOMBRE_TALLO_PIGMENTACION = new global::System.Data.DataColumn("NOMBRE_TALLO_PIGMENTACION", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnNOMBRE_TALLO_PIGMENTACION);
-                this.columnNOMBRE_BROTE_PUBESCENCIA_BASE = new global::System.Data.DataColumn("NOMBRE_BROTE_PUBESCENCIA_BASE", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnNOMBRE_BROTE_PUBESCENCIA_BASE);
-                this.columnNOMBRE_COROLA_FLOR_INTENSIDAD_PIGMENTACION_CARA_INTERNA = new global::System.Data.DataColumn("NOMBRE_COROLA_FLOR_INTENSIDAD_PIGMENTACION_CARA_INTERNA", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnNOMBRE_COROLA_FLOR_INTENSIDAD_PIGMENTACION_CARA_INTERNA);
-                this.columnNOMBRE_TUBERCULO_PIGMENTACION_PIEL_REACCION_LUZ = new global::System.Data.DataColumn("NOMBRE_TUBERCULO_PIGMENTACION_PIEL_REACCION_LUZ", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnNOMBRE_TUBERCULO_PIGMENTACION_PIEL_REACCION_LUZ);
-                this.columnNOMBRE_COROLA_FLOR_PROPORCION_AZUL_PIGMENTACION_CARA_INTERNA = new global::System.Data.DataColumn("NOMBRE_COROLA_FLOR_PROPORCION_AZUL_PIGMENTACION_CARA_INTERNA", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnNOMBRE_COROLA_FLOR_PROPORCION_AZUL_PIGMENTACION_CARA_INTERNA);
-                this.columnNOMBRE_COROLA_FLOR_TAMANO = new global::System.Data.DataColumn("NOMBRE_COROLA_FLOR_TAMANO", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnNOMBRE_COROLA_FLOR_TAMANO);
-                this.columnNOMBRE_HOJA_APERTURA = new global::System.Data.DataColumn("NOMBRE_HOJA_APERTURA", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnNOMBRE_HOJA_APERTURA);
-                this.columnNOMBRE_PLANTA_ESTRUCTURA_FOLLAJE = new global::System.Data.DataColumn("NOMBRE_PLANTA_ESTRUCTURA_FOLLAJE", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnNOMBRE_PLANTA_ESTRUCTURA_FOLLAJE);
-                this.columnNOMBRE_HOJA_COLOR_VERDE = new global::System.Data.DataColumn("NOMBRE_HOJA_COLOR_VERDE", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnNOMBRE_HOJA_COLOR_VERDE);
-                this.columnNOMBRE_PLANTA_FRECUENCIA_FLORES = new global::System.Data.DataColumn("NOMBRE_PLANTA_FRECUENCIA_FLORES", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnNOMBRE_PLANTA_FRECUENCIA_FLORES);
-                this.columnNOMBRE_PLANTA_EPOCA_MADUREZ = new global::System.Data.DataColumn("NOMBRE_PLANTA_EPOCA_MADUREZ", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnNOMBRE_PLANTA_EPOCA_MADUREZ);
-                this.columnNOMBRE_INFLORESCENCIA_PIGMENTACION_PENDUNCULO = new global::System.Data.DataColumn("NOMBRE_INFLORESCENCIA_PIGMENTACION_PENDUNCULO", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnNOMBRE_INFLORESCENCIA_PIGMENTACION_PENDUNCULO);
-                this.columnNOMBRE_BROTE_PUBESCENCIA_EXTREMO = new global::System.Data.DataColumn("NOMBRE_BROTE_PUBESCENCIA_EXTREMO", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnNOMBRE_BROTE_PUBESCENCIA_EXTREMO);
-                this.columnNOMBRE_COROLA_FLOR_EXTENSION_PIGMENTACION_CARA_INTERNA = new global::System.Data.DataColumn("NOMBRE_COROLA_FLOR_EXTENSION_PIGMENTACION_CARA_INTERNA", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnNOMBRE_COROLA_FLOR_EXTENSION_PIGMENTACION_CARA_INTERNA);
-                this.columnNOMBRE_BROTE_TAMANO = new global::System.Data.DataColumn("NOMBRE_BROTE_TAMANO", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnNOMBRE_BROTE_TAMANO);
-                this.columnNOMBRE_VARIEDAD_UPOV = new global::System.Data.DataColumn("NOMBRE_VARIEDAD_UPOV", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnNOMBRE_VARIEDAD_UPOV);
-                this.columnANO_UPOV = new global::System.Data.DataColumn("ANO_UPOV", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnANO_UPOV);
-                this.columnNOMBRE_INFLORESCENCIA_TAMANO.MaxLength = 10;
-                this.columnNOMBRE_BROTE_TAMANO_EXTREMO.MaxLength = 10;
-                this.columnNOMBRE_BROTE_FORMA.MaxLength = 20;
-                this.columnNOMBRE_BROTE_PROPORCION_AZUL.MaxLength = 20;
-                this.columnNOMBRE_FOLIOLO_BRILLO_HAZ.MaxLength = 10;
-                this.columnNOMBRE_BOTON_FLORAL_PIGMENTACION.MaxLength = 30;
-                this.columnNOMBRE_BROTE_PIGMENTACION_BASE.MaxLength = 40;
-                this.columnNOMBRE_HOJA_TAMANO_CONTORNO.MaxLength = 20;
-                this.columnNOMBRE_FOLIOLO_PUBESCENCIA_HAZ_ROSETA_APICAL.MaxLength = 10;
-                this.columnNOMBRE_FOLIOLO_ONDULACION_BORDE.MaxLength = 30;
-                this.columnNOMBRE_BROTE_RADICULAS.MaxLength = 10;
-                this.columnNOMBRE_SEGUNDO_PAR_FOLIOLOS_ANCHURA_LONGITUD.MaxLength = 20;
-                this.columnNOMBRE_BROTE_PORTE_EXTREMO.MaxLength = 20;
-                this.columnPROFUNDIDAD_OJO.MaxLength = 50;
-                this.columnNOMBRE_PLANTA_PORTE.MaxLength = 20;
-                this.columnNOMBRE_SEGUNDO_PAR_FOLIOLOS_TAMANO.MaxLength = 20;
-                this.columnNOMBRE_PLANTA_ALTURA.MaxLength = 20;
-                this.columnNOMBRE_BROTE_PIGMENTACION_EXTREMO.MaxLength = 30;
-                this.columnNOMBRE_HOJA_FOLIOLOS_SECUNDARIOS.MaxLength = 10;
-                this.columnNOMBRE_FOLIOLOS_TERMINALES_COALESCENCIA.MaxLength = 30;
-                this.columnNOMBRE_HOJA_PIGMENTACION_NERVIO_CENTRAL.MaxLength = 30;
-                this.columnNOMBRE_TUBERCULO_COLOR_BASE_OJO.MaxLength = 10;
-                this.columnNOMBRE_BROTE_LONGITUD_RAMIFICACIONES_LATERALES.MaxLength = 10;
-                this.columnNOMBRE_FOLIOLO_PROFUNDIDAD_NERVIOS.MaxLength = 20;
-                this.columnNOMBRE_FORMA.MaxLength = 50;
-                this.columnNOMBRE_TALLO_PIGMENTACION.MaxLength = 20;
-                this.columnNOMBRE_BROTE_PUBESCENCIA_BASE.MaxLength = 20;
-                this.columnNOMBRE_COROLA_FLOR_INTENSIDAD_PIGMENTACION_CARA_INTERNA.MaxLength = 30;
-                this.columnNOMBRE_TUBERCULO_PIGMENTACION_PIEL_REACCION_LUZ.MaxLength = 30;
-                this.columnNOMBRE_COROLA_FLOR_PROPORCION_AZUL_PIGMENTACION_CARA_INTERNA.MaxLength = 20;
-                this.columnNOMBRE_COROLA_FLOR_TAMANO.MaxLength = 10;
-                this.columnNOMBRE_HOJA_APERTURA.MaxLength = 20;
-                this.columnNOMBRE_PLANTA_ESTRUCTURA_FOLLAJE.MaxLength = 20;
-                this.columnNOMBRE_HOJA_COLOR_VERDE.MaxLength = 10;
-                this.columnNOMBRE_PLANTA_FRECUENCIA_FLORES.MaxLength = 30;
-                this.columnNOMBRE_PLANTA_EPOCA_MADUREZ.MaxLength = 20;
-                this.columnNOMBRE_INFLORESCENCIA_PIGMENTACION_PENDUNCULO.MaxLength = 30;
-                this.columnNOMBRE_BROTE_PUBESCENCIA_EXTREMO.MaxLength = 30;
-                this.columnNOMBRE_COROLA_FLOR_EXTENSION_PIGMENTACION_CARA_INTERNA.MaxLength = 30;
-                this.columnNOMBRE_BROTE_TAMANO.MaxLength = 20;
-                this.columnNOMBRE_VARIEDAD_UPOV.MaxLength = 100;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public upovNombresReporteRow NewupovNombresReporteRow() {
-                return ((upovNombresReporteRow)(this.NewRow()));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new upovNombresReporteRow(builder);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Type GetRowType() {
-                return typeof(upovNombresReporteRow);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanged(e);
-                if ((this.upovNombresReporteRowChanged != null)) {
-                    this.upovNombresReporteRowChanged(this, new upovNombresReporteRowChangeEvent(((upovNombresReporteRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanging(e);
-                if ((this.upovNombresReporteRowChanging != null)) {
-                    this.upovNombresReporteRowChanging(this, new upovNombresReporteRowChangeEvent(((upovNombresReporteRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleted(e);
-                if ((this.upovNombresReporteRowDeleted != null)) {
-                    this.upovNombresReporteRowDeleted(this, new upovNombresReporteRowChangeEvent(((upovNombresReporteRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleting(e);
-                if ((this.upovNombresReporteRowDeleting != null)) {
-                    this.upovNombresReporteRowDeleting(this, new upovNombresReporteRowChangeEvent(((upovNombresReporteRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void RemoveupovNombresReporteRow(upovNombresReporteRow row) {
-                this.Rows.Remove(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
-                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                DataSetNovaseed ds = new DataSetNovaseed();
-                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
-                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
-                any1.MinOccurs = new decimal(0);
-                any1.MaxOccurs = decimal.MaxValue;
-                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any1);
-                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
-                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
-                any2.MinOccurs = new decimal(1);
-                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any2);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute1.Name = "namespace";
-                attribute1.FixedValue = ds.Namespace;
-                type.Attributes.Add(attribute1);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "upovNombresReporteDataTable";
-                type.Attributes.Add(attribute2);
-                type.Particle = sequence;
-                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
-                if (xs.Contains(dsSchema.TargetNamespace)) {
-                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
-                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
-                    try {
-                        global::System.Xml.Schema.XmlSchema schema = null;
-                        dsSchema.Write(s1);
-                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
-                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
-                            s2.SetLength(0);
-                            schema.Write(s2);
-                            if ((s1.Length == s2.Length)) {
-                                s1.Position = 0;
-                                s2.Position = 0;
-                                for (; ((s1.Position != s1.Length) 
-                                            && (s1.ReadByte() == s2.ReadByte())); ) {
-                                    ;
-                                }
-                                if ((s1.Position == s1.Length)) {
-                                    return type;
-                                }
-                            }
-                        }
-                    }
-                    finally {
-                        if ((s1 != null)) {
-                            s1.Close();
-                        }
-                        if ((s2 != null)) {
-                            s2.Close();
-                        }
-                    }
-                }
-                xs.Add(dsSchema);
-                return type;
-            }
-        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public delegate void upovNombresReporteRowChangeEventHandler(object sender, upovNombresReporteRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -2586,6 +1682,2026 @@ namespace Project.Novaseed {
         }
         
         /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class upovNombresReporteDataTable : global::System.Data.TypedTableBase<upovNombresReporteRow> {
+            
+            private global::System.Data.DataColumn columnNOMBRE_INFLORESCENCIA_TAMANO;
+            
+            private global::System.Data.DataColumn columnNOMBRE_BROTE_TAMANO_EXTREMO;
+            
+            private global::System.Data.DataColumn columnNOMBRE_BROTE_FORMA;
+            
+            private global::System.Data.DataColumn columnNOMBRE_BROTE_PROPORCION_AZUL;
+            
+            private global::System.Data.DataColumn columnNOMBRE_FOLIOLO_BRILLO_HAZ;
+            
+            private global::System.Data.DataColumn columnNOMBRE_BOTON_FLORAL_PIGMENTACION;
+            
+            private global::System.Data.DataColumn columnNOMBRE_BROTE_PIGMENTACION_BASE;
+            
+            private global::System.Data.DataColumn columnNOMBRE_HOJA_TAMANO_CONTORNO;
+            
+            private global::System.Data.DataColumn columnNOMBRE_FOLIOLO_PUBESCENCIA_HAZ_ROSETA_APICAL;
+            
+            private global::System.Data.DataColumn columnNOMBRE_FOLIOLO_ONDULACION_BORDE;
+            
+            private global::System.Data.DataColumn columnNOMBRE_BROTE_RADICULAS;
+            
+            private global::System.Data.DataColumn columnNOMBRE_SEGUNDO_PAR_FOLIOLOS_ANCHURA_LONGITUD;
+            
+            private global::System.Data.DataColumn columnNOMBRE_BROTE_PORTE_EXTREMO;
+            
+            private global::System.Data.DataColumn columnPROFUNDIDAD_OJO;
+            
+            private global::System.Data.DataColumn columnNOMBRE_PLANTA_PORTE;
+            
+            private global::System.Data.DataColumn columnNOMBRE_SEGUNDO_PAR_FOLIOLOS_TAMANO;
+            
+            private global::System.Data.DataColumn columnNOMBRE_PLANTA_ALTURA;
+            
+            private global::System.Data.DataColumn columnNOMBRE_BROTE_PIGMENTACION_EXTREMO;
+            
+            private global::System.Data.DataColumn columnNOMBRE_HOJA_FOLIOLOS_SECUNDARIOS;
+            
+            private global::System.Data.DataColumn columnNOMBRE_FOLIOLOS_TERMINALES_COALESCENCIA;
+            
+            private global::System.Data.DataColumn columnNOMBRE_HOJA_PIGMENTACION_NERVIO_CENTRAL;
+            
+            private global::System.Data.DataColumn columnNOMBRE_TUBERCULO_COLOR_BASE_OJO;
+            
+            private global::System.Data.DataColumn columnNOMBRE_BROTE_LONGITUD_RAMIFICACIONES_LATERALES;
+            
+            private global::System.Data.DataColumn columnNOMBRE_FOLIOLO_PROFUNDIDAD_NERVIOS;
+            
+            private global::System.Data.DataColumn columnNOMBRE_FORMA;
+            
+            private global::System.Data.DataColumn columnNOMBRE_TALLO_PIGMENTACION;
+            
+            private global::System.Data.DataColumn columnNOMBRE_BROTE_PUBESCENCIA_BASE;
+            
+            private global::System.Data.DataColumn columnNOMBRE_COROLA_FLOR_INTENSIDAD_PIGMENTACION_CARA_INTERNA;
+            
+            private global::System.Data.DataColumn columnNOMBRE_TUBERCULO_PIGMENTACION_PIEL_REACCION_LUZ;
+            
+            private global::System.Data.DataColumn columnNOMBRE_COROLA_FLOR_PROPORCION_AZUL_PIGMENTACION_CARA_INTERNA;
+            
+            private global::System.Data.DataColumn columnNOMBRE_COROLA_FLOR_TAMANO;
+            
+            private global::System.Data.DataColumn columnNOMBRE_HOJA_APERTURA;
+            
+            private global::System.Data.DataColumn columnNOMBRE_PLANTA_ESTRUCTURA_FOLLAJE;
+            
+            private global::System.Data.DataColumn columnNOMBRE_HOJA_COLOR_VERDE;
+            
+            private global::System.Data.DataColumn columnNOMBRE_PLANTA_FRECUENCIA_FLORES;
+            
+            private global::System.Data.DataColumn columnNOMBRE_PLANTA_EPOCA_MADUREZ;
+            
+            private global::System.Data.DataColumn columnNOMBRE_INFLORESCENCIA_PIGMENTACION_PENDUNCULO;
+            
+            private global::System.Data.DataColumn columnNOMBRE_BROTE_PUBESCENCIA_EXTREMO;
+            
+            private global::System.Data.DataColumn columnNOMBRE_COROLA_FLOR_EXTENSION_PIGMENTACION_CARA_INTERNA;
+            
+            private global::System.Data.DataColumn columnNOMBRE_BROTE_TAMANO;
+            
+            private global::System.Data.DataColumn columnNOMBRE_VARIEDAD_UPOV;
+            
+            private global::System.Data.DataColumn columnANO_UPOV;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public upovNombresReporteDataTable() {
+                this.TableName = "upovNombresReporte";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal upovNombresReporteDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected upovNombresReporteDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn NOMBRE_INFLORESCENCIA_TAMANOColumn {
+                get {
+                    return this.columnNOMBRE_INFLORESCENCIA_TAMANO;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn NOMBRE_BROTE_TAMANO_EXTREMOColumn {
+                get {
+                    return this.columnNOMBRE_BROTE_TAMANO_EXTREMO;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn NOMBRE_BROTE_FORMAColumn {
+                get {
+                    return this.columnNOMBRE_BROTE_FORMA;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn NOMBRE_BROTE_PROPORCION_AZULColumn {
+                get {
+                    return this.columnNOMBRE_BROTE_PROPORCION_AZUL;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn NOMBRE_FOLIOLO_BRILLO_HAZColumn {
+                get {
+                    return this.columnNOMBRE_FOLIOLO_BRILLO_HAZ;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn NOMBRE_BOTON_FLORAL_PIGMENTACIONColumn {
+                get {
+                    return this.columnNOMBRE_BOTON_FLORAL_PIGMENTACION;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn NOMBRE_BROTE_PIGMENTACION_BASEColumn {
+                get {
+                    return this.columnNOMBRE_BROTE_PIGMENTACION_BASE;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn NOMBRE_HOJA_TAMANO_CONTORNOColumn {
+                get {
+                    return this.columnNOMBRE_HOJA_TAMANO_CONTORNO;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn NOMBRE_FOLIOLO_PUBESCENCIA_HAZ_ROSETA_APICALColumn {
+                get {
+                    return this.columnNOMBRE_FOLIOLO_PUBESCENCIA_HAZ_ROSETA_APICAL;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn NOMBRE_FOLIOLO_ONDULACION_BORDEColumn {
+                get {
+                    return this.columnNOMBRE_FOLIOLO_ONDULACION_BORDE;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn NOMBRE_BROTE_RADICULASColumn {
+                get {
+                    return this.columnNOMBRE_BROTE_RADICULAS;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn NOMBRE_SEGUNDO_PAR_FOLIOLOS_ANCHURA_LONGITUDColumn {
+                get {
+                    return this.columnNOMBRE_SEGUNDO_PAR_FOLIOLOS_ANCHURA_LONGITUD;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn NOMBRE_BROTE_PORTE_EXTREMOColumn {
+                get {
+                    return this.columnNOMBRE_BROTE_PORTE_EXTREMO;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn PROFUNDIDAD_OJOColumn {
+                get {
+                    return this.columnPROFUNDIDAD_OJO;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn NOMBRE_PLANTA_PORTEColumn {
+                get {
+                    return this.columnNOMBRE_PLANTA_PORTE;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn NOMBRE_SEGUNDO_PAR_FOLIOLOS_TAMANOColumn {
+                get {
+                    return this.columnNOMBRE_SEGUNDO_PAR_FOLIOLOS_TAMANO;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn NOMBRE_PLANTA_ALTURAColumn {
+                get {
+                    return this.columnNOMBRE_PLANTA_ALTURA;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn NOMBRE_BROTE_PIGMENTACION_EXTREMOColumn {
+                get {
+                    return this.columnNOMBRE_BROTE_PIGMENTACION_EXTREMO;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn NOMBRE_HOJA_FOLIOLOS_SECUNDARIOSColumn {
+                get {
+                    return this.columnNOMBRE_HOJA_FOLIOLOS_SECUNDARIOS;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn NOMBRE_FOLIOLOS_TERMINALES_COALESCENCIAColumn {
+                get {
+                    return this.columnNOMBRE_FOLIOLOS_TERMINALES_COALESCENCIA;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn NOMBRE_HOJA_PIGMENTACION_NERVIO_CENTRALColumn {
+                get {
+                    return this.columnNOMBRE_HOJA_PIGMENTACION_NERVIO_CENTRAL;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn NOMBRE_TUBERCULO_COLOR_BASE_OJOColumn {
+                get {
+                    return this.columnNOMBRE_TUBERCULO_COLOR_BASE_OJO;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn NOMBRE_BROTE_LONGITUD_RAMIFICACIONES_LATERALESColumn {
+                get {
+                    return this.columnNOMBRE_BROTE_LONGITUD_RAMIFICACIONES_LATERALES;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn NOMBRE_FOLIOLO_PROFUNDIDAD_NERVIOSColumn {
+                get {
+                    return this.columnNOMBRE_FOLIOLO_PROFUNDIDAD_NERVIOS;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn NOMBRE_FORMAColumn {
+                get {
+                    return this.columnNOMBRE_FORMA;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn NOMBRE_TALLO_PIGMENTACIONColumn {
+                get {
+                    return this.columnNOMBRE_TALLO_PIGMENTACION;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn NOMBRE_BROTE_PUBESCENCIA_BASEColumn {
+                get {
+                    return this.columnNOMBRE_BROTE_PUBESCENCIA_BASE;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn NOMBRE_COROLA_FLOR_INTENSIDAD_PIGMENTACION_CARA_INTERNAColumn {
+                get {
+                    return this.columnNOMBRE_COROLA_FLOR_INTENSIDAD_PIGMENTACION_CARA_INTERNA;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn NOMBRE_TUBERCULO_PIGMENTACION_PIEL_REACCION_LUZColumn {
+                get {
+                    return this.columnNOMBRE_TUBERCULO_PIGMENTACION_PIEL_REACCION_LUZ;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn NOMBRE_COROLA_FLOR_PROPORCION_AZUL_PIGMENTACION_CARA_INTERNAColumn {
+                get {
+                    return this.columnNOMBRE_COROLA_FLOR_PROPORCION_AZUL_PIGMENTACION_CARA_INTERNA;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn NOMBRE_COROLA_FLOR_TAMANOColumn {
+                get {
+                    return this.columnNOMBRE_COROLA_FLOR_TAMANO;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn NOMBRE_HOJA_APERTURAColumn {
+                get {
+                    return this.columnNOMBRE_HOJA_APERTURA;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn NOMBRE_PLANTA_ESTRUCTURA_FOLLAJEColumn {
+                get {
+                    return this.columnNOMBRE_PLANTA_ESTRUCTURA_FOLLAJE;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn NOMBRE_HOJA_COLOR_VERDEColumn {
+                get {
+                    return this.columnNOMBRE_HOJA_COLOR_VERDE;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn NOMBRE_PLANTA_FRECUENCIA_FLORESColumn {
+                get {
+                    return this.columnNOMBRE_PLANTA_FRECUENCIA_FLORES;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn NOMBRE_PLANTA_EPOCA_MADUREZColumn {
+                get {
+                    return this.columnNOMBRE_PLANTA_EPOCA_MADUREZ;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn NOMBRE_INFLORESCENCIA_PIGMENTACION_PENDUNCULOColumn {
+                get {
+                    return this.columnNOMBRE_INFLORESCENCIA_PIGMENTACION_PENDUNCULO;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn NOMBRE_BROTE_PUBESCENCIA_EXTREMOColumn {
+                get {
+                    return this.columnNOMBRE_BROTE_PUBESCENCIA_EXTREMO;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn NOMBRE_COROLA_FLOR_EXTENSION_PIGMENTACION_CARA_INTERNAColumn {
+                get {
+                    return this.columnNOMBRE_COROLA_FLOR_EXTENSION_PIGMENTACION_CARA_INTERNA;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn NOMBRE_BROTE_TAMANOColumn {
+                get {
+                    return this.columnNOMBRE_BROTE_TAMANO;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn NOMBRE_VARIEDAD_UPOVColumn {
+                get {
+                    return this.columnNOMBRE_VARIEDAD_UPOV;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn ANO_UPOVColumn {
+                get {
+                    return this.columnANO_UPOV;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public upovNombresReporteRow this[int index] {
+                get {
+                    return ((upovNombresReporteRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event upovNombresReporteRowChangeEventHandler upovNombresReporteRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event upovNombresReporteRowChangeEventHandler upovNombresReporteRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event upovNombresReporteRowChangeEventHandler upovNombresReporteRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event upovNombresReporteRowChangeEventHandler upovNombresReporteRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void AddupovNombresReporteRow(upovNombresReporteRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public upovNombresReporteRow AddupovNombresReporteRow(
+                        string NOMBRE_INFLORESCENCIA_TAMANO, 
+                        string NOMBRE_BROTE_TAMANO_EXTREMO, 
+                        string NOMBRE_BROTE_FORMA, 
+                        string NOMBRE_BROTE_PROPORCION_AZUL, 
+                        string NOMBRE_FOLIOLO_BRILLO_HAZ, 
+                        string NOMBRE_BOTON_FLORAL_PIGMENTACION, 
+                        string NOMBRE_BROTE_PIGMENTACION_BASE, 
+                        string NOMBRE_HOJA_TAMANO_CONTORNO, 
+                        string NOMBRE_FOLIOLO_PUBESCENCIA_HAZ_ROSETA_APICAL, 
+                        string NOMBRE_FOLIOLO_ONDULACION_BORDE, 
+                        string NOMBRE_BROTE_RADICULAS, 
+                        string NOMBRE_SEGUNDO_PAR_FOLIOLOS_ANCHURA_LONGITUD, 
+                        string NOMBRE_BROTE_PORTE_EXTREMO, 
+                        string PROFUNDIDAD_OJO, 
+                        string NOMBRE_PLANTA_PORTE, 
+                        string NOMBRE_SEGUNDO_PAR_FOLIOLOS_TAMANO, 
+                        string NOMBRE_PLANTA_ALTURA, 
+                        string NOMBRE_BROTE_PIGMENTACION_EXTREMO, 
+                        string NOMBRE_HOJA_FOLIOLOS_SECUNDARIOS, 
+                        string NOMBRE_FOLIOLOS_TERMINALES_COALESCENCIA, 
+                        string NOMBRE_HOJA_PIGMENTACION_NERVIO_CENTRAL, 
+                        string NOMBRE_TUBERCULO_COLOR_BASE_OJO, 
+                        string NOMBRE_BROTE_LONGITUD_RAMIFICACIONES_LATERALES, 
+                        string NOMBRE_FOLIOLO_PROFUNDIDAD_NERVIOS, 
+                        string NOMBRE_FORMA, 
+                        string NOMBRE_TALLO_PIGMENTACION, 
+                        string NOMBRE_BROTE_PUBESCENCIA_BASE, 
+                        string NOMBRE_COROLA_FLOR_INTENSIDAD_PIGMENTACION_CARA_INTERNA, 
+                        string NOMBRE_TUBERCULO_PIGMENTACION_PIEL_REACCION_LUZ, 
+                        string NOMBRE_COROLA_FLOR_PROPORCION_AZUL_PIGMENTACION_CARA_INTERNA, 
+                        string NOMBRE_COROLA_FLOR_TAMANO, 
+                        string NOMBRE_HOJA_APERTURA, 
+                        string NOMBRE_PLANTA_ESTRUCTURA_FOLLAJE, 
+                        string NOMBRE_HOJA_COLOR_VERDE, 
+                        string NOMBRE_PLANTA_FRECUENCIA_FLORES, 
+                        string NOMBRE_PLANTA_EPOCA_MADUREZ, 
+                        string NOMBRE_INFLORESCENCIA_PIGMENTACION_PENDUNCULO, 
+                        string NOMBRE_BROTE_PUBESCENCIA_EXTREMO, 
+                        string NOMBRE_COROLA_FLOR_EXTENSION_PIGMENTACION_CARA_INTERNA, 
+                        string NOMBRE_BROTE_TAMANO, 
+                        string NOMBRE_VARIEDAD_UPOV, 
+                        int ANO_UPOV) {
+                upovNombresReporteRow rowupovNombresReporteRow = ((upovNombresReporteRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        NOMBRE_INFLORESCENCIA_TAMANO,
+                        NOMBRE_BROTE_TAMANO_EXTREMO,
+                        NOMBRE_BROTE_FORMA,
+                        NOMBRE_BROTE_PROPORCION_AZUL,
+                        NOMBRE_FOLIOLO_BRILLO_HAZ,
+                        NOMBRE_BOTON_FLORAL_PIGMENTACION,
+                        NOMBRE_BROTE_PIGMENTACION_BASE,
+                        NOMBRE_HOJA_TAMANO_CONTORNO,
+                        NOMBRE_FOLIOLO_PUBESCENCIA_HAZ_ROSETA_APICAL,
+                        NOMBRE_FOLIOLO_ONDULACION_BORDE,
+                        NOMBRE_BROTE_RADICULAS,
+                        NOMBRE_SEGUNDO_PAR_FOLIOLOS_ANCHURA_LONGITUD,
+                        NOMBRE_BROTE_PORTE_EXTREMO,
+                        PROFUNDIDAD_OJO,
+                        NOMBRE_PLANTA_PORTE,
+                        NOMBRE_SEGUNDO_PAR_FOLIOLOS_TAMANO,
+                        NOMBRE_PLANTA_ALTURA,
+                        NOMBRE_BROTE_PIGMENTACION_EXTREMO,
+                        NOMBRE_HOJA_FOLIOLOS_SECUNDARIOS,
+                        NOMBRE_FOLIOLOS_TERMINALES_COALESCENCIA,
+                        NOMBRE_HOJA_PIGMENTACION_NERVIO_CENTRAL,
+                        NOMBRE_TUBERCULO_COLOR_BASE_OJO,
+                        NOMBRE_BROTE_LONGITUD_RAMIFICACIONES_LATERALES,
+                        NOMBRE_FOLIOLO_PROFUNDIDAD_NERVIOS,
+                        NOMBRE_FORMA,
+                        NOMBRE_TALLO_PIGMENTACION,
+                        NOMBRE_BROTE_PUBESCENCIA_BASE,
+                        NOMBRE_COROLA_FLOR_INTENSIDAD_PIGMENTACION_CARA_INTERNA,
+                        NOMBRE_TUBERCULO_PIGMENTACION_PIEL_REACCION_LUZ,
+                        NOMBRE_COROLA_FLOR_PROPORCION_AZUL_PIGMENTACION_CARA_INTERNA,
+                        NOMBRE_COROLA_FLOR_TAMANO,
+                        NOMBRE_HOJA_APERTURA,
+                        NOMBRE_PLANTA_ESTRUCTURA_FOLLAJE,
+                        NOMBRE_HOJA_COLOR_VERDE,
+                        NOMBRE_PLANTA_FRECUENCIA_FLORES,
+                        NOMBRE_PLANTA_EPOCA_MADUREZ,
+                        NOMBRE_INFLORESCENCIA_PIGMENTACION_PENDUNCULO,
+                        NOMBRE_BROTE_PUBESCENCIA_EXTREMO,
+                        NOMBRE_COROLA_FLOR_EXTENSION_PIGMENTACION_CARA_INTERNA,
+                        NOMBRE_BROTE_TAMANO,
+                        NOMBRE_VARIEDAD_UPOV,
+                        ANO_UPOV};
+                rowupovNombresReporteRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowupovNombresReporteRow);
+                return rowupovNombresReporteRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                upovNombresReporteDataTable cln = ((upovNombresReporteDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new upovNombresReporteDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal void InitVars() {
+                this.columnNOMBRE_INFLORESCENCIA_TAMANO = base.Columns["NOMBRE_INFLORESCENCIA_TAMANO"];
+                this.columnNOMBRE_BROTE_TAMANO_EXTREMO = base.Columns["NOMBRE_BROTE_TAMANO_EXTREMO"];
+                this.columnNOMBRE_BROTE_FORMA = base.Columns["NOMBRE_BROTE_FORMA"];
+                this.columnNOMBRE_BROTE_PROPORCION_AZUL = base.Columns["NOMBRE_BROTE_PROPORCION_AZUL"];
+                this.columnNOMBRE_FOLIOLO_BRILLO_HAZ = base.Columns["NOMBRE_FOLIOLO_BRILLO_HAZ"];
+                this.columnNOMBRE_BOTON_FLORAL_PIGMENTACION = base.Columns["NOMBRE_BOTON_FLORAL_PIGMENTACION"];
+                this.columnNOMBRE_BROTE_PIGMENTACION_BASE = base.Columns["NOMBRE_BROTE_PIGMENTACION_BASE"];
+                this.columnNOMBRE_HOJA_TAMANO_CONTORNO = base.Columns["NOMBRE_HOJA_TAMANO_CONTORNO"];
+                this.columnNOMBRE_FOLIOLO_PUBESCENCIA_HAZ_ROSETA_APICAL = base.Columns["NOMBRE_FOLIOLO_PUBESCENCIA_HAZ_ROSETA_APICAL"];
+                this.columnNOMBRE_FOLIOLO_ONDULACION_BORDE = base.Columns["NOMBRE_FOLIOLO_ONDULACION_BORDE"];
+                this.columnNOMBRE_BROTE_RADICULAS = base.Columns["NOMBRE_BROTE_RADICULAS"];
+                this.columnNOMBRE_SEGUNDO_PAR_FOLIOLOS_ANCHURA_LONGITUD = base.Columns["NOMBRE_SEGUNDO_PAR_FOLIOLOS_ANCHURA_LONGITUD"];
+                this.columnNOMBRE_BROTE_PORTE_EXTREMO = base.Columns["NOMBRE_BROTE_PORTE_EXTREMO"];
+                this.columnPROFUNDIDAD_OJO = base.Columns["PROFUNDIDAD_OJO"];
+                this.columnNOMBRE_PLANTA_PORTE = base.Columns["NOMBRE_PLANTA_PORTE"];
+                this.columnNOMBRE_SEGUNDO_PAR_FOLIOLOS_TAMANO = base.Columns["NOMBRE_SEGUNDO_PAR_FOLIOLOS_TAMANO"];
+                this.columnNOMBRE_PLANTA_ALTURA = base.Columns["NOMBRE_PLANTA_ALTURA"];
+                this.columnNOMBRE_BROTE_PIGMENTACION_EXTREMO = base.Columns["NOMBRE_BROTE_PIGMENTACION_EXTREMO"];
+                this.columnNOMBRE_HOJA_FOLIOLOS_SECUNDARIOS = base.Columns["NOMBRE_HOJA_FOLIOLOS_SECUNDARIOS"];
+                this.columnNOMBRE_FOLIOLOS_TERMINALES_COALESCENCIA = base.Columns["NOMBRE_FOLIOLOS_TERMINALES_COALESCENCIA"];
+                this.columnNOMBRE_HOJA_PIGMENTACION_NERVIO_CENTRAL = base.Columns["NOMBRE_HOJA_PIGMENTACION_NERVIO_CENTRAL"];
+                this.columnNOMBRE_TUBERCULO_COLOR_BASE_OJO = base.Columns["NOMBRE_TUBERCULO_COLOR_BASE_OJO"];
+                this.columnNOMBRE_BROTE_LONGITUD_RAMIFICACIONES_LATERALES = base.Columns["NOMBRE_BROTE_LONGITUD_RAMIFICACIONES_LATERALES"];
+                this.columnNOMBRE_FOLIOLO_PROFUNDIDAD_NERVIOS = base.Columns["NOMBRE_FOLIOLO_PROFUNDIDAD_NERVIOS"];
+                this.columnNOMBRE_FORMA = base.Columns["NOMBRE_FORMA"];
+                this.columnNOMBRE_TALLO_PIGMENTACION = base.Columns["NOMBRE_TALLO_PIGMENTACION"];
+                this.columnNOMBRE_BROTE_PUBESCENCIA_BASE = base.Columns["NOMBRE_BROTE_PUBESCENCIA_BASE"];
+                this.columnNOMBRE_COROLA_FLOR_INTENSIDAD_PIGMENTACION_CARA_INTERNA = base.Columns["NOMBRE_COROLA_FLOR_INTENSIDAD_PIGMENTACION_CARA_INTERNA"];
+                this.columnNOMBRE_TUBERCULO_PIGMENTACION_PIEL_REACCION_LUZ = base.Columns["NOMBRE_TUBERCULO_PIGMENTACION_PIEL_REACCION_LUZ"];
+                this.columnNOMBRE_COROLA_FLOR_PROPORCION_AZUL_PIGMENTACION_CARA_INTERNA = base.Columns["NOMBRE_COROLA_FLOR_PROPORCION_AZUL_PIGMENTACION_CARA_INTERNA"];
+                this.columnNOMBRE_COROLA_FLOR_TAMANO = base.Columns["NOMBRE_COROLA_FLOR_TAMANO"];
+                this.columnNOMBRE_HOJA_APERTURA = base.Columns["NOMBRE_HOJA_APERTURA"];
+                this.columnNOMBRE_PLANTA_ESTRUCTURA_FOLLAJE = base.Columns["NOMBRE_PLANTA_ESTRUCTURA_FOLLAJE"];
+                this.columnNOMBRE_HOJA_COLOR_VERDE = base.Columns["NOMBRE_HOJA_COLOR_VERDE"];
+                this.columnNOMBRE_PLANTA_FRECUENCIA_FLORES = base.Columns["NOMBRE_PLANTA_FRECUENCIA_FLORES"];
+                this.columnNOMBRE_PLANTA_EPOCA_MADUREZ = base.Columns["NOMBRE_PLANTA_EPOCA_MADUREZ"];
+                this.columnNOMBRE_INFLORESCENCIA_PIGMENTACION_PENDUNCULO = base.Columns["NOMBRE_INFLORESCENCIA_PIGMENTACION_PENDUNCULO"];
+                this.columnNOMBRE_BROTE_PUBESCENCIA_EXTREMO = base.Columns["NOMBRE_BROTE_PUBESCENCIA_EXTREMO"];
+                this.columnNOMBRE_COROLA_FLOR_EXTENSION_PIGMENTACION_CARA_INTERNA = base.Columns["NOMBRE_COROLA_FLOR_EXTENSION_PIGMENTACION_CARA_INTERNA"];
+                this.columnNOMBRE_BROTE_TAMANO = base.Columns["NOMBRE_BROTE_TAMANO"];
+                this.columnNOMBRE_VARIEDAD_UPOV = base.Columns["NOMBRE_VARIEDAD_UPOV"];
+                this.columnANO_UPOV = base.Columns["ANO_UPOV"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            private void InitClass() {
+                this.columnNOMBRE_INFLORESCENCIA_TAMANO = new global::System.Data.DataColumn("NOMBRE_INFLORESCENCIA_TAMANO", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNOMBRE_INFLORESCENCIA_TAMANO);
+                this.columnNOMBRE_BROTE_TAMANO_EXTREMO = new global::System.Data.DataColumn("NOMBRE_BROTE_TAMANO_EXTREMO", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNOMBRE_BROTE_TAMANO_EXTREMO);
+                this.columnNOMBRE_BROTE_FORMA = new global::System.Data.DataColumn("NOMBRE_BROTE_FORMA", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNOMBRE_BROTE_FORMA);
+                this.columnNOMBRE_BROTE_PROPORCION_AZUL = new global::System.Data.DataColumn("NOMBRE_BROTE_PROPORCION_AZUL", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNOMBRE_BROTE_PROPORCION_AZUL);
+                this.columnNOMBRE_FOLIOLO_BRILLO_HAZ = new global::System.Data.DataColumn("NOMBRE_FOLIOLO_BRILLO_HAZ", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNOMBRE_FOLIOLO_BRILLO_HAZ);
+                this.columnNOMBRE_BOTON_FLORAL_PIGMENTACION = new global::System.Data.DataColumn("NOMBRE_BOTON_FLORAL_PIGMENTACION", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNOMBRE_BOTON_FLORAL_PIGMENTACION);
+                this.columnNOMBRE_BROTE_PIGMENTACION_BASE = new global::System.Data.DataColumn("NOMBRE_BROTE_PIGMENTACION_BASE", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNOMBRE_BROTE_PIGMENTACION_BASE);
+                this.columnNOMBRE_HOJA_TAMANO_CONTORNO = new global::System.Data.DataColumn("NOMBRE_HOJA_TAMANO_CONTORNO", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNOMBRE_HOJA_TAMANO_CONTORNO);
+                this.columnNOMBRE_FOLIOLO_PUBESCENCIA_HAZ_ROSETA_APICAL = new global::System.Data.DataColumn("NOMBRE_FOLIOLO_PUBESCENCIA_HAZ_ROSETA_APICAL", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNOMBRE_FOLIOLO_PUBESCENCIA_HAZ_ROSETA_APICAL);
+                this.columnNOMBRE_FOLIOLO_ONDULACION_BORDE = new global::System.Data.DataColumn("NOMBRE_FOLIOLO_ONDULACION_BORDE", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNOMBRE_FOLIOLO_ONDULACION_BORDE);
+                this.columnNOMBRE_BROTE_RADICULAS = new global::System.Data.DataColumn("NOMBRE_BROTE_RADICULAS", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNOMBRE_BROTE_RADICULAS);
+                this.columnNOMBRE_SEGUNDO_PAR_FOLIOLOS_ANCHURA_LONGITUD = new global::System.Data.DataColumn("NOMBRE_SEGUNDO_PAR_FOLIOLOS_ANCHURA_LONGITUD", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNOMBRE_SEGUNDO_PAR_FOLIOLOS_ANCHURA_LONGITUD);
+                this.columnNOMBRE_BROTE_PORTE_EXTREMO = new global::System.Data.DataColumn("NOMBRE_BROTE_PORTE_EXTREMO", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNOMBRE_BROTE_PORTE_EXTREMO);
+                this.columnPROFUNDIDAD_OJO = new global::System.Data.DataColumn("PROFUNDIDAD_OJO", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPROFUNDIDAD_OJO);
+                this.columnNOMBRE_PLANTA_PORTE = new global::System.Data.DataColumn("NOMBRE_PLANTA_PORTE", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNOMBRE_PLANTA_PORTE);
+                this.columnNOMBRE_SEGUNDO_PAR_FOLIOLOS_TAMANO = new global::System.Data.DataColumn("NOMBRE_SEGUNDO_PAR_FOLIOLOS_TAMANO", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNOMBRE_SEGUNDO_PAR_FOLIOLOS_TAMANO);
+                this.columnNOMBRE_PLANTA_ALTURA = new global::System.Data.DataColumn("NOMBRE_PLANTA_ALTURA", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNOMBRE_PLANTA_ALTURA);
+                this.columnNOMBRE_BROTE_PIGMENTACION_EXTREMO = new global::System.Data.DataColumn("NOMBRE_BROTE_PIGMENTACION_EXTREMO", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNOMBRE_BROTE_PIGMENTACION_EXTREMO);
+                this.columnNOMBRE_HOJA_FOLIOLOS_SECUNDARIOS = new global::System.Data.DataColumn("NOMBRE_HOJA_FOLIOLOS_SECUNDARIOS", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNOMBRE_HOJA_FOLIOLOS_SECUNDARIOS);
+                this.columnNOMBRE_FOLIOLOS_TERMINALES_COALESCENCIA = new global::System.Data.DataColumn("NOMBRE_FOLIOLOS_TERMINALES_COALESCENCIA", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNOMBRE_FOLIOLOS_TERMINALES_COALESCENCIA);
+                this.columnNOMBRE_HOJA_PIGMENTACION_NERVIO_CENTRAL = new global::System.Data.DataColumn("NOMBRE_HOJA_PIGMENTACION_NERVIO_CENTRAL", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNOMBRE_HOJA_PIGMENTACION_NERVIO_CENTRAL);
+                this.columnNOMBRE_TUBERCULO_COLOR_BASE_OJO = new global::System.Data.DataColumn("NOMBRE_TUBERCULO_COLOR_BASE_OJO", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNOMBRE_TUBERCULO_COLOR_BASE_OJO);
+                this.columnNOMBRE_BROTE_LONGITUD_RAMIFICACIONES_LATERALES = new global::System.Data.DataColumn("NOMBRE_BROTE_LONGITUD_RAMIFICACIONES_LATERALES", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNOMBRE_BROTE_LONGITUD_RAMIFICACIONES_LATERALES);
+                this.columnNOMBRE_FOLIOLO_PROFUNDIDAD_NERVIOS = new global::System.Data.DataColumn("NOMBRE_FOLIOLO_PROFUNDIDAD_NERVIOS", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNOMBRE_FOLIOLO_PROFUNDIDAD_NERVIOS);
+                this.columnNOMBRE_FORMA = new global::System.Data.DataColumn("NOMBRE_FORMA", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNOMBRE_FORMA);
+                this.columnNOMBRE_TALLO_PIGMENTACION = new global::System.Data.DataColumn("NOMBRE_TALLO_PIGMENTACION", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNOMBRE_TALLO_PIGMENTACION);
+                this.columnNOMBRE_BROTE_PUBESCENCIA_BASE = new global::System.Data.DataColumn("NOMBRE_BROTE_PUBESCENCIA_BASE", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNOMBRE_BROTE_PUBESCENCIA_BASE);
+                this.columnNOMBRE_COROLA_FLOR_INTENSIDAD_PIGMENTACION_CARA_INTERNA = new global::System.Data.DataColumn("NOMBRE_COROLA_FLOR_INTENSIDAD_PIGMENTACION_CARA_INTERNA", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNOMBRE_COROLA_FLOR_INTENSIDAD_PIGMENTACION_CARA_INTERNA);
+                this.columnNOMBRE_TUBERCULO_PIGMENTACION_PIEL_REACCION_LUZ = new global::System.Data.DataColumn("NOMBRE_TUBERCULO_PIGMENTACION_PIEL_REACCION_LUZ", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNOMBRE_TUBERCULO_PIGMENTACION_PIEL_REACCION_LUZ);
+                this.columnNOMBRE_COROLA_FLOR_PROPORCION_AZUL_PIGMENTACION_CARA_INTERNA = new global::System.Data.DataColumn("NOMBRE_COROLA_FLOR_PROPORCION_AZUL_PIGMENTACION_CARA_INTERNA", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNOMBRE_COROLA_FLOR_PROPORCION_AZUL_PIGMENTACION_CARA_INTERNA);
+                this.columnNOMBRE_COROLA_FLOR_TAMANO = new global::System.Data.DataColumn("NOMBRE_COROLA_FLOR_TAMANO", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNOMBRE_COROLA_FLOR_TAMANO);
+                this.columnNOMBRE_HOJA_APERTURA = new global::System.Data.DataColumn("NOMBRE_HOJA_APERTURA", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNOMBRE_HOJA_APERTURA);
+                this.columnNOMBRE_PLANTA_ESTRUCTURA_FOLLAJE = new global::System.Data.DataColumn("NOMBRE_PLANTA_ESTRUCTURA_FOLLAJE", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNOMBRE_PLANTA_ESTRUCTURA_FOLLAJE);
+                this.columnNOMBRE_HOJA_COLOR_VERDE = new global::System.Data.DataColumn("NOMBRE_HOJA_COLOR_VERDE", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNOMBRE_HOJA_COLOR_VERDE);
+                this.columnNOMBRE_PLANTA_FRECUENCIA_FLORES = new global::System.Data.DataColumn("NOMBRE_PLANTA_FRECUENCIA_FLORES", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNOMBRE_PLANTA_FRECUENCIA_FLORES);
+                this.columnNOMBRE_PLANTA_EPOCA_MADUREZ = new global::System.Data.DataColumn("NOMBRE_PLANTA_EPOCA_MADUREZ", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNOMBRE_PLANTA_EPOCA_MADUREZ);
+                this.columnNOMBRE_INFLORESCENCIA_PIGMENTACION_PENDUNCULO = new global::System.Data.DataColumn("NOMBRE_INFLORESCENCIA_PIGMENTACION_PENDUNCULO", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNOMBRE_INFLORESCENCIA_PIGMENTACION_PENDUNCULO);
+                this.columnNOMBRE_BROTE_PUBESCENCIA_EXTREMO = new global::System.Data.DataColumn("NOMBRE_BROTE_PUBESCENCIA_EXTREMO", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNOMBRE_BROTE_PUBESCENCIA_EXTREMO);
+                this.columnNOMBRE_COROLA_FLOR_EXTENSION_PIGMENTACION_CARA_INTERNA = new global::System.Data.DataColumn("NOMBRE_COROLA_FLOR_EXTENSION_PIGMENTACION_CARA_INTERNA", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNOMBRE_COROLA_FLOR_EXTENSION_PIGMENTACION_CARA_INTERNA);
+                this.columnNOMBRE_BROTE_TAMANO = new global::System.Data.DataColumn("NOMBRE_BROTE_TAMANO", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNOMBRE_BROTE_TAMANO);
+                this.columnNOMBRE_VARIEDAD_UPOV = new global::System.Data.DataColumn("NOMBRE_VARIEDAD_UPOV", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNOMBRE_VARIEDAD_UPOV);
+                this.columnANO_UPOV = new global::System.Data.DataColumn("ANO_UPOV", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnANO_UPOV);
+                this.columnNOMBRE_INFLORESCENCIA_TAMANO.MaxLength = 10;
+                this.columnNOMBRE_BROTE_TAMANO_EXTREMO.MaxLength = 10;
+                this.columnNOMBRE_BROTE_FORMA.MaxLength = 20;
+                this.columnNOMBRE_BROTE_PROPORCION_AZUL.MaxLength = 20;
+                this.columnNOMBRE_FOLIOLO_BRILLO_HAZ.MaxLength = 10;
+                this.columnNOMBRE_BOTON_FLORAL_PIGMENTACION.MaxLength = 30;
+                this.columnNOMBRE_BROTE_PIGMENTACION_BASE.MaxLength = 40;
+                this.columnNOMBRE_HOJA_TAMANO_CONTORNO.MaxLength = 20;
+                this.columnNOMBRE_FOLIOLO_PUBESCENCIA_HAZ_ROSETA_APICAL.MaxLength = 10;
+                this.columnNOMBRE_FOLIOLO_ONDULACION_BORDE.MaxLength = 30;
+                this.columnNOMBRE_BROTE_RADICULAS.MaxLength = 10;
+                this.columnNOMBRE_SEGUNDO_PAR_FOLIOLOS_ANCHURA_LONGITUD.MaxLength = 20;
+                this.columnNOMBRE_BROTE_PORTE_EXTREMO.MaxLength = 20;
+                this.columnPROFUNDIDAD_OJO.MaxLength = 50;
+                this.columnNOMBRE_PLANTA_PORTE.MaxLength = 20;
+                this.columnNOMBRE_SEGUNDO_PAR_FOLIOLOS_TAMANO.MaxLength = 20;
+                this.columnNOMBRE_PLANTA_ALTURA.MaxLength = 20;
+                this.columnNOMBRE_BROTE_PIGMENTACION_EXTREMO.MaxLength = 30;
+                this.columnNOMBRE_HOJA_FOLIOLOS_SECUNDARIOS.MaxLength = 10;
+                this.columnNOMBRE_FOLIOLOS_TERMINALES_COALESCENCIA.MaxLength = 30;
+                this.columnNOMBRE_HOJA_PIGMENTACION_NERVIO_CENTRAL.MaxLength = 30;
+                this.columnNOMBRE_TUBERCULO_COLOR_BASE_OJO.MaxLength = 10;
+                this.columnNOMBRE_BROTE_LONGITUD_RAMIFICACIONES_LATERALES.MaxLength = 10;
+                this.columnNOMBRE_FOLIOLO_PROFUNDIDAD_NERVIOS.MaxLength = 20;
+                this.columnNOMBRE_FORMA.MaxLength = 50;
+                this.columnNOMBRE_TALLO_PIGMENTACION.MaxLength = 20;
+                this.columnNOMBRE_BROTE_PUBESCENCIA_BASE.MaxLength = 20;
+                this.columnNOMBRE_COROLA_FLOR_INTENSIDAD_PIGMENTACION_CARA_INTERNA.MaxLength = 30;
+                this.columnNOMBRE_TUBERCULO_PIGMENTACION_PIEL_REACCION_LUZ.MaxLength = 30;
+                this.columnNOMBRE_COROLA_FLOR_PROPORCION_AZUL_PIGMENTACION_CARA_INTERNA.MaxLength = 20;
+                this.columnNOMBRE_COROLA_FLOR_TAMANO.MaxLength = 10;
+                this.columnNOMBRE_HOJA_APERTURA.MaxLength = 20;
+                this.columnNOMBRE_PLANTA_ESTRUCTURA_FOLLAJE.MaxLength = 20;
+                this.columnNOMBRE_HOJA_COLOR_VERDE.MaxLength = 10;
+                this.columnNOMBRE_PLANTA_FRECUENCIA_FLORES.MaxLength = 30;
+                this.columnNOMBRE_PLANTA_EPOCA_MADUREZ.MaxLength = 20;
+                this.columnNOMBRE_INFLORESCENCIA_PIGMENTACION_PENDUNCULO.MaxLength = 30;
+                this.columnNOMBRE_BROTE_PUBESCENCIA_EXTREMO.MaxLength = 30;
+                this.columnNOMBRE_COROLA_FLOR_EXTENSION_PIGMENTACION_CARA_INTERNA.MaxLength = 30;
+                this.columnNOMBRE_BROTE_TAMANO.MaxLength = 20;
+                this.columnNOMBRE_VARIEDAD_UPOV.MaxLength = 100;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public upovNombresReporteRow NewupovNombresReporteRow() {
+                return ((upovNombresReporteRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new upovNombresReporteRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(upovNombresReporteRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.upovNombresReporteRowChanged != null)) {
+                    this.upovNombresReporteRowChanged(this, new upovNombresReporteRowChangeEvent(((upovNombresReporteRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.upovNombresReporteRowChanging != null)) {
+                    this.upovNombresReporteRowChanging(this, new upovNombresReporteRowChangeEvent(((upovNombresReporteRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.upovNombresReporteRowDeleted != null)) {
+                    this.upovNombresReporteRowDeleted(this, new upovNombresReporteRowChangeEvent(((upovNombresReporteRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.upovNombresReporteRowDeleting != null)) {
+                    this.upovNombresReporteRowDeleting(this, new upovNombresReporteRowChangeEvent(((upovNombresReporteRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void RemoveupovNombresReporteRow(upovNombresReporteRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                DataSetNovaseed ds = new DataSetNovaseed();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "upovNombresReporteDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class produccionReporteRow : global::System.Data.DataRow {
+            
+            private produccionReporteDataTable tableproduccionReporte;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal produccionReporteRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableproduccionReporte = ((produccionReporteDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string CODIGO_VARIEDAD {
+                get {
+                    try {
+                        return ((string)(this[this.tableproduccionReporte.CODIGO_VARIEDADColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'CODIGO_VARIEDAD\' de la tabla \'produccionReporte\' es DBNul" +
+                                "l.", e);
+                    }
+                }
+                set {
+                    this[this.tableproduccionReporte.CODIGO_VARIEDADColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string NOMBRE_PRODUCTOR {
+                get {
+                    try {
+                        return ((string)(this[this.tableproduccionReporte.NOMBRE_PRODUCTORColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'NOMBRE_PRODUCTOR\' de la tabla \'produccionReporte\' es DBNu" +
+                                "ll.", e);
+                    }
+                }
+                set {
+                    this[this.tableproduccionReporte.NOMBRE_PRODUCTORColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string NOMBRE_CIUDAD {
+                get {
+                    try {
+                        return ((string)(this[this.tableproduccionReporte.NOMBRE_CIUDADColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'NOMBRE_CIUDAD\' de la tabla \'produccionReporte\' es DBNull." +
+                                "", e);
+                    }
+                }
+                set {
+                    this[this.tableproduccionReporte.NOMBRE_CIUDADColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string NOMBRE_CATEGORIA_PRODUCCION {
+                get {
+                    return ((string)(this[this.tableproduccionReporte.NOMBRE_CATEGORIA_PRODUCCIONColumn]));
+                }
+                set {
+                    this[this.tableproduccionReporte.NOMBRE_CATEGORIA_PRODUCCIONColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public double PROD_CANTIDAD_TOTAL {
+                get {
+                    try {
+                        return ((double)(this[this.tableproduccionReporte.PROD_CANTIDAD_TOTALColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'PROD_CANTIDAD_TOTAL\' de la tabla \'produccionReporte\' es D" +
+                                "BNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableproduccionReporte.PROD_CANTIDAD_TOTALColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public double CANTIDAD_PRODUCTOR {
+                get {
+                    try {
+                        return ((double)(this[this.tableproduccionReporte.CANTIDAD_PRODUCTORColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'CANTIDAD_PRODUCTOR\' de la tabla \'produccionReporte\' es DB" +
+                                "Null.", e);
+                    }
+                }
+                set {
+                    this[this.tableproduccionReporte.CANTIDAD_PRODUCTORColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public double COSECHA_PRODUCCION {
+                get {
+                    try {
+                        return ((double)(this[this.tableproduccionReporte.COSECHA_PRODUCCIONColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'COSECHA_PRODUCCION\' de la tabla \'produccionReporte\' es DB" +
+                                "Null.", e);
+                    }
+                }
+                set {
+                    this[this.tableproduccionReporte.COSECHA_PRODUCCIONColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public double SUPERFICIE_PRODUCCION {
+                get {
+                    try {
+                        return ((double)(this[this.tableproduccionReporte.SUPERFICIE_PRODUCCIONColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'SUPERFICIE_PRODUCCION\' de la tabla \'produccionReporte\' es" +
+                                " DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableproduccionReporte.SUPERFICIE_PRODUCCIONColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool LICENCIA_PRODUCCION {
+                get {
+                    try {
+                        return ((bool)(this[this.tableproduccionReporte.LICENCIA_PRODUCCIONColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'LICENCIA_PRODUCCION\' de la tabla \'produccionReporte\' es D" +
+                                "BNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableproduccionReporte.LICENCIA_PRODUCCIONColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int ANO_PRODUCCION {
+                get {
+                    try {
+                        return ((int)(this[this.tableproduccionReporte.ANO_PRODUCCIONColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'ANO_PRODUCCION\' de la tabla \'produccionReporte\' es DBNull" +
+                                ".", e);
+                    }
+                }
+                set {
+                    this[this.tableproduccionReporte.ANO_PRODUCCIONColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string NOMBRE_VARIEDAD {
+                get {
+                    try {
+                        return ((string)(this[this.tableproduccionReporte.NOMBRE_VARIEDADColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'NOMBRE_VARIEDAD\' de la tabla \'produccionReporte\' es DBNul" +
+                                "l.", e);
+                    }
+                }
+                set {
+                    this[this.tableproduccionReporte.NOMBRE_VARIEDADColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsCODIGO_VARIEDADNull() {
+                return this.IsNull(this.tableproduccionReporte.CODIGO_VARIEDADColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetCODIGO_VARIEDADNull() {
+                this[this.tableproduccionReporte.CODIGO_VARIEDADColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsNOMBRE_PRODUCTORNull() {
+                return this.IsNull(this.tableproduccionReporte.NOMBRE_PRODUCTORColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetNOMBRE_PRODUCTORNull() {
+                this[this.tableproduccionReporte.NOMBRE_PRODUCTORColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsNOMBRE_CIUDADNull() {
+                return this.IsNull(this.tableproduccionReporte.NOMBRE_CIUDADColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetNOMBRE_CIUDADNull() {
+                this[this.tableproduccionReporte.NOMBRE_CIUDADColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsPROD_CANTIDAD_TOTALNull() {
+                return this.IsNull(this.tableproduccionReporte.PROD_CANTIDAD_TOTALColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetPROD_CANTIDAD_TOTALNull() {
+                this[this.tableproduccionReporte.PROD_CANTIDAD_TOTALColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsCANTIDAD_PRODUCTORNull() {
+                return this.IsNull(this.tableproduccionReporte.CANTIDAD_PRODUCTORColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetCANTIDAD_PRODUCTORNull() {
+                this[this.tableproduccionReporte.CANTIDAD_PRODUCTORColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsCOSECHA_PRODUCCIONNull() {
+                return this.IsNull(this.tableproduccionReporte.COSECHA_PRODUCCIONColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetCOSECHA_PRODUCCIONNull() {
+                this[this.tableproduccionReporte.COSECHA_PRODUCCIONColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsSUPERFICIE_PRODUCCIONNull() {
+                return this.IsNull(this.tableproduccionReporte.SUPERFICIE_PRODUCCIONColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetSUPERFICIE_PRODUCCIONNull() {
+                this[this.tableproduccionReporte.SUPERFICIE_PRODUCCIONColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsLICENCIA_PRODUCCIONNull() {
+                return this.IsNull(this.tableproduccionReporte.LICENCIA_PRODUCCIONColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetLICENCIA_PRODUCCIONNull() {
+                this[this.tableproduccionReporte.LICENCIA_PRODUCCIONColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsANO_PRODUCCIONNull() {
+                return this.IsNull(this.tableproduccionReporte.ANO_PRODUCCIONColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetANO_PRODUCCIONNull() {
+                this[this.tableproduccionReporte.ANO_PRODUCCIONColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsNOMBRE_VARIEDADNull() {
+                return this.IsNull(this.tableproduccionReporte.NOMBRE_VARIEDADColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetNOMBRE_VARIEDADNull() {
+                this[this.tableproduccionReporte.NOMBRE_VARIEDADColumn] = global::System.Convert.DBNull;
+            }
+        }
+        
+        /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class licenciaReporteRow : global::System.Data.DataRow {
+            
+            private licenciaReporteDataTable tablelicenciaReporte;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal licenciaReporteRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tablelicenciaReporte = ((licenciaReporteDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string CODIGO_VARIEDAD {
+                get {
+                    try {
+                        return ((string)(this[this.tablelicenciaReporte.CODIGO_VARIEDADColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'CODIGO_VARIEDAD\' de la tabla \'licenciaReporte\' es DBNull." +
+                                "", e);
+                    }
+                }
+                set {
+                    this[this.tablelicenciaReporte.CODIGO_VARIEDADColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string NOMBRE_PRODUCTOR {
+                get {
+                    try {
+                        return ((string)(this[this.tablelicenciaReporte.NOMBRE_PRODUCTORColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'NOMBRE_PRODUCTOR\' de la tabla \'licenciaReporte\' es DBNull" +
+                                ".", e);
+                    }
+                }
+                set {
+                    this[this.tablelicenciaReporte.NOMBRE_PRODUCTORColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string NOMBRE_CIUDAD {
+                get {
+                    try {
+                        return ((string)(this[this.tablelicenciaReporte.NOMBRE_CIUDADColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'NOMBRE_CIUDAD\' de la tabla \'licenciaReporte\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablelicenciaReporte.NOMBRE_CIUDADColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string NOMBRE_CATEGORIA_PRODUCCION {
+                get {
+                    return ((string)(this[this.tablelicenciaReporte.NOMBRE_CATEGORIA_PRODUCCIONColumn]));
+                }
+                set {
+                    this[this.tablelicenciaReporte.NOMBRE_CATEGORIA_PRODUCCIONColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public double PROD_CANTIDAD_TOTAL {
+                get {
+                    try {
+                        return ((double)(this[this.tablelicenciaReporte.PROD_CANTIDAD_TOTALColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'PROD_CANTIDAD_TOTAL\' de la tabla \'licenciaReporte\' es DBN" +
+                                "ull.", e);
+                    }
+                }
+                set {
+                    this[this.tablelicenciaReporte.PROD_CANTIDAD_TOTALColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public double CANTIDAD_PRODUCTOR {
+                get {
+                    try {
+                        return ((double)(this[this.tablelicenciaReporte.CANTIDAD_PRODUCTORColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'CANTIDAD_PRODUCTOR\' de la tabla \'licenciaReporte\' es DBNu" +
+                                "ll.", e);
+                    }
+                }
+                set {
+                    this[this.tablelicenciaReporte.CANTIDAD_PRODUCTORColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public double COSECHA_PRODUCCION {
+                get {
+                    try {
+                        return ((double)(this[this.tablelicenciaReporte.COSECHA_PRODUCCIONColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'COSECHA_PRODUCCION\' de la tabla \'licenciaReporte\' es DBNu" +
+                                "ll.", e);
+                    }
+                }
+                set {
+                    this[this.tablelicenciaReporte.COSECHA_PRODUCCIONColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public double SUPERFICIE_PRODUCCION {
+                get {
+                    try {
+                        return ((double)(this[this.tablelicenciaReporte.SUPERFICIE_PRODUCCIONColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'SUPERFICIE_PRODUCCION\' de la tabla \'licenciaReporte\' es D" +
+                                "BNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablelicenciaReporte.SUPERFICIE_PRODUCCIONColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int ANO_PRODUCCION {
+                get {
+                    try {
+                        return ((int)(this[this.tablelicenciaReporte.ANO_PRODUCCIONColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'ANO_PRODUCCION\' de la tabla \'licenciaReporte\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablelicenciaReporte.ANO_PRODUCCIONColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string NOMBRE_VARIEDAD {
+                get {
+                    try {
+                        return ((string)(this[this.tablelicenciaReporte.NOMBRE_VARIEDADColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'NOMBRE_VARIEDAD\' de la tabla \'licenciaReporte\' es DBNull." +
+                                "", e);
+                    }
+                }
+                set {
+                    this[this.tablelicenciaReporte.NOMBRE_VARIEDADColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsCODIGO_VARIEDADNull() {
+                return this.IsNull(this.tablelicenciaReporte.CODIGO_VARIEDADColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetCODIGO_VARIEDADNull() {
+                this[this.tablelicenciaReporte.CODIGO_VARIEDADColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsNOMBRE_PRODUCTORNull() {
+                return this.IsNull(this.tablelicenciaReporte.NOMBRE_PRODUCTORColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetNOMBRE_PRODUCTORNull() {
+                this[this.tablelicenciaReporte.NOMBRE_PRODUCTORColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsNOMBRE_CIUDADNull() {
+                return this.IsNull(this.tablelicenciaReporte.NOMBRE_CIUDADColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetNOMBRE_CIUDADNull() {
+                this[this.tablelicenciaReporte.NOMBRE_CIUDADColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsPROD_CANTIDAD_TOTALNull() {
+                return this.IsNull(this.tablelicenciaReporte.PROD_CANTIDAD_TOTALColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetPROD_CANTIDAD_TOTALNull() {
+                this[this.tablelicenciaReporte.PROD_CANTIDAD_TOTALColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsCANTIDAD_PRODUCTORNull() {
+                return this.IsNull(this.tablelicenciaReporte.CANTIDAD_PRODUCTORColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetCANTIDAD_PRODUCTORNull() {
+                this[this.tablelicenciaReporte.CANTIDAD_PRODUCTORColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsCOSECHA_PRODUCCIONNull() {
+                return this.IsNull(this.tablelicenciaReporte.COSECHA_PRODUCCIONColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetCOSECHA_PRODUCCIONNull() {
+                this[this.tablelicenciaReporte.COSECHA_PRODUCCIONColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsSUPERFICIE_PRODUCCIONNull() {
+                return this.IsNull(this.tablelicenciaReporte.SUPERFICIE_PRODUCCIONColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetSUPERFICIE_PRODUCCIONNull() {
+                this[this.tablelicenciaReporte.SUPERFICIE_PRODUCCIONColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsANO_PRODUCCIONNull() {
+                return this.IsNull(this.tablelicenciaReporte.ANO_PRODUCCIONColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetANO_PRODUCCIONNull() {
+                this[this.tablelicenciaReporte.ANO_PRODUCCIONColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsNOMBRE_VARIEDADNull() {
+                return this.IsNull(this.tablelicenciaReporte.NOMBRE_VARIEDADColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetNOMBRE_VARIEDADNull() {
+                this[this.tablelicenciaReporte.NOMBRE_VARIEDADColumn] = global::System.Convert.DBNull;
+            }
+        }
+        
+        /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class variedadReporteRow : global::System.Data.DataRow {
+            
+            private variedadReporteDataTable tablevariedadReporte;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal variedadReporteRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tablevariedadReporte = ((variedadReporteDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string CODIGO_VARIEDAD {
+                get {
+                    return ((string)(this[this.tablevariedadReporte.CODIGO_VARIEDADColumn]));
+                }
+                set {
+                    this[this.tablevariedadReporte.CODIGO_VARIEDADColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string NOMBRE_VARIEDAD {
+                get {
+                    try {
+                        return ((string)(this[this.tablevariedadReporte.NOMBRE_VARIEDADColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'NOMBRE_VARIEDAD\' de la tabla \'variedadReporte\' es DBNull." +
+                                "", e);
+                    }
+                }
+                set {
+                    this[this.tablevariedadReporte.NOMBRE_VARIEDADColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string NOMBRE_TAMANO {
+                get {
+                    try {
+                        return ((string)(this[this.tablevariedadReporte.NOMBRE_TAMANOColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'NOMBRE_TAMANO\' de la tabla \'variedadReporte\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablevariedadReporte.NOMBRE_TAMANOColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string NOMBRE_MADUREZ {
+                get {
+                    try {
+                        return ((string)(this[this.tablevariedadReporte.NOMBRE_MADUREZColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'NOMBRE_MADUREZ\' de la tabla \'variedadReporte\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablevariedadReporte.NOMBRE_MADUREZColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string NOMBRE_FORMA {
+                get {
+                    try {
+                        return ((string)(this[this.tablevariedadReporte.NOMBRE_FORMAColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'NOMBRE_FORMA\' de la tabla \'variedadReporte\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablevariedadReporte.NOMBRE_FORMAColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string NOMBRE_DISTRIBUCION_CALIBRE {
+                get {
+                    try {
+                        return ((string)(this[this.tablevariedadReporte.NOMBRE_DISTRIBUCION_CALIBREColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'NOMBRE_DISTRIBUCION_CALIBRE\' de la tabla \'variedadReporte" +
+                                "\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablevariedadReporte.NOMBRE_DISTRIBUCION_CALIBREColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string PROFUNDIDAD_OJO {
+                get {
+                    try {
+                        return ((string)(this[this.tablevariedadReporte.PROFUNDIDAD_OJOColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'PROFUNDIDAD_OJO\' de la tabla \'variedadReporte\' es DBNull." +
+                                "", e);
+                    }
+                }
+                set {
+                    this[this.tablevariedadReporte.PROFUNDIDAD_OJOColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string NOMBRE_REGULARIDAD {
+                get {
+                    try {
+                        return ((string)(this[this.tablevariedadReporte.NOMBRE_REGULARIDADColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'NOMBRE_REGULARIDAD\' de la tabla \'variedadReporte\' es DBNu" +
+                                "ll.", e);
+                    }
+                }
+                set {
+                    this[this.tablevariedadReporte.NOMBRE_REGULARIDADColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string NOMBRE_BROTACION {
+                get {
+                    try {
+                        return ((string)(this[this.tablevariedadReporte.NOMBRE_BROTACIONColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'NOMBRE_BROTACION\' de la tabla \'variedadReporte\' es DBNull" +
+                                ".", e);
+                    }
+                }
+                set {
+                    this[this.tablevariedadReporte.NOMBRE_BROTACIONColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string NOMBRE_EMERGENCIA {
+                get {
+                    try {
+                        return ((string)(this[this.tablevariedadReporte.NOMBRE_EMERGENCIAColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'NOMBRE_EMERGENCIA\' de la tabla \'variedadReporte\' es DBNul" +
+                                "l.", e);
+                    }
+                }
+                set {
+                    this[this.tablevariedadReporte.NOMBRE_EMERGENCIAColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string NOMBRE_EMERGENCIA_40_DIAS {
+                get {
+                    try {
+                        return ((string)(this[this.tablevariedadReporte.NOMBRE_EMERGENCIA_40_DIASColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'NOMBRE_EMERGENCIA_40_DIAS\' de la tabla \'variedadReporte\' " +
+                                "es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablevariedadReporte.NOMBRE_EMERGENCIA_40_DIASColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string NOMBRE_METRIBUZINA {
+                get {
+                    try {
+                        return ((string)(this[this.tablevariedadReporte.NOMBRE_METRIBUZINAColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'NOMBRE_METRIBUZINA\' de la tabla \'variedadReporte\' es DBNu" +
+                                "ll.", e);
+                    }
+                }
+                set {
+                    this[this.tablevariedadReporte.NOMBRE_METRIBUZINAColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string NOMBRE_TUBERCULOS_VERDES {
+                get {
+                    try {
+                        return ((string)(this[this.tablevariedadReporte.NOMBRE_TUBERCULOS_VERDESColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'NOMBRE_TUBERCULOS_VERDES\' de la tabla \'variedadReporte\' e" +
+                                "s DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablevariedadReporte.NOMBRE_TUBERCULOS_VERDESColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string NOMBRE_TIZON_TARDIO_FOLLAJE {
+                get {
+                    try {
+                        return ((string)(this[this.tablevariedadReporte.NOMBRE_TIZON_TARDIO_FOLLAJEColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'NOMBRE_TIZON_TARDIO_FOLLAJE\' de la tabla \'variedadReporte" +
+                                "\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablevariedadReporte.NOMBRE_TIZON_TARDIO_FOLLAJEColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string NOMBRE_TIZON_TARDIO_TUBERCULO {
+                get {
+                    try {
+                        return ((string)(this[this.tablevariedadReporte.NOMBRE_TIZON_TARDIO_TUBERCULOColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'NOMBRE_TIZON_TARDIO_TUBERCULO\' de la tabla \'variedadRepor" +
+                                "te\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablevariedadReporte.NOMBRE_TIZON_TARDIO_TUBERCULOColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string NOMBRE_NUMERO_TUBERCULOS {
+                get {
+                    try {
+                        return ((string)(this[this.tablevariedadReporte.NOMBRE_NUMERO_TUBERCULOSColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'NOMBRE_NUMERO_TUBERCULOS\' de la tabla \'variedadReporte\' e" +
+                                "s DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablevariedadReporte.NOMBRE_NUMERO_TUBERCULOSColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string NOMBRE_FERTILIDAD {
+                get {
+                    try {
+                        return ((string)(this[this.tablevariedadReporte.NOMBRE_FERTILIDADColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'NOMBRE_FERTILIDAD\' de la tabla \'variedadReporte\' es DBNul" +
+                                "l.", e);
+                    }
+                }
+                set {
+                    this[this.tablevariedadReporte.NOMBRE_FERTILIDADColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string NOMBRE_DESTINO {
+                get {
+                    try {
+                        return ((string)(this[this.tablevariedadReporte.NOMBRE_DESTINOColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'NOMBRE_DESTINO\' de la tabla \'variedadReporte\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablevariedadReporte.NOMBRE_DESTINOColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsNOMBRE_VARIEDADNull() {
+                return this.IsNull(this.tablevariedadReporte.NOMBRE_VARIEDADColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetNOMBRE_VARIEDADNull() {
+                this[this.tablevariedadReporte.NOMBRE_VARIEDADColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsNOMBRE_TAMANONull() {
+                return this.IsNull(this.tablevariedadReporte.NOMBRE_TAMANOColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetNOMBRE_TAMANONull() {
+                this[this.tablevariedadReporte.NOMBRE_TAMANOColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsNOMBRE_MADUREZNull() {
+                return this.IsNull(this.tablevariedadReporte.NOMBRE_MADUREZColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetNOMBRE_MADUREZNull() {
+                this[this.tablevariedadReporte.NOMBRE_MADUREZColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsNOMBRE_FORMANull() {
+                return this.IsNull(this.tablevariedadReporte.NOMBRE_FORMAColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetNOMBRE_FORMANull() {
+                this[this.tablevariedadReporte.NOMBRE_FORMAColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsNOMBRE_DISTRIBUCION_CALIBRENull() {
+                return this.IsNull(this.tablevariedadReporte.NOMBRE_DISTRIBUCION_CALIBREColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetNOMBRE_DISTRIBUCION_CALIBRENull() {
+                this[this.tablevariedadReporte.NOMBRE_DISTRIBUCION_CALIBREColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsPROFUNDIDAD_OJONull() {
+                return this.IsNull(this.tablevariedadReporte.PROFUNDIDAD_OJOColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetPROFUNDIDAD_OJONull() {
+                this[this.tablevariedadReporte.PROFUNDIDAD_OJOColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsNOMBRE_REGULARIDADNull() {
+                return this.IsNull(this.tablevariedadReporte.NOMBRE_REGULARIDADColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetNOMBRE_REGULARIDADNull() {
+                this[this.tablevariedadReporte.NOMBRE_REGULARIDADColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsNOMBRE_BROTACIONNull() {
+                return this.IsNull(this.tablevariedadReporte.NOMBRE_BROTACIONColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetNOMBRE_BROTACIONNull() {
+                this[this.tablevariedadReporte.NOMBRE_BROTACIONColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsNOMBRE_EMERGENCIANull() {
+                return this.IsNull(this.tablevariedadReporte.NOMBRE_EMERGENCIAColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetNOMBRE_EMERGENCIANull() {
+                this[this.tablevariedadReporte.NOMBRE_EMERGENCIAColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsNOMBRE_EMERGENCIA_40_DIASNull() {
+                return this.IsNull(this.tablevariedadReporte.NOMBRE_EMERGENCIA_40_DIASColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetNOMBRE_EMERGENCIA_40_DIASNull() {
+                this[this.tablevariedadReporte.NOMBRE_EMERGENCIA_40_DIASColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsNOMBRE_METRIBUZINANull() {
+                return this.IsNull(this.tablevariedadReporte.NOMBRE_METRIBUZINAColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetNOMBRE_METRIBUZINANull() {
+                this[this.tablevariedadReporte.NOMBRE_METRIBUZINAColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsNOMBRE_TUBERCULOS_VERDESNull() {
+                return this.IsNull(this.tablevariedadReporte.NOMBRE_TUBERCULOS_VERDESColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetNOMBRE_TUBERCULOS_VERDESNull() {
+                this[this.tablevariedadReporte.NOMBRE_TUBERCULOS_VERDESColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsNOMBRE_TIZON_TARDIO_FOLLAJENull() {
+                return this.IsNull(this.tablevariedadReporte.NOMBRE_TIZON_TARDIO_FOLLAJEColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetNOMBRE_TIZON_TARDIO_FOLLAJENull() {
+                this[this.tablevariedadReporte.NOMBRE_TIZON_TARDIO_FOLLAJEColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsNOMBRE_TIZON_TARDIO_TUBERCULONull() {
+                return this.IsNull(this.tablevariedadReporte.NOMBRE_TIZON_TARDIO_TUBERCULOColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetNOMBRE_TIZON_TARDIO_TUBERCULONull() {
+                this[this.tablevariedadReporte.NOMBRE_TIZON_TARDIO_TUBERCULOColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsNOMBRE_NUMERO_TUBERCULOSNull() {
+                return this.IsNull(this.tablevariedadReporte.NOMBRE_NUMERO_TUBERCULOSColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetNOMBRE_NUMERO_TUBERCULOSNull() {
+                this[this.tablevariedadReporte.NOMBRE_NUMERO_TUBERCULOSColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsNOMBRE_FERTILIDADNull() {
+                return this.IsNull(this.tablevariedadReporte.NOMBRE_FERTILIDADColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetNOMBRE_FERTILIDADNull() {
+                this[this.tablevariedadReporte.NOMBRE_FERTILIDADColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsNOMBRE_DESTINONull() {
+                return this.IsNull(this.tablevariedadReporte.NOMBRE_DESTINOColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetNOMBRE_DESTINONull() {
+                this[this.tablevariedadReporte.NOMBRE_DESTINOColumn] = global::System.Convert.DBNull;
+            }
+        }
+        
+        /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
         public partial class upovNombresReporteRow : global::System.Data.DataRow {
@@ -3818,1156 +4934,6 @@ namespace Project.Novaseed {
         }
         
         /// <summary>
-        ///Represents strongly named DataRow class.
-        ///</summary>
-        public partial class produccionReporteRow : global::System.Data.DataRow {
-            
-            private produccionReporteDataTable tableproduccionReporte;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal produccionReporteRow(global::System.Data.DataRowBuilder rb) : 
-                    base(rb) {
-                this.tableproduccionReporte = ((produccionReporteDataTable)(this.Table));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string CODIGO_VARIEDAD {
-                get {
-                    try {
-                        return ((string)(this[this.tableproduccionReporte.CODIGO_VARIEDADColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'CODIGO_VARIEDAD\' de la tabla \'produccionReporte\' es DBNul" +
-                                "l.", e);
-                    }
-                }
-                set {
-                    this[this.tableproduccionReporte.CODIGO_VARIEDADColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string NOMBRE_PRODUCTOR {
-                get {
-                    try {
-                        return ((string)(this[this.tableproduccionReporte.NOMBRE_PRODUCTORColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'NOMBRE_PRODUCTOR\' de la tabla \'produccionReporte\' es DBNu" +
-                                "ll.", e);
-                    }
-                }
-                set {
-                    this[this.tableproduccionReporte.NOMBRE_PRODUCTORColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string NOMBRE_CIUDAD {
-                get {
-                    try {
-                        return ((string)(this[this.tableproduccionReporte.NOMBRE_CIUDADColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'NOMBRE_CIUDAD\' de la tabla \'produccionReporte\' es DBNull." +
-                                "", e);
-                    }
-                }
-                set {
-                    this[this.tableproduccionReporte.NOMBRE_CIUDADColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string NOMBRE_CATEGORIA_PRODUCCION {
-                get {
-                    return ((string)(this[this.tableproduccionReporte.NOMBRE_CATEGORIA_PRODUCCIONColumn]));
-                }
-                set {
-                    this[this.tableproduccionReporte.NOMBRE_CATEGORIA_PRODUCCIONColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public double PROD_CANTIDAD_TOTAL {
-                get {
-                    try {
-                        return ((double)(this[this.tableproduccionReporte.PROD_CANTIDAD_TOTALColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'PROD_CANTIDAD_TOTAL\' de la tabla \'produccionReporte\' es D" +
-                                "BNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableproduccionReporte.PROD_CANTIDAD_TOTALColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public double CANTIDAD_PRODUCTOR {
-                get {
-                    try {
-                        return ((double)(this[this.tableproduccionReporte.CANTIDAD_PRODUCTORColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'CANTIDAD_PRODUCTOR\' de la tabla \'produccionReporte\' es DB" +
-                                "Null.", e);
-                    }
-                }
-                set {
-                    this[this.tableproduccionReporte.CANTIDAD_PRODUCTORColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public double COSECHA_PRODUCCION {
-                get {
-                    try {
-                        return ((double)(this[this.tableproduccionReporte.COSECHA_PRODUCCIONColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'COSECHA_PRODUCCION\' de la tabla \'produccionReporte\' es DB" +
-                                "Null.", e);
-                    }
-                }
-                set {
-                    this[this.tableproduccionReporte.COSECHA_PRODUCCIONColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public double SUPERFICIE_PRODUCCION {
-                get {
-                    try {
-                        return ((double)(this[this.tableproduccionReporte.SUPERFICIE_PRODUCCIONColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'SUPERFICIE_PRODUCCION\' de la tabla \'produccionReporte\' es" +
-                                " DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableproduccionReporte.SUPERFICIE_PRODUCCIONColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool LICENCIA_PRODUCCION {
-                get {
-                    try {
-                        return ((bool)(this[this.tableproduccionReporte.LICENCIA_PRODUCCIONColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'LICENCIA_PRODUCCION\' de la tabla \'produccionReporte\' es D" +
-                                "BNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableproduccionReporte.LICENCIA_PRODUCCIONColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int ANO_PRODUCCION {
-                get {
-                    try {
-                        return ((int)(this[this.tableproduccionReporte.ANO_PRODUCCIONColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'ANO_PRODUCCION\' de la tabla \'produccionReporte\' es DBNull" +
-                                ".", e);
-                    }
-                }
-                set {
-                    this[this.tableproduccionReporte.ANO_PRODUCCIONColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string NOMBRE_VARIEDAD {
-                get {
-                    try {
-                        return ((string)(this[this.tableproduccionReporte.NOMBRE_VARIEDADColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'NOMBRE_VARIEDAD\' de la tabla \'produccionReporte\' es DBNul" +
-                                "l.", e);
-                    }
-                }
-                set {
-                    this[this.tableproduccionReporte.NOMBRE_VARIEDADColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsCODIGO_VARIEDADNull() {
-                return this.IsNull(this.tableproduccionReporte.CODIGO_VARIEDADColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetCODIGO_VARIEDADNull() {
-                this[this.tableproduccionReporte.CODIGO_VARIEDADColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsNOMBRE_PRODUCTORNull() {
-                return this.IsNull(this.tableproduccionReporte.NOMBRE_PRODUCTORColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetNOMBRE_PRODUCTORNull() {
-                this[this.tableproduccionReporte.NOMBRE_PRODUCTORColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsNOMBRE_CIUDADNull() {
-                return this.IsNull(this.tableproduccionReporte.NOMBRE_CIUDADColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetNOMBRE_CIUDADNull() {
-                this[this.tableproduccionReporte.NOMBRE_CIUDADColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsPROD_CANTIDAD_TOTALNull() {
-                return this.IsNull(this.tableproduccionReporte.PROD_CANTIDAD_TOTALColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetPROD_CANTIDAD_TOTALNull() {
-                this[this.tableproduccionReporte.PROD_CANTIDAD_TOTALColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsCANTIDAD_PRODUCTORNull() {
-                return this.IsNull(this.tableproduccionReporte.CANTIDAD_PRODUCTORColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetCANTIDAD_PRODUCTORNull() {
-                this[this.tableproduccionReporte.CANTIDAD_PRODUCTORColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsCOSECHA_PRODUCCIONNull() {
-                return this.IsNull(this.tableproduccionReporte.COSECHA_PRODUCCIONColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetCOSECHA_PRODUCCIONNull() {
-                this[this.tableproduccionReporte.COSECHA_PRODUCCIONColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsSUPERFICIE_PRODUCCIONNull() {
-                return this.IsNull(this.tableproduccionReporte.SUPERFICIE_PRODUCCIONColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetSUPERFICIE_PRODUCCIONNull() {
-                this[this.tableproduccionReporte.SUPERFICIE_PRODUCCIONColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsLICENCIA_PRODUCCIONNull() {
-                return this.IsNull(this.tableproduccionReporte.LICENCIA_PRODUCCIONColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetLICENCIA_PRODUCCIONNull() {
-                this[this.tableproduccionReporte.LICENCIA_PRODUCCIONColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsANO_PRODUCCIONNull() {
-                return this.IsNull(this.tableproduccionReporte.ANO_PRODUCCIONColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetANO_PRODUCCIONNull() {
-                this[this.tableproduccionReporte.ANO_PRODUCCIONColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsNOMBRE_VARIEDADNull() {
-                return this.IsNull(this.tableproduccionReporte.NOMBRE_VARIEDADColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetNOMBRE_VARIEDADNull() {
-                this[this.tableproduccionReporte.NOMBRE_VARIEDADColumn] = global::System.Convert.DBNull;
-            }
-        }
-        
-        /// <summary>
-        ///Represents strongly named DataRow class.
-        ///</summary>
-        public partial class licenciaReporteRow : global::System.Data.DataRow {
-            
-            private licenciaReporteDataTable tablelicenciaReporte;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal licenciaReporteRow(global::System.Data.DataRowBuilder rb) : 
-                    base(rb) {
-                this.tablelicenciaReporte = ((licenciaReporteDataTable)(this.Table));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string CODIGO_VARIEDAD {
-                get {
-                    try {
-                        return ((string)(this[this.tablelicenciaReporte.CODIGO_VARIEDADColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'CODIGO_VARIEDAD\' de la tabla \'licenciaReporte\' es DBNull." +
-                                "", e);
-                    }
-                }
-                set {
-                    this[this.tablelicenciaReporte.CODIGO_VARIEDADColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string NOMBRE_PRODUCTOR {
-                get {
-                    try {
-                        return ((string)(this[this.tablelicenciaReporte.NOMBRE_PRODUCTORColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'NOMBRE_PRODUCTOR\' de la tabla \'licenciaReporte\' es DBNull" +
-                                ".", e);
-                    }
-                }
-                set {
-                    this[this.tablelicenciaReporte.NOMBRE_PRODUCTORColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string NOMBRE_CIUDAD {
-                get {
-                    try {
-                        return ((string)(this[this.tablelicenciaReporte.NOMBRE_CIUDADColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'NOMBRE_CIUDAD\' de la tabla \'licenciaReporte\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tablelicenciaReporte.NOMBRE_CIUDADColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string NOMBRE_CATEGORIA_PRODUCCION {
-                get {
-                    return ((string)(this[this.tablelicenciaReporte.NOMBRE_CATEGORIA_PRODUCCIONColumn]));
-                }
-                set {
-                    this[this.tablelicenciaReporte.NOMBRE_CATEGORIA_PRODUCCIONColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public double PROD_CANTIDAD_TOTAL {
-                get {
-                    try {
-                        return ((double)(this[this.tablelicenciaReporte.PROD_CANTIDAD_TOTALColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'PROD_CANTIDAD_TOTAL\' de la tabla \'licenciaReporte\' es DBN" +
-                                "ull.", e);
-                    }
-                }
-                set {
-                    this[this.tablelicenciaReporte.PROD_CANTIDAD_TOTALColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public double CANTIDAD_PRODUCTOR {
-                get {
-                    try {
-                        return ((double)(this[this.tablelicenciaReporte.CANTIDAD_PRODUCTORColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'CANTIDAD_PRODUCTOR\' de la tabla \'licenciaReporte\' es DBNu" +
-                                "ll.", e);
-                    }
-                }
-                set {
-                    this[this.tablelicenciaReporte.CANTIDAD_PRODUCTORColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public double COSECHA_PRODUCCION {
-                get {
-                    try {
-                        return ((double)(this[this.tablelicenciaReporte.COSECHA_PRODUCCIONColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'COSECHA_PRODUCCION\' de la tabla \'licenciaReporte\' es DBNu" +
-                                "ll.", e);
-                    }
-                }
-                set {
-                    this[this.tablelicenciaReporte.COSECHA_PRODUCCIONColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public double SUPERFICIE_PRODUCCION {
-                get {
-                    try {
-                        return ((double)(this[this.tablelicenciaReporte.SUPERFICIE_PRODUCCIONColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'SUPERFICIE_PRODUCCION\' de la tabla \'licenciaReporte\' es D" +
-                                "BNull.", e);
-                    }
-                }
-                set {
-                    this[this.tablelicenciaReporte.SUPERFICIE_PRODUCCIONColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int ANO_PRODUCCION {
-                get {
-                    try {
-                        return ((int)(this[this.tablelicenciaReporte.ANO_PRODUCCIONColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'ANO_PRODUCCION\' de la tabla \'licenciaReporte\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tablelicenciaReporte.ANO_PRODUCCIONColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string NOMBRE_VARIEDAD {
-                get {
-                    try {
-                        return ((string)(this[this.tablelicenciaReporte.NOMBRE_VARIEDADColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'NOMBRE_VARIEDAD\' de la tabla \'licenciaReporte\' es DBNull." +
-                                "", e);
-                    }
-                }
-                set {
-                    this[this.tablelicenciaReporte.NOMBRE_VARIEDADColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsCODIGO_VARIEDADNull() {
-                return this.IsNull(this.tablelicenciaReporte.CODIGO_VARIEDADColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetCODIGO_VARIEDADNull() {
-                this[this.tablelicenciaReporte.CODIGO_VARIEDADColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsNOMBRE_PRODUCTORNull() {
-                return this.IsNull(this.tablelicenciaReporte.NOMBRE_PRODUCTORColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetNOMBRE_PRODUCTORNull() {
-                this[this.tablelicenciaReporte.NOMBRE_PRODUCTORColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsNOMBRE_CIUDADNull() {
-                return this.IsNull(this.tablelicenciaReporte.NOMBRE_CIUDADColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetNOMBRE_CIUDADNull() {
-                this[this.tablelicenciaReporte.NOMBRE_CIUDADColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsPROD_CANTIDAD_TOTALNull() {
-                return this.IsNull(this.tablelicenciaReporte.PROD_CANTIDAD_TOTALColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetPROD_CANTIDAD_TOTALNull() {
-                this[this.tablelicenciaReporte.PROD_CANTIDAD_TOTALColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsCANTIDAD_PRODUCTORNull() {
-                return this.IsNull(this.tablelicenciaReporte.CANTIDAD_PRODUCTORColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetCANTIDAD_PRODUCTORNull() {
-                this[this.tablelicenciaReporte.CANTIDAD_PRODUCTORColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsCOSECHA_PRODUCCIONNull() {
-                return this.IsNull(this.tablelicenciaReporte.COSECHA_PRODUCCIONColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetCOSECHA_PRODUCCIONNull() {
-                this[this.tablelicenciaReporte.COSECHA_PRODUCCIONColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsSUPERFICIE_PRODUCCIONNull() {
-                return this.IsNull(this.tablelicenciaReporte.SUPERFICIE_PRODUCCIONColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetSUPERFICIE_PRODUCCIONNull() {
-                this[this.tablelicenciaReporte.SUPERFICIE_PRODUCCIONColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsANO_PRODUCCIONNull() {
-                return this.IsNull(this.tablelicenciaReporte.ANO_PRODUCCIONColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetANO_PRODUCCIONNull() {
-                this[this.tablelicenciaReporte.ANO_PRODUCCIONColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsNOMBRE_VARIEDADNull() {
-                return this.IsNull(this.tablelicenciaReporte.NOMBRE_VARIEDADColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetNOMBRE_VARIEDADNull() {
-                this[this.tablelicenciaReporte.NOMBRE_VARIEDADColumn] = global::System.Convert.DBNull;
-            }
-        }
-        
-        /// <summary>
-        ///Represents strongly named DataRow class.
-        ///</summary>
-        public partial class variedadReporteRow : global::System.Data.DataRow {
-            
-            private variedadReporteDataTable tablevariedadReporte;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal variedadReporteRow(global::System.Data.DataRowBuilder rb) : 
-                    base(rb) {
-                this.tablevariedadReporte = ((variedadReporteDataTable)(this.Table));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string CODIGO_VARIEDAD {
-                get {
-                    return ((string)(this[this.tablevariedadReporte.CODIGO_VARIEDADColumn]));
-                }
-                set {
-                    this[this.tablevariedadReporte.CODIGO_VARIEDADColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string NOMBRE_VARIEDAD {
-                get {
-                    try {
-                        return ((string)(this[this.tablevariedadReporte.NOMBRE_VARIEDADColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'NOMBRE_VARIEDAD\' de la tabla \'variedadReporte\' es DBNull." +
-                                "", e);
-                    }
-                }
-                set {
-                    this[this.tablevariedadReporte.NOMBRE_VARIEDADColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string NOMBRE_TAMANO {
-                get {
-                    try {
-                        return ((string)(this[this.tablevariedadReporte.NOMBRE_TAMANOColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'NOMBRE_TAMANO\' de la tabla \'variedadReporte\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tablevariedadReporte.NOMBRE_TAMANOColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string NOMBRE_MADUREZ {
-                get {
-                    try {
-                        return ((string)(this[this.tablevariedadReporte.NOMBRE_MADUREZColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'NOMBRE_MADUREZ\' de la tabla \'variedadReporte\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tablevariedadReporte.NOMBRE_MADUREZColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string NOMBRE_FORMA {
-                get {
-                    try {
-                        return ((string)(this[this.tablevariedadReporte.NOMBRE_FORMAColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'NOMBRE_FORMA\' de la tabla \'variedadReporte\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tablevariedadReporte.NOMBRE_FORMAColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string NOMBRE_DISTRIBUCION_CALIBRE {
-                get {
-                    try {
-                        return ((string)(this[this.tablevariedadReporte.NOMBRE_DISTRIBUCION_CALIBREColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'NOMBRE_DISTRIBUCION_CALIBRE\' de la tabla \'variedadReporte" +
-                                "\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tablevariedadReporte.NOMBRE_DISTRIBUCION_CALIBREColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string PROFUNDIDAD_OJO {
-                get {
-                    try {
-                        return ((string)(this[this.tablevariedadReporte.PROFUNDIDAD_OJOColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'PROFUNDIDAD_OJO\' de la tabla \'variedadReporte\' es DBNull." +
-                                "", e);
-                    }
-                }
-                set {
-                    this[this.tablevariedadReporte.PROFUNDIDAD_OJOColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string NOMBRE_REGULARIDAD {
-                get {
-                    try {
-                        return ((string)(this[this.tablevariedadReporte.NOMBRE_REGULARIDADColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'NOMBRE_REGULARIDAD\' de la tabla \'variedadReporte\' es DBNu" +
-                                "ll.", e);
-                    }
-                }
-                set {
-                    this[this.tablevariedadReporte.NOMBRE_REGULARIDADColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string NOMBRE_BROTACION {
-                get {
-                    try {
-                        return ((string)(this[this.tablevariedadReporte.NOMBRE_BROTACIONColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'NOMBRE_BROTACION\' de la tabla \'variedadReporte\' es DBNull" +
-                                ".", e);
-                    }
-                }
-                set {
-                    this[this.tablevariedadReporte.NOMBRE_BROTACIONColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string NOMBRE_EMERGENCIA {
-                get {
-                    try {
-                        return ((string)(this[this.tablevariedadReporte.NOMBRE_EMERGENCIAColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'NOMBRE_EMERGENCIA\' de la tabla \'variedadReporte\' es DBNul" +
-                                "l.", e);
-                    }
-                }
-                set {
-                    this[this.tablevariedadReporte.NOMBRE_EMERGENCIAColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string NOMBRE_EMERGENCIA_40_DIAS {
-                get {
-                    try {
-                        return ((string)(this[this.tablevariedadReporte.NOMBRE_EMERGENCIA_40_DIASColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'NOMBRE_EMERGENCIA_40_DIAS\' de la tabla \'variedadReporte\' " +
-                                "es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tablevariedadReporte.NOMBRE_EMERGENCIA_40_DIASColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string NOMBRE_METRIBUZINA {
-                get {
-                    try {
-                        return ((string)(this[this.tablevariedadReporte.NOMBRE_METRIBUZINAColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'NOMBRE_METRIBUZINA\' de la tabla \'variedadReporte\' es DBNu" +
-                                "ll.", e);
-                    }
-                }
-                set {
-                    this[this.tablevariedadReporte.NOMBRE_METRIBUZINAColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string NOMBRE_TUBERCULOS_VERDES {
-                get {
-                    try {
-                        return ((string)(this[this.tablevariedadReporte.NOMBRE_TUBERCULOS_VERDESColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'NOMBRE_TUBERCULOS_VERDES\' de la tabla \'variedadReporte\' e" +
-                                "s DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tablevariedadReporte.NOMBRE_TUBERCULOS_VERDESColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string NOMBRE_TIZON_TARDIO_FOLLAJE {
-                get {
-                    try {
-                        return ((string)(this[this.tablevariedadReporte.NOMBRE_TIZON_TARDIO_FOLLAJEColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'NOMBRE_TIZON_TARDIO_FOLLAJE\' de la tabla \'variedadReporte" +
-                                "\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tablevariedadReporte.NOMBRE_TIZON_TARDIO_FOLLAJEColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string NOMBRE_TIZON_TARDIO_TUBERCULO {
-                get {
-                    try {
-                        return ((string)(this[this.tablevariedadReporte.NOMBRE_TIZON_TARDIO_TUBERCULOColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'NOMBRE_TIZON_TARDIO_TUBERCULO\' de la tabla \'variedadRepor" +
-                                "te\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tablevariedadReporte.NOMBRE_TIZON_TARDIO_TUBERCULOColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string NOMBRE_NUMERO_TUBERCULOS {
-                get {
-                    try {
-                        return ((string)(this[this.tablevariedadReporte.NOMBRE_NUMERO_TUBERCULOSColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'NOMBRE_NUMERO_TUBERCULOS\' de la tabla \'variedadReporte\' e" +
-                                "s DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tablevariedadReporte.NOMBRE_NUMERO_TUBERCULOSColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string NOMBRE_FERTILIDAD {
-                get {
-                    try {
-                        return ((string)(this[this.tablevariedadReporte.NOMBRE_FERTILIDADColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'NOMBRE_FERTILIDAD\' de la tabla \'variedadReporte\' es DBNul" +
-                                "l.", e);
-                    }
-                }
-                set {
-                    this[this.tablevariedadReporte.NOMBRE_FERTILIDADColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string NOMBRE_DESTINO {
-                get {
-                    try {
-                        return ((string)(this[this.tablevariedadReporte.NOMBRE_DESTINOColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'NOMBRE_DESTINO\' de la tabla \'variedadReporte\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tablevariedadReporte.NOMBRE_DESTINOColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsNOMBRE_VARIEDADNull() {
-                return this.IsNull(this.tablevariedadReporte.NOMBRE_VARIEDADColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetNOMBRE_VARIEDADNull() {
-                this[this.tablevariedadReporte.NOMBRE_VARIEDADColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsNOMBRE_TAMANONull() {
-                return this.IsNull(this.tablevariedadReporte.NOMBRE_TAMANOColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetNOMBRE_TAMANONull() {
-                this[this.tablevariedadReporte.NOMBRE_TAMANOColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsNOMBRE_MADUREZNull() {
-                return this.IsNull(this.tablevariedadReporte.NOMBRE_MADUREZColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetNOMBRE_MADUREZNull() {
-                this[this.tablevariedadReporte.NOMBRE_MADUREZColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsNOMBRE_FORMANull() {
-                return this.IsNull(this.tablevariedadReporte.NOMBRE_FORMAColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetNOMBRE_FORMANull() {
-                this[this.tablevariedadReporte.NOMBRE_FORMAColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsNOMBRE_DISTRIBUCION_CALIBRENull() {
-                return this.IsNull(this.tablevariedadReporte.NOMBRE_DISTRIBUCION_CALIBREColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetNOMBRE_DISTRIBUCION_CALIBRENull() {
-                this[this.tablevariedadReporte.NOMBRE_DISTRIBUCION_CALIBREColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsPROFUNDIDAD_OJONull() {
-                return this.IsNull(this.tablevariedadReporte.PROFUNDIDAD_OJOColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetPROFUNDIDAD_OJONull() {
-                this[this.tablevariedadReporte.PROFUNDIDAD_OJOColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsNOMBRE_REGULARIDADNull() {
-                return this.IsNull(this.tablevariedadReporte.NOMBRE_REGULARIDADColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetNOMBRE_REGULARIDADNull() {
-                this[this.tablevariedadReporte.NOMBRE_REGULARIDADColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsNOMBRE_BROTACIONNull() {
-                return this.IsNull(this.tablevariedadReporte.NOMBRE_BROTACIONColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetNOMBRE_BROTACIONNull() {
-                this[this.tablevariedadReporte.NOMBRE_BROTACIONColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsNOMBRE_EMERGENCIANull() {
-                return this.IsNull(this.tablevariedadReporte.NOMBRE_EMERGENCIAColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetNOMBRE_EMERGENCIANull() {
-                this[this.tablevariedadReporte.NOMBRE_EMERGENCIAColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsNOMBRE_EMERGENCIA_40_DIASNull() {
-                return this.IsNull(this.tablevariedadReporte.NOMBRE_EMERGENCIA_40_DIASColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetNOMBRE_EMERGENCIA_40_DIASNull() {
-                this[this.tablevariedadReporte.NOMBRE_EMERGENCIA_40_DIASColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsNOMBRE_METRIBUZINANull() {
-                return this.IsNull(this.tablevariedadReporte.NOMBRE_METRIBUZINAColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetNOMBRE_METRIBUZINANull() {
-                this[this.tablevariedadReporte.NOMBRE_METRIBUZINAColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsNOMBRE_TUBERCULOS_VERDESNull() {
-                return this.IsNull(this.tablevariedadReporte.NOMBRE_TUBERCULOS_VERDESColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetNOMBRE_TUBERCULOS_VERDESNull() {
-                this[this.tablevariedadReporte.NOMBRE_TUBERCULOS_VERDESColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsNOMBRE_TIZON_TARDIO_FOLLAJENull() {
-                return this.IsNull(this.tablevariedadReporte.NOMBRE_TIZON_TARDIO_FOLLAJEColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetNOMBRE_TIZON_TARDIO_FOLLAJENull() {
-                this[this.tablevariedadReporte.NOMBRE_TIZON_TARDIO_FOLLAJEColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsNOMBRE_TIZON_TARDIO_TUBERCULONull() {
-                return this.IsNull(this.tablevariedadReporte.NOMBRE_TIZON_TARDIO_TUBERCULOColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetNOMBRE_TIZON_TARDIO_TUBERCULONull() {
-                this[this.tablevariedadReporte.NOMBRE_TIZON_TARDIO_TUBERCULOColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsNOMBRE_NUMERO_TUBERCULOSNull() {
-                return this.IsNull(this.tablevariedadReporte.NOMBRE_NUMERO_TUBERCULOSColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetNOMBRE_NUMERO_TUBERCULOSNull() {
-                this[this.tablevariedadReporte.NOMBRE_NUMERO_TUBERCULOSColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsNOMBRE_FERTILIDADNull() {
-                return this.IsNull(this.tablevariedadReporte.NOMBRE_FERTILIDADColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetNOMBRE_FERTILIDADNull() {
-                this[this.tablevariedadReporte.NOMBRE_FERTILIDADColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsNOMBRE_DESTINONull() {
-                return this.IsNull(this.tablevariedadReporte.NOMBRE_DESTINOColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetNOMBRE_DESTINONull() {
-                this[this.tablevariedadReporte.NOMBRE_DESTINOColumn] = global::System.Convert.DBNull;
-            }
-        }
-        
-        /// <summary>
-        ///Row event argument class
-        ///</summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public class upovNombresReporteRowChangeEvent : global::System.EventArgs {
-            
-            private upovNombresReporteRow eventRow;
-            
-            private global::System.Data.DataRowAction eventAction;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public upovNombresReporteRowChangeEvent(upovNombresReporteRow row, global::System.Data.DataRowAction action) {
-                this.eventRow = row;
-                this.eventAction = action;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public upovNombresReporteRow Row {
-                get {
-                    return this.eventRow;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataRowAction Action {
-                get {
-                    return this.eventAction;
-                }
-            }
-        }
-        
-        /// <summary>
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -5068,232 +5034,44 @@ namespace Project.Novaseed {
                 }
             }
         }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public class upovNombresReporteRowChangeEvent : global::System.EventArgs {
+            
+            private upovNombresReporteRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public upovNombresReporteRowChangeEvent(upovNombresReporteRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public upovNombresReporteRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
     }
 }
 namespace Project.Novaseed.DataSetNovaseedTableAdapters {
     
-    
-    /// <summary>
-    ///Represents the connection and commands used to retrieve and save data.
-    ///</summary>
-    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
-    [global::System.ComponentModel.ToolboxItem(true)]
-    [global::System.ComponentModel.DataObjectAttribute(true)]
-    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
-        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
-    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class upovNombresReporteTableAdapter : global::System.ComponentModel.Component {
-        
-        private global::System.Data.SqlClient.SqlDataAdapter _adapter;
-        
-        private global::System.Data.SqlClient.SqlConnection _connection;
-        
-        private global::System.Data.SqlClient.SqlTransaction _transaction;
-        
-        private global::System.Data.SqlClient.SqlCommand[] _commandCollection;
-        
-        private bool _clearBeforeFill;
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public upovNombresReporteTableAdapter() {
-            this.ClearBeforeFill = true;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        protected internal global::System.Data.SqlClient.SqlDataAdapter Adapter {
-            get {
-                if ((this._adapter == null)) {
-                    this.InitAdapter();
-                }
-                return this._adapter;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        internal global::System.Data.SqlClient.SqlConnection Connection {
-            get {
-                if ((this._connection == null)) {
-                    this.InitConnection();
-                }
-                return this._connection;
-            }
-            set {
-                this._connection = value;
-                if ((this.Adapter.InsertCommand != null)) {
-                    this.Adapter.InsertCommand.Connection = value;
-                }
-                if ((this.Adapter.DeleteCommand != null)) {
-                    this.Adapter.DeleteCommand.Connection = value;
-                }
-                if ((this.Adapter.UpdateCommand != null)) {
-                    this.Adapter.UpdateCommand.Connection = value;
-                }
-                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
-                    if ((this.CommandCollection[i] != null)) {
-                        ((global::System.Data.SqlClient.SqlCommand)(this.CommandCollection[i])).Connection = value;
-                    }
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        internal global::System.Data.SqlClient.SqlTransaction Transaction {
-            get {
-                return this._transaction;
-            }
-            set {
-                this._transaction = value;
-                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
-                    this.CommandCollection[i].Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.DeleteCommand != null))) {
-                    this.Adapter.DeleteCommand.Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.InsertCommand != null))) {
-                    this.Adapter.InsertCommand.Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.UpdateCommand != null))) {
-                    this.Adapter.UpdateCommand.Transaction = this._transaction;
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        protected global::System.Data.SqlClient.SqlCommand[] CommandCollection {
-            get {
-                if ((this._commandCollection == null)) {
-                    this.InitCommandCollection();
-                }
-                return this._commandCollection;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public bool ClearBeforeFill {
-            get {
-                return this._clearBeforeFill;
-            }
-            set {
-                this._clearBeforeFill = value;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private void InitAdapter() {
-            this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
-            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
-            tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "upovNombresReporte";
-            tableMapping.ColumnMappings.Add("NOMBRE_INFLORESCENCIA_TAMANO", "NOMBRE_INFLORESCENCIA_TAMANO");
-            tableMapping.ColumnMappings.Add("NOMBRE_BROTE_TAMANO_EXTREMO", "NOMBRE_BROTE_TAMANO_EXTREMO");
-            tableMapping.ColumnMappings.Add("NOMBRE_BROTE_FORMA", "NOMBRE_BROTE_FORMA");
-            tableMapping.ColumnMappings.Add("NOMBRE_BROTE_PROPORCION_AZUL", "NOMBRE_BROTE_PROPORCION_AZUL");
-            tableMapping.ColumnMappings.Add("NOMBRE_FOLIOLO_BRILLO_HAZ", "NOMBRE_FOLIOLO_BRILLO_HAZ");
-            tableMapping.ColumnMappings.Add("NOMBRE_BOTON_FLORAL_PIGMENTACION", "NOMBRE_BOTON_FLORAL_PIGMENTACION");
-            tableMapping.ColumnMappings.Add("NOMBRE_BROTE_PIGMENTACION_BASE", "NOMBRE_BROTE_PIGMENTACION_BASE");
-            tableMapping.ColumnMappings.Add("NOMBRE_HOJA_TAMANO_CONTORNO", "NOMBRE_HOJA_TAMANO_CONTORNO");
-            tableMapping.ColumnMappings.Add("NOMBRE_FOLIOLO_PUBESCENCIA_HAZ_ROSETA_APICAL", "NOMBRE_FOLIOLO_PUBESCENCIA_HAZ_ROSETA_APICAL");
-            tableMapping.ColumnMappings.Add("NOMBRE_FOLIOLO_ONDULACION_BORDE", "NOMBRE_FOLIOLO_ONDULACION_BORDE");
-            tableMapping.ColumnMappings.Add("NOMBRE_BROTE_RADICULAS", "NOMBRE_BROTE_RADICULAS");
-            tableMapping.ColumnMappings.Add("NOMBRE_SEGUNDO_PAR_FOLIOLOS_ANCHURA_LONGITUD", "NOMBRE_SEGUNDO_PAR_FOLIOLOS_ANCHURA_LONGITUD");
-            tableMapping.ColumnMappings.Add("NOMBRE_BROTE_PORTE_EXTREMO", "NOMBRE_BROTE_PORTE_EXTREMO");
-            tableMapping.ColumnMappings.Add("PROFUNDIDAD_OJO", "PROFUNDIDAD_OJO");
-            tableMapping.ColumnMappings.Add("NOMBRE_PLANTA_PORTE", "NOMBRE_PLANTA_PORTE");
-            tableMapping.ColumnMappings.Add("NOMBRE_SEGUNDO_PAR_FOLIOLOS_TAMANO", "NOMBRE_SEGUNDO_PAR_FOLIOLOS_TAMANO");
-            tableMapping.ColumnMappings.Add("NOMBRE_PLANTA_ALTURA", "NOMBRE_PLANTA_ALTURA");
-            tableMapping.ColumnMappings.Add("NOMBRE_BROTE_PIGMENTACION_EXTREMO", "NOMBRE_BROTE_PIGMENTACION_EXTREMO");
-            tableMapping.ColumnMappings.Add("NOMBRE_HOJA_FOLIOLOS_SECUNDARIOS", "NOMBRE_HOJA_FOLIOLOS_SECUNDARIOS");
-            tableMapping.ColumnMappings.Add("NOMBRE_FOLIOLOS_TERMINALES_COALESCENCIA", "NOMBRE_FOLIOLOS_TERMINALES_COALESCENCIA");
-            tableMapping.ColumnMappings.Add("NOMBRE_HOJA_PIGMENTACION_NERVIO_CENTRAL", "NOMBRE_HOJA_PIGMENTACION_NERVIO_CENTRAL");
-            tableMapping.ColumnMappings.Add("NOMBRE_TUBERCULO_COLOR_BASE_OJO", "NOMBRE_TUBERCULO_COLOR_BASE_OJO");
-            tableMapping.ColumnMappings.Add("NOMBRE_BROTE_LONGITUD_RAMIFICACIONES_LATERALES", "NOMBRE_BROTE_LONGITUD_RAMIFICACIONES_LATERALES");
-            tableMapping.ColumnMappings.Add("NOMBRE_FOLIOLO_PROFUNDIDAD_NERVIOS", "NOMBRE_FOLIOLO_PROFUNDIDAD_NERVIOS");
-            tableMapping.ColumnMappings.Add("NOMBRE_FORMA", "NOMBRE_FORMA");
-            tableMapping.ColumnMappings.Add("NOMBRE_TALLO_PIGMENTACION", "NOMBRE_TALLO_PIGMENTACION");
-            tableMapping.ColumnMappings.Add("NOMBRE_BROTE_PUBESCENCIA_BASE", "NOMBRE_BROTE_PUBESCENCIA_BASE");
-            tableMapping.ColumnMappings.Add("NOMBRE_COROLA_FLOR_INTENSIDAD_PIGMENTACION_CARA_INTERNA", "NOMBRE_COROLA_FLOR_INTENSIDAD_PIGMENTACION_CARA_INTERNA");
-            tableMapping.ColumnMappings.Add("NOMBRE_TUBERCULO_PIGMENTACION_PIEL_REACCION_LUZ", "NOMBRE_TUBERCULO_PIGMENTACION_PIEL_REACCION_LUZ");
-            tableMapping.ColumnMappings.Add("NOMBRE_COROLA_FLOR_PROPORCION_AZUL_PIGMENTACION_CARA_INTERNA", "NOMBRE_COROLA_FLOR_PROPORCION_AZUL_PIGMENTACION_CARA_INTERNA");
-            tableMapping.ColumnMappings.Add("NOMBRE_COROLA_FLOR_TAMANO", "NOMBRE_COROLA_FLOR_TAMANO");
-            tableMapping.ColumnMappings.Add("NOMBRE_HOJA_APERTURA", "NOMBRE_HOJA_APERTURA");
-            tableMapping.ColumnMappings.Add("NOMBRE_PLANTA_ESTRUCTURA_FOLLAJE", "NOMBRE_PLANTA_ESTRUCTURA_FOLLAJE");
-            tableMapping.ColumnMappings.Add("NOMBRE_HOJA_COLOR_VERDE", "NOMBRE_HOJA_COLOR_VERDE");
-            tableMapping.ColumnMappings.Add("NOMBRE_PLANTA_FRECUENCIA_FLORES", "NOMBRE_PLANTA_FRECUENCIA_FLORES");
-            tableMapping.ColumnMappings.Add("NOMBRE_PLANTA_EPOCA_MADUREZ", "NOMBRE_PLANTA_EPOCA_MADUREZ");
-            tableMapping.ColumnMappings.Add("NOMBRE_INFLORESCENCIA_PIGMENTACION_PENDUNCULO", "NOMBRE_INFLORESCENCIA_PIGMENTACION_PENDUNCULO");
-            tableMapping.ColumnMappings.Add("NOMBRE_BROTE_PUBESCENCIA_EXTREMO", "NOMBRE_BROTE_PUBESCENCIA_EXTREMO");
-            tableMapping.ColumnMappings.Add("NOMBRE_COROLA_FLOR_EXTENSION_PIGMENTACION_CARA_INTERNA", "NOMBRE_COROLA_FLOR_EXTENSION_PIGMENTACION_CARA_INTERNA");
-            tableMapping.ColumnMappings.Add("NOMBRE_BROTE_TAMANO", "NOMBRE_BROTE_TAMANO");
-            tableMapping.ColumnMappings.Add("NOMBRE_VARIEDAD_UPOV", "NOMBRE_VARIEDAD_UPOV");
-            tableMapping.ColumnMappings.Add("ANO_UPOV", "ANO_UPOV");
-            this._adapter.TableMappings.Add(tableMapping);
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private void InitConnection() {
-            this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["ApplicationServices"].ConnectionString;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
-            this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
-            this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "dbo.upovNombresReporte";
-            this._commandCollection[0].CommandType = global::System.Data.CommandType.StoredProcedure;
-            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RETURN_VALUE", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.ReturnValue, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id_upov", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(DataSetNovaseed.upovNombresReporteDataTable dataTable, global::System.Nullable<int> id_upov) {
-            this.Adapter.SelectCommand = this.CommandCollection[0];
-            if ((id_upov.HasValue == true)) {
-                this.Adapter.SelectCommand.Parameters[1].Value = ((int)(id_upov.Value));
-            }
-            else {
-                this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
-            }
-            if ((this.ClearBeforeFill == true)) {
-                dataTable.Clear();
-            }
-            int returnValue = this.Adapter.Fill(dataTable);
-            return returnValue;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual DataSetNovaseed.upovNombresReporteDataTable GetUPOVNombresReportes(global::System.Nullable<int> id_upov) {
-            this.Adapter.SelectCommand = this.CommandCollection[0];
-            if ((id_upov.HasValue == true)) {
-                this.Adapter.SelectCommand.Parameters[1].Value = ((int)(id_upov.Value));
-            }
-            else {
-                this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
-            }
-            DataSetNovaseed.upovNombresReporteDataTable dataTable = new DataSetNovaseed.upovNombresReporteDataTable();
-            this.Adapter.Fill(dataTable);
-            return dataTable;
-        }
-    }
     
     /// <summary>
     ///Represents the connection and commands used to retrieve and save data.
@@ -5869,6 +5647,228 @@ namespace Project.Novaseed.DataSetNovaseedTableAdapters {
                 this.Adapter.SelectCommand.Parameters[1].Value = ((string)(codigo_variedad));
             }
             DataSetNovaseed.variedadReporteDataTable dataTable = new DataSetNovaseed.variedadReporteDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+    }
+    
+    /// <summary>
+    ///Represents the connection and commands used to retrieve and save data.
+    ///</summary>
+    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
+    [global::System.ComponentModel.ToolboxItem(true)]
+    [global::System.ComponentModel.DataObjectAttribute(true)]
+    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    public partial class upovNombresReporteTableAdapter : global::System.ComponentModel.Component {
+        
+        private global::System.Data.SqlClient.SqlDataAdapter _adapter;
+        
+        private global::System.Data.SqlClient.SqlConnection _connection;
+        
+        private global::System.Data.SqlClient.SqlTransaction _transaction;
+        
+        private global::System.Data.SqlClient.SqlCommand[] _commandCollection;
+        
+        private bool _clearBeforeFill;
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public upovNombresReporteTableAdapter() {
+            this.ClearBeforeFill = true;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        protected internal global::System.Data.SqlClient.SqlDataAdapter Adapter {
+            get {
+                if ((this._adapter == null)) {
+                    this.InitAdapter();
+                }
+                return this._adapter;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        internal global::System.Data.SqlClient.SqlConnection Connection {
+            get {
+                if ((this._connection == null)) {
+                    this.InitConnection();
+                }
+                return this._connection;
+            }
+            set {
+                this._connection = value;
+                if ((this.Adapter.InsertCommand != null)) {
+                    this.Adapter.InsertCommand.Connection = value;
+                }
+                if ((this.Adapter.DeleteCommand != null)) {
+                    this.Adapter.DeleteCommand.Connection = value;
+                }
+                if ((this.Adapter.UpdateCommand != null)) {
+                    this.Adapter.UpdateCommand.Connection = value;
+                }
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    if ((this.CommandCollection[i] != null)) {
+                        ((global::System.Data.SqlClient.SqlCommand)(this.CommandCollection[i])).Connection = value;
+                    }
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        internal global::System.Data.SqlClient.SqlTransaction Transaction {
+            get {
+                return this._transaction;
+            }
+            set {
+                this._transaction = value;
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    this.CommandCollection[i].Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.DeleteCommand != null))) {
+                    this.Adapter.DeleteCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.InsertCommand != null))) {
+                    this.Adapter.InsertCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.UpdateCommand != null))) {
+                    this.Adapter.UpdateCommand.Transaction = this._transaction;
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        protected global::System.Data.SqlClient.SqlCommand[] CommandCollection {
+            get {
+                if ((this._commandCollection == null)) {
+                    this.InitCommandCollection();
+                }
+                return this._commandCollection;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public bool ClearBeforeFill {
+            get {
+                return this._clearBeforeFill;
+            }
+            set {
+                this._clearBeforeFill = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitAdapter() {
+            this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
+            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            tableMapping.SourceTable = "Table";
+            tableMapping.DataSetTable = "upovNombresReporte";
+            tableMapping.ColumnMappings.Add("NOMBRE_INFLORESCENCIA_TAMANO", "NOMBRE_INFLORESCENCIA_TAMANO");
+            tableMapping.ColumnMappings.Add("NOMBRE_BROTE_TAMANO_EXTREMO", "NOMBRE_BROTE_TAMANO_EXTREMO");
+            tableMapping.ColumnMappings.Add("NOMBRE_BROTE_FORMA", "NOMBRE_BROTE_FORMA");
+            tableMapping.ColumnMappings.Add("NOMBRE_BROTE_PROPORCION_AZUL", "NOMBRE_BROTE_PROPORCION_AZUL");
+            tableMapping.ColumnMappings.Add("NOMBRE_FOLIOLO_BRILLO_HAZ", "NOMBRE_FOLIOLO_BRILLO_HAZ");
+            tableMapping.ColumnMappings.Add("NOMBRE_BOTON_FLORAL_PIGMENTACION", "NOMBRE_BOTON_FLORAL_PIGMENTACION");
+            tableMapping.ColumnMappings.Add("NOMBRE_BROTE_PIGMENTACION_BASE", "NOMBRE_BROTE_PIGMENTACION_BASE");
+            tableMapping.ColumnMappings.Add("NOMBRE_HOJA_TAMANO_CONTORNO", "NOMBRE_HOJA_TAMANO_CONTORNO");
+            tableMapping.ColumnMappings.Add("NOMBRE_FOLIOLO_PUBESCENCIA_HAZ_ROSETA_APICAL", "NOMBRE_FOLIOLO_PUBESCENCIA_HAZ_ROSETA_APICAL");
+            tableMapping.ColumnMappings.Add("NOMBRE_FOLIOLO_ONDULACION_BORDE", "NOMBRE_FOLIOLO_ONDULACION_BORDE");
+            tableMapping.ColumnMappings.Add("NOMBRE_BROTE_RADICULAS", "NOMBRE_BROTE_RADICULAS");
+            tableMapping.ColumnMappings.Add("NOMBRE_SEGUNDO_PAR_FOLIOLOS_ANCHURA_LONGITUD", "NOMBRE_SEGUNDO_PAR_FOLIOLOS_ANCHURA_LONGITUD");
+            tableMapping.ColumnMappings.Add("NOMBRE_BROTE_PORTE_EXTREMO", "NOMBRE_BROTE_PORTE_EXTREMO");
+            tableMapping.ColumnMappings.Add("PROFUNDIDAD_OJO", "PROFUNDIDAD_OJO");
+            tableMapping.ColumnMappings.Add("NOMBRE_PLANTA_PORTE", "NOMBRE_PLANTA_PORTE");
+            tableMapping.ColumnMappings.Add("NOMBRE_SEGUNDO_PAR_FOLIOLOS_TAMANO", "NOMBRE_SEGUNDO_PAR_FOLIOLOS_TAMANO");
+            tableMapping.ColumnMappings.Add("NOMBRE_PLANTA_ALTURA", "NOMBRE_PLANTA_ALTURA");
+            tableMapping.ColumnMappings.Add("NOMBRE_BROTE_PIGMENTACION_EXTREMO", "NOMBRE_BROTE_PIGMENTACION_EXTREMO");
+            tableMapping.ColumnMappings.Add("NOMBRE_HOJA_FOLIOLOS_SECUNDARIOS", "NOMBRE_HOJA_FOLIOLOS_SECUNDARIOS");
+            tableMapping.ColumnMappings.Add("NOMBRE_FOLIOLOS_TERMINALES_COALESCENCIA", "NOMBRE_FOLIOLOS_TERMINALES_COALESCENCIA");
+            tableMapping.ColumnMappings.Add("NOMBRE_HOJA_PIGMENTACION_NERVIO_CENTRAL", "NOMBRE_HOJA_PIGMENTACION_NERVIO_CENTRAL");
+            tableMapping.ColumnMappings.Add("NOMBRE_TUBERCULO_COLOR_BASE_OJO", "NOMBRE_TUBERCULO_COLOR_BASE_OJO");
+            tableMapping.ColumnMappings.Add("NOMBRE_BROTE_LONGITUD_RAMIFICACIONES_LATERALES", "NOMBRE_BROTE_LONGITUD_RAMIFICACIONES_LATERALES");
+            tableMapping.ColumnMappings.Add("NOMBRE_FOLIOLO_PROFUNDIDAD_NERVIOS", "NOMBRE_FOLIOLO_PROFUNDIDAD_NERVIOS");
+            tableMapping.ColumnMappings.Add("NOMBRE_FORMA", "NOMBRE_FORMA");
+            tableMapping.ColumnMappings.Add("NOMBRE_TALLO_PIGMENTACION", "NOMBRE_TALLO_PIGMENTACION");
+            tableMapping.ColumnMappings.Add("NOMBRE_BROTE_PUBESCENCIA_BASE", "NOMBRE_BROTE_PUBESCENCIA_BASE");
+            tableMapping.ColumnMappings.Add("NOMBRE_COROLA_FLOR_INTENSIDAD_PIGMENTACION_CARA_INTERNA", "NOMBRE_COROLA_FLOR_INTENSIDAD_PIGMENTACION_CARA_INTERNA");
+            tableMapping.ColumnMappings.Add("NOMBRE_TUBERCULO_PIGMENTACION_PIEL_REACCION_LUZ", "NOMBRE_TUBERCULO_PIGMENTACION_PIEL_REACCION_LUZ");
+            tableMapping.ColumnMappings.Add("NOMBRE_COROLA_FLOR_PROPORCION_AZUL_PIGMENTACION_CARA_INTERNA", "NOMBRE_COROLA_FLOR_PROPORCION_AZUL_PIGMENTACION_CARA_INTERNA");
+            tableMapping.ColumnMappings.Add("NOMBRE_COROLA_FLOR_TAMANO", "NOMBRE_COROLA_FLOR_TAMANO");
+            tableMapping.ColumnMappings.Add("NOMBRE_HOJA_APERTURA", "NOMBRE_HOJA_APERTURA");
+            tableMapping.ColumnMappings.Add("NOMBRE_PLANTA_ESTRUCTURA_FOLLAJE", "NOMBRE_PLANTA_ESTRUCTURA_FOLLAJE");
+            tableMapping.ColumnMappings.Add("NOMBRE_HOJA_COLOR_VERDE", "NOMBRE_HOJA_COLOR_VERDE");
+            tableMapping.ColumnMappings.Add("NOMBRE_PLANTA_FRECUENCIA_FLORES", "NOMBRE_PLANTA_FRECUENCIA_FLORES");
+            tableMapping.ColumnMappings.Add("NOMBRE_PLANTA_EPOCA_MADUREZ", "NOMBRE_PLANTA_EPOCA_MADUREZ");
+            tableMapping.ColumnMappings.Add("NOMBRE_INFLORESCENCIA_PIGMENTACION_PENDUNCULO", "NOMBRE_INFLORESCENCIA_PIGMENTACION_PENDUNCULO");
+            tableMapping.ColumnMappings.Add("NOMBRE_BROTE_PUBESCENCIA_EXTREMO", "NOMBRE_BROTE_PUBESCENCIA_EXTREMO");
+            tableMapping.ColumnMappings.Add("NOMBRE_COROLA_FLOR_EXTENSION_PIGMENTACION_CARA_INTERNA", "NOMBRE_COROLA_FLOR_EXTENSION_PIGMENTACION_CARA_INTERNA");
+            tableMapping.ColumnMappings.Add("NOMBRE_BROTE_TAMANO", "NOMBRE_BROTE_TAMANO");
+            tableMapping.ColumnMappings.Add("NOMBRE_VARIEDAD_UPOV", "NOMBRE_VARIEDAD_UPOV");
+            tableMapping.ColumnMappings.Add("ANO_UPOV", "ANO_UPOV");
+            this._adapter.TableMappings.Add(tableMapping);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitConnection() {
+            this._connection = new global::System.Data.SqlClient.SqlConnection();
+            this._connection.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["ApplicationServices"].ConnectionString;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitCommandCollection() {
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[0].Connection = this.Connection;
+            this._commandCollection[0].CommandText = "dbo.upovNombresReporte";
+            this._commandCollection[0].CommandType = global::System.Data.CommandType.StoredProcedure;
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RETURN_VALUE", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.ReturnValue, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id_upov", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
+        public virtual int Fill(DataSetNovaseed.upovNombresReporteDataTable dataTable, global::System.Nullable<int> id_upov) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((id_upov.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((int)(id_upov.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
+        public virtual DataSetNovaseed.upovNombresReporteDataTable GetUPOVReporte(global::System.Nullable<int> id_upov) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((id_upov.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((int)(id_upov.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            DataSetNovaseed.upovNombresReporteDataTable dataTable = new DataSetNovaseed.upovNombresReporteDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }

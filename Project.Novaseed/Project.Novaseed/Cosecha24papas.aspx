@@ -5,8 +5,16 @@
     <div class="container-fluid">
         <br />
         <div class="row">
-            <h2>
-                <asp:Label ID="lbl24papasAño" runat="server" Font-Bold="true" Text="24 Papas" /></h2>
+            <div class="col-sm-8">
+                <h2>
+                    <asp:Label ID="lbl24papasAño" runat="server" Font-Bold="true" Text="24 Papas" Font-Names="versalitas" /></h2>
+            </div>
+            <div class="col-sm-4" style="text-align: right">
+                <h6>
+                    <asp:Label ID="lbl24papasLeyendaVerde" runat="server" Text="Verde significa que está en etapas avanzadas" ForeColor="Green" Font-Italic="true" /></h6>
+                <h6>
+                    <asp:Label ID="lbl24papasLeyendaRojo" runat="server" Text="Rojo significa que esta es su última etapa" ForeColor="Red" Font-Italic="true" /></h6>
+            </div>
         </div>
         <br />
         <div class="row">
@@ -88,14 +96,14 @@
                         <ItemStyle HorizontalAlign="Center"></ItemStyle>
                     </asp:TemplateField>
 
-                    <asp:BoundField DataField="id_cosecha" HeaderText="ID" ReadOnly="true"  HeaderStyle-Width="5%"/>
+                    <asp:BoundField DataField="id_cosecha" HeaderText="ID" ReadOnly="true" HeaderStyle-Width="5%" />
                     <asp:BoundField DataField="codigo_variedad" HeaderText="Madre" ReadOnly="true" HeaderStyle-Width="10%" />
-                    <asp:BoundField DataField="nombre_madre" HeaderText="Nombre Madre" ReadOnly="true" HeaderStyle-Width="12%"/>
+                    <asp:BoundField DataField="nombre_madre" HeaderText="Nombre Madre" ReadOnly="true" HeaderStyle-Width="12%" />
                     <asp:BoundField DataField="pad_codigo_variedad" HeaderText="Padre" ReadOnly="true" HeaderStyle-Width="10%" />
-                    <asp:BoundField DataField="nombre_padre" HeaderText="Nombre Padre" ReadOnly="true" HeaderStyle-Width="12%"/>
-                    <asp:BoundField DataField="posicion_cosecha" HeaderText="Posición" ReadOnly="true" HeaderStyle-Width="5%"/>
+                    <asp:BoundField DataField="nombre_padre" HeaderText="Nombre Padre" ReadOnly="true" HeaderStyle-Width="12%" />
+                    <asp:BoundField DataField="posicion_cosecha" HeaderText="Posición" ReadOnly="true" HeaderStyle-Width="5%" />
                     <asp:BoundField DataField="codigo_individuo" HeaderText="Código Individuo" ReadOnly="true" HeaderStyle-Width="10%" />
-                    <asp:BoundField DataField="nombre_destino" HeaderText="Destino" ReadOnly="true" HeaderStyle-Width="8%"/>
+                    <asp:BoundField DataField="nombre_destino" HeaderText="Destino" ReadOnly="true" HeaderStyle-Width="8%" />
 
                     <asp:CommandField SelectText="Seleccionar" ShowSelectButton="True" />
 
@@ -123,11 +131,11 @@
                         <asp:TextBox type="text" runat="server" class="form-control" ID="txt24papasPosicion" Placeholder="Posición" Style="border: 3px solid #1E90FF"></asp:TextBox>
                         <span class="help-block">Posición</span>
                     </div>
-                    <div class="col-sm-2" style="margin-top: 20px">
-                        <asp:CheckBox ID="chk24papasFlor" runat="server" Text="Flor" />
+                    <div class="col-sm-2" style="margin-top: 10px">
+                        <asp:CheckBox ID="chk24papasFlor" runat="server" Text="Flor" class="checkbox"/>
                     </div>
                     <div class="col-sm-2">
-                        <asp:CheckBox ID="chk24papasBayas" runat="server" Text="Bayas" />
+                        <asp:CheckBox ID="chk24papasBayas" runat="server" Text="Bayas" class="checkbox"/>
                     </div>
                 </div>
 
@@ -322,55 +330,66 @@
             <div class="panel-heading" style="text-align: center">Enfermedades</div>
             <div class="panel-body">
                 <br />
-                <div class="row">
-                    <div class="col-sm-5 col-sm-offset-1">
-                        <asp:DropDownList type="button" ID="ddl24papasEnfermedad" runat="server" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
-                        <span class="help-block">Enfermedad</span>
-                    </div>
-                    <div class="col-sm-3">
-                        <asp:DropDownList type="button" ID="ddl24papasResistencia" runat="server" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
-                        <span class="help-block">Resistencia</span>
-                    </div>
-                    <div class="col-sm-3">
-                        <asp:Button type="button" runat="server" Text="Agregar Enfermedad" ID="btn24papasAgregarEnfermedad" class="btn btn-primary btn-md" BorderColor="#000000" OnClick="btn24papasAgregarEnfermedad_Click"></asp:Button>
-                    </div>
-                </div>
-                <br />
-                <div class="row">
-                    <div class="col-sm-9 col-sm-offset-3">
-                        <asp:GridView ID="gdv24papasEnfermedades" runat="server" Width="70%"
-                            AutoGenerateColumns="False"
-                            CssClass="table table-bordered bs-table"
-                            AllowPaging="True"
-                            AllowSorting="True"
-                            OnRowDeleting="Cosecha24papasEnfermedadesGridView_RowDeleting">
+                <asp:UpdatePanel runat="server" ID="UpdatePanel"
+                    UpdateMode="Conditional">
+                    <Triggers>
+                        <asp:AsyncPostBackTrigger ControlID="btn24papasAgregarEnfermedad"
+                            EventName="Click" />
+                    </Triggers>
+                    <ContentTemplate>
+                        <div class="row">
+                            <div class="col-sm-5 col-sm-offset-1">
+                                <asp:DropDownList type="button" ID="ddl24papasEnfermedad" runat="server" Width="80%" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
+                                <span class="help-block">Enfermedad</span>
+                            </div>
+                            <div class="col-sm-3">
+                                <asp:DropDownList type="button" ID="ddl24papasResistencia" runat="server" Width="80%" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
+                                <span class="help-block">Resistencia</span>
+                            </div>
+                            <div class="col-sm-3">
+                                <asp:Button type="button" runat="server" Text="Agregar Enfermedad" ID="btn24papasAgregarEnfermedad" class="btn btn-primary btn-md" BorderColor="#000000" OnClick="btn24papasAgregarEnfermedad_Click" OnClientClick="return confirm('¿Desea agregar esta enfermedad?');"></asp:Button>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col-sm-9 col-sm-offset-3">
+                                <asp:GridView ID="gdv24papasEnfermedades" runat="server" Width="70%"
+                                    AutoGenerateColumns="False"
+                                    CssClass="table table-bordered bs-table"
+                                    AllowPaging="True"
+                                    AllowSorting="True"
+                                    OnRowDeleting="Cosecha24papasEnfermedadesGridView_RowDeleting">
 
-                            <HeaderStyle BackColor="#337ab7" Font-Bold="True" ForeColor="White" />
-                            <EditRowStyle BackColor="#ffffcc" />
-                            <EmptyDataRowStyle ForeColor="Red" CssClass="table table-bordered" />
-                            <EmptyDataTemplate>
-                                ¡No hay enfermedades en la variedad seleccionada!  
-                            </EmptyDataTemplate>
+                                    <HeaderStyle BackColor="#337ab7" Font-Bold="True" ForeColor="White" />
+                                    <EditRowStyle BackColor="#ffffcc" />
+                                    <EmptyDataRowStyle ForeColor="Red" CssClass="table table-bordered" />
+                                    <EmptyDataTemplate>
+                                        ¡No hay enfermedades en la variedad seleccionada!  
+                                    </EmptyDataTemplate>
 
-                            <SelectedRowStyle Font-Bold="True" />
-                            <Columns>
-                                <asp:BoundField DataField="nombre_enfermedad" HeaderText="Enfermedad" ReadOnly="true" />
-                                <asp:BoundField DataField="resistencia_variedad" HeaderText="Resistencia Variedad" ReadOnly="true" />
+                                    <SelectedRowStyle Font-Bold="True" />
+                                    <Columns>
+                                        <asp:BoundField DataField="nombre_enfermedad" HeaderText="Enfermedad" ReadOnly="true" />
+                                        <asp:BoundField DataField="resistencia_variedad" HeaderText="Resistencia Variedad" ReadOnly="true" />
 
-                                <%--botones de acción sobre los registros...--%>
-                                <asp:TemplateField ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="100px">
-                                    <ItemTemplate>
-                                        <%--Botones de eliminar y editar cliente...--%>
-                                        <asp:Button ID="btnDeleteEnfermedad" runat="server" Text="Quitar" CssClass="btn btn-danger" CommandName="Delete" OnClientClick="return confirm('¿Deseas eliminar la enfermedad?');" />
-                                    </ItemTemplate>
-                                    <HeaderStyle Width="100px"></HeaderStyle>
-                                    <ItemStyle HorizontalAlign="Center"></ItemStyle>
-                                </asp:TemplateField>
+                                        <%--botones de acción sobre los registros...--%>
+                                        <asp:TemplateField ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="100px">
+                                            <ItemTemplate>
+                                                <%--Botones de eliminar y editar cliente...--%>
+                                                <asp:Button ID="btnDeleteEnfermedad" runat="server" Text="Quitar" CssClass="btn btn-danger" CommandName="Delete" OnClientClick="return confirm('¿Deseas eliminar la enfermedad?');" />
+                                            </ItemTemplate>
+                                            <HeaderStyle Width="100px"></HeaderStyle>
+                                            <ItemStyle HorizontalAlign="Center"></ItemStyle>
+                                        </asp:TemplateField>
 
-                            </Columns>
-                        </asp:GridView>
-                    </div>
-                </div>
+                                    </Columns>
+                                </asp:GridView>
+                            </div>
+                        </div>
+
+                    </ContentTemplate>
+                </asp:UpdatePanel>
+
             </div>
         </div>
 

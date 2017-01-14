@@ -6,7 +6,13 @@
     <div class="container-fluid">
         <br />
         <div class="row">
-            <div class="col-sm-3 col-sm-offset-1">
+            <div class="col-sm-8">
+                <h2>
+                    <asp:Label ID="lblCodificacion" runat="server" Font-Bold="true" Text="Codificacion" Font-Names="versalitas"/></h2>
+            </div>            
+        </div>
+        <div class="row">
+            <div class="col-sm-3">
                 <asp:TextBox ID="txtCodificacionMadre" runat="server" class="form-control" ReadOnly="true"></asp:TextBox>
                 <span class="help-block">Código Madre</span>
             </div>
@@ -18,14 +24,17 @@
                 <asp:TextBox ID="txtCodificacionAño" runat="server" class="form-control" ReadOnly="true"></asp:TextBox>
                 <span class="help-block">Año de la codificación</span>
             </div>
+            <div class="col-sm-3" style="text-align: right">
+                <h6>
+                    <asp:Label ID="lblCodificacionLeyendaVerde" runat="server" Text="Verde significa que está en etapas avanzadas" ForeColor="Green" Font-Italic="true" /></h6>
+                <h6>
+                    <asp:Label ID="lblCodificacionLeyendaRojo" runat="server" Text="Rojo significa que esta es su última etapa" ForeColor="Red" Font-Italic="true" /></h6>
+            </div>
         </div>
         <div class="row">
             <h5>
                 <asp:Label ID="lblCodificacionError" runat="server" Font-Bold="true" Text="" ForeColor="Red" /></h5>
-        </div>
-        <div class="row">
-            <asp:Button type="button" runat="server" ID="btnAgregar6papas" class="btn btn-primary btn-block" Style="border-color: #000000" Text="Agregar a 6 Papas" OnClick="btnAgregar6papas_Click" OnClientClick="return confirm('¿Desea crear la temporada 6 papas para esta codificación?');"></asp:Button>
-        </div>
+        </div>        
         <div class="row">
             <asp:GridView ID="gdvCodigoIndividuos" runat="server"
                 DataKeyNames="id_codificacion"
@@ -110,6 +119,10 @@
 
                 </Columns>
             </asp:GridView>
+        </div>
+        <div class="row" style="text-align:right">
+            <asp:Button type="button" runat="server" ID="btnAgregar6papas" class="btn btn-success btn-md" Width="15%" Style="border-color: #000000" Text="Agregar a 6 Papas" OnClick="btnAgregar6papas_Click" OnClientClick="return confirm('¿Desea crear la temporada 6 papas para esta codificación?');"></asp:Button>
+            <asp:Button type="button" runat="server" ID="btnCancelar6papas" class="btn btn-danger btn-md" Width="15%" Style="border-color: #000000" Text="Volver al Menú" OnClick="btnCancelar6papas_Click" OnClientClick="return confirm('¿Desea volver al menú?');"></asp:Button>
         </div>
     </div>
 </asp:Content>

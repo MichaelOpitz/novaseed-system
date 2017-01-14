@@ -22,6 +22,24 @@ namespace Project.Novaseed {
         protected global::System.Web.UI.WebControls.Label lblClonesAño;
         
         /// <summary>
+        /// Control lblClonesLeyendaVerde.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblClonesLeyendaVerde;
+        
+        /// <summary>
+        /// Control lblClonesLeyendaRojo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblClonesLeyendaRojo;
+        
+        /// <summary>
         /// Control lblClonesError.
         /// </summary>
         /// <remarks>
@@ -29,6 +47,15 @@ namespace Project.Novaseed {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblClonesError;
+        
+        /// <summary>
+        /// Control gdvClones.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gdvClones;
         
         /// <summary>
         /// Control btnAgregarCodificacion.
@@ -40,12 +67,12 @@ namespace Project.Novaseed {
         protected global::System.Web.UI.WebControls.Button btnAgregarCodificacion;
         
         /// <summary>
-        /// Control gdvClones.
+        /// Control btnCancelarCodificacion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gdvClones;
+        protected global::System.Web.UI.WebControls.Button btnCancelarCodificacion;
     }
 }

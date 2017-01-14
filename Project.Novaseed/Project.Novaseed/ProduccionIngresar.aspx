@@ -6,11 +6,11 @@
     <div class="container-fluid">
         <br />
         <div class="row">
-            <div class="col-sm-5 col-sm-offset-2">
+            <div class="col-sm-4 col-sm-offset-1">
                 <h3>
-                    <asp:Label ID="lblProduccionVariedad" runat="server" Font-Bold="true" Text="Variedad Seleccionada: " /></h3>
+                    <asp:Label ID="lblProduccionVariedad" runat="server" Font-Bold="true" Text="Variedad: " /></h3>
             </div>
-            <div class="col-sm-5">
+            <div class="col-sm-4 col-sm-offset-2">
                 <h3>
                     <asp:Label ID="lblProduccionAño" runat="server" Font-Bold="true" Text="Temporada: " /></h3>
             </div>
@@ -67,8 +67,8 @@
                         <asp:TextBox type="text" runat="server" class="form-control" Placeholder="Cosecha (Ton)" ID="txtProduccionCosecha"></asp:TextBox>
                         <span class="help-block">Cosecha (Ton)</span>
                     </div>
-                    <div class="col-sm-2" style="margin-top:30px">
-                        <asp:CheckBox ID="chkProduccionLicencia" runat="server" Text="Licencia" />
+                    <div class="col-sm-2" style="margin-top:10px">
+                        <asp:CheckBox ID="chkProduccionLicencia" runat="server" Text="Licencia" class="checkbox"/>
                     </div>
                 </div>
             </div>
@@ -76,7 +76,7 @@
 
         <hr style="color: #000000" />
         <div class="row" style="text-align: center">
-            <asp:Button type="button" runat="server" Text="Guardar" ID="btnProduccionGuardar" class="btn btn-primary btn-md" Width="20%" BorderColor="#000000" ValidationGroup="modificarProduccion" CausesValidation="true" OnClientClick="return confirm('¿Desea guardar los cambios?');" OnClick="btnProduccionGuardar_Click" ></asp:Button>
+            <asp:Button type="button" runat="server" Text="Guardar" ID="btnProduccionGuardar" class="btn btn-success btn-md" Width="20%" BorderColor="#000000" ValidationGroup="modificarProduccion" CausesValidation="true" OnClientClick="return confirm('¿Desea guardar los cambios?');" OnClick="btnProduccionGuardar_Click" ></asp:Button>
             <asp:Button type="button" runat="server" Text="Cancelar" ID="btnProduccionCancelar" class="btn btn-danger btn-md" Width="20%" BorderColor="#000000" OnClientClick="return confirm('¿Desea cancelar los cambios?');" OnClick="btnProduccionCancelar_Click" ></asp:Button>
         </div>
 
