@@ -10,7 +10,7 @@ namespace Project.BusinessRules
 {
     public class CatalogPadre
     {
-        public List<Padre> getPadre(Padre p)
+        public List<Padre> GetPadre(Padre p)
         {
             try
             {

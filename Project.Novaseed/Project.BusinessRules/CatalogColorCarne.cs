@@ -9,7 +9,7 @@ namespace Project.BusinessRules
 {
     public class CatalogColorCarne
     {
-        public List<ColorCarne> getColorCarne()
+        public List<ColorCarne> GetColorCarne()
         {
             try
             {

@@ -9,7 +9,7 @@ namespace Project.BusinessRules
 {
     public class CatalogProfundidadOjo
     {
-        public List<ProfundidadOjo> getProfundidadOjo()
+        public List<ProfundidadOjo> GetProfundidadOjo()
         {
             try
             {

@@ -9,7 +9,7 @@ namespace Project.BusinessRules
 {
     public class CatalogEmergencia40Dias
     {
-        public List<Emergencia40Dias> getEmergencia40Dias()
+        public List<Emergencia40Dias> GetEmergencia40Dias()
         {
             try
             {

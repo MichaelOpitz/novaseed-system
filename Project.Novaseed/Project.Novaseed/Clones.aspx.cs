@@ -74,7 +74,7 @@ namespace Project.Novaseed
                     DropDownList ddlClonesFertilidad = (e.Row.FindControl("ddlClonesFertilidad") as DropDownList);
                     //Llena el dropdown fertilidad
                     CatalogFertilidad cf = new CatalogFertilidad();
-                    ddlClonesFertilidad.DataSource = cf.getFertilidad();
+                    ddlClonesFertilidad.DataSource = cf.GetFertilidad();
                     ddlClonesFertilidad.DataTextField = "nombre_fertilidad";
                     ddlClonesFertilidad.DataValueField = "id_fertilidad";
                     ddlClonesFertilidad.DataBind();
@@ -112,16 +112,16 @@ namespace Project.Novaseed
                 DropDownList ddlClonesFertilidad = (DropDownList)gdvClones.Rows[e.RowIndex].FindControl("ddlClonesFertilidad");
                 string id_fertilidad = ddlClonesFertilidad.SelectedValue;
 
-                string azul_clon = e.NewValues[1].ToString();
+                string azul_clon = e.NewValues[0].ToString();
                 if (EsNumero(azul_clon) == false)
                     this.lblClonesError.Text += "Las azules deben ser un número. ";
-                string roja_clon = e.NewValues[2].ToString();
+                string roja_clon = e.NewValues[1].ToString();
                 if (EsNumero(roja_clon) == false)
                     this.lblClonesError.Text += "Las rojas deben ser un número. ";
-                string amarilla_clon = e.NewValues[3].ToString();
+                string amarilla_clon = e.NewValues[2].ToString();
                 if (EsNumero(amarilla_clon) == false)
                     this.lblClonesError.Text += "Las amarillas deben ser un número. ";
-                string bicolor_clon = e.NewValues[4].ToString();
+                string bicolor_clon = e.NewValues[3].ToString();
                 if (EsNumero(bicolor_clon) == false)
                     this.lblClonesError.Text += "Las bicolores deben ser un número. ";
 

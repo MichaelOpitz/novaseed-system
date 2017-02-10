@@ -57,6 +57,25 @@ namespace Project.BusinessRules
             return validacion;
         }
 
+        public bool ValidarExtension(string extension)
+        {
+            Boolean verif = false;
+            switch (extension)
+            {
+                case ".jpg":
+                case ".jpeg":
+                case ".png":
+                case ".gif":
+                case ".bmp":
+                    verif = true;
+                    break;
+                default:
+                    verif = false;
+                    break;
+            }
+            return verif;
+        }
+
         /*
          * Encripta con el metodo SHA1
          */ 

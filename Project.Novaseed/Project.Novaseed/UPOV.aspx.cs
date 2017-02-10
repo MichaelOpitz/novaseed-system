@@ -458,7 +458,7 @@ namespace Project.Novaseed
                     //Profundidad
                     List<ProfundidadOjo> lstProfundidadOjo = new List<ProfundidadOjo>();
                     CatalogProfundidadOjo cp = new CatalogProfundidadOjo();
-                    lstProfundidadOjo = cp.getProfundidadOjo();
+                    lstProfundidadOjo = cp.GetProfundidadOjo();
 
                     for (int i = 0; i < lstProfundidadOjo.Count; i++)
                     {
@@ -470,7 +470,7 @@ namespace Project.Novaseed
                     //Forma
                     List<FormaTuberculos> lstFormaTuberculos = new List<FormaTuberculos>();
                     CatalogFormaTuberculos cf = new CatalogFormaTuberculos();
-                    lstFormaTuberculos = cf.getFormaTuberculos();
+                    lstFormaTuberculos = cf.GetFormaTuberculos();
 
                     for (int i = 0; i < lstFormaTuberculos.Count; i++)
                     {
@@ -482,7 +482,7 @@ namespace Project.Novaseed
                     //ColorCarne
                     List<ColorCarne> lstColorCarne = new List<ColorCarne>();
                     CatalogColorCarne ccc = new CatalogColorCarne();
-                    lstColorCarne = ccc.getColorCarne();
+                    lstColorCarne = ccc.GetColorCarne();
 
                     for (int i = 0; i < lstColorCarne.Count; i++)
                     {
@@ -499,7 +499,7 @@ namespace Project.Novaseed
                     //ColorPiel
                     List<ColorPiel> lstColorPiel = new List<ColorPiel>();
                     CatalogColorPiel ccp = new CatalogColorPiel();
-                    lstColorPiel = ccp.getColorPiel();
+                    lstColorPiel = ccp.GetColorPiel();
 
                     for (int i = 0; i < lstColorPiel.Count; i++)
                     {

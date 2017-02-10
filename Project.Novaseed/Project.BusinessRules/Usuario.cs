@@ -7,10 +7,16 @@ namespace Project.BusinessRules
 {
     public class Usuario
     {
-        private int rol, telefono, id_cargo, id_sexo, conectado, no_conectado, id_pais;        
-        private string dv, nombre, apellido, nombre_cargo, usuario_persona, password, email, direccion;
+        private int rol, telefono, id_cargo, id_sexo, conectado, no_conectado, id_pais;
+        private string dv, nombre, apellido, nombre_cargo, usuario_persona, password, email, direccion, imagen;
         private DateTime fecha_nacimiento, fecha_creacion, fecha_ultima_conexion;
         private bool administrador;
+
+        public string Imagen
+        {
+            get { return imagen; }
+            set { imagen = value; }
+        }
 
         public int Id_pais
         {
@@ -129,7 +135,7 @@ namespace Project.BusinessRules
         /*
          * Constructor que obtiene los usuarios
          */ 
-        public Usuario(int rol, string dv, string nombre, string apellido, string nombre_cargo, string usuario_persona)
+        public Usuario(int rol, string dv, string nombre, string apellido, string nombre_cargo, string usuario_persona, string email)
         {
             this.rol = rol;
             this.dv = dv;
@@ -137,13 +143,14 @@ namespace Project.BusinessRules
             this.apellido = apellido;
             this.nombre_cargo = nombre_cargo;
             this.usuario_persona = usuario_persona;
+            this.email = email;
         }
 
         /*
          * Constructor que agrega un usuario 
          */
         public Usuario(int rol, string dv, int id_cargo, int id_sexo, string nombre, string apellido, DateTime fecha_nacimiento, 
-            string direccion, string email, int telefono, string usuario_persona, string password, bool administrador)
+            string direccion, string email, int telefono, string usuario_persona, string password, bool administrador, string imagen)
         {
             this.rol = rol;
             this.dv = dv;
@@ -158,6 +165,7 @@ namespace Project.BusinessRules
             this.usuario_persona = usuario_persona;
             this.password = password;
             this.administrador = administrador;
+            this.imagen = imagen;
         }
 
         /*
@@ -186,7 +194,7 @@ namespace Project.BusinessRules
          * Constructor para actualizar un usuario(perfil)
          */
         public Usuario(int rol, int id_cargo, int id_sexo, string nombre, string apellido, DateTime fecha_nac, string direccion,
-            string email, int telefono, bool administrador)
+            string email, int telefono, bool administrador, string imagen)
         {
             this.rol = rol;
             this.id_cargo = id_cargo;
@@ -198,15 +206,17 @@ namespace Project.BusinessRules
             this.email = email;
             this.telefono = telefono;            
             this.administrador = administrador;
+            this.imagen = imagen;
         }
 
         /*
-         * Constructor para obtener el nombre y cargo del usuario
+         * Constructor para obtener el nombre, cargo y foto de perfil del usuario
          */
-        public Usuario(string nombre, string nombre_cargo)
+        public Usuario(string nombre, string nombre_cargo, string imagen)
         {
             this.nombre = nombre;
             this.nombre_cargo = nombre_cargo;
+            this.imagen = imagen;
         }
 
         /*

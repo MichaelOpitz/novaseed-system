@@ -9,7 +9,7 @@ namespace Project.BusinessRules
 {
     public class CatalogMetribuzina
     {
-        public List<Metribuzina> getMetribuzina()
+        public List<Metribuzina> GetMetribuzina()
         {
             try
             {

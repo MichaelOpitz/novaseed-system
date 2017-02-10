@@ -14,38 +14,38 @@ namespace Project.Novaseed
         protected void Page_Load(object sender, EventArgs e)
         {
             CatalogTamaño ct = new CatalogTamaño();
-            List<Project.BusinessRules.Tamaño> tamaño = ct.getTamaño();
+            List<Project.BusinessRules.Tamaño> tamaño = ct.GetTamaño();
             CatalogMadurez cm = new CatalogMadurez();
-            List<Project.BusinessRules.Madurez> madurez = cm.getMadurez();
+            List<Project.BusinessRules.Madurez> madurez = cm.GetMadurez();
             CatalogFormaTuberculos cft = new CatalogFormaTuberculos();
-            List<Project.BusinessRules.FormaTuberculos> forma = cft.getFormaTuberculos();
+            List<Project.BusinessRules.FormaTuberculos> forma = cft.GetFormaTuberculos();
             CatalogDistribucionCalibre cdc = new CatalogDistribucionCalibre();
-            List<Project.BusinessRules.DistribucionCalibre> distribucion = cdc.getDistribucionCalibre();
+            List<Project.BusinessRules.DistribucionCalibre> distribucion = cdc.GetDistribucionCalibre();
             CatalogProfundidadOjo cpo = new CatalogProfundidadOjo();
-            List<Project.BusinessRules.ProfundidadOjo> profundidad = cpo.getProfundidadOjo();
+            List<Project.BusinessRules.ProfundidadOjo> profundidad = cpo.GetProfundidadOjo();
             CatalogRegularidad cr = new CatalogRegularidad();
-            List<Project.BusinessRules.Regularidad> regularidad = cr.getRegularidad();
+            List<Project.BusinessRules.Regularidad> regularidad = cr.GetRegularidad();
             CatalogBrotacion cb = new CatalogBrotacion();
-            List<Project.BusinessRules.Brotacion> brotacion = cb.getBrotacion();
+            List<Project.BusinessRules.Brotacion> brotacion = cb.GetBrotacion();
             CatalogEmergencia ce = new CatalogEmergencia();
-            List<Project.BusinessRules.Emergencia> emergencia = ce.getEmergencia();
+            List<Project.BusinessRules.Emergencia> emergencia = ce.GetEmergencia();
 
             CatalogEmergencia40Dias ce40 = new CatalogEmergencia40Dias();
-            List<Project.BusinessRules.Emergencia40Dias> emergencia40 = ce40.getEmergencia40Dias();
+            List<Project.BusinessRules.Emergencia40Dias> emergencia40 = ce40.GetEmergencia40Dias();
             CatalogMetribuzina cmet = new CatalogMetribuzina();
-            List<Project.BusinessRules.Metribuzina> metribuzina = cmet.getMetribuzina();
+            List<Project.BusinessRules.Metribuzina> metribuzina = cmet.GetMetribuzina();
             CatalogTuberculosVerdes ctv = new CatalogTuberculosVerdes();
-            List<Project.BusinessRules.TuberculosVerdes> verdes = ctv.getTuberculosVerdes();
+            List<Project.BusinessRules.TuberculosVerdes> verdes = ctv.GetTuberculosVerdes();
             CatalogTizonTardioFollaje cttf = new CatalogTizonTardioFollaje();
-            List<Project.BusinessRules.TizonTardioFollaje> tizon_follaje = cttf.getTizonTardioFollaje();
+            List<Project.BusinessRules.TizonTardioFollaje> tizon_follaje = cttf.GetTizonTardioFollaje();
             CatalogTizonTardioTuberculo cttt = new CatalogTizonTardioTuberculo();
-            List<Project.BusinessRules.TizonTardioTuberculo> tizon_tuberculo = cttt.getTizonTardioTuberculo();
+            List<Project.BusinessRules.TizonTardioTuberculo> tizon_tuberculo = cttt.GetTizonTardioTuberculo();
             CatalogNumeroTuberculos cnt = new CatalogNumeroTuberculos();
-            List<Project.BusinessRules.NumeroTuberculos> numero = cnt.getNumeroTuberculos();
+            List<Project.BusinessRules.NumeroTuberculos> numero = cnt.GetNumeroTuberculos();
             CatalogFertilidad cf = new CatalogFertilidad();
-            List<Project.BusinessRules.Fertilidad> fertilidad = cf.getFertilidad();
+            List<Project.BusinessRules.Fertilidad> fertilidad = cf.GetFertilidad();
             CatalogDestino cd = new CatalogDestino();
-            List<Project.BusinessRules.Destino> destino = cd.getDestino();
+            List<Project.BusinessRules.Destino> destino = cd.GetDestino();
 
             this.gdvCaracteristicaMadre.Visible = true;
             this.gdvCaracteristicaPadre.Visible = true;            
@@ -244,7 +244,7 @@ namespace Project.Novaseed
                         Int32.Parse(brotacion), Int32.Parse(emergencia), Int32.Parse(emergencia40),
                         Int32.Parse(metribuzina), Int32.Parse(verdes), Int32.Parse(tizon_follaje), Int32.Parse(tizon_tuberculo),
                         Int32.Parse(numero), Int32.Parse(fertilidad), Int32.Parse(destino));
-                    lista = madre.getMadre(mama);
+                    lista = madre.GetMadre(mama);
                 }
                 else
                 {
@@ -297,7 +297,7 @@ namespace Project.Novaseed
                         Int32.Parse(brotacion), Int32.Parse(emergencia), Int32.Parse(emergencia40),
                         Int32.Parse(metribuzina), Int32.Parse(verdes), Int32.Parse(tizon_follaje), Int32.Parse(tizon_tuberculo),
                         Int32.Parse(numero), Int32.Parse(fertilidad), Int32.Parse(destino));
-                    lista = padre.getPadre(papa);
+                    lista = padre.GetPadre(papa);
                 }
                 else
                 {

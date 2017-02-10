@@ -34,6 +34,7 @@ namespace Project.BusinessRules
                 bd.CreateParameter("@usuario", DbType.String, u.Usuario_persona);
                 bd.CreateParameter("@password", DbType.String, u.Password);
                 bd.CreateParameter("@administrador", DbType.Boolean, u.Administrador);
+                bd.CreateParameter("@imagen", DbType.String, u.Imagen);
                 bd.Execute();
                 bd.Close();
             }
@@ -86,6 +87,7 @@ namespace Project.BusinessRules
                 bd.CreateParameter("@email", DbType.String, u.Email);
                 bd.CreateParameter("@telefono", DbType.Int32, u.Telefono);                
                 bd.CreateParameter("@administrador", DbType.Boolean, u.Administrador);
+                bd.CreateParameter("@imagen", DbType.String, u.Imagen);
                 bd.Execute();
                 bd.Close();
             }
@@ -163,7 +165,7 @@ namespace Project.BusinessRules
                 while (resultado.Read())
                 {
                     Usuario usuario = new Usuario(resultado.GetInt32(0), resultado.GetString(1), resultado.GetString(2),
-                        resultado.GetString(3), resultado.GetString(4), resultado.GetString(5));
+                        resultado.GetString(3), resultado.GetString(4), resultado.GetString(5), resultado.GetString(6));
                     lu.Add(usuario);
                 }
                 resultado.Close();
@@ -311,14 +313,14 @@ namespace Project.BusinessRules
         /*
          * Devuelve el nombre y cargo del usuario
          */
-        public List<Usuario> GetNombreCargoUsuario(string usuario)
+        public List<Usuario> GetNombreCargoImagenUsuario(string usuario)
         {
             try
             {
                 DataAccess.DataBase bd = new DataBase();
                 bd.Connect(); //método conectar
                 List<Usuario> usuarios = new List<Usuario>();
-                string salida = "personaNombreCargoObtener";//comando sql
+                string salida = "personaNombreCargoImagenObtener";//comando sql
                 bd.CreateCommandSP(salida);
                 bd.CreateParameter("@usuario", DbType.String, usuario);
 
@@ -326,7 +328,7 @@ namespace Project.BusinessRules
 
                 while (resultado.Read())
                 {
-                    Usuario u = new Usuario(resultado.GetString(0), resultado.GetString(1));
+                    Usuario u = new Usuario(resultado.GetString(0), resultado.GetString(1), resultado.GetString(2));
                     usuarios.Add(u);
                 }
                 resultado.Close();
@@ -485,6 +487,28 @@ namespace Project.BusinessRules
 
                 bd.Close();
                 return administrador;
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.ToString());
+            }
+        }
+
+        /*
+         * Recupera contraseña en el olvide mi contraseña
+         */
+        public void RecuperarContraseña(string email, string password)
+        {
+            try
+            {
+                DataAccess.DataBase bd = new DataBase();
+                bd.Connect(); //método conectar
+                string sql = "loginRecuperarContraseña";
+                bd.CreateCommandSP(sql);
+                bd.CreateParameter("@email", DbType.String, email);
+                bd.CreateParameter("@password", DbType.String, password);
+                bd.Execute();
+                bd.Close();
             }
             catch (Exception e)
             {

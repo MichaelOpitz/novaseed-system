@@ -9,7 +9,7 @@ namespace Project.BusinessRules
 {
     public class CatalogFertilidad
     {
-        public List<Fertilidad> getFertilidad()
+        public List<Fertilidad> GetFertilidad()
         {
             try
             {

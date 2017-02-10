@@ -27,51 +27,51 @@ namespace Project.Novaseed
             cont12papas24papas = 0;
 
             CatalogFertilidad cf = new CatalogFertilidad();
-            List<Project.BusinessRules.Fertilidad> fertilidad = cf.getFertilidad();
+            List<Project.BusinessRules.Fertilidad> fertilidad = cf.GetFertilidad();
 
             CatalogEmergencia40Dias ce40 = new CatalogEmergencia40Dias();
-            List<Project.BusinessRules.Emergencia40Dias> emergencia40 = ce40.getEmergencia40Dias();
+            List<Project.BusinessRules.Emergencia40Dias> emergencia40 = ce40.GetEmergencia40Dias();
             CatalogMetribuzina cmet = new CatalogMetribuzina();
-            List<Project.BusinessRules.Metribuzina> metribuzina = cmet.getMetribuzina();
+            List<Project.BusinessRules.Metribuzina> metribuzina = cmet.GetMetribuzina();
             CatalogEmergencia ce = new CatalogEmergencia();
-            List<Project.BusinessRules.Emergencia> emergencia = ce.getEmergencia();
+            List<Project.BusinessRules.Emergencia> emergencia = ce.GetEmergencia();
 
             CatalogMadurez cm = new CatalogMadurez();
-            List<Project.BusinessRules.Madurez> madurez = cm.getMadurez();
+            List<Project.BusinessRules.Madurez> madurez = cm.GetMadurez();
             CatalogDesarrolloFollaje cdf = new CatalogDesarrolloFollaje();
-            List<Project.BusinessRules.DesarrolloFollaje> desarrollo = cdf.getDesarrolloFollaje();
+            List<Project.BusinessRules.DesarrolloFollaje> desarrollo = cdf.GetDesarrolloFollaje();
             CatalogTipoHoja cth = new CatalogTipoHoja();
-            List<Project.BusinessRules.TipoHoja> hoja = cth.getTipoHoja();
+            List<Project.BusinessRules.TipoHoja> hoja = cth.GetTipoHoja();
             CatalogBrotacion cb = new CatalogBrotacion();
-            List<Project.BusinessRules.Brotacion> brotacion = cb.getBrotacion();
+            List<Project.BusinessRules.Brotacion> brotacion = cb.GetBrotacion();
             CatalogTamaño ct = new CatalogTamaño();
-            List<Project.BusinessRules.Tamaño> tamaño = ct.getTamaño();
+            List<Project.BusinessRules.Tamaño> tamaño = ct.GetTamaño();
             CatalogDistribucionCalibre cdc = new CatalogDistribucionCalibre();
-            List<Project.BusinessRules.DistribucionCalibre> distribucion = cdc.getDistribucionCalibre();
+            List<Project.BusinessRules.DistribucionCalibre> distribucion = cdc.GetDistribucionCalibre();
             CatalogFormaTuberculos cft = new CatalogFormaTuberculos();
-            List<Project.BusinessRules.FormaTuberculos> forma = cft.getFormaTuberculos();
+            List<Project.BusinessRules.FormaTuberculos> forma = cft.GetFormaTuberculos();
             CatalogRegularidad cr = new CatalogRegularidad();
-            List<Project.BusinessRules.Regularidad> regularidad = cr.getRegularidad();
+            List<Project.BusinessRules.Regularidad> regularidad = cr.GetRegularidad();
             CatalogProfundidadOjo cpo = new CatalogProfundidadOjo();
-            List<Project.BusinessRules.ProfundidadOjo> profundidad = cpo.getProfundidadOjo();
+            List<Project.BusinessRules.ProfundidadOjo> profundidad = cpo.GetProfundidadOjo();
             CatalogCalidadPiel ccpiel = new CatalogCalidadPiel();
-            List<Project.BusinessRules.CalidadPiel> calidad = ccpiel.getCalidadPiel();
+            List<Project.BusinessRules.CalidadPiel> calidad = ccpiel.GetCalidadPiel();
 
             CatalogTuberculosVerdes ctv = new CatalogTuberculosVerdes();
-            List<Project.BusinessRules.TuberculosVerdes> verdes = ctv.getTuberculosVerdes();
+            List<Project.BusinessRules.TuberculosVerdes> verdes = ctv.GetTuberculosVerdes();
             CatalogTizonTardioFollaje cttf = new CatalogTizonTardioFollaje();
-            List<Project.BusinessRules.TizonTardioFollaje> tizon_follaje = cttf.getTizonTardioFollaje();
+            List<Project.BusinessRules.TizonTardioFollaje> tizon_follaje = cttf.GetTizonTardioFollaje();
             CatalogTizonTardioTuberculo cttt = new CatalogTizonTardioTuberculo();
-            List<Project.BusinessRules.TizonTardioTuberculo> tizon_tuberculo = cttt.getTizonTardioTuberculo();
+            List<Project.BusinessRules.TizonTardioTuberculo> tizon_tuberculo = cttt.GetTizonTardioTuberculo();
             CatalogNumeroTuberculos cnt = new CatalogNumeroTuberculos();
-            List<Project.BusinessRules.NumeroTuberculos> numero = cnt.getNumeroTuberculos();
+            List<Project.BusinessRules.NumeroTuberculos> numero = cnt.GetNumeroTuberculos();
             CatalogCiudad ccity = new CatalogCiudad();
             List<Project.BusinessRules.Ciudad> city = ccity.GetCiudad();
 
             CatalogColorCarne ccc = new CatalogColorCarne();
-            List<Project.BusinessRules.ColorCarne> carne = ccc.getColorCarne();
+            List<Project.BusinessRules.ColorCarne> carne = ccc.GetColorCarne();
             CatalogColorPiel ccp = new CatalogColorPiel();
-            List<Project.BusinessRules.ColorPiel> piel = ccp.getColorPiel();
+            List<Project.BusinessRules.ColorPiel> piel = ccp.GetColorPiel();
 
             CatalogEnfermedades cenf = new CatalogEnfermedades();
             List<Project.BusinessRules.Enfermedades> enfermedad = cenf.GetEnfermedades();
@@ -92,6 +92,8 @@ namespace Project.Novaseed
 
             this.lbl12papasError.Visible = false;
             this.lbl12papasError.Text = "";
+            this.lbl12papasErrorEnfermedad.Visible = false;
+            this.lbl12papasErrorEnfermedad.Text = "";
             if (!Page.IsPostBack)
             {
                 this.ddl12papasFertilidad.DataValueField = "id_fertilidad";
@@ -706,6 +708,7 @@ namespace Project.Novaseed
         {
             try
             {
+                this.lbl12papasErrorEnfermedad.Visible = true;
                 string id_enfermedad = this.ddl12papasEnfermedad.SelectedValue;
                 if (!id_enfermedad.Equals("1"))
                 {
@@ -725,8 +728,14 @@ namespace Project.Novaseed
                             string resistencia_variedad = HttpUtility.HtmlDecode((string)this.gdv12papasEnfermedades.Rows[row.RowIndex].Cells[1].Text);
                             listResistencia.Add(resistencia_variedad);
                         }
-                        listEnfermedad.Add(this.ddl12papasEnfermedad.SelectedItem.ToString());
-                        listResistencia.Add(this.ddl12papasResistencia.SelectedItem.ToString());
+                        string existeEnfermedad = listEnfermedad.Find(x => x == this.ddl12papasEnfermedad.SelectedItem.ToString());
+                        if (existeEnfermedad == null)
+                        {
+                            listEnfermedad.Add(this.ddl12papasEnfermedad.SelectedItem.ToString());
+                            listResistencia.Add(this.ddl12papasResistencia.SelectedItem.ToString());
+                        }
+                        else
+                            this.lbl12papasErrorEnfermedad.Text += "La enfermedad seleccionada ya existe.<br/>";
 
                         //Agrega las enfermedades con sus resistencias al dataset para luego dejarlo en el gridview
                         for (int i = 0; i < listEnfermedad.Count && i < listResistencia.Count; i++)
@@ -738,7 +747,7 @@ namespace Project.Novaseed
                     this.gdv12papasEnfermedades.DataBind();
                 }
                 else
-                    Page.ClientScript.RegisterStartupScript(GetType(), "Script", "<script>alert('¡Debe seleccionar una enfermedad!')</script>");
+                    this.lbl12papasErrorEnfermedad.Text += "Debe seleccionar una enfermedad.<br/>";
             }
             catch (Exception ex)
             {

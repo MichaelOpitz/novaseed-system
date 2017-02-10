@@ -9,7 +9,7 @@ namespace Project.BusinessRules
 {
     public class CatalogTamaño
     {
-        public List<Tamaño> getTamaño()
+        public List<Tamaño> GetTamaño()
         {
             try
             {

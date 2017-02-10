@@ -9,7 +9,7 @@ namespace Project.BusinessRules
 {
     public class CatalogFormaTuberculos
     {
-        public List<FormaTuberculos> getFormaTuberculos()
+        public List<FormaTuberculos> GetFormaTuberculos()
         {
             try
             {

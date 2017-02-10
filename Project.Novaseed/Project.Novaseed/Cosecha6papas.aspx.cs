@@ -21,52 +21,52 @@ namespace Project.Novaseed
             cont6papas12papas = 0;
 
             CatalogFertilidad cf = new CatalogFertilidad();
-            List<Project.BusinessRules.Fertilidad> fertilidad = cf.getFertilidad();
+            List<Project.BusinessRules.Fertilidad> fertilidad = cf.GetFertilidad();
 
             CatalogEmergencia40Dias ce40 = new CatalogEmergencia40Dias();
-            List<Project.BusinessRules.Emergencia40Dias> emergencia40 = ce40.getEmergencia40Dias();
+            List<Project.BusinessRules.Emergencia40Dias> emergencia40 = ce40.GetEmergencia40Dias();
             CatalogMetribuzina cmet = new CatalogMetribuzina();
-            List<Project.BusinessRules.Metribuzina> metribuzina = cmet.getMetribuzina();
+            List<Project.BusinessRules.Metribuzina> metribuzina = cmet.GetMetribuzina();
             CatalogEmergencia ce = new CatalogEmergencia();
-            List<Project.BusinessRules.Emergencia> emergencia = ce.getEmergencia();
+            List<Project.BusinessRules.Emergencia> emergencia = ce.GetEmergencia();
 
             CatalogMadurez cm = new CatalogMadurez();
-            List<Project.BusinessRules.Madurez> madurez = cm.getMadurez();
+            List<Project.BusinessRules.Madurez> madurez = cm.GetMadurez();
             CatalogDesarrolloFollaje cdf = new CatalogDesarrolloFollaje();
-            List<Project.BusinessRules.DesarrolloFollaje> desarrollo = cdf.getDesarrolloFollaje();
+            List<Project.BusinessRules.DesarrolloFollaje> desarrollo = cdf.GetDesarrolloFollaje();
             CatalogTipoHoja cth = new CatalogTipoHoja();
-            List<Project.BusinessRules.TipoHoja> hoja = cth.getTipoHoja();
+            List<Project.BusinessRules.TipoHoja> hoja = cth.GetTipoHoja();
             CatalogBrotacion cb = new CatalogBrotacion();
-            List<Project.BusinessRules.Brotacion> brotacion = cb.getBrotacion();
+            List<Project.BusinessRules.Brotacion> brotacion = cb.GetBrotacion();
             CatalogTamaño ct = new CatalogTamaño();
-            List<Project.BusinessRules.Tamaño> tamaño = ct.getTamaño();
+            List<Project.BusinessRules.Tamaño> tamaño = ct.GetTamaño();
             CatalogDistribucionCalibre cdc = new CatalogDistribucionCalibre();
-            List<Project.BusinessRules.DistribucionCalibre> distribucion = cdc.getDistribucionCalibre();
+            List<Project.BusinessRules.DistribucionCalibre> distribucion = cdc.GetDistribucionCalibre();
             CatalogFormaTuberculos cft = new CatalogFormaTuberculos();
-            List<Project.BusinessRules.FormaTuberculos> forma = cft.getFormaTuberculos();
+            List<Project.BusinessRules.FormaTuberculos> forma = cft.GetFormaTuberculos();
             CatalogRegularidad cr = new CatalogRegularidad();
-            List<Project.BusinessRules.Regularidad> regularidad = cr.getRegularidad();
+            List<Project.BusinessRules.Regularidad> regularidad = cr.GetRegularidad();
             CatalogProfundidadOjo cpo = new CatalogProfundidadOjo();
-            List<Project.BusinessRules.ProfundidadOjo> profundidad = cpo.getProfundidadOjo();
+            List<Project.BusinessRules.ProfundidadOjo> profundidad = cpo.GetProfundidadOjo();
             CatalogCalidadPiel ccpiel = new CatalogCalidadPiel();
-            List<Project.BusinessRules.CalidadPiel> calidad = ccpiel.getCalidadPiel();
+            List<Project.BusinessRules.CalidadPiel> calidad = ccpiel.GetCalidadPiel();
             
                         
             CatalogTuberculosVerdes ctv = new CatalogTuberculosVerdes();
-            List<Project.BusinessRules.TuberculosVerdes> verdes = ctv.getTuberculosVerdes();
+            List<Project.BusinessRules.TuberculosVerdes> verdes = ctv.GetTuberculosVerdes();
             CatalogTizonTardioFollaje cttf = new CatalogTizonTardioFollaje();
-            List<Project.BusinessRules.TizonTardioFollaje> tizon_follaje = cttf.getTizonTardioFollaje();
+            List<Project.BusinessRules.TizonTardioFollaje> tizon_follaje = cttf.GetTizonTardioFollaje();
             CatalogTizonTardioTuberculo cttt = new CatalogTizonTardioTuberculo();
-            List<Project.BusinessRules.TizonTardioTuberculo> tizon_tuberculo = cttt.getTizonTardioTuberculo();
+            List<Project.BusinessRules.TizonTardioTuberculo> tizon_tuberculo = cttt.GetTizonTardioTuberculo();
             CatalogNumeroTuberculos cnt = new CatalogNumeroTuberculos();
-            List<Project.BusinessRules.NumeroTuberculos> numero = cnt.getNumeroTuberculos();
+            List<Project.BusinessRules.NumeroTuberculos> numero = cnt.GetNumeroTuberculos();
             CatalogCiudad ccity = new CatalogCiudad();
             List<Project.BusinessRules.Ciudad> city = ccity.GetCiudad();
 
             CatalogColorCarne ccc = new CatalogColorCarne();
-            List<Project.BusinessRules.ColorCarne> carne = ccc.getColorCarne();
+            List<Project.BusinessRules.ColorCarne> carne = ccc.GetColorCarne();
             CatalogColorPiel ccp = new CatalogColorPiel();
-            List<Project.BusinessRules.ColorPiel> piel = ccp.getColorPiel();
+            List<Project.BusinessRules.ColorPiel> piel = ccp.GetColorPiel();
 
             CatalogSensibilidadQuimica csq = new CatalogSensibilidadQuimica();
             List<Project.BusinessRules.SensibilidadQuimica> sensibilidad = csq.GetSensibilidadQuimica();

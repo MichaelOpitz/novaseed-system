@@ -73,7 +73,7 @@ namespace Project.Novaseed
                     DropDownList ddlCruzamientoFertilidad = (e.Row.FindControl("ddlCruzamientoFertilidad") as DropDownList);
                     //Llena el dropdown fertilidad
                     CatalogFertilidad cf = new CatalogFertilidad();
-                    ddlCruzamientoFertilidad.DataSource = cf.getFertilidad();
+                    ddlCruzamientoFertilidad.DataSource = cf.GetFertilidad();
                     ddlCruzamientoFertilidad.DataTextField = "nombre_fertilidad";
                     ddlCruzamientoFertilidad.DataValueField = "id_fertilidad";
                     ddlCruzamientoFertilidad.DataBind();

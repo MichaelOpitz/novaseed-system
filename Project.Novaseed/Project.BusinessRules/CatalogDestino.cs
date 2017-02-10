@@ -9,7 +9,7 @@ namespace Project.BusinessRules
 {
     public class CatalogDestino
     {
-        public List<Destino> getDestino()
+        public List<Destino> GetDestino()
         {
             try
             {

@@ -202,6 +202,7 @@
     <Content Include="DataSetNovaseed.xss">
       <DependentUpon>DataSetNovaseed.xsd</DependentUpon>
     </Content>
+    <None Include="Properties\PublishProfiles\Perfil1.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="ProduccionFiltrar.aspx" />
     <Content Include="ProduccionFiltrarPorProductorCiudadCategoria.aspx" />

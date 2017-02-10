@@ -1,6 +1,7 @@
 ﻿using Project.BusinessRules;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -101,7 +102,7 @@ namespace Project.Novaseed
                 int invalido = 0;
                 string rol = this.txtUsuarioRol.Text;
                 if ((EsNumero(rol) == true && (Int32.Parse(rol) < 1000000 || Int32.Parse(rol) > 99999999)) || (EsNumero(rol) == false))
-                    invalido = 1;                
+                    invalido = 1;
                 string dv = this.txtUsuarioDV.Text;
                 if ((EsNumero(dv) == true && (Int32.Parse(dv) < 0 || Int32.Parse(dv) > 9)) || (EsNumero(dv) == false && dv != "k" && dv != "K"))
                     invalido = 1;
@@ -122,19 +123,33 @@ namespace Project.Novaseed
                 string password = this.txtUsuarioPassword.Text;
                 string passwordRepetir = this.txtUsuarioPasswordRepetir.Text;
 
+                string nombre_imagen = this.FileUpload1.FileName;
+                string extension_imagen = Path.GetExtension(nombre_imagen);
+                if (f.ValidarExtension(extension_imagen) == false && !extension_imagen.Equals(""))
+                {
+                    invalido = 1;
+                    this.lblUsuarioError.Text += "El archivo no es de tipo imagen, solo se admiten .jpg .jpeg y .png.<br/>";
+                }
+
+                this.FileUpload1.SaveAs(MapPath("~/images/Perfil/default-avatar.jpg"));
+
                 if (invalido == 0)
                 {
                     if (password == passwordRepetir && !password.Equals(""))
                     {
-                        if (!nombre.Equals("") && !usuario.Equals(""))
+                        if (!nombre.Equals("") && !usuario.Equals("") && !email.Equals(""))
                         {
                             List<int> selectedNacionalidad = this.lstUsuarioNacionalidad.GetSelectedIndices().ToList();
                             if ((selectedNacionalidad.Count > 1 && !selectedNacionalidad[0].Equals(0)) || (selectedNacionalidad.Count == 1))
                             {
                                 password = f.Encriptar(password);
                                 CatalogUsuario cu = new CatalogUsuario();
+                                string imagenString = "";
+                                //Setea una imagen por defecto si el usuario no asigna una
+                                if (!extension_imagen.Equals(""))
+                                    imagenString = Convert.ToBase64String(FileUpload1.FileBytes);
                                 Project.BusinessRules.Usuario u = new Project.BusinessRules.Usuario(Int32.Parse(rol), dv, id_cargo, id_sexo, nombre, apellido, fecha_nac, direccion,
-                                    email, Int32.Parse(telefono), usuario, password, administrador);
+                                    email, Int32.Parse(telefono), usuario, password, administrador, imagenString);
                                 //Agrega Usuario y Persona
                                 cu.AddUsuario(u);
                                 for (int i = 0; i < selectedNacionalidad.Count; i++)
@@ -150,7 +165,7 @@ namespace Project.Novaseed
                             Response.Redirect("Usuario.aspx");
                         }
                         else
-                            this.lblUsuarioError.Text += "Falta el nombre o usuario.<br/>";
+                            this.lblUsuarioError.Text += "El nombre, usuario o email no pueden estar vacíos.<br/>";
                     }
                     else
                         this.lblUsuarioError.Text += "Error al ingresar, Las contraseñas deben ser iguales.<br/>";
@@ -181,6 +196,30 @@ namespace Project.Novaseed
             this.gdvUsuario.DataBind();
         }
 
+        /*
+         * LLENA CON LOS CONTROLES ESPECIFICOS EL GRIDVIEW USUARIO
+         */
+        protected void OnRowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            try
+            {
+                CatalogUsuario cu = new CatalogUsuario();
+                if (e.Row.RowType == DataControlRowType.DataRow)
+                {                    
+                    Button btnDelete = (e.Row.FindControl("btnDelete") as Button);
+
+                    string user = this.Session["user"].ToString();
+                    if (e.Row.Cells[6].Text.Equals(user))
+                    {                        
+                        btnDelete.Enabled = false;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+
         protected void UsuarioGridView_RowDeleting(Object sender, GridViewDeleteEventArgs e)
         {
             try
@@ -197,7 +236,7 @@ namespace Project.Novaseed
             }
 
             PoblarGrilla();
-        }
+        }        
         //----------------------------------------------------ELIMINAR USUARIO--------------------------------------------
     }
 }

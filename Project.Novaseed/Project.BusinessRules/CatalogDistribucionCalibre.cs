@@ -9,7 +9,7 @@ namespace Project.BusinessRules
 {
     public class CatalogDistribucionCalibre
     {
-        public List<DistribucionCalibre> getDistribucionCalibre()
+        public List<DistribucionCalibre> GetDistribucionCalibre()
         {
             try
             {

@@ -83,9 +83,10 @@ namespace Project.Novaseed
         {
             try
             {
+                //Obtiene el nombre del usuario para mostrarlo en el menu superior
                 CatalogUsuario cu = new CatalogUsuario();
                 string user = this.Session["user"].ToString();
-                List<Project.BusinessRules.Usuario> lstUsuario = cu.GetNombreCargoUsuario(user);
+                List<Project.BusinessRules.Usuario> lstUsuario = cu.GetNombreCargoImagenUsuario(user);
                 this.lblUsuario.Text = lstUsuario[0].Nombre.ToString();
             }
             catch (Exception ex)
@@ -110,13 +111,21 @@ namespace Project.Novaseed
          */ 
         protected void btnCerrarSession_Click(object sender, EventArgs e)
         {
-            this.Session.Remove("user");
-            if (Request.Cookies["UserName"] != null && Request.Cookies["Password"] != null)
+            try
             {
-                Response.Cookies["UserName"].Expires = DateTime.Now.AddDays(-1);
-                Response.Cookies["Password"].Expires = DateTime.Now.AddDays(-1);
+                CatalogUsuario cu = new CatalogUsuario();
+                string user = this.Session["user"].ToString();
+                this.Session.Remove("user");
+                if (Request.Cookies["UserName"] != null && Request.Cookies["Password"] != null)
+                {
+                    Response.Cookies["UserName"].Expires = DateTime.Now.AddDays(-1);
+                    Response.Cookies["Password"].Expires = DateTime.Now.AddDays(-1);
+                }
+                Response.Redirect("Login.aspx");
             }
-            Response.Redirect("Login.aspx");
+            catch (Exception ex)
+            {
+            }
         }
     }
 

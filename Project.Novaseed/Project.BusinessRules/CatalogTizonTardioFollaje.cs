@@ -9,7 +9,7 @@ namespace Project.BusinessRules
 {
     public class CatalogTizonTardioFollaje
     {
-        public List<TizonTardioFollaje> getTizonTardioFollaje()
+        public List<TizonTardioFollaje> GetTizonTardioFollaje()
         {
             try
             {

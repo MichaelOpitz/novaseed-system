@@ -535,6 +535,15 @@ namespace Project.Novaseed {
         protected global::System.Web.UI.WebControls.Button btn24papasAgregarEnfermedad;
         
         /// <summary>
+        /// Control lbl24papasErrorEnfermedad.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl24papasErrorEnfermedad;
+        
+        /// <summary>
         /// Control gdv24papasEnfermedades.
         /// </summary>
         /// <remarks>

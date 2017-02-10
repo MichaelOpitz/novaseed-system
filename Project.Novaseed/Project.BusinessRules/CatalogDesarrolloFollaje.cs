@@ -9,7 +9,7 @@ namespace Project.BusinessRules
 {
     public class CatalogDesarrolloFollaje
     {
-        public List<DesarrolloFollaje> getDesarrolloFollaje()
+        public List<DesarrolloFollaje> GetDesarrolloFollaje()
         {
             try
             {

@@ -1,6 +1,7 @@
 ﻿using Project.BusinessRules;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -159,6 +160,7 @@ namespace Project.Novaseed
         {
             try
             {
+                Funciones f = new Funciones();
                 this.lblUsuarioError.Visible = true;
                 int invalido = 0;
                 string rol = this.txtUsuarioRol.Text;
@@ -166,6 +168,8 @@ namespace Project.Novaseed
                 string apellido = this.txtUsuarioApellido.Text;
                 DateTime fecha_nac = this.clrUsuarioFechaNacimiento.SelectedDate;
                 string email = this.txtUsuarioCorreo.Text;
+                if (email.Equals(""))
+                    invalido = 1;
                 string telefono = this.txtUsuarioTelefono.Text;
                 if ((EsNumero(telefono) == true && (Int32.Parse(telefono) < 900000000 || Int32.Parse(telefono) > 999999999)) || (EsNumero(telefono) == false))
                     invalido = 1;
@@ -174,11 +178,23 @@ namespace Project.Novaseed
                 int id_sexo = Int32.Parse(this.ddlUsuarioSexo.SelectedValue);
                 int id_cargo = Int32.Parse(this.ddlUsuarioCargo.SelectedValue);
 
+                string nombre_imagen = this.FileUpload1.FileName;
+                string extension_imagen = Path.GetExtension(nombre_imagen);
+                if (f.ValidarExtension(extension_imagen) == false && !extension_imagen.Equals(""))
+                {
+                    invalido = 1;
+                    this.lblUsuarioError.Text += "El archivo no es de tipo imagen, solo se admiten .jpg .jpeg y .png.<br/>";
+                }                
+
                 if (invalido == 0)
                 {
                     CatalogUsuario cu = new CatalogUsuario();
+                    string imagenString = "";
+                    //Setea una imagen por defecto si el usuario no asigna una
+                    if (!extension_imagen.Equals(""))
+                        imagenString = Convert.ToBase64String(FileUpload1.FileBytes);
                     Project.BusinessRules.Usuario u = new Project.BusinessRules.Usuario(Int32.Parse(rol), id_cargo, id_sexo, nombre, apellido, fecha_nac, direccion,
-                        email, Int32.Parse(telefono), administrador);
+                        email, Int32.Parse(telefono), administrador, imagenString);
                     //Agrega Usuario y Persona
                     cu.UpdateUsuario(u);
 
