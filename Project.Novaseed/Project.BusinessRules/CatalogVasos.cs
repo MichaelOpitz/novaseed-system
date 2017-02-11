@@ -126,7 +126,7 @@ namespace Project.BusinessRules
         }
 
         /*
-         * Devuelve el vaso completo, con el nombre de fertilidad en vez de la id
+         * Devuelve el vaso, con el nombre de fertilidad en vez de la id, sin colores
          */
         public List<Vasos> GetVasos(int año)
         {
@@ -143,9 +143,41 @@ namespace Project.BusinessRules
 
                 while (resultado.Read())
                 {
-                    Vasos vaso = new Vasos(resultado.GetInt32(0), resultado.GetString(1), resultado.GetString(2), resultado.GetString(3),
-                        resultado.GetString(4), resultado.GetString(5), resultado.GetInt32(6), resultado.GetString(7),
-                        resultado.GetInt32(8), resultado.GetInt32(9), resultado.GetInt32(10), resultado.GetInt32(11));
+                    Vasos vaso = new Vasos(resultado.GetInt32(0), resultado.GetString(1), resultado.GetString(2),
+                        resultado.GetString(3), resultado.GetString(4), resultado.GetString(5), resultado.GetInt32(6),
+                        resultado.GetString(7));
+                    vasos.Add(vaso);
+                }
+                resultado.Close();
+                bd.Close();
+
+                return vasos;
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.ToString());
+            }
+        }
+        
+        /*
+         * Devuelve el vaso completo, con el nombre de fertilidad en vez de la id
+         */
+        public List<Vasos> GetVasosColores(int año)
+        {
+            try
+            {
+                DataAccess.DataBase bd = new DataBase();
+                bd.Connect(); //método conectar
+                List<Vasos> vasos = new List<Vasos>();
+                string salida = "vasosObtener";//comando sql
+                bd.CreateCommandSP(salida);
+                bd.CreateParameter("@ano_vasos", DbType.Int32, año);
+
+                DbDataReader resultado = bd.Query();//disponible resultado
+
+                while (resultado.Read())
+                {
+                    Vasos vaso = new Vasos(resultado.GetInt32(8), resultado.GetInt32(9), resultado.GetInt32(10), resultado.GetInt32(11));
                     vasos.Add(vaso);
                 }
                 resultado.Close();

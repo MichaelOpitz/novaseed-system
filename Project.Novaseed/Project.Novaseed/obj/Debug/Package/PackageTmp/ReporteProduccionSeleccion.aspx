@@ -1,9 +1,13 @@
 ﻿<%@ Page Title="Producción" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ReporteProduccionSeleccion.aspx.cs" Inherits="Project.Novaseed.ReporteProduccionSeleccion" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
+    <div class="row" style="text-align: center">
+        <h2>
+            <asp:Label ID="lblProduccionReporte" runat="server" Font-Bold="true" Text="Producción" Font-Names="versalitas" /></h2>
+    </div>
     <div class="container-fluid">
-        <div class="row" style="margin-top:20px">
-            <asp:GridView ID="gdvProduccion" runat="server"                
+        <div class="row" style="margin-top: 20px">
+            <asp:GridView ID="gdvProduccion" runat="server"
                 AutoGenerateColumns="False"
                 CssClass="table table-bordered bs-table"
                 AllowPaging="True"

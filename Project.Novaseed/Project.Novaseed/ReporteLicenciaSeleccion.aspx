@@ -1,9 +1,13 @@
 ﻿<%@ Page Title="Licencia" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ReporteLicenciaSeleccion.aspx.cs" Inherits="Project.Novaseed.ReporteLicenciaSeleccion" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
+    <div class="row" style="text-align: center">
+        <h2>
+            <asp:Label ID="lblLicenciaReporte" runat="server" Font-Bold="true" Text="Licencias" Font-Names="versalitas" /></h2>
+    </div>
     <div class="container-fluid">
-        <div class="row" style="margin-top:20px">
-            <asp:GridView ID="gdvLicencia" runat="server"                
+        <div class="row" style="margin-top: 20px">
+            <asp:GridView ID="gdvLicencia" runat="server"
                 AutoGenerateColumns="False"
                 CssClass="table table-bordered bs-table"
                 AllowPaging="True"
