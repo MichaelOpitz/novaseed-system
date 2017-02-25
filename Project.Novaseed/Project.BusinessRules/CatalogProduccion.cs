@@ -11,7 +11,7 @@ namespace Project.BusinessRules
     public class CatalogProduccion
     {
         /*
-         * Actualizar la produccion, devuelve 1 si actualizó, 0 en caso contrario
+         * Actualizar producción, devuelve 1 si actualizó, 0 en caso contrario
          * Modificar
          */
         public int UpdateProduccion(Produccion p)
