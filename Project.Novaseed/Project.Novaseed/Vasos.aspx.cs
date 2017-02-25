@@ -153,10 +153,10 @@ namespace Project.Novaseed
 
                 //azules
                 int azul=0;
-                string azul_vasos = this.txtVasosAzul.Text;
-                if ((EsNumero(azul_vasos) == true && (Int32.Parse(azul_vasos) < 0 || Int32.Parse(azul_vasos) > 99)) || (EsNumero(azul_vasos) == false))
+                string azul_vasos = e.NewValues[2].ToString();
+                if ((EsNumero(azul_vasos) == true && (Int32.Parse(azul_vasos) < 0 || Int32.Parse(azul_vasos) > 15)) || (EsNumero(azul_vasos) == false))
                 {
-                    this.lblVasosError.Text += "Las azules deben ser un número positivo menor a 100.<br/>";
+                    this.lblVasosError.Text += "Las azules deben ser un número positivo menor a 15.<br/>";
                     invalido = 1;
                 }
                 else
@@ -164,10 +164,10 @@ namespace Project.Novaseed
 
                 //rojas
                 int roja = 0;
-                string roja_vasos = this.txtVasosRoja.Text;
-                if ((EsNumero(roja_vasos) == true && (Int32.Parse(roja_vasos) < 0 || Int32.Parse(roja_vasos) > 99)) || (EsNumero(roja_vasos) == false))
+                string roja_vasos = e.NewValues[3].ToString();
+                if ((EsNumero(roja_vasos) == true && (Int32.Parse(roja_vasos) < 0 || Int32.Parse(roja_vasos) > 15)) || (EsNumero(roja_vasos) == false))
                 {
-                    this.lblVasosError.Text += "Las rojas deben ser un número positivo menor a 100.<br/>";
+                    this.lblVasosError.Text += "Las rojas deben ser un número positivo menor a 15.<br/>";
                     invalido = 1;
                 }
                 else
@@ -175,10 +175,10 @@ namespace Project.Novaseed
 
                 //amarillas
                 int amarilla = 0;
-                string amarilla_vasos = this.txtVasosAmarilla.Text;
-                if ((EsNumero(amarilla_vasos) == true && (Int32.Parse(amarilla_vasos) < 0 || Int32.Parse(amarilla_vasos) > 99)) || (EsNumero(amarilla_vasos) == false))
+                string amarilla_vasos = e.NewValues[4].ToString();
+                if ((EsNumero(amarilla_vasos) == true && (Int32.Parse(amarilla_vasos) < 0 || Int32.Parse(amarilla_vasos) > 15)) || (EsNumero(amarilla_vasos) == false))
                 {
-                    this.lblVasosError.Text += "Las amarillas deben ser un número positivo menor a 100.<br/>";
+                    this.lblVasosError.Text += "Las amarillas deben ser un número positivo menor a 15.<br/>";
                     invalido = 1;
                 }
                 else
@@ -186,10 +186,10 @@ namespace Project.Novaseed
 
                 //bicolores
                 int bicolor = 0;
-                string bicolor_vasos = this.txtVasosBicolor.Text;
-                if ((EsNumero(bicolor_vasos) == true && (Int32.Parse(bicolor_vasos) < 0 || Int32.Parse(bicolor_vasos) > 99)) || (EsNumero(bicolor_vasos) == false))
+                string bicolor_vasos = e.NewValues[5].ToString();
+                if ((EsNumero(bicolor_vasos) == true && (Int32.Parse(bicolor_vasos) < 0 || Int32.Parse(bicolor_vasos) > 15)) || (EsNumero(bicolor_vasos) == false))
                 {
-                    this.lblVasosError.Text += "Las bicolores deben ser un número positivo menor a 100.<br/>";
+                    this.lblVasosError.Text += "Las bicolores deben ser un número positivo menor a 15.<br/>";
                     invalido = 1;
                 }
                 else
@@ -205,10 +205,6 @@ namespace Project.Novaseed
                             ubicacion_vasos, cantidad, Int32.Parse(id_fertilidad),
                             azul, roja, amarilla, bicolor);
                     cv.UpdateVasos(vasos);
-                    this.txtVasosAzul.Text = "";
-                    this.txtVasosRoja.Text = "";
-                    this.txtVasosAmarilla.Text = "";
-                    this.txtVasosBicolor.Text = "";
                 }
             }
             catch (Exception ex)
@@ -224,22 +220,12 @@ namespace Project.Novaseed
         {
             gdvVasos.EditIndex = -1;
             PoblarGrilla();
-            this.txtVasosAzul.Text = "";
-            this.txtVasosRoja.Text = "";
-            this.txtVasosAmarilla.Text = "";
-            this.txtVasosBicolor.Text = "";
         }
 
         protected void VasosGridView_RowEditing(Object sender, GridViewEditEventArgs e)
         {
             gdvVasos.EditIndex = e.NewEditIndex;
             PoblarGrilla();
-            CatalogVasos cv = new CatalogVasos();
-            List<Project.BusinessRules.Vasos> listVasos = cv.GetVasosColores(valorAñoInt32);
-            this.txtVasosAzul.Text = listVasos[e.NewEditIndex].Azul_vasos.ToString();
-            this.txtVasosRoja.Text = listVasos[e.NewEditIndex].Roja_vasos.ToString();
-            this.txtVasosAmarilla.Text = listVasos[e.NewEditIndex].Amarilla_vasos.ToString();
-            this.txtVasosBicolor.Text = listVasos[e.NewEditIndex].Bicolor_vasos.ToString();
         }
 
         protected void VasosGridView_RowDeleting(Object sender, GridViewDeleteEventArgs e)

@@ -1,13 +1,9 @@
 ﻿<%@ Page Title="UPOV" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ReporteUPOVSeleccion.aspx.cs" Inherits="Project.Novaseed.ReporteUPOVSeleccion" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
-    <div class="row" style="text-align: center">
-        <h2>
-            <asp:Label ID="lblUPOVReporte" runat="server" Font-Bold="true" Text="Informes UPOV" Font-Names="versalitas" /></h2>
-    </div>
     <div class="container-fluid">
-        <div class="row" style="margin-top: 20px">
-            <asp:GridView ID="gdvUPOV" runat="server"
+        <div class="row" style="margin-top:20px">
+            <asp:GridView ID="gdvUPOV" runat="server"                
                 AutoGenerateColumns="False"
                 CssClass="table table-bordered bs-table"
                 AllowPaging="True"

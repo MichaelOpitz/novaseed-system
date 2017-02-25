@@ -98,7 +98,7 @@
                         </div>
                         <div class="modal-footer">
                             <asp:Button type="button" runat="server" Text="Enviar Correo" ID="btnUsuarioConfirmarContraseña" class="btn btn-danger btn-md" Width="40%" BorderColor="#000000" ValidationGroup="correo" CausesValidation="true" OnClick="btnLoginExisteCorreo_Click"></asp:Button>
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                         </div>
                     </div>
 

@@ -21,8 +21,8 @@ namespace Project.Novaseed
 
         void Session_Start(object sender, EventArgs e)
         {
-            //2 horas de sin actividad antes de cerrar la sesión
-            Session.Timeout = 120;
+            //10 horas de actividad
+            Session.Timeout = 600;
         }
     }
 }
