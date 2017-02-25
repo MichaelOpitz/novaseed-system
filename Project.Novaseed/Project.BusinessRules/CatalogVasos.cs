@@ -43,7 +43,7 @@ namespace Project.BusinessRules
         /*
          * Actualizar vasos.
          */
-        public void UpdateVasos(Vasos v)
+        public int UpdateVasos(Vasos v)
         {
             try
             {
@@ -59,8 +59,16 @@ namespace Project.BusinessRules
                 bd.CreateParameter("@roja_vasos", DbType.Int32, v.Roja_vasos);
                 bd.CreateParameter("@amarilla_vasos", DbType.Int32, v.Amarilla_vasos);
                 bd.CreateParameter("@bicolor_vasos", DbType.Int32, v.Bicolor_vasos);
-                bd.Execute();
+                bd.CreateParameter("@ano_vasos", DbType.Int32, v.Ano_vasos);
+                
+                int existe_ubicacion;
+                DbDataReader resultado = bd.Query();//disponible resultado
+                resultado.Read();
+                existe_ubicacion = resultado.GetInt32(0);
+                resultado.Close();
+
                 bd.Close();
+                return existe_ubicacion;
             }
             catch (Exception e)
             {
@@ -126,7 +134,7 @@ namespace Project.BusinessRules
         }
 
         /*
-         * Devuelve el vaso completo, con el nombre de fertilidad en vez de la id
+         * Devuelve el vaso, con el nombre de fertilidad en vez de la id, sin colores
          */
         public List<Vasos> GetVasos(int año)
         {
@@ -143,9 +151,41 @@ namespace Project.BusinessRules
 
                 while (resultado.Read())
                 {
-                    Vasos vaso = new Vasos(resultado.GetInt32(0), resultado.GetString(1), resultado.GetString(2), resultado.GetString(3),
-                        resultado.GetString(4), resultado.GetString(5), resultado.GetInt32(6), resultado.GetString(7),
-                        resultado.GetInt32(8), resultado.GetInt32(9), resultado.GetInt32(10), resultado.GetInt32(11));
+                    Vasos vaso = new Vasos(resultado.GetInt32(0), resultado.GetString(1), resultado.GetString(2),
+                        resultado.GetString(3), resultado.GetString(4), resultado.GetString(5), resultado.GetInt32(6),
+                        resultado.GetString(7));
+                    vasos.Add(vaso);
+                }
+                resultado.Close();
+                bd.Close();
+
+                return vasos;
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.ToString());
+            }
+        }
+        
+        /*
+         * Devuelve el vaso completo, con el nombre de fertilidad en vez de la id
+         */
+        public List<Vasos> GetVasosColores(int año)
+        {
+            try
+            {
+                DataAccess.DataBase bd = new DataBase();
+                bd.Connect(); //método conectar
+                List<Vasos> vasos = new List<Vasos>();
+                string salida = "vasosObtener";//comando sql
+                bd.CreateCommandSP(salida);
+                bd.CreateParameter("@ano_vasos", DbType.Int32, año);
+
+                DbDataReader resultado = bd.Query();//disponible resultado
+
+                while (resultado.Read())
+                {
+                    Vasos vaso = new Vasos(resultado.GetInt32(8), resultado.GetInt32(9), resultado.GetInt32(10), resultado.GetInt32(11));
                     vasos.Add(vaso);
                 }
                 resultado.Close();
@@ -201,7 +241,7 @@ namespace Project.BusinessRules
         /*
          * Devuelve 1 si el vaso ya está en etapa de clones
          */
-        public int GetVasosEstaEnClones(int año, int posicion)
+        public int GetVasosEstaEnClones(int id_vasos)
         {
             try
             {
@@ -209,20 +249,9 @@ namespace Project.BusinessRules
                 bd.Connect(); //método conectar
                 int estaEnClones;
 
-                string salida = "vasosObtener";//comando sql
-                bd.CreateCommandSP(salida);
-                bd.CreateParameter("@ano_vasos", DbType.Int32, año);
-                DbDataReader resultado = bd.Query();//disponible resultado
-                List<int> id_vasos = new List<int>();
-                while (resultado.Read())
-                {
-                    id_vasos.Add(resultado.GetInt32(0));
-                }
-                resultado.Close();
-
                 string salida2 = "vasosEstaEnClones";//comando sql
                 bd.CreateCommandSP(salida2);
-                bd.CreateParameter("@id_vasos", DbType.Int32, id_vasos[posicion]);
+                bd.CreateParameter("@id_vasos", DbType.Int32, id_vasos);
                 DbDataReader resultado2 = bd.Query();//disponible resultado
                 resultado2.Read();
                 estaEnClones = resultado2.GetInt32(0);

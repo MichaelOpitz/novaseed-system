@@ -108,7 +108,7 @@ namespace Project.BusinessRules
          * Constructor para actualizar el cruzamiento
          */
         public Cruzamiento(int id_cruzamiento, string codigo_variedad, string pad_codigo_variedad, 
-            string ubicacion_cruzamiento, int id_fertilidad, bool flor, int bayas)
+            string ubicacion_cruzamiento, int id_fertilidad, bool flor, int bayas, int ano_cruzamiento)
         {
             this.id_cruzamiento = id_cruzamiento;
             this.codigo_variedad = codigo_variedad;
@@ -117,6 +117,7 @@ namespace Project.BusinessRules
             this.id_fertilidad = id_fertilidad;
             this.flor = flor;
             this.bayas = bayas;
+            this.ano_cruzamiento = ano_cruzamiento;
         }
     }
 }

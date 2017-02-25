@@ -512,7 +512,7 @@ namespace Project.BusinessRules
         /*
          * Devuelve 1 si la cosecha ya está en UPOV
          */
-        public int GetCosechaEstaEnUPOV(int año, int posicion)
+        public int GetCosechaEstaEnUPOV(int id_cosecha)
         {
             try
             {
@@ -520,21 +520,9 @@ namespace Project.BusinessRules
                 bd.Connect(); //método conectar
                 int estaEnUPOV;
 
-                string salida = "cosechaTablaObtener";//comando sql
-                bd.CreateCommandSP(salida);
-                bd.CreateParameter("@ano_cosecha", DbType.Int32, año);
-                bd.CreateParameter("@id_temporada", DbType.Int32, 4);
-                DbDataReader resultado = bd.Query();//disponible resultado
-                List<int> id_cosecha = new List<int>();
-                while (resultado.Read())
-                {
-                    id_cosecha.Add(resultado.GetInt32(0));
-                }
-                resultado.Close();
-
                 string salida2 = "cosechaEstaEnUPOV";//comando sql
                 bd.CreateCommandSP(salida2);
-                bd.CreateParameter("@id_cosecha", DbType.Int32, id_cosecha[posicion]);
+                bd.CreateParameter("@id_cosecha", DbType.Int32, id_cosecha);
                 DbDataReader resultado2 = bd.Query();//disponible resultado
                 resultado2.Read();
                 estaEnUPOV = resultado2.GetInt32(0);
@@ -653,7 +641,7 @@ namespace Project.BusinessRules
          * el id_temporada recibe la temporada para el color verde o rojo
          * Se le resta 1 para obtener la tabla de la cosecha en la temporada anterior
          */
-        public int GetCosechaTemporadasAvanzadas(int año, int posicion, int id_temporada)
+        public int GetCosechaTemporadasAvanzadas(int id_cosecha, int id_temporada)
         {
             try
             {
@@ -661,21 +649,9 @@ namespace Project.BusinessRules
                 bd.Connect(); //método conectar
                 int estaEnCosecha;
 
-                string salida = "cosechaTablaObtener";//comando sql
-                bd.CreateCommandSP(salida);
-                bd.CreateParameter("@ano_cosecha", DbType.Int32, año);
-                bd.CreateParameter("@id_temporada", DbType.Int32, id_temporada - 1);
-                DbDataReader resultado = bd.Query();//disponible resultado
-                List<int> id_cosecha = new List<int>();
-                while (resultado.Read())
-                {
-                    id_cosecha.Add(resultado.GetInt32(0));
-                }
-                resultado.Close();
-
                 string salida2 = "cosechaEstaEnTemporadasAvanzadasObtener";//comando sql
                 bd.CreateCommandSP(salida2);
-                bd.CreateParameter("@id_cosecha", DbType.Int32, id_cosecha[posicion]);
+                bd.CreateParameter("@id_cosecha", DbType.Int32, id_cosecha);
                 bd.CreateParameter("@id_temporada", DbType.Int32, id_temporada);
                 DbDataReader resultado2 = bd.Query();//disponible resultado
                 resultado2.Read();

@@ -48,6 +48,35 @@ namespace Project.BusinessRules
         }
 
         /*
+         * Elimina una producción a través del codigo individuo
+         * Devuelve 1 si eliminó, 0 en caso contrario
+         */
+        public int DeleteProduccion(string codigo_variedad)
+        {
+            try
+            {
+                DataAccess.DataBase bd = new DataBase();
+                bd.Connect(); //método conectar
+                string sql = "produccionEliminar";
+                bd.CreateCommandSP(sql);
+                bd.CreateParameter("@codigo_variedad", DbType.String, codigo_variedad);
+
+                int elimino;
+                DbDataReader resultado = bd.Query();//disponible resultado
+                resultado.Read();
+                elimino = resultado.GetInt32(0);
+                resultado.Close();
+
+                bd.Close();
+                return elimino;
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.ToString());
+            }
+        }
+
+        /*
          * Devuelve las variedades que tienen o pueden estar en producción
          * Modificar
          */
@@ -84,28 +113,17 @@ namespace Project.BusinessRules
          * Devuelve 1 si ya está en producción la variedad
          * Modificar
          */
-        public int GetProduccionVariedad(int año, int posicion)
+        public int GetProduccionVariedad(string codigo_variedad)
         {
             try
             {
                 DataAccess.DataBase bd = new DataBase();
                 bd.Connect(); //método conectar
-                int estaEnProduccion;
-
-                string salida = "produccionSeleccionIngresarObtener";//comando sql
-                bd.CreateCommandSP(salida);
-                bd.CreateParameter("@ano_produccion", DbType.Int32, año);
-                DbDataReader resultado = bd.Query();//disponible resultado
-                List<string> codigo_variedad = new List<string>();
-                while (resultado.Read())
-                {
-                    codigo_variedad.Add(resultado.GetString(1));
-                }
-                resultado.Close();
+                int estaEnProduccion;                
 
                 string salida2 = "produccionEstaEnVariedad";//comando sql
                 bd.CreateCommandSP(salida2);
-                bd.CreateParameter("@codigo_variedad", DbType.String, codigo_variedad[posicion]);
+                bd.CreateParameter("@codigo_variedad", DbType.String, codigo_variedad);
                 DbDataReader resultado2 = bd.Query();//disponible resultado
                 resultado2.Read();
                 estaEnProduccion = resultado2.GetInt32(0);
@@ -428,7 +446,7 @@ namespace Project.BusinessRules
         /*
          * Devuelve una lista con las variedades que estan en producción
          */
-        public List<Produccion> GetTablaProduccionVariedades()
+        public List<Produccion> GetTablaProduccionVariedades(string nombre_variedad)
         {
             try
             {
@@ -437,6 +455,7 @@ namespace Project.BusinessRules
                 List<Produccion> produccion = new List<Produccion>();
                 string salida = "produccionTablaVariedadesObtener";//comando sql
                 bd.CreateCommandSP(salida);
+                bd.CreateParameter("@nombre_variedad", DbType.String, nombre_variedad);
 
                 DbDataReader resultado = bd.Query();//disponible resultado
 
@@ -479,7 +498,7 @@ namespace Project.BusinessRules
         /*
          * Devuelve una lista con las variedades que estan licenciados
          */
-        public List<Produccion> GetTablaLicenciaVariedades()
+        public List<Produccion> GetTablaLicenciaVariedades(string nombre_variedad)
         {
             try
             {
@@ -488,6 +507,7 @@ namespace Project.BusinessRules
                 List<Produccion> licencia = new List<Produccion>();
                 string salida = "licenciaTablaVariedadesObtener";//comando sql
                 bd.CreateCommandSP(salida);
+                bd.CreateParameter("@nombre_variedad", DbType.String, nombre_variedad);
 
                 DbDataReader resultado = bd.Query();//disponible resultado
 

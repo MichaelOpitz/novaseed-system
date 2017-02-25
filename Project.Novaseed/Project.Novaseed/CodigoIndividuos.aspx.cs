@@ -78,8 +78,8 @@ namespace Project.Novaseed
                 {
                     string codigo_variedad = this.txtCodificacionMadre.Text;
                     string pad_codigo_variedad = this.txtCodificacionPadre.Text;
-                    int indexCodificacionCosecha = cc.GetCodificacionEstaEnCosecha(codigo_variedad, pad_codigo_variedad,
-                        valorAñoInt32, contCodificacionCosecha);
+                    string id_codificacion = e.Row.Cells[1].Text;
+                    int indexCodificacionCosecha = cc.GetCodificacionEstaEnCosecha(Int32.Parse(id_codificacion));
 
                     //Ecuentra el CheckBox en la fila
                     CheckBox chkAgregar6Papas = (e.Row.FindControl("chkAgregar6Papas") as CheckBox);

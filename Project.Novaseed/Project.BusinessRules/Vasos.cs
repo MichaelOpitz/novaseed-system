@@ -105,8 +105,7 @@ namespace Project.BusinessRules
          * Constructor para obtener el vaso
          */ 
         public Vasos(int id_vasos, string codigo_variedad, string nombre_madre, string pad_codigo_variedad, string nombre_padre, 
-            string ubicacion_vasos, int cantidad_vasos, string nombre_fertilidad, int azul_vasos, int roja_vasos, 
-            int amarilla_vasos, int bicolor_vasos)
+            string ubicacion_vasos, int cantidad_vasos, string nombre_fertilidad)
         {
             this.id_vasos = id_vasos;
             this.codigo_variedad = codigo_variedad;
@@ -116,18 +115,24 @@ namespace Project.BusinessRules
             this.ubicacion_vasos = ubicacion_vasos;
             this.cantidad_vasos = cantidad_vasos;
             this.nombre_fertilidad = nombre_fertilidad;
+        }
+
+        /*
+         * Constructor que obtiene los colores del vaso
+         */
+        public Vasos(int azul_vasos, int roja_vasos, int amarilla_vasos, int bicolor_vasos)
+        {
             this.azul_vasos = azul_vasos;
             this.roja_vasos = roja_vasos;
             this.amarilla_vasos = amarilla_vasos;
             this.bicolor_vasos = bicolor_vasos;
-
         }
 
         /*
          * Constructor que actualiza los vasos
          */
         public Vasos(int id_vasos, string ubicacion_vasos, int cantidad_vasos, int id_fertilidad, 
-            int azul_vasos, int roja_vasos, int amarilla_vasos, int bicolor_vasos)
+            int azul_vasos, int roja_vasos, int amarilla_vasos, int bicolor_vasos, int ano_vasos)
         {
             this.id_vasos = id_vasos;
             this.ubicacion_vasos = ubicacion_vasos;
@@ -137,7 +142,7 @@ namespace Project.BusinessRules
             this.roja_vasos = roja_vasos;
             this.amarilla_vasos = amarilla_vasos;
             this.bicolor_vasos = bicolor_vasos;
-
+            this.ano_vasos = ano_vasos;
         }
     }
 }

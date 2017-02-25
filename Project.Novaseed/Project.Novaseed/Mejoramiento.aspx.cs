@@ -106,16 +106,6 @@ namespace Project.Novaseed
         }
 
         /*
-         * Llena la grilla de la tabla madre
-         */
-        private void PoblarGrillaMadre()
-        {
-            //CatalogMadre cm = new CatalogMadre();
-            //this.gdvCaracteristicaMadre.DataSource = cm.getMadre();
-            //this.gdvCruzamiento.DataBind();
-        }
-
-        /*
          * METODO QUE PINTA DE COLOR EL DROPDOWNLIST SELECCIONADO
          */ 
         private void SeleccionDropDown()
@@ -221,8 +211,7 @@ namespace Project.Novaseed
 
                 //PRIMERO BUSCA POR NOMBRE DE VARIEDAD, SINO POR CARACTERISTICAS
                 if (this.txtMadre.Text.Equals(""))
-                {
-                    SeleccionDropDown();
+                {                    
                     string tamaño = this.ddlMejoramientoTamaño.SelectedValue;
                     string madurez = this.ddlMejoramientoMadurez.SelectedValue;
                     string forma = this.ddlMejoramientoForma.SelectedValue;
@@ -248,8 +237,7 @@ namespace Project.Novaseed
                 }
                 else
                 {
-                    RefreshDropDown();
-                    SeleccionDropDown();
+                    RefreshDropDown();                    
                     string nombre = this.txtMadre.Text;
                     lista = madre.GetMadreNombre(nombre);
                 }
@@ -274,8 +262,7 @@ namespace Project.Novaseed
 
                 //PRIMERO BUSCA POR NOMBRE DE VARIEDAD, SINO POR CARACTERISTICAS
                 if (this.txtPadre.Text.Equals(""))
-                {
-                    SeleccionDropDown();
+                {                    
                     string tamaño = this.ddlMejoramientoTamaño.SelectedValue;
                     string madurez = this.ddlMejoramientoMadurez.SelectedValue;
                     string forma = this.ddlMejoramientoForma.SelectedValue;
@@ -301,8 +288,7 @@ namespace Project.Novaseed
                 }
                 else
                 {
-                    RefreshDropDown();
-                    SeleccionDropDown();
+                    RefreshDropDown();                    
                     string nombre = this.txtPadre.Text;
                     lista = padre.GetPadreNombre(nombre);
                 }

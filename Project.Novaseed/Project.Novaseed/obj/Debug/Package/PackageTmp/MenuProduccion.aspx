@@ -18,7 +18,7 @@
             <div class="panel-body">
                 <div class="row">
                     <div class="col-sm-6">
-                        <asp:Button type="button" runat="server" class="btn btn-success btn-block" ID="btnMenuProduccionIngresar" Style='color: black; border-color: #000000' Text="Modificar Producción" OnClick="btnMenuProduccionIngresar_Click"></asp:Button>
+                        <asp:Button type="button" runat="server" class="btn btn-success btn-block" ID="btnMenuProduccionIngresar" Style='color: black; border-color: #000000' Text="Modificar y/o Eliminar Producción" OnClick="btnMenuProduccionIngresar_Click"></asp:Button>
                     </div>
                     <div class="col-sm-6">
                         <asp:Button type="button" runat="server" class="btn btn-success btn-block" ID="btnMenuProduccionFiltrar" Style='color: black; border-color: #000000' Text="Filtrar Producción" OnClick="btnMenuProduccionFiltrar_Click"></asp:Button>

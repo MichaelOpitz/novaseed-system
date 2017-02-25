@@ -171,28 +171,17 @@ namespace Project.BusinessRules
         /*
          * Devuelve 1 si clon ya está codificado, 0 en caso contrario
          */
-        public int GetClonesEstaCodificado(int año, int posicion)
+        public int GetClonesEstaCodificado(int id_clones)
         {
             try
             {
                 DataAccess.DataBase bd = new DataBase();
                 bd.Connect(); //método conectar
                 int esta_codificado;
-
-                string salida = "clonesObtener";//comando sql
-                bd.CreateCommandSP(salida);
-                bd.CreateParameter("@ano_clones", DbType.Int32, año);
-                DbDataReader resultado = bd.Query();//disponible resultado
-                List<int> id_clones = new List<int>();
-                while (resultado.Read())
-                {
-                    id_clones.Add(resultado.GetInt32(0));
-                }
-                resultado.Close();
-
+                
                 string salida2 = "clonesEstaEnCodificacion";//comando sql
                 bd.CreateCommandSP(salida2);
-                bd.CreateParameter("@id_clones", DbType.Int32, id_clones[posicion]);
+                bd.CreateParameter("@id_clones", DbType.Int32, id_clones);
                 DbDataReader resultado2 = bd.Query();//disponible resultado
                 resultado2.Read();
                 esta_codificado = resultado2.GetInt32(0);

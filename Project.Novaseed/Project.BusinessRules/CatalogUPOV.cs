@@ -144,7 +144,7 @@ namespace Project.BusinessRules
         /*
          * Devuelve una lista con las variedades que tienen informe upov
          */
-        public List<UPOV> GetTablaUPOVVariedades()
+        public List<UPOV> GetTablaUPOVVariedades(string nombre_variedad)
         {
             try
             {
@@ -153,6 +153,7 @@ namespace Project.BusinessRules
                 List<UPOV> upov = new List<UPOV>();
                 string salida = "upovTablaVariedadesObtener";//comando sql
                 bd.CreateCommandSP(salida);
+                bd.CreateParameter("@nombre_variedad", DbType.String, nombre_variedad);
 
                 DbDataReader resultado = bd.Query();//disponible resultado
 
@@ -238,28 +239,17 @@ namespace Project.BusinessRules
         /*
          * Devuelve 1 si el informe UPOV ya está en generado
          */
-        public int GetUPOVEstaGenerado(int año, int posicion)
+        public int GetUPOVEstaGenerado(int id_upov)
         {
             try
             {
                 DataAccess.DataBase bd = new DataBase();
                 bd.Connect(); //método conectar
                 int estaGenerado;
-
-                string salida = "upovTablaObtener";//comando sql
-                bd.CreateCommandSP(salida);
-                bd.CreateParameter("@ano_upov", DbType.Int32, año);
-                DbDataReader resultado = bd.Query();//disponible resultado
-                List<int> id_upov = new List<int>();
-                while (resultado.Read())
-                {
-                    id_upov.Add(resultado.GetInt32(0));
-                }
-                resultado.Close();
-
+                
                 string salida2 = "upovEstaGenerado";//comando sql
                 bd.CreateCommandSP(salida2);
-                bd.CreateParameter("@id_upov", DbType.Int32, id_upov[posicion]);
+                bd.CreateParameter("@id_upov", DbType.Int32, id_upov);
                 DbDataReader resultado2 = bd.Query();//disponible resultado
                 resultado2.Read();
                 estaGenerado = resultado2.GetInt32(0);

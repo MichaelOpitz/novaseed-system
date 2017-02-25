@@ -28,6 +28,7 @@
                 OnDataBound="ProduccionGridView_DataBound"
                 OnPageIndexChanging="ProduccionGridView_PageIndexChanging"
                 OnRowDataBound="OnRowDataBound"
+                OnRowDeleting="ProduccionGridView_RowDeleting"
                 OnSelectedIndexChanged="gdvProduccion_SelectedIndexChanged">
 
                 <HeaderStyle BackColor="#337ab7" Font-Bold="True" ForeColor="White" />
@@ -72,7 +73,15 @@
                 <Columns>
                     <asp:BoundField DataField="nombre_variedad" HeaderText="Nombre Variedad" ReadOnly="true" />
                     <asp:BoundField DataField="codigo_variedad" HeaderText="Código Variedad" ReadOnly="true" />
-                    <asp:CommandField SelectText="Producción" ButtonType="Link" ShowSelectButton="True" />
+                    <asp:CommandField SelectText="Producción" ButtonType="Link" ShowSelectButton="True" HeaderText="Producción"/>
+                    <%--botones de acción sobre los registros...--%>
+                    <asp:TemplateField ItemStyle-HorizontalAlign="Center" HeaderText="Acción">
+                        <ItemTemplate>
+                            <%--Botones de eliminar y editar cliente...--%>
+                            <asp:Button ID="btnDelete" runat="server" Text="Quitar" CssClass="btn btn-danger" CommandName="Delete" OnClientClick="return confirm('¿Desea eliminar la producción seleccionada?');" />
+                        </ItemTemplate>                        
+                        <ItemStyle HorizontalAlign="Center"></ItemStyle>
+                    </asp:TemplateField>
                 </Columns>
             </asp:GridView>
         </div>

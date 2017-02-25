@@ -83,7 +83,7 @@
 
                 <Columns>
                     <%--botones de acción sobre los registros...--%>
-                    <asp:TemplateField ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="18%">
+                    <asp:TemplateField ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="18%" HeaderText="Acción">
                         <ItemTemplate>
                             <%--Botones de eliminar y editar cliente...--%>
                             <asp:Button ID="btnDelete" runat="server" Text="Quitar" CssClass="btn btn-danger" CommandName="Delete" OnClientClick="return confirm('¿Eliminar clon?\nSi lo hace eliminará todos los registros de etapas avanzadas');" />
@@ -94,11 +94,10 @@
                             <asp:Button ID="btnUpdate" runat="server" Text="Grabar" CssClass="btn btn-success" CommandName="Update" OnClientClick="return confirm('¿Desea modificar el clon?');" />
                             <asp:Button ID="btnCancel" runat="server" Text="Cancelar" CssClass="btn btn-default" CommandName="Cancel" />
                         </EditItemTemplate>
-
                         <HeaderStyle Width="18%"></HeaderStyle>
-
                         <ItemStyle HorizontalAlign="Center"></ItemStyle>
                     </asp:TemplateField>
+
                     <asp:BoundField DataField="id_clones" HeaderText="ID" ReadOnly="true" HeaderStyle-Width="5%" />
                     <asp:BoundField DataField="codigo_variedad" HeaderText="Madre" ReadOnly="true" HeaderStyle-Width="10%" />
                     <asp:BoundField DataField="nombre_madre" HeaderText="Nombre Madre" ReadOnly="true" HeaderStyle-Width="12%" />

@@ -15,7 +15,7 @@ namespace Project.Novaseed
             if (!Page.IsPostBack)
             {
                 CatalogProduccion cp = new CatalogProduccion();
-                this.gdvLicencia.DataSource = cp.GetTablaLicenciaVariedades();
+                this.gdvLicencia.DataSource = cp.GetTablaLicenciaVariedades("");
                 this.DataBind();
             }
         }
@@ -23,12 +23,12 @@ namespace Project.Novaseed
         /*
          * Llena la grilla de licencias
          */
-        private void PoblarGrilla()
+        private void PoblarGrilla(string nombre)
         {
             try
             {
                 CatalogProduccion cp = new CatalogProduccion();
-                this.gdvLicencia.DataSource = cp.GetTablaLicenciaVariedades();
+                this.gdvLicencia.DataSource = cp.GetTablaLicenciaVariedades(nombre);
                 this.gdvLicencia.DataBind();
             }
             catch (Exception ex)
@@ -49,6 +49,12 @@ namespace Project.Novaseed
             catch (Exception ex)
             {
             }
+        }
+
+        protected void btnLicenciaReporteBuscar_Click(object sender, EventArgs e)
+        {
+            string nombre = this.txtLicenciaReporteBuscar.Text;
+            PoblarGrilla(nombre);
         }
 
         protected void LicenciaGridView_DataBound(object sender, EventArgs e)
@@ -97,7 +103,8 @@ namespace Project.Novaseed
 
                 gdvLicencia.PageSize = Convert.ToInt32(pageSizeList.SelectedValue);
                 Context.Session["PageSize"] = pageSizeList.SelectedValue;
-                PoblarGrilla();
+                string nombre = this.txtLicenciaReporteBuscar.Text;
+                PoblarGrilla(nombre);
             }
             catch (Exception ex)
             {
@@ -110,7 +117,8 @@ namespace Project.Novaseed
                 GridViewRow pagerRow = gdvLicencia.BottomPagerRow;
                 DropDownList pageList = (DropDownList)pagerRow.Cells[0].FindControl("PageDropDownList");
                 gdvLicencia.PageIndex = pageList.SelectedIndex;
-                PoblarGrilla();
+                string nombre = this.txtLicenciaReporteBuscar.Text;
+                PoblarGrilla(nombre);
             }
             catch (Exception ex)
             {
@@ -125,7 +133,8 @@ namespace Project.Novaseed
                 DropDownList pageList = (DropDownList)pagerRow.Cells[0].FindControl("PageDropDownList");
                 //Aumenta la página en 1
                 gdvLicencia.PageIndex = pageList.SelectedIndex + 1;
-                PoblarGrilla();
+                string nombre = this.txtLicenciaReporteBuscar.Text;
+                PoblarGrilla(nombre);
             }
             catch (Exception ex)
             {
@@ -140,7 +149,8 @@ namespace Project.Novaseed
                 DropDownList pageList = (DropDownList)pagerRow.Cells[0].FindControl("PageDropDownList");
                 //Disminuye la página en 1
                 gdvLicencia.PageIndex = pageList.SelectedIndex - 1;
-                PoblarGrilla();
+                string nombre = this.txtLicenciaReporteBuscar.Text;
+                PoblarGrilla(nombre);
             }
             catch (Exception ex)
             {
@@ -152,7 +162,8 @@ namespace Project.Novaseed
             try
             {
                 gdvLicencia.PageIndex = 0;
-                PoblarGrilla();
+                string nombre = this.txtLicenciaReporteBuscar.Text;
+                PoblarGrilla(nombre);
             }
             catch (Exception ex)
             {
@@ -166,7 +177,8 @@ namespace Project.Novaseed
                 GridViewRow pagerRow = gdvLicencia.BottomPagerRow;
                 DropDownList pageList = (DropDownList)pagerRow.Cells[0].FindControl("PageDropDownList");
                 gdvLicencia.PageIndex = pageList.Items.Count;
-                PoblarGrilla();
+                string nombre = this.txtLicenciaReporteBuscar.Text;
+                PoblarGrilla(nombre);
             }
             catch (Exception ex)
             {
@@ -198,11 +210,12 @@ namespace Project.Novaseed
                     pageLabel.Text = "Ver " + currentPage.ToString() + " de " + gdvLicencia.PageCount.ToString();
                 }
                 this.gdvLicencia.Controls[0].Controls[this.gdvLicencia.Controls[0].Controls.Count - 1].Visible = true;
-                PoblarGrilla();
+                string nombre = this.txtLicenciaReporteBuscar.Text;
+                PoblarGrilla(nombre);
             }
             catch (Exception ex)
             {
             }
-        }
+        }        
     }
 }

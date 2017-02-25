@@ -216,8 +216,9 @@ namespace Project.Novaseed
                 CatalogCosecha cc = new CatalogCosecha();
                 if (e.Row.RowType == DataControlRowType.DataRow)
                 {
+                    string id_cosecha = e.Row.Cells[2].Text;
                     //devuelve 1 y lo pinta de verde si esta en upov, 0 y rojo en caso contrario
-                    int index48papasUPOV = cc.GetCosechaEstaEnUPOV(valorAñoInt32, cont48papasUPOV);
+                    int index48papasUPOV = cc.GetCosechaEstaEnUPOV(Int32.Parse(id_cosecha));
                     //Ecuentra el CheckBox en la fila
                     CheckBox chkAgregarUPOV = (e.Row.FindControl("chkAgregarUPOV") as CheckBox);
                     if (index48papasUPOV == 1)

@@ -6,6 +6,9 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Web;
+using System.Net;
+using System.Net.Mail;
+using System.Threading.Tasks;
 
 namespace Project.BusinessRules
 {
@@ -127,6 +130,57 @@ namespace Project.BusinessRules
         public string Encriptar(string cadena)
         {            
             return EncriptarMD5(EncriptarSHA1(cadena));
-        }        
+        }
+
+        public void GenerarNuevaContrasena(string email)
+        {
+            try
+            {
+                Random rd = new Random(DateTime.Now.Millisecond);
+                int nuevaContrasena = rd.Next(100000, 999999);
+                EnviarCorreoContrasena(nuevaContrasena, email);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.ToString());
+            }
+        }
+
+        private void EnviarCorreoContrasena(int contrasenaNueva, string correo)
+        {
+            string contraseña = "root2017";
+            string mensaje = string.Empty;
+            //Creando el correo electronico
+            string destinatario = correo;
+            string remitente = "equipo.novaseed@gmail.com";
+            string asunto = "Recuperación de contraseña usuario Novaseed";
+            string cuerpoDelMesaje = "Su nueva contraseña es " + Convert.ToString(contrasenaNueva);
+            MailMessage ms = new MailMessage(remitente, destinatario, asunto, cuerpoDelMesaje);
+            ms.Priority = System.Net.Mail.MailPriority.High;
+
+            SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587);
+            //SmtpClient smtp = new SmtpClient("smtp.live.com", 587);
+            smtp.EnableSsl = true;
+            smtp.Credentials = new NetworkCredential("equipo.novaseed@gmail.com", contraseña);
+
+            try
+            {
+                Task.Run(() =>
+                {
+                    smtp.Send(ms);
+                    ms.Dispose();
+                }
+                );
+
+                CatalogUsuario cu = new CatalogUsuario();
+                Funciones f = new Funciones();
+                string password = f.Encriptar(Convert.ToString(contrasenaNueva));
+                cu.RecuperarContraseña(correo, password);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.ToString());
+            }
+        }
     }
 }

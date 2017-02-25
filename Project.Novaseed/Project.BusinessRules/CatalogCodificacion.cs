@@ -166,7 +166,7 @@ namespace Project.BusinessRules
         /*
          * Devuelve 1 si la codificacion ya esta en etapa de cosecha
          */
-        public int GetCodificacionEstaEnCosecha(string codigo_variedad, string pad_codigo_variedad, int año, int posicion)
+        public int GetCodificacionEstaEnCosecha(int id_codificacion)
         {
             try
             {
@@ -174,22 +174,9 @@ namespace Project.BusinessRules
                 bd.Connect(); //método conectar
                 int estaEnCosecha;
 
-                string salida = "codificacionObtener";//comando sql
-                bd.CreateCommandSP(salida);
-                bd.CreateParameter("@codigo_variedad", DbType.String, codigo_variedad);
-                bd.CreateParameter("@pad_codigo_variedad", DbType.String, pad_codigo_variedad);
-                bd.CreateParameter("@ano_codificacion", DbType.Int32, año);
-                DbDataReader resultado = bd.Query();//disponible resultado
-                List<int> id_codificacion = new List<int>();
-                while (resultado.Read())
-                {
-                    id_codificacion.Add(resultado.GetInt32(0));
-                }
-                resultado.Close();
-
                 string salida2 = "codificacionEstaEnCosecha";//comando sql
                 bd.CreateCommandSP(salida2);
-                bd.CreateParameter("@id_codificacion", DbType.Int32, id_codificacion[posicion]);
+                bd.CreateParameter("@id_codificacion", DbType.Int32, id_codificacion);
                 DbDataReader resultado2 = bd.Query();//disponible resultado
                 resultado2.Read();
                 estaEnCosecha = resultado2.GetInt32(0);

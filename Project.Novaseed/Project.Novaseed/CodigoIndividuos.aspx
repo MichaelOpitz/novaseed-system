@@ -92,7 +92,7 @@
 
                 <Columns>
                     <%--botones de acción sobre los registros...--%>
-                    <asp:TemplateField ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="200px">
+                    <asp:TemplateField ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="200px" HeaderText="Acción">
                         <ItemTemplate>
                             <%--Botones de eliminar y editar cliente...--%>
                             <asp:Button ID="btnDelete" runat="server" Text="Quitar" CssClass="btn btn-danger" CommandName="Delete" OnClientClick="return confirm('¿Eliminar la codificación?\nSi lo hace eliminará todos los registros de etapas avanzadas');" />

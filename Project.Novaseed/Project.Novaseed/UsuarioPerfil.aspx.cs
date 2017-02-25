@@ -32,6 +32,11 @@ namespace Project.Novaseed
                     listaAños.Add(i);
                 }
 
+                //Obtiene si el usuario es administrador(1) o no(0) para mostrar el checkbox de administrador
+                bool administrador = cu.GetUsuarioAdministrador(user);
+                if (administrador == false)
+                    this.chkUsuarioAdministrador.Visible = false;
+
                 this.lblUsuarioError.Visible = false;
                 this.lblUsuarioError.Text = "";
                 if (!IsPostBack)

@@ -60,8 +60,9 @@ namespace Project.Novaseed
                 CatalogUPOV cu = new CatalogUPOV();
                 if (e.Row.RowType == DataControlRowType.DataRow)
                 {
+                    string id_upov = e.Row.Cells[0].Text;
                     //devuelve 1 y lo pinta de verde si esta en upov, 0 y rojo en caso contrario
-                    int indexUPOVgenerado = cu.GetUPOVEstaGenerado(valorAñoInt32, contUPOV);
+                    int indexUPOVgenerado = cu.GetUPOVEstaGenerado(Int32.Parse(id_upov));
 
                     if (indexUPOVgenerado == 1)
                         e.Row.BackColor = Color.LightGreen;

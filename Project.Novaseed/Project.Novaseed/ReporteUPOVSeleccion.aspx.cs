@@ -15,7 +15,7 @@ namespace Project.Novaseed
             if (!Page.IsPostBack)
             {
                 CatalogUPOV cu = new CatalogUPOV();                
-                this.gdvUPOV.DataSource = cu.GetTablaUPOVVariedades();
+                this.gdvUPOV.DataSource = cu.GetTablaUPOVVariedades("");
                 this.DataBind();
             }
         }
@@ -23,12 +23,12 @@ namespace Project.Novaseed
         /*
          * Llena la grilla de upov
          */
-        private void PoblarGrilla()
+        private void PoblarGrilla(string nombre)
         {
             try
             {
                 CatalogUPOV cu = new CatalogUPOV();
-                this.gdvUPOV.DataSource = cu.GetTablaUPOVVariedades();
+                this.gdvUPOV.DataSource = cu.GetTablaUPOVVariedades(nombre);
                 this.gdvUPOV.DataBind();
             }
             catch (Exception ex) 
@@ -49,6 +49,12 @@ namespace Project.Novaseed
             catch (Exception ex)
             {
             }
+        }
+
+        protected void btnUPOVReporteBuscar_Click(object sender, EventArgs e)
+        {
+            string nombre = this.txtUPOVReporteBuscar.Text;
+            PoblarGrilla(nombre);
         }
 
         protected void UPOVGridView_DataBound(object sender, EventArgs e)
@@ -97,7 +103,8 @@ namespace Project.Novaseed
 
                 gdvUPOV.PageSize = Convert.ToInt32(pageSizeList.SelectedValue);
                 Context.Session["PageSize"] = pageSizeList.SelectedValue;
-                PoblarGrilla();
+                string nombre = this.txtUPOVReporteBuscar.Text;
+                PoblarGrilla(nombre);
             }
             catch (Exception ex)
             {
@@ -110,7 +117,8 @@ namespace Project.Novaseed
                 GridViewRow pagerRow = gdvUPOV.BottomPagerRow;
                 DropDownList pageList = (DropDownList)pagerRow.Cells[0].FindControl("PageDropDownList");
                 gdvUPOV.PageIndex = pageList.SelectedIndex;
-                PoblarGrilla();
+                string nombre = this.txtUPOVReporteBuscar.Text;
+                PoblarGrilla(nombre);
             }
             catch (Exception ex)
             {
@@ -125,7 +133,8 @@ namespace Project.Novaseed
                 DropDownList pageList = (DropDownList)pagerRow.Cells[0].FindControl("PageDropDownList");
                 //Aumenta la página en 1
                 gdvUPOV.PageIndex = pageList.SelectedIndex + 1;
-                PoblarGrilla();
+                string nombre = this.txtUPOVReporteBuscar.Text;
+                PoblarGrilla(nombre);
             }
             catch (Exception ex)
             {
@@ -140,7 +149,8 @@ namespace Project.Novaseed
                 DropDownList pageList = (DropDownList)pagerRow.Cells[0].FindControl("PageDropDownList");
                 //Disminuye la página en 1
                 gdvUPOV.PageIndex = pageList.SelectedIndex - 1;
-                PoblarGrilla();
+                string nombre = this.txtUPOVReporteBuscar.Text;
+                PoblarGrilla(nombre);
             }
             catch (Exception ex)
             {
@@ -152,7 +162,8 @@ namespace Project.Novaseed
             try
             {
                 gdvUPOV.PageIndex = 0;
-                PoblarGrilla();
+                string nombre = this.txtUPOVReporteBuscar.Text;
+                PoblarGrilla(nombre);
             }
             catch (Exception ex)
             {
@@ -166,7 +177,8 @@ namespace Project.Novaseed
                 GridViewRow pagerRow = gdvUPOV.BottomPagerRow;
                 DropDownList pageList = (DropDownList)pagerRow.Cells[0].FindControl("PageDropDownList");
                 gdvUPOV.PageIndex = pageList.Items.Count;
-                PoblarGrilla();
+                string nombre = this.txtUPOVReporteBuscar.Text;
+                PoblarGrilla(nombre);
             }
             catch (Exception ex)
             {
@@ -198,7 +210,8 @@ namespace Project.Novaseed
                     pageLabel.Text = "Ver " + currentPage.ToString() + " de " + gdvUPOV.PageCount.ToString();
                 }
                 this.gdvUPOV.Controls[0].Controls[this.gdvUPOV.Controls[0].Controls.Count - 1].Visible = true;
-                PoblarGrilla();
+                string nombre = this.txtUPOVReporteBuscar.Text;
+                PoblarGrilla(nombre);
             }
             catch (Exception ex)
             {

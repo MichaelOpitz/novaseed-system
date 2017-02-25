@@ -2,8 +2,22 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <div class="container-fluid">
-        <div class="row" style="margin-top:20px">
-            <asp:GridView ID="gdvLicencia" runat="server"                
+        <div class="row">
+            <div class="col-sm-6">
+                <h2>
+                    <asp:Label ID="lblLicenciaReporte" runat="server" Font-Bold="true" Text="Licencias" Font-Names="versalitas" /></h2>
+            </div>
+            <div class="col-sm-6" style="text-align: right">
+                <div class="input-group" style="margin-top: 30px">
+                    <asp:TextBox runat="server" type="text" class="form-control" id="txtLicenciaReporteBuscar" placeholder="Ingrese nombre de variedad"></asp:TextBox>
+                    <span class="input-group-btn">
+                        <asp:Button runat="server" class="btn btn-default" type="button" id="btnLicenciaReporteBuscar" Text="Buscar" OnClick="btnLicenciaReporteBuscar_Click"></asp:Button>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="margin-top: 20px">
+            <asp:GridView ID="gdvLicencia" runat="server"
                 AutoGenerateColumns="False"
                 CssClass="table table-bordered bs-table"
                 AllowPaging="True"

@@ -170,7 +170,7 @@
                     </div>
                     <div class="modal-footer">
                         <asp:Button type="button" runat="server" Text="Cambiar Contraseña" ID="btnUsuarioConfirmarContraseña" class="btn btn-danger btn-md" Width="40%" BorderColor="#000000" OnClientClick="return confirm('¿Desea cambiar su contraseña?');" OnClick="btnUsuarioConfirmarContraseña_Click"></asp:Button>
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
                     </div>
                 </div>
 

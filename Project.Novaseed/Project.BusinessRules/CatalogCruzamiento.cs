@@ -34,8 +34,9 @@ namespace Project.BusinessRules
 
         /*
          * Actualizar cruzamiento, involucra tablas cruzamienta, madre y padre.
+         * Devuelve 1 si actualizo, 0 en caso contrario de que la ubicación exista
          */
-        public void UpdateCruzamiento(Cruzamiento c)
+        public int UpdateCruzamiento(Cruzamiento c)
         {
             try
             {
@@ -50,8 +51,16 @@ namespace Project.BusinessRules
                 bd.CreateParameter("@id_fertilidad", DbType.Int32, c.Id_fertilidad);
                 bd.CreateParameter("@flor", DbType.Boolean, c.Flor);
                 bd.CreateParameter("@bayas", DbType.Int32, c.Bayas);
-                bd.Execute();
+                bd.CreateParameter("@ano_cruzamiento", DbType.Int32, c.Ano_cruzamiento);
+
+                int existe_ubicacion;
+                DbDataReader resultado = bd.Query();//disponible resultado
+                resultado.Read();
+                existe_ubicacion = resultado.GetInt32(0);
+                resultado.Close();
+
                 bd.Close();
+                return existe_ubicacion;
             }
             catch (Exception e)
             {
@@ -234,28 +243,17 @@ namespace Project.BusinessRules
         /*
          * Devuelve 1 si el cruzamiento ya esta en etapa de vasos
          */
-        public int GetCruzamientoEstaEnVasos(int año, int posicion)
+        public int GetCruzamientoEstaEnVasos(int id_cruzamiento)
         {
             try
             {
                 DataAccess.DataBase bd = new DataBase();
                 bd.Connect(); //método conectar
-                int estaEnVasos;
-
-                string salida = "cruzamientoObtener";//comando sql
-                bd.CreateCommandSP(salida);
-                bd.CreateParameter("@ano_cruzamiento", DbType.Int32, año);
-                DbDataReader resultado = bd.Query();//disponible resultado
-                List<int> id_cruzamiento = new List<int>();
-                while (resultado.Read())
-                {
-                    id_cruzamiento.Add(resultado.GetInt32(0));
-                }
-                resultado.Close();
+                int estaEnVasos;                
 
                 string salida2 = "cruzamientoEstaVasosObtener";//comando sql
                 bd.CreateCommandSP(salida2);
-                bd.CreateParameter("@id_cruzamiento", DbType.Int32, id_cruzamiento[posicion]);
+                bd.CreateParameter("@id_cruzamiento", DbType.Int32, id_cruzamiento);
                 DbDataReader resultado2 = bd.Query();//disponible resultado
                 resultado2.Read();
                 estaEnVasos = resultado2.GetInt32(0);

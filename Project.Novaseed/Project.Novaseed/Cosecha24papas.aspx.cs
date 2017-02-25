@@ -216,8 +216,9 @@ namespace Project.Novaseed
                 CatalogCosecha cc = new CatalogCosecha();
                 if (e.Row.RowType == DataControlRowType.DataRow)
                 {
+                    string id_cosecha = e.Row.Cells[2].Text;
                     //el tercer parametro es 4 por el id_temporada que es 48 papas(4 para el color, 3 para el obtener en catalog)
-                    int index12papas24papas = cc.GetCosechaTemporadasAvanzadas(valorAñoInt32, cont24papas48papas, 4);
+                    int index12papas24papas = cc.GetCosechaTemporadasAvanzadas(Int32.Parse(id_cosecha), 4);
                     //Ecuentra el CheckBox en la fila
                     CheckBox chkAgregar48Papas = (e.Row.FindControl("chkAgregar48Papas") as CheckBox);
                     if (index12papas24papas == 1)

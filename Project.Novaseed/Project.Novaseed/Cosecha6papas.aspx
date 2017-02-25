@@ -92,7 +92,7 @@
                     </asp:TemplateField>
 
                     <%--botones de acción sobre los registros...--%>
-                    <asp:TemplateField ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="8%">
+                    <asp:TemplateField ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="8%" HeaderText="Acción">
                         <ItemTemplate>
                             <%--Botones de eliminar y editar cliente...--%>
                             <asp:Button ID="btnDelete" runat="server" Text="Quitar" CssClass="btn btn-danger" CommandName="Delete" OnClientClick="return confirm('¿Eliminar variedad de 6 papas?\nSi lo hace eliminará todos los registros de etapas avanzadas');" />
@@ -172,11 +172,11 @@
             <div class="panel-body">
                 <br />
                 <div class="row">
-                    <div class="col-sm-3 ">
+                    <div class="col-sm-4">
                         <asp:DropDownList type="button" ID="ddl6papasMadurez" runat="server" Width="80%" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
                         <span class="help-block">Madurez</span>
                     </div>
-                    <div class="col-sm-5">
+                    <div class="col-sm-4">
                         <asp:DropDownList type="button" ID="ddl6papasDesarrollo" runat="server" Width="80%" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
                         <span class="help-block">Desarrollo Follaje</span>
                     </div>
@@ -187,11 +187,11 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-sm-3">
+                    <div class="col-sm-4">
                         <asp:DropDownList type="button" ID="ddl6papasBrotacion" runat="server" Width="80%" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
                         <span class="help-block">Brotación</span>
                     </div>
-                    <div class="col-sm-5">
+                    <div class="col-sm-4">
                         <asp:DropDownList type="button" ID="ddl6papasTamaño" runat="server" Width="80%" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
                         <span class="help-block">Tamaño</span>
                     </div>
@@ -202,11 +202,11 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-sm-3">
+                    <div class="col-sm-4">
                         <asp:DropDownList type="button" ID="ddl6papasForma" runat="server" Width="80%" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
                         <span class="help-block">Forma</span>
                     </div>
-                    <div class="col-sm-5">
+                    <div class="col-sm-4">
                         <asp:DropDownList type="button" ID="ddl6papasRegularidad" runat="server" Width="80%" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>
                         <span class="help-block">Regularidad</span>
                     </div>

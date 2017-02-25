@@ -13,7 +13,7 @@ namespace Project.BusinessRules
         /*
          * Devuelve una lista con las variedades standard del sistema
          */
-        public List<Variedad> GetTablaVariedadVariedades()
+        public List<Variedad> GetTablaVariedadVariedades(string nombre_variedad)
         {
             try
             {
@@ -22,6 +22,7 @@ namespace Project.BusinessRules
                 List<Variedad> variedad = new List<Variedad>();
                 string salida = "variedadTablaVariedadesObtener";//comando sql
                 bd.CreateCommandSP(salida);
+                bd.CreateParameter("@nombre_variedad", DbType.String, nombre_variedad);
 
                 DbDataReader resultado = bd.Query();//disponible resultado
 

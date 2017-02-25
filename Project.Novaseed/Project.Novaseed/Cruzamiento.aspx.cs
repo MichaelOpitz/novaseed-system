@@ -100,7 +100,8 @@ namespace Project.Novaseed
 
                 if (e.Row.RowType == DataControlRowType.DataRow)
                 {
-                    int indexCruzamientoVasos = cc.GetCruzamientoEstaEnVasos(valorAñoInt32, contCruzamientoVasos);
+                    string id_cruzamiento = e.Row.Cells[2].Text;
+                    int indexCruzamientoVasos = cc.GetCruzamientoEstaEnVasos(Int32.Parse(id_cruzamiento));
 
                     //Ecuentra el CheckBox en la fila
                     CheckBox chkVasosAgregar = (e.Row.FindControl("chkVasosAgregar") as CheckBox);
@@ -176,18 +177,23 @@ namespace Project.Novaseed
                     this.lblCruzamientoError.Text += "Las bayas quedarán en 0 debido a que no tiene flor.<br/>";
                 }
                 //bayas
+                int bayasInt = 0;
                 string bayas = e.NewValues[1].ToString();
-                if ((EsNumero(bayas) == false) || (EsNumero(bayas) == true && Int32.Parse(bayas) < 0))
+                if ((EsNumero(bayas) == true && (Int32.Parse(bayas) < 0 || Int32.Parse(bayas) > 999)) || (EsNumero(bayas) == false))
                 {
-                    this.lblCruzamientoError.Text += "Las bayas deben ser un número positivo.<br/>";
+                    this.lblCruzamientoError.Text += "Las bayas deben ser un número positivo menor a 1000.<br/>";
                     invalido = 1;
                 }
+                else
+                    bayasInt = Int32.Parse(bayas);
 
                 if (invalido == 0)
                 {
                     Project.BusinessRules.Cruzamiento cruzamiento = new Project.BusinessRules.Cruzamiento(Int32.Parse(id_cruzamiento),
-                      codigo_variedad, pad_codigo_variedad, ubicacion_cruzamiento, Int32.Parse(id_fertilidad), flor, Int32.Parse(bayas));
-                    cc.UpdateCruzamiento(cruzamiento);
+                      codigo_variedad, pad_codigo_variedad, ubicacion_cruzamiento, Int32.Parse(id_fertilidad), flor, bayasInt, valorAñoInt32);
+                    int valor = cc.UpdateCruzamiento(cruzamiento);
+                    if (valor == 0)
+                        this.lblCruzamientoError.Text += "La ubicación ingresada ya existe, inténtelo nuevamente.<br/>";
                 }
             }
             catch (Exception ex)

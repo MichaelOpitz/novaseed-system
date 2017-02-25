@@ -5,9 +5,6 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Net;
-using System.Net.Mail;
-using System.Threading.Tasks;
 
 namespace Project.Novaseed
 {
@@ -86,6 +83,7 @@ namespace Project.Novaseed
         {
             try
             {
+                Funciones f = new Funciones();
                 string correo = this.txtLoginRecuperarContraseña.Text;
                 CatalogUsuario cu = new CatalogUsuario();
                 int valor = cu.ExistCorreo(correo);
@@ -99,7 +97,7 @@ namespace Project.Novaseed
                     int sumaCaptcha = Int32.Parse(this.txtLoginSumaCaptcha.Text);
                     if (sumaCaptcha == suma)
                     {
-                        GenerarNuevaContrasena(this.txtLoginRecuperarContraseña.Text);
+                        f.GenerarNuevaContrasena(this.txtLoginRecuperarContraseña.Text);
                         Page.ClientScript.RegisterStartupScript(GetType(), "Script", "<script>alert('Correo Enviado, revise su bandeja de entrada')</script>");
                         this.txtLoginRecuperarContraseña.Text = "";
                         this.txtLoginSumaCaptcha.Text = "";
@@ -113,56 +111,5 @@ namespace Project.Novaseed
                 Page.ClientScript.RegisterStartupScript(GetType(), "Script", "<script>alert('Error Crítico')</script>");
             }            
         }
-
-        private void GenerarNuevaContrasena(string email)
-        {
-            try
-            {
-                Random rd = new Random(DateTime.Now.Millisecond);
-                int nuevaContrasena = rd.Next(100000, 999999);
-                EnviarCorreoContrasena(nuevaContrasena, email);
-            }
-            catch (Exception ex)
-            {
-            }
-        }
-
-        private void EnviarCorreoContrasena(int contrasenaNueva, string correo)
-        {
-            string contraseña = "root2017";
-            string mensaje = string.Empty;
-            //Creando el correo electronico
-            string destinatario = correo;
-            string remitente = "equipo.novaseed@gmail.com";
-            string asunto = "Recuperación de contraseña usuario Novaseed";
-            string cuerpoDelMesaje = "Su nueva contraseña es " + Convert.ToString(contrasenaNueva);
-            MailMessage ms = new MailMessage(remitente, destinatario, asunto, cuerpoDelMesaje);
-            ms.Priority = System.Net.Mail.MailPriority.High;
-
-            SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587);
-            //SmtpClient smtp = new SmtpClient("smtp.live.com", 587);
-            smtp.EnableSsl = true;            
-            smtp.Credentials = new NetworkCredential("equipo.novaseed@gmail.com", contraseña);
-
-            try
-            {
-                Task.Run(() =>
-                {
-                    smtp.Send(ms);
-                    ms.Dispose();
-                }
-                );
-
-                CatalogUsuario cu = new CatalogUsuario();
-                Funciones f = new Funciones();
-                string password = f.Encriptar(Convert.ToString(contrasenaNueva));
-                cu.RecuperarContraseña(correo, password);
-            }
-            catch (Exception ex)
-            {
-                Page.ClientScript.RegisterStartupScript(GetType(), "Script", "<script>alert('Error al enviar correo electronico')</script>");
-            }
-        }
-
     }
 }

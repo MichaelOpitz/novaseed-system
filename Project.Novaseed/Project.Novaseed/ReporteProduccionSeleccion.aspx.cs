@@ -15,7 +15,7 @@ namespace Project.Novaseed
             if (!Page.IsPostBack)
             {
                 CatalogProduccion cp = new CatalogProduccion();
-                this.gdvProduccion.DataSource = cp.GetTablaProduccionVariedades();
+                this.gdvProduccion.DataSource = cp.GetTablaProduccionVariedades("");
                 this.DataBind();
             }
         }
@@ -23,12 +23,12 @@ namespace Project.Novaseed
         /*
          * Llena la grilla de producción
          */
-        private void PoblarGrilla()
+        private void PoblarGrilla(string nombre)
         {
             try
             {
                 CatalogProduccion cp = new CatalogProduccion();
-                this.gdvProduccion.DataSource = cp.GetTablaProduccionVariedades();
+                this.gdvProduccion.DataSource = cp.GetTablaProduccionVariedades(nombre);
                 this.gdvProduccion.DataBind();
             }
             catch(Exception ex)
@@ -49,6 +49,12 @@ namespace Project.Novaseed
             catch (Exception ex)
             {
             }
+        }
+
+        protected void btnProduccionReporteBuscar_Click(object sender, EventArgs e)
+        {
+            string nombre = this.txtProduccionReporteBuscar.Text;
+            PoblarGrilla(nombre);
         }
 
         protected void ProduccionGridView_DataBound(object sender, EventArgs e)
@@ -97,7 +103,8 @@ namespace Project.Novaseed
 
                 gdvProduccion.PageSize = Convert.ToInt32(pageSizeList.SelectedValue);
                 Context.Session["PageSize"] = pageSizeList.SelectedValue;
-                PoblarGrilla();
+                string nombre = this.txtProduccionReporteBuscar.Text;
+                PoblarGrilla(nombre);
             }
             catch (Exception ex)
             {
@@ -110,7 +117,8 @@ namespace Project.Novaseed
                 GridViewRow pagerRow = gdvProduccion.BottomPagerRow;
                 DropDownList pageList = (DropDownList)pagerRow.Cells[0].FindControl("PageDropDownList");
                 gdvProduccion.PageIndex = pageList.SelectedIndex;
-                PoblarGrilla();
+                string nombre = this.txtProduccionReporteBuscar.Text;
+                PoblarGrilla(nombre);
             }
             catch (Exception ex)
             {
@@ -125,7 +133,8 @@ namespace Project.Novaseed
                 DropDownList pageList = (DropDownList)pagerRow.Cells[0].FindControl("PageDropDownList");
                 //Aumenta la página en 1
                 gdvProduccion.PageIndex = pageList.SelectedIndex + 1;
-                PoblarGrilla();
+                string nombre = this.txtProduccionReporteBuscar.Text;
+                PoblarGrilla(nombre);
             }
             catch (Exception ex)
             {
@@ -140,7 +149,8 @@ namespace Project.Novaseed
                 DropDownList pageList = (DropDownList)pagerRow.Cells[0].FindControl("PageDropDownList");
                 //Disminuye la página en 1
                 gdvProduccion.PageIndex = pageList.SelectedIndex - 1;
-                PoblarGrilla();
+                string nombre = this.txtProduccionReporteBuscar.Text;
+                PoblarGrilla(nombre);
             }
             catch (Exception ex)
             {
@@ -152,7 +162,8 @@ namespace Project.Novaseed
             try
             {
                 gdvProduccion.PageIndex = 0;
-                PoblarGrilla();
+                string nombre = this.txtProduccionReporteBuscar.Text;
+                PoblarGrilla(nombre);
             }
             catch (Exception ex)
             {
@@ -166,7 +177,8 @@ namespace Project.Novaseed
                 GridViewRow pagerRow = gdvProduccion.BottomPagerRow;
                 DropDownList pageList = (DropDownList)pagerRow.Cells[0].FindControl("PageDropDownList");
                 gdvProduccion.PageIndex = pageList.Items.Count;
-                PoblarGrilla();
+                string nombre = this.txtProduccionReporteBuscar.Text;
+                PoblarGrilla(nombre);
             }
             catch (Exception ex)
             {
@@ -198,7 +210,8 @@ namespace Project.Novaseed
                     pageLabel.Text = "Ver " + currentPage.ToString() + " de " + gdvProduccion.PageCount.ToString();
                 }
                 this.gdvProduccion.Controls[0].Controls[this.gdvProduccion.Controls[0].Controls.Count - 1].Visible = true;
-                PoblarGrilla();
+                string nombre = this.txtProduccionReporteBuscar.Text;
+                PoblarGrilla(nombre);
             }
             catch (Exception ex)
             {

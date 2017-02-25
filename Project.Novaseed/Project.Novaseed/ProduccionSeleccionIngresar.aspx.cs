@@ -69,8 +69,9 @@ namespace Project.Novaseed
                 CatalogProduccion cp = new CatalogProduccion();
                 if (e.Row.RowType == DataControlRowType.DataRow)
                 {
+                    string codigo_variedad = e.Row.Cells[1].Text;
                     //devuelve 1 y lo pinta de verde si esta en upov, 0 y rojo en caso contrario
-                    int indexProduccion = cp.GetProduccionVariedad(valorAñoInt32, contProduccion);
+                    int indexProduccion = cp.GetProduccionVariedad(codigo_variedad);
 
                     if (indexProduccion == 1)
                     {
@@ -128,6 +129,24 @@ namespace Project.Novaseed
             {
             }
         }
+
+        protected void ProduccionGridView_RowDeleting(Object sender, GridViewDeleteEventArgs e)
+        {
+            try
+            {
+                CatalogProduccion cp = new CatalogProduccion();
+                string codigo_variedad = HttpUtility.HtmlDecode((string)this.gdvProduccion.Rows[e.RowIndex].Cells[1].Text);
+                int valor = cp.DeleteProduccion(codigo_variedad);
+                if (valor == 0)
+                    Page.ClientScript.RegisterStartupScript(GetType(), "Script", "<script>alert('¡Error! No se pudo eliminar la producción')</script>");
+
+                PoblarGrilla();
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+
         protected void ddlPageSize_SelectedIndexChanged(object sender, EventArgs e)
         {
             try

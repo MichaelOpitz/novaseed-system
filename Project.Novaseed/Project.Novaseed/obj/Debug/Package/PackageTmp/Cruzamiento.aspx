@@ -88,7 +88,7 @@
                         </ItemTemplate>
                     </asp:TemplateField>
                     <%--botones de acción sobre los registros...--%>
-                    <asp:TemplateField ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="18%">
+                    <asp:TemplateField ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="18%" HeaderText="Acción">
                         <ItemTemplate>
                             <%--Botones de eliminar y editar cliente...--%>
                             <asp:Button ID="btnDelete" runat="server" Text="Quitar" CssClass="btn btn-danger" CommandName="Delete" OnClientClick="return confirm('¿Eliminar cruzamiento?\nSi lo hace eliminará todos los registros de etapas avanzadas');" />
