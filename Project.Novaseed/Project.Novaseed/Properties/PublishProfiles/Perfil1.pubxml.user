@@ -28,7 +28,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>10/21/2016 13:09:59</publishTime>
     </File>
     <File Include="Ayuda.aspx">
-      <publishTime>10/12/2016 22:01:00</publishTime>
+      <publishTime>12/10/2016 22:01:00</publishTime>
     </File>
     <File Include="bin/Antlr3.Runtime.dll">
       <publishTime>10/21/2016 13:09:37</publishTime>
@@ -94,13 +94,13 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>10/21/2016 13:10:08</publishTime>
     </File>
     <File Include="bin/itextsharp.dll">
-      <publishTime>07/10/2016 08:33:43</publishTime>
+      <publishTime>10/07/2016 08:33:43</publishTime>
     </File>
     <File Include="bin/itextsharp.pdfa.dll">
-      <publishTime>07/10/2016 08:33:36</publishTime>
+      <publishTime>10/07/2016 08:33:36</publishTime>
     </File>
     <File Include="bin/itextsharp.xtra.dll">
-      <publishTime>07/10/2016 08:33:40</publishTime>
+      <publishTime>10/07/2016 08:33:40</publishTime>
     </File>
     <File Include="bin/Microsoft.AspNet.FriendlyUrls.dll">
       <publishTime>10/21/2016 13:09:54</publishTime>
@@ -160,22 +160,22 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>10/21/2016 13:10:07</publishTime>
     </File>
     <File Include="bin/Project.BusinessRules.dll">
-      <publishTime>02/23/2017 15:29:05</publishTime>
+      <publishTime>03/07/2017 13:09:55</publishTime>
     </File>
     <File Include="bin/Project.BusinessRules.pdb">
-      <publishTime>02/23/2017 15:29:05</publishTime>
+      <publishTime>07/03/2017 13:09:55</publishTime>
     </File>
     <File Include="bin/Project.DataAccess.dll">
-      <publishTime>02/16/2017 16:22:01</publishTime>
+      <publishTime>03/07/2017 13:09:53</publishTime>
     </File>
     <File Include="bin/Project.DataAccess.pdb">
-      <publishTime>02/16/2017 16:22:01</publishTime>
+      <publishTime>07/03/2017 13:09:53</publishTime>
     </File>
     <File Include="bin/Project.Novaseed.dll">
-      <publishTime>02/23/2017 15:29:07</publishTime>
+      <publishTime>03/08/2017 18:23:58</publishTime>
     </File>
     <File Include="bin/Project.Novaseed.pdb">
-      <publishTime>02/23/2017 15:29:07</publishTime>
+      <publishTime>03/08/2017 18:23:58</publishTime>
     </File>
     <File Include="bin/System.Web.Optimization.dll">
       <publishTime>10/21/2016 13:09:39</publishTime>
@@ -202,37 +202,37 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>02/12/2017 00:33:07</publishTime>
     </File>
     <File Include="Codificacion.aspx">
-      <publishTime>02/04/2017 14:50:39</publishTime>
+      <publishTime>03/08/2017 18:23:50</publishTime>
     </File>
     <File Include="CodigoIndividuos.aspx">
       <publishTime>02/20/2017 15:11:02</publishTime>
     </File>
     <File Include="Contact.aspx">
-      <publishTime>08/12/2016 01:25:16</publishTime>
+      <publishTime>12/08/2016 01:25:16</publishTime>
     </File>
     <File Include="Content/bootstrap.css">
-      <publishTime>04/12/2016 19:17:49</publishTime>
+      <publishTime>12/04/2016 19:17:49</publishTime>
     </File>
     <File Include="Content/bootstrap.min.css">
       <publishTime>10/21/2016 13:09:36</publishTime>
     </File>
     <File Include="Content/Site.css">
-      <publishTime>03/12/2016 00:45:25</publishTime>
+      <publishTime>12/03/2016 00:45:25</publishTime>
     </File>
     <File Include="Cosecha12papas.aspx">
-      <publishTime>02/12/2017 00:33:55</publishTime>
+      <publishTime>02/27/2017 12:53:17</publishTime>
     </File>
     <File Include="Cosecha24papas.aspx">
-      <publishTime>02/12/2017 00:33:55</publishTime>
+      <publishTime>02/27/2017 12:53:17</publishTime>
     </File>
     <File Include="Cosecha48papas.aspx">
-      <publishTime>02/12/2017 00:33:55</publishTime>
+      <publishTime>02/27/2017 12:53:18</publishTime>
     </File>
     <File Include="Cosecha6papas.aspx">
-      <publishTime>02/12/2017 00:33:55</publishTime>
+      <publishTime>02/27/2017 12:53:17</publishTime>
     </File>
     <File Include="Cruzamiento.aspx">
-      <publishTime>02/12/2017 00:32:03</publishTime>
+      <publishTime>03/07/2017 14:31:46</publishTime>
     </File>
     <File Include="DataSetNovaseed.xsc">
       <publishTime>01/13/2017 21:52:57</publishTime>
@@ -268,19 +268,19 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>02/11/2017 15:09:28</publishTime>
     </File>
     <File Include="logo.ico">
-      <publishTime>06/12/2016 20:12:16</publishTime>
+      <publishTime>12/06/2016 20:12:16</publishTime>
     </File>
     <File Include="Mejoramiento.aspx">
       <publishTime>01/13/2017 16:01:07</publishTime>
     </File>
     <File Include="Menu.aspx">
-      <publishTime>02/04/2017 15:23:25</publishTime>
+      <publishTime>03/07/2017 14:25:12</publishTime>
     </File>
     <File Include="MenuGeneracion.aspx">
-      <publishTime>06/12/2016 20:08:46</publishTime>
+      <publishTime>12/06/2016 20:08:46</publishTime>
     </File>
     <File Include="MenuProduccion.aspx">
-      <publishTime>02/19/2017 17:31:57</publishTime>
+      <publishTime>03/07/2017 14:37:05</publishTime>
     </File>
     <File Include="packages.config">
       <publishTime>10/21/2016 13:10:10</publishTime>
@@ -430,19 +430,19 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>02/25/2017 15:44:18</publishTime>
     </File>
     <File Include="UsuarioPerfil.aspx">
-      <publishTime>02/11/2017 15:09:01</publishTime>
+      <publishTime>02/28/2017 17:03:26</publishTime>
     </File>
     <File Include="UsuarioRegistro.aspx">
       <publishTime>12/15/2016 11:54:13</publishTime>
     </File>
     <File Include="Vasos.aspx">
-      <publishTime>02/12/2017 00:33:07</publishTime>
+      <publishTime>03/07/2017 14:32:03</publishTime>
     </File>
     <File Include="ViewSwitcher.ascx">
       <publishTime>10/21/2016 13:09:55</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>02/25/2017 15:50:54</publishTime>
+      <publishTime>03/08/2017 18:25:51</publishTime>
     </File>
   </ItemGroup>
 </Project>

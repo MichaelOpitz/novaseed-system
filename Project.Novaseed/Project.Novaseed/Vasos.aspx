@@ -114,7 +114,7 @@
                     <asp:BoundField DataField="pad_codigo_variedad" HeaderText="Padre" ReadOnly="true" HeaderStyle-Width="10%" />
                     <asp:BoundField DataField="nombre_padre" HeaderText="Nombre Padre" ReadOnly="true" HeaderStyle-Width="10%" />
                     <asp:BoundField DataField="ubicacion_vasos" HeaderText="Ubicación" HeaderStyle-Width="5%" ControlStyle-Width="100%" />
-                    <asp:BoundField DataField="cantidad_vasos" HeaderText="Cantidad Vasos" HeaderStyle-Width="5%" ControlStyle-Width="100%" />
+                    <asp:BoundField DataField="cantidad_vasos" HeaderText="Cantidad Total" HeaderStyle-Width="5%" ControlStyle-Width="100%" />
                     <asp:TemplateField ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="5%" HeaderText="Fertilidad">
                         <ItemTemplate>
                             <asp:DropDownList type="button" ID="ddlVasosFertilidad" runat="server" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></asp:DropDownList>

@@ -64,7 +64,7 @@ namespace Project.Novaseed {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnMenuMejoramiento;
+        protected global::System.Web.UI.WebControls.ImageButton btnMenuMejoramiento;
         
         /// <summary>
         /// Control btnMenuGeneracion.
@@ -73,7 +73,7 @@ namespace Project.Novaseed {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnMenuGeneracion;
+        protected global::System.Web.UI.WebControls.ImageButton btnMenuGeneracion;
         
         /// <summary>
         /// Control btnMenuProduccion.
@@ -82,7 +82,7 @@ namespace Project.Novaseed {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnMenuProduccion;
+        protected global::System.Web.UI.WebControls.ImageButton btnMenuProduccion;
         
         /// <summary>
         /// Control btnMenuLicencia.
@@ -91,6 +91,6 @@ namespace Project.Novaseed {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnMenuLicencia;
+        protected global::System.Web.UI.WebControls.ImageButton btnMenuLicencia;
     }
 }

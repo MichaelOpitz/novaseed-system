@@ -104,7 +104,7 @@
                 <span class="help-block">Dirección</span>
             </div>
             <div class="col-sm-2" style="margin-top: 20px">
-                <asp:CheckBox ID="chkUsuarioAdministrador" runat="server" Text="Administrador" />
+                <asp:CheckBox ID="chkUsuarioAdministrador" runat="server" Text="Administrador" class="checkbox" />
             </div>
         </div>
 

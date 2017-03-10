@@ -13,16 +13,16 @@
                         <div class="nav navbar-nav sider-navbar">
                             <!-- SIDEBAR USERPIC -->
                             <div class="profile-userpic" style="width:50%; height:50%; margin-left:25%">
-                                <asp:Image ID="imgMenuAvatar" runat="server" class="img-responsive" alt="Profile Picture"/>                                
+                                <asp:Image ID="imgMenuAvatar" runat="server" class="img-responsive img-circle" alt="Profile Picture"/>
                             </div>
                             <!-- END SIDEBAR USERPIC -->
                             <!-- SIDEBAR USER TITLE -->
                             <div class="profile-usertitle" style="text-align: center">
                                 <div class="profile-usertitle-name">
-                                    <asp:Label id="lblMenuNombre" runat="server" />
+                                    <asp:Label id="lblMenuNombre" runat="server" Font-Bold="true"/>
                                 </div>
                                 <div class="profile-usertitle-job">
-                                    <asp:Label id="lblMenuCargo" runat="server" />
+                                    <asp:Label id="lblMenuCargo" runat="server" Font-Bold="true"/>
 				
                                 </div>
                             </div>
@@ -113,10 +113,14 @@
                 <br />
                 <br />
                 <br />
-                <asp:Button type="button" runat="server" class="btn btn-info" ID="btnMenuMejoramiento" Style='width: 160px; height: 140px; border-color: #000000' ForeColor="Black" Text="Mejoramiento" OnClick="btnMenuMejoramiento_Click"></asp:Button>
+                <%--<asp:Button type="button" runat="server" class="btn btn-info" ID="btnMenuMejoramiento" Style='width: 160px; height: 140px; border-color: #000000' ForeColor="Black" Text="Mejoramiento" OnClick="btnMenuMejoramiento_Click"></asp:Button>
                 <asp:Button type="button" runat="server" class="btn btn-info" ID="btnMenuGeneracion" Style='width: 160px; height: 140px; border-color: #000000' ForeColor="Black" Text="Año de Generación" OnClick="btnMenuGeneracion_Click"></asp:Button>
                 <asp:Button type="button" runat="server" class="btn btn-info" ID="btnMenuProduccion" Style='width: 160px; height: 140px; border-color: #000000' ForeColor="Black" Text="Producción" OnClick="btnMenuProduccion_Click"></asp:Button>
-                <asp:Button type="button" runat="server" class="btn btn-info" ID="btnMenuLicencia" Style='width: 160px; height: 140px; border-color: #000000' ForeColor="Black" Text="Licencias" OnClick="btnMenuLicencia_Click"></asp:Button>
+                <asp:Button type="button" runat="server" class="btn btn-info" ID="btnMenuLicencia" Style='width: 160px; height: 140px; border-color: #000000' ForeColor="Black" Text="Licencias" OnClick="btnMenuLicencia_Click"></asp:Button>--%>
+                <asp:ImageButton ID="btnMenuMejoramiento" runat="server" ImageUrl="~/images/mejoramiento.png" Style='width: 160px; height: 140px; border-color: #000000' ForeColor="Black" OnClick="btnMenuMejoramiento_Click"/>
+                <asp:ImageButton ID="btnMenuGeneracion" runat="server" ImageUrl="~/images/generacion.png" Style='width: 160px; height: 140px; border-color: #000000' ForeColor="Black" OnClick="btnMenuGeneracion_Click"/>
+                <asp:ImageButton ID="btnMenuProduccion" runat="server" ImageUrl="~/images/produccion.png" Style='width: 160px; height: 140px; border-color: #000000' ForeColor="Black" OnClick="btnMenuProduccion_Click"/>
+                <asp:ImageButton ID="btnMenuLicencia" runat="server" ImageUrl="~/images/licencia.png" Style='width: 160px; height: 140px; border-color: #000000' ForeColor="Black" OnClick="btnMenuLicencia_Click"/>
             </div>
         </div>
     </div>

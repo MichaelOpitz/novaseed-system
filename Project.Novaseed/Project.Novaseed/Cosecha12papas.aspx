@@ -1,4 +1,4 @@
-﻿<%@ Page Title="12 Papas" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"
+﻿<%@ Page Title="Cosecha" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"
     CodeBehind="Cosecha12papas.aspx.cs" Inherits="Project.Novaseed.Cosecha12papas" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
@@ -36,7 +36,7 @@
                 CssClass="table table-bordered bs-table"
                 AllowPaging="True"
                 AllowSorting="True"
-                PageSize="4"
+                PageSize="8"
                 OnDataBound="Cosecha12papasGridView_DataBound"
                 OnPageIndexChanging="Cosecha12papasGridView_PageIndexChanging"
                 OnRowDataBound="OnRowDataBound"
@@ -69,9 +69,9 @@
                                 <asp:Label ID="PageSizeLabel" runat="server" Text="Tamaño de página: " Font-Bold="true"></asp:Label>
                                 <asp:DropDownList ID="ddlPageSize" runat="server" OnSelectedIndexChanged="ddlPageSize_SelectedIndexChanged" AutoPostBack="true" CssClass="selectpicker form-control-drp">
                                     <%-- <asp:ListItem Value="0" Text="0" />--%>
-                                    <asp:ListItem Value="4" Text="4" />
-                                    <asp:ListItem Value="6" Text="6" />
                                     <asp:ListItem Value="8" Text="8" />
+                                    <asp:ListItem Value="10" Text="10" />
+                                    <asp:ListItem Value="12" Text="12" />
                                 </asp:DropDownList>
                             </td>
                             <td class="col-md-2">

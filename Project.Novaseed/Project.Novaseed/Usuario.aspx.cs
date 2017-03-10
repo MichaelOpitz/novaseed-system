@@ -15,7 +15,13 @@ namespace Project.Novaseed
         {
             try
             {
-                CatalogUsuario cu = new CatalogUsuario();                                
+                CatalogUsuario cu = new CatalogUsuario();
+                string user = this.Session["user"].ToString();
+                //Obtiene si el usuario es administrador(1) o no(0) para mostrar la administracion de usuario en el menú lateral
+                bool administrador = cu.GetUsuarioAdministrador(user);
+                if (administrador == false)
+                    Response.Redirect("Login.aspx");
+                
                 CatalogSexo cs = new CatalogSexo();
                 List<Project.BusinessRules.Sexo> sexo = cs.GetSexo();
                 CatalogCargo cc = new CatalogCargo();

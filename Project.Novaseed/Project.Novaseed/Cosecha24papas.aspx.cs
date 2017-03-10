@@ -818,7 +818,7 @@ namespace Project.Novaseed
         protected void Cosecha24papasGridView_DataBound(object sender, EventArgs e)
         {
             try
-            {
+            {                
                 GridViewRow pagerRow = gdv24papas.BottomPagerRow;
                 DropDownList pageSizeList = (DropDownList)pagerRow.Cells[0].FindControl("ddlPageSize");
                 if (Context.Session["PageSize"] != null)
@@ -856,6 +856,7 @@ namespace Project.Novaseed
         {
             try
             {
+                this.gdv24papas.SelectedIndex = -1;
                 GridViewRow pagerRow = gdv24papas.BottomPagerRow;
                 DropDownList pageSizeList = (DropDownList)pagerRow.Cells[0].FindControl("ddlPageSize");
 
@@ -871,6 +872,7 @@ namespace Project.Novaseed
         {
             try
             {
+                this.gdv24papas.SelectedIndex = -1;
                 GridViewRow pagerRow = gdv24papas.BottomPagerRow;
                 DropDownList pageList = (DropDownList)pagerRow.Cells[0].FindControl("PageDropDownList");
                 gdv24papas.PageIndex = pageList.SelectedIndex;
@@ -885,6 +887,7 @@ namespace Project.Novaseed
         {
             try
             {
+                this.gdv24papas.SelectedIndex = -1;
                 GridViewRow pagerRow = gdv24papas.BottomPagerRow;
                 DropDownList pageList = (DropDownList)pagerRow.Cells[0].FindControl("PageDropDownList");
                 //Aumenta la página en 1
@@ -900,6 +903,7 @@ namespace Project.Novaseed
         {
             try
             {
+                this.gdv24papas.SelectedIndex = -1;
                 GridViewRow pagerRow = gdv24papas.BottomPagerRow;
                 DropDownList pageList = (DropDownList)pagerRow.Cells[0].FindControl("PageDropDownList");
                 //Disminuye la página en 1
@@ -915,6 +919,7 @@ namespace Project.Novaseed
         {
             try
             {
+                this.gdv24papas.SelectedIndex = -1;
                 gdv24papas.PageIndex = 0;
                 PoblarGrilla();
             }
@@ -927,6 +932,7 @@ namespace Project.Novaseed
         {
             try
             {
+                this.gdv24papas.SelectedIndex = -1;
                 GridViewRow pagerRow = gdv24papas.BottomPagerRow;
                 DropDownList pageList = (DropDownList)pagerRow.Cells[0].FindControl("PageDropDownList");
                 gdv24papas.PageIndex = pageList.Items.Count;
@@ -940,6 +946,7 @@ namespace Project.Novaseed
         {
             try
             {
+                this.gdv24papas.SelectedIndex = -1;
                 GridViewRow pagerRow = gdv24papas.BottomPagerRow;
                 DropDownList pageList = (DropDownList)pagerRow.Cells[0].FindControl("PageDropDownList");//error
                 Label pageLabel = (Label)pagerRow.Cells[0].FindControl("CurrentPageLabel");
